@@ -2,23 +2,26 @@
 
 ## Rails
 ### Models
-* Reminder
+* Photo
+* Like
 
 ### Controllers
-* Api::RemindersController (create, destroy, index, show, update)
+* Api::PhotosController (create, destroy, index, show, update)
+* Api::LikesController (create, destroy, index, show, update)
 
 ### Views
-* reminders/index.json.jbuilder
+* photos/index.json.jbuilder
+* photos/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* RemindersIndex
-  - ReminderIndexItem
-* ReminderShow
-* ReminderForm
+* PhotoViewer
+  - Carousel
+    * Photo
+      - PhotoDetail
 
 ### Stores
-* Reminder
+* Photo
 
 ### Actions
 * ApiActions.receiveAllReminders
@@ -33,3 +36,4 @@
 * ApiUtil.destroyReminder
 
 ## Gems/Libraries
+Paperclip

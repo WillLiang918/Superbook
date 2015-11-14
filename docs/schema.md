@@ -1,51 +1,80 @@
 # Schema Information
 
-## notes
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-title       | string    | not null
-body        | text      | not null
-author_id   | integer   | not null, foreign key (references users), indexed
-notebook_id | integer   | not null, foreign key (references notebooks), indexed
-archived    | boolean   | not null, default: false
-
-## notebooks
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-description | string    | 
-
-## reminders
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references users), indexed
-note_id     | string    | not null, foreign key (references notes), indexed
-date        | datetime  | not null
-type        | string    | not null
-prev_id     | integer   | foreign key (references reminders), indexed
-
-## tags
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-name        | string    | not null
-
-## taggings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-name        | string    | not null
-note_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
-tag_id      | integer   | not null, foreign key (references tags), indexed
-
 ## users
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-username        | string    | not null, indexed, unique
+first_name      | string    | not null
+last_name       | string    | not null
+email           | string    | not null, indexed, unique
+birthday        | date      | not null
+sex             | string    | not null
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
+avatar_id       | integer   | foreign key (references photo)
+
+## posts
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+author_id       | integer   | not null, foreign key (references user)
+receiver_id     | integer   | not null, foreign key (references user)
+body            | string    | not null
+
+
+## comments
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+author_id       | integer   | not null, foreign key (references user)
+commentable_id  | integer   | not null, foreign key (references commentable)
+commentable_type| string    | not null, foreign key (references commentable)
+body            | string    | not null
+parent_id       | integer   | not null, foreign key (references comment)
+
+## friend_requests
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+requester_id    | integer   | not null, foreign key (references user)
+requestee_id    | integer   | not null, foreign key (references user)
+
+## friendships
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+friender_id     | integer   | not null, foreign key (references user)
+friendee_id     | integer   | not null, foreign key (references user)
+
+## photos
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+attachment      | attachment| not null (paperclip)
+owner_id        | integer   | not null, foreign key (references user)
+
+## likes
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+user_id         | integer   | not null, foreign key (references user)
+likeable_id     | integer   | not null, foreign key (references likeable)
+likeable_type   | string    | not null, foreign key (references likeable), unique [likeable_id, user_id]
+
+## messages
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+sender_id       | integer   | not null, foreign key (references user)
+receiver_id     | integer   | not null, foreign key (references user)
+body            | string    | not null
+seen            | boolean   | not null
+
+## notifications
+column name        | data type | details
+-------------------|-----------|-----------------------
+id                 | integer   | not null, primary key
+user_id            | integer   | not null, foreign key (references user)
+notificatable_id   | integer   | not null, foreign key (references notificatable)
+notificatable_type | string    | not null, foreign key (references notificatable)
+seen               | boolean   | not null

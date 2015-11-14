@@ -1,4 +1,4 @@
-# FresherNote
+# Superbook
 
 [Heroku link][heroku] **NB:** This should be a link to your production site
 
@@ -6,19 +6,19 @@
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote built using Ruby on Rails
-and React.js. FresherNote allows users to:
-
-<!-- This is a Markdown checklist. Use it to keep track of your progress! -->
+Superbook is a social networking web application for super-people (heros, villains, etc.)
+using Ruby on Rails and React.js. Superbook allows users to:
 
 - [ ] Create an account
 - [ ] Log in / Log out
-- [ ] Create, read, edit, and delete notes
-- [ ] Organize notes within Notebooks
-- [ ] Tag notes with multiple tags and search notes by tag
-- [ ] Search through notes for blocks of text
-- [ ] Apply complex styling to notes while editing
-- [ ] Set reminders on notes
+- [ ] Create, read, edit, and delete posts
+- [ ] Comment on posts
+- [ ] Friend other users
+- [ ] Upload photos
+- [ ] Like posts, comments, and photos
+- [ ] Receive notifications
+- [ ] Message other users
+- [ ] Toggle between multiple accounts
 
 ## Design Docs
 * [View Wireframes][view]
@@ -29,70 +29,74 @@ and React.js. FresherNote allows users to:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Note Model and JSON API (1.5 days)
+### Phase 1: User Authentication, Post Model and JSON API (.5 days)
 
-In Phase 1, I will begin by implementing user signup and authentication (using
-BCrypt). There will be a basic landing page after signup that will contain the
-container for the application's root React component. Before building out the
-front end, I will begin by setting up a full JSON API for Notes.
+In Phase 1, I will implement user signup and authentication from scratch.
+I will setup a JSON API for Posts.
 
 [Details][phase-one]
 
-### Phase 2: Flux Architecture and Note CRUD (2.5 days)
+### Phase 2: Flux Architecture and Post CRUD (.5 days)
 
 Phase 2 is focused on setting up Flux, the React Router, and the React view
-structure for the main application. After the basic Flux architecture has been
-set up, a Note store will be implemented and a set of actions corresponding to
-the needed CRUD functionality created. Once this is done, I will create React
-views for the Notes `Index`, `IndexItem` and `Form`. At the end of Phase 2,
-Notes can be created, read, edited and destroyed in the browser. Notes should
-save to the database when the form loses focus or is left idle after editing.
-Lastly, while constructing the views I will start using basic bootstrap for
-styling.
+structure for the main application. Users should be able to visit other users'
+show pages and create Posts.
 
 [Details][phase-two]
 
-### Phase 3: Notebooks and Tags (2 days)
+### Phase 3: Comments (1 days)
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook, which has
-its own `Index` view. Create JSON API for Notebooks. Notes can also now be
-tagged with multiple tags. Users can bring up notes in a separate `SearchIndex`
-view by searching for their tags. Once the tag search is implemented, I will
-extend this to a fuzzy search through every Note's content.
+Phase 3 adds comments to the Posts. Comments should nest arbitrarily deep.
 
 [Details][phase-three]
 
-### Phase 4: Allow Complex Styling in Notes (1 day)
+### Phase 4: Friends (1 day)
 
-Using quill.js, allow for complex styling of notes. 
-
+Phase 4 adds the ability to friend other users. Make FriendRequest model
+as well as a Friendship model which are user self joins.
+(Note: Using 2 models as opposed to status column in 1 to speed up friend lookup)  
+Introduce feed based on most recent friend posts.
 [Details][phase-four]
 
-### Phase 5: Reminders and Garbage Collection (1 day)
+### Phase 5: Photos and Likes (2 day)
 
-Phase 5 introduces two new features. First, users can set reminders on notes
-which will at the time they are set for prompt the user to review and edit the
-given note. In addition, I will implement a feature that asks users to review
-notes once they reach a certain age and ask whether they should be kept,
-archived, or deleted.
+Phase 5 introduces Photos and Likes for comments, photos, and posts as a
+polymorphic association. Also, comments should be polymorphic as well on
+both posts and photos. Add avatar, and timeline background to User.
 
 [Details][phase-five]
 
-### Phase 6: Styling Cleanup and Seeding (1 day)
+### Phase 6: Notifications and Messages (3 days)
 
-Bootstrap will have been used to keep things organized up until now, but in
-Phase 6 I will add styling flourishes and make modals out of some elements (like
-the NotebookForm).
+Phase 6 add notifications for user activity, (i.e. likes and comments), and
+live chat. Implement messaging via web sockets. Add chat sidebar and list of online
+users (also handled by web socket controller). Add unread message notifications
+which disappear on click.
+
+[Details][phase-six]
+
+### Phase 7: Multiple Accounts and Seed Data (1 day)
+
+Phase 7 makes it possible for users to toggle between different accounts.
+Make 1 account the primary account and have secondary accounts reference this.
+Add destroy hook on primary account to promote secondary account.
+
+[Details][phase-seven]
 
 ### Bonus Features (TBD)
-- [ ] Prettify transitions
-- [ ] Use javascript library for cleaner tag selection
-- [ ] Changelogs for Notes
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Multiple sessions
+- [ ] Groups and Events
+- [ ] People You May Know
+- [ ] Infinite scroll for feed
+- [ ] Tag Photos
+- [ ] Photo facial recognition
+- [ ] Check-Ins
+- [ ] Privacy Features
+- [ ] Video Chat
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
+[phase-six]: ./docs/phases/phase6.md
+[phase-seven]: ./docs/phases/phase7.md

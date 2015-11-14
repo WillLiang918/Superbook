@@ -2,38 +2,34 @@
 
 ## Rails
 ### Models
-* Notebook
-* Tag
-* Tagging
+* Comment
 
 ### Controllers
-* Api::NotebooksController (create, destroy, index, show, update)
+* Api::CommentsController (create, destroy, index, show, update)
 
 ### Views
-* notebooks/index.json.jbuilder
-* notebooks/show.json.jbuilder
-* tags/show.json.jbuilder
+* comments/index.json.jbuilder
+* comments/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotebooksIndex
-  - NotebookIndexItem
-* NotebookForm
-* SearchIndex
+* CommentList
+  - CommentItem
+  - CommentForm
 
 ### Stores
-* Notebook
+* Comment
 
 ### Actions
-* ApiActions.receiveAllNotebooks
-* ApiActions.receiveSingleNotebook
-* ApiActions.deleteNotebook
+* ApiActions.receiveAllComments
+* ApiActions.receiveSingleComment
+* ApiActions.deleteComment
 
 ### ApiUtil
-* ApiUtil.fetchAllNotebooks
-* ApiUtil.fetchSingleNotebook
-* ApiUtil.createNotebook
-* ApiUtil.editNotebook
-* ApiUtil.destroyNotebook
+* ApiUtil.fetchAllComments
+* ApiUtil.fetchSingleComment
+* ApiUtil.createComment
+* ApiUtil.editComment
+* ApiUtil.destroyComment
 
 ## Gems/Libraries

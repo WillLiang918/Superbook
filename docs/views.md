@@ -1,26 +1,34 @@
 # View Wireframes
 
-## New User
-![new-user]
+## Sign Up / Log In
+![log_in]
 
-## New Session
-![new-session]
+## Users Page / Posts
+![user_show]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## Comments
+![comments]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## Friends
+![friend_list]
 
-## NoteBookForm
-![notebook-form]
+## Photos
+![photos]
 
-## Component Heirarchy
-![component-heirarchy]
+## Messages
+![messages]
 
-[new-user]: ./wireframes/new_user.png
-[new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
-[component-heirarchy]: ./wireframes/component_heirarchy.png
+## Accounts
+![accounts]
+
+## Routes
+![routes]
+
+[accounts]: ./wireframes/accounts.png
+[comments]: ./wireframes/comments.png
+[friend_list]: ./wireframes/friend_list.png
+[log_in]: ./wireframes/log_in.png
+[messages]: ./wireframes/messages.png
+[photos]: ./wireframes/photos.png
+[routes]: ./wireframes/routes.png
+[user_show]: ./wireframes/user_show.png

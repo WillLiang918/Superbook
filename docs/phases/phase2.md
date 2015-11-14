@@ -1,6 +1,7 @@
 # Phase 2: Flux Architecture and Note CRUD (2 days)
 
 ## Rails
+
 ### Models
 
 ### Controllers
@@ -8,26 +9,30 @@
 ### Views
 
 ## Flux
+
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+* Header
+* UserPage
+* PostForm
+* PostList
+  - PostItem
 
 ### Stores
-* Note
+* Base
+* Post
 
 ### Actions
-* ApiActions.receiveAllNotes
-* ApiActions.receiveSingleNote
-* ApiActions.deleteNote
+* ApiActions.receiveAllPosts
+* ApiActions.receiveSinglePost
+* ApiActions.deletePost
 
 ### ApiUtil
-* ApiUtil.fetchAllNotes
-* ApiUtil.fetchSingleNote
-* ApiUtil.createNote
-* ApiUtil.editNote
-* ApiUtil.destroyNote
+* ApiUtil.fetchPosts
+* ApiUtil.fetchSinglePost
+* ApiUtil.createPost
+* ApiUtil.updatePost
+* ApiUtil.destroyPost
 
 ## Gems/Libraries
+* React Rails
 * Flux Dispatcher
-* Twitter Bootstrap
