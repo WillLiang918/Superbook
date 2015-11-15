@@ -18,7 +18,7 @@
   - PostItem
 
 ### Stores
-* Base
+* Base (Superclass)
 * Post
 
 ### Actions
@@ -36,3 +36,4 @@
 ## Gems/Libraries
 * React Rails
 * Flux Dispatcher
+* React Router

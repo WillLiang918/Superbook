@@ -56,6 +56,7 @@ Phase 4 adds the ability to friend other users. Make FriendRequest model
 as well as a Friendship model which are user self joins.
 (Note: Using 2 models as opposed to status column in 1 to speed up friend lookup)  
 Introduce feed based on most recent friend posts.
+
 [Details][phase-four]
 
 ### Phase 5: Photos and Likes (2 day)

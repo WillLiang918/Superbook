@@ -7,7 +7,7 @@
 
 ### Controllers
 * Api::PhotosController (create, destroy, index, show, update)
-* Api::LikesController (create, destroy, index, show, update)
+* Api::LikesController (like, unlike)
 
 ### Views
 * photos/index.json.jbuilder
@@ -24,16 +24,15 @@
 * Photo
 
 ### Actions
-* ApiActions.receiveAllReminders
-* ApiActions.receiveSingleReminder
-* ApiActions.deleteReminder
+* ApiActions.receiveAllPhotos
+* ApiActions.receiveSinglePhoto
+* ApiActions.deletePhoto
 
 ### ApiUtil
-* ApiUtil.fetchAllReminders
-* ApiUtil.fetchSingleReminder
-* ApiUtil.createReminder
-* ApiUtil.updateReminder
-* ApiUtil.destroyReminder
+* ApiUtil.fetchAllPhoto
+* ApiUtil.fetchSinglePhoto
+* ApiUtil.createPhoto
+* ApiUtil.destroyPhoto
 
 ## Gems/Libraries
 Paperclip

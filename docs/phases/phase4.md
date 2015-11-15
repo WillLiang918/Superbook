@@ -10,6 +10,11 @@
 * Api::FriendshipsController
 
 ### Views
+* friend_requests/index.json.jbuilder
+* friend_requests/show.json.jbuilder
+* friend_ships/index.json.jbuilder
+* friendships/show.json.jbuilder
+
 
 ## Flux
 ### Views (React Components)
@@ -23,8 +28,10 @@
 ### Actions
 * ApiActions.receiveSingleFriendRequest
 * ApiActions.receiveAllFriendRequests
+* ApiActions.deleteFriendRequest
 * ApiActions.receiveSingleFriend
 * ApiActions.receiveAllFriends
+* ApiActions.deleteFriend
 
 ### ApiUtil
 * ApiUtil.sendFriendRequest
@@ -34,6 +41,6 @@
 * ApiUtil.fetchSingleFriendRequest
 * ApiUtil.fetchAllFriends
 * ApiUtil.fetchSingleFriend
-* ApiUtil.unfriend
+* ApiUtil.unFriend
 
 ## Gems/Libraries
