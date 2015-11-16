@@ -1,4 +1,3 @@
-
 <header class="login-header">
   <nav class="login-header-nav flex-container">
     <a href="#">
@@ -94,32 +93,26 @@
             <a href="#" class="birthday-explanation">Why do I need to provide my birthday?</a>
           </label>
           <select name="user[birthday_month]">
-            <option value="0" selected>Month</option>
-            <option value="1">Jan</option>
-            <option value="2">Feb</option>
-            <option value="3">Mar</option>
-            <option value="4">Apr</option>
-            <option value="5">May</option>
-            <option value="6">Jun</option>
-            <option value="7">Jul</option>
-            <option value="8">Aug</option>
-            <option value="9">Sep</option>
-            <option value="10">Oct</option>
-            <option value="11">Nov</option>
-            <option value="12">Dec</option>
+            <% ApplicationHelper::MONTHS.each do |val, month| %>
+              <option value="<%= val %>" <%= "selected" if @user.birthday_month == val %>>
+                <%= month %>
+              </option>
+            <% end %>
           </select>
 
           <select name="user[birthday_day]">
-            <option value="0" selected>Day</option>
-            <% (1..31).each do |day| %>
-              <%= "<option value='#{day}'>#{day}</option>".html_safe %>
+            <% ApplicationHelper::DAYS.each do |val, day| %>
+              <option value="<%= val %>" <%= "selected" if @user.birthday_day == val %>>
+                <%= day %>
+              </option>
             <% end %>
           </select>
 
           <select name="user[birthday_year]">
-            <option value="0" selected="1">Year</option>
-            <% (1905..Time.now.year).reverse_each do |year| %>
-              <%= "<option value='#{year}'>#{year}</option>".html_safe %>
+            <% ApplicationHelper::YEARS.each do |val, year| %>
+              <option value="<%= val %>" <%= "selected" if @user.birthday_year == val %>>
+                <%= year %>
+              </option>
             <% end %>
           </select>
         </li>
