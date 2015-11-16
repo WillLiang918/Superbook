@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.birthday = parse_birthday
     if confirm_email && @user.save
+      log_in(@user)
       render text: "Sign Up Success!"
     else
       render :new
@@ -27,6 +28,6 @@ class UsersController < ApplicationController
 
     def parse_birthday
       fields = [:birthday_year, :birthday_month, :birthday_day].map { |field| params[:user][field].to_i }
-      fields.all? { |field| field > 0 }  && Date.new(*fields.map(&:to_i))
+      fields.all? { |field| field > 0 }  && Date.new(*fields)
     end
 end
