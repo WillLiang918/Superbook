@@ -68,21 +68,21 @@
     <h2>Sign Up</h2>
     <p>It's free and it always will be</p>
 
-    <form class="sign-up-form" method="POST" action="<%= sessions_url %>">
+    <form class="sign-up-form" method="POST" action="<%= users_url %>">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
       <ul>
         <li class="form-row flex-container">
-          <input type="text" placeholder="First name" name="user[first_name]" class="name">
-          <input type="text" placeholder="Last name" name="user[last_name]" class="name">
+          <input type="text" placeholder="First name" name="user[first_name]" class="name" value="<%= @user.first_name %>">
+          <input type="text" placeholder="Last name" name="user[last_name]" class="name" value="<%= @user.last_name %>">
         </li>
 
         <li class="form-row">
-          <input type="email" placeholder="Email" name="user[email]">
+          <input type="email" placeholder="Email" name="user[email]" value="<%= @user.email %>">
         </li>
 
         <li class="form-row">
-          <input type="email" placeholder="Re-enter email" name="user[email_confirmation]">
+          <input type="email" placeholder="Re-enter email" name="user[email_confirmation]" value="<%= @user.email_confirmation %>">
         </li>
 
         <li class="form-row">
@@ -125,10 +125,10 @@
         </li>
 
         <li class="form-row radio">
-          <input type="radio" name="user[sex]" id="sex-male" value="male">
+          <input type="radio" name="user[sex]" id="sex-male" value="male" <%= "checked" if @user.sex == "male" %>>
           <label for="sex-male">Male</label>
 
-          <input type="radio" name="user[sex]" id="sex-female" value="female">
+          <input type="radio" name="user[sex]" id="sex-female" value="female" <%= "checked" if @user.sex == "female"%>>
           <label for="sex-female">Female</label>
         </li>
       </ul>

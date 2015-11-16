@@ -1,5 +1,3 @@
-require_relative "../../lib/token_generator.rb"
-
 class User < ActiveRecord::Base
   SEXES = ["male", "female"]
 
@@ -9,6 +7,8 @@ class User < ActiveRecord::Base
   validate :birthday_must_be_in_the_past
 
   after_initialize :ensure_session_token
+
+  attr_accessor :email_confirmation, :birthday_day, :birthday_month, :birthday_year
 
   def birthday_must_be_in_the_past
     if birthday.present? && birthday > Date.today
