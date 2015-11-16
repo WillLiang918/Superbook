@@ -118,7 +118,7 @@
 
           <select name="user[birthday_year]">
             <option value="0" selected="1">Year</option>
-            <% (1905..2015).reverse_each do |year| %>
+            <% (1905..Time.now.year).reverse_each do |year| %>
               <%= "<option value='#{year}'>#{year}</option>".html_safe %>
             <% end %>
           </select>
