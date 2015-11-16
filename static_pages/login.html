@@ -5,184 +5,9 @@
     <title>Superbook</title>
 
     <link href="../vendor/assets/stylesheets/normalize.css" rel="stylesheet" type="text/css">
+    <link href="../app/assets/stylesheets/reset.css" rel="stylesheet" type="text/css">
     <link href="../app/assets/stylesheets/login.css" rel="stylesheet" type="text/css">
 
-    <style>
-
-      body {
-        background-color: #fff;
-        font-family: helvetica, arial, sans-serif;
-        color: #141823;
-      }
-
-      ul {
-        list-style: none;
-      }
-
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      h2, p, ul, li {
-        padding: 0;
-        margin: 0;
-      }
-
-      .login-main {
-        justify-content: center;
-        padding: 20px 0;
-      }
-
-      .about {
-        margin-right: 16px;
-        width: 565px;
-      }
-
-      .sign-up {
-        width: 399px;
-      }
-
-      .sign-up h2, .sign-up p, .sign-up-bottom, .about h2, span.title {
-        font-family: 'Freight Sans Bold', 'Helvetica Neue', 'Segoe UI',
-          'Malgun Gothic', Meiryo, 'Microsoft JhengHei', Helvetica, Arial,
-          sans-serif;
-        color: #333;
-      }
-
-      .sign-up h2 {
-        height: 43px;
-        font-size: 36px;
-        font-weight: 700;
-        margin-bottom: 5px;
-      }
-
-      .sign-up p {
-        font-size: 19px;
-      }
-
-      .sign-up-form {
-        width: 100%;
-        margin-top: 20px;
-      }
-
-      .sign-up-form ul, .sign-up-form li {
-        width: 100%;
-      }
-
-      .form-row {
-        margin-bottom: 10px;
-      }
-
-      .sign-up-form label {
-        font-size: 18px;
-      }
-
-      label.birthday {
-        display: block;
-        margin: 10px 0 5px 0;
-        width: 100%;
-      }
-
-      /* make select boxes open downward */
-      label.birthday:after {
-        content: "";
-        display: block;
-        height: 1px;
-        width: 100%;
-      }
-
-      .sign-up-form input {
-        padding: 8px 10px;
-        border-radius: 5px;
-        border: 1px solid #bdc7d8;
-        width: calc(100% - 22px);
-        font-size: 18px;
-        color: #000;
-      }
-
-      .sign-up-form input[type="radio"] {
-        width: auto;
-        position: relative;
-        top: 2px;
-      }
-
-      .sign-up-form input.name {
-        width: 174px;
-      }
-
-      .sign-up-form select {
-        padding: 5px;
-        font-size: 12px;
-      }
-
-      .form-row.radio label {
-        font-size: 12px;
-        margin-right: 20px;
-      }
-
-      .sign-up-button {
-        width: 194px;
-        font-size: 19px;
-        padding: 7px 20px;
-        border: 1px solid;
-        border-color: #3b6e22 #3b6e22 #2c5115;
-        margin: 10px 0;
-        font-weight: 700;
-        background: linear-gradient(#67ae55, #578843);
-        background-color: #69a74e;
-        border-radius: 5px;
-        color: #fff;
-        box-shadow: inset 0 1px 1px #a4e388;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, .5);
-        position: relative;
-      }
-
-      .sign-up-button:hover {
-        background: linear-gradient(#79bc64, #578843);
-      }
-
-      .sign-up-button:active {
-        top: 1px;
-      }
-
-      .about h2 {
-        padding: 42px 0 24px 0;
-        font-size: 28px;
-      }
-
-      .features, .feature {
-        width: 100%;
-      }
-
-      .feature {
-        margin-top: 10px;
-        padding-bottom: 10px;
-      }
-
-      .feature .image {
-        width: 55px;
-        margin-right: 20px;
-        display: inline-block;
-      }
-
-      .feature p {
-        display: inline-block;
-        color: #666;
-        font-size: 15px;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      span.title {
-        font-size: 17px;
-        font-weight: 700;
-        margin-right: 10px;
-      }
-
-
-    </style>
   </head>
 
   <body>
@@ -245,7 +70,7 @@
             </div>
             <p>
               <span class="title">Find more</span>
-              of what you're looking for with Facebook Search.
+              of what you're looking for with Superbook Search.
             </p>
           </li>
         </ul>
@@ -275,7 +100,9 @@
             </li>
 
             <li class="form-row">
-              <label class="birthday">Birthday</label>
+              <label class="birthday">Birthday
+                <a href="#" class="birthday-explanation">Why do I need to provide my birthday?</a>
+              </label>
               <select name="birthday_month">
                 <option value="0" selected>Month</option>
                 <option value="1">Jan</option>
@@ -456,7 +283,9 @@
       </section>
     </main>
 
-    <footer class="login-footer"></footer>
+    <footer class="login-footer">
+      <small>Ryan Goldenberg &copy; 2015</small>
+    </footer>
 
   </body>
 </html>
