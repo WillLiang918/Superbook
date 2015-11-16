@@ -53,7 +53,7 @@
 .login-form input[type="checkbox"] {
   width: auto;
   position: relative;
-  top: 2px;
+  top: 1px;
 }
 
 .faded-label {
