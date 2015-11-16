@@ -26,18 +26,18 @@ class User < ActiveRecord::Base
     password && BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
-  def generate_session_token
+  def self.generate_session_token
     TokenGenerator.generate_token { |token| User.find_by(session_token: token).nil? }
   end
 
   def reset_session_token!
-    self.session_token = generate_session_token
+    self.session_token = User.generate_session_token
     self.save!
     self.session_token
   end
 
   def ensure_session_token
-    self.session_token = generate_session_token unless self.session_token
+    self.session_token = User.generate_session_token unless self.session_token
   end
 
   def confirm_email

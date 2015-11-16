@@ -4,10 +4,12 @@
       <h1 class="login-logo">superbook</h1>
     </a>
 
-    <form class="login-form flex-container">
+    <form class="login-form flex-container" method="POST" action="<%= sessions_url %>">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
       <div class="field-flex-item">
         <label for="login-email">Email</label>
-        <input id="login-email" name="user[email]" type="email">
+        <input id="login-email" name="login[email]" type="email">
 
         <input id="login-remember-me" name="remember_me" type="checkbox">
         <label for="login-remember-me" class="faded-label">Keep me logged in</label>
@@ -15,7 +17,7 @@
 
       <div class="field-flex-item">
         <label for="login-password">Password</label>
-        <input id="login-password" name="user[password]" type="password">
+        <input id="login-password" name="login[password]" type="password">
       </div>
 
       <div class="submit-field">

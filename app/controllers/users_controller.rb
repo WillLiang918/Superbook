@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.confirm_email && @user.save
       log_in(@user)
       render text: "Sign Up Success!"
     else
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user)
-        .permit(:first_name, :last_name, :email, :sex, :password,
-        :email_confirmation, :birthday_year, :birthday_month, :birthday_day)
+            .permit(:first_name, :last_name, :email, :sex, :password,
+             :email_confirmation, :birthday_year, :birthday_month, :birthday_day)
     end
 end
