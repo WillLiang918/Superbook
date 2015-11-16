@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   attr_accessor :email_confirmation, :birthday_day, :birthday_month, :birthday_year
+  attr_reader :password
 
   def birthday_must_be_in_the_past
     if birthday.present? && birthday > Date.today
@@ -37,6 +38,10 @@ class User < ActiveRecord::Base
 
   def ensure_session_token
     self.session_token = generate_session_token unless self.session_token
+  end
+
+  def confirm_email
+    email == email_confirmation
   end
 
   def self.find_by_credentials(email, password)

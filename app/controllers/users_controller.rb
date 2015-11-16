@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.birthday = parse_birthday
-    if confirm_email && @user.save
+    debugger
+    if @user.confirm_email && @user.save
       log_in(@user)
       render text: "Sign Up Success!"
     else
@@ -22,12 +23,8 @@ class UsersController < ApplicationController
         :email_confirmation, :birthday_year, :birthday_month, :birthday_day)
     end
 
-    def confirm_email
-      params[:user][:email] == params[:user][:email_confirmation]
-    end
-
     def parse_birthday
       fields = [:birthday_year, :birthday_month, :birthday_day].map { |field| params[:user][field].to_i }
-      fields.all? { |field| field > 0 }  && Date.new(*fields)
+      fields.all? { |field| field.between?(1, 31) }  && Date.new(*fields)
     end
 end
