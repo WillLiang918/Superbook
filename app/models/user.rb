@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates :sex, inclusion: SEXES
   validate :birthday_must_be_in_the_past
 
-  after_initialize :ensure_session_token
+  after_initialize :ensure_session_token, :parse_birthday
 
   attr_accessor :email_confirmation, :birthday_day, :birthday_month, :birthday_year
   attr_reader :password
@@ -42,6 +42,13 @@ class User < ActiveRecord::Base
 
   def confirm_email
     email == email_confirmation
+  end
+
+  def parse_birthday
+    day, month, year = birthday_day.to_i, birthday_month.to_i, birthday_year.to_i
+    if day.between?(1, 31) && month.between?(1, 12) && year.between?(1905, Time.now.year)
+      self.birthday = Date.new(year, month, day)
+    end
   end
 
   def self.find_by_credentials(email, password)
