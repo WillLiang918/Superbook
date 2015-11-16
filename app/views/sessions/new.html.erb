@@ -1,0 +1,143 @@
+
+<header class="login-header">
+  <nav class="login-header-nav flex-container">
+    <a href="#">
+      <h1 class="login-logo">superbook</h1>
+    </a>
+
+    <form class="login-form flex-container">
+      <div class="field-flex-item">
+        <label for="login-email">Email</label>
+        <input id="login-email" name="user[email]" type="email">
+
+        <input id="login-remember-me" name="remember_me" type="checkbox">
+        <label for="login-remember-me" class="faded-label">Keep me logged in</label>
+      </div>
+
+      <div class="field-flex-item">
+        <label for="login-password">Password</label>
+        <input id="login-password" name="user[password]" type="password">
+      </div>
+
+      <div class="submit-field">
+        <button class="login-button" type="submit">Log In</button>
+      </div>
+    </form>
+  </nav>
+</header>
+
+<main class="login-main flex-container">
+  <section class="about">
+    <h2>
+      Connect with friends and the<br>
+      world around you with Superbook.
+    </h2>
+
+    <ul class="features">
+      <li class="feature">
+        <div class="image">
+          <%= image_tag("feed-feature.png") %>
+        </div>
+        <p>
+          <span class="title">See photos and updates</span>
+          from friends in News Feed.
+        </p>
+      </li>
+      <li class="feature">
+        <div class="image">
+          <%= image_tag("timeline-feature.png") %>
+        </div>
+        <p>
+          <span class="title">Share what's new</span>
+          in your life on your Timeline.
+        </p>
+      </li>
+      <li class="feature">
+        <div class="image">
+          <%= image_tag("search-feature.png") %>
+        </div>
+        <p>
+          <span class="title">Find more</span>
+          of what you're looking for with Superbook Search.
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="sign-up">
+    <h2>Sign Up</h2>
+    <p>It's free and it always will be</p>
+
+    <form class="sign-up-form" method="POST" action="<%= sessions_url %>">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+      <ul>
+        <li class="form-row flex-container">
+          <input type="text" placeholder="First name" name="user[first_name]" class="name">
+          <input type="text" placeholder="Last name" name="user[last_name]" class="name">
+        </li>
+
+        <li class="form-row">
+          <input type="email" placeholder="Email" name="user[email]">
+        </li>
+
+        <li class="form-row">
+          <input type="email" placeholder="Re-enter email" name="user[email_confirmation]">
+        </li>
+
+        <li class="form-row">
+          <input type="password" placeholder="Password" name="user[password]">
+        </li>
+
+        <li class="form-row">
+          <label class="birthday">Birthday
+            <a href="#" class="birthday-explanation">Why do I need to provide my birthday?</a>
+          </label>
+          <select name="user[birthday_month]">
+            <option value="0" selected>Month</option>
+            <option value="1">Jan</option>
+            <option value="2">Feb</option>
+            <option value="3">Mar</option>
+            <option value="4">Apr</option>
+            <option value="5">May</option>
+            <option value="6">Jun</option>
+            <option value="7">Jul</option>
+            <option value="8">Aug</option>
+            <option value="9">Sep</option>
+            <option value="10">Oct</option>
+            <option value="11">Nov</option>
+            <option value="12">Dec</option>
+          </select>
+
+          <select name="user[birthday_day]">
+            <option value="0" selected>Day</option>
+            <% (1..31).each do |day| %>
+              <%= "<option value='#{day}'>#{day}</option>".html_safe %>
+            <% end %>
+          </select>
+
+          <select name="user[birthday_year]">
+            <option value="0" selected="1">Year</option>
+            <% (1905..2015).reverse_each do |year| %>
+              <%= "<option value='#{year}'>#{year}</option>".html_safe %>
+            <% end %>
+          </select>
+        </li>
+
+        <li class="form-row radio">
+          <input type="radio" name="user[sex]" id="sex-male" value="male">
+          <label for="sex-male">Male</label>
+
+          <input type="radio" name="user[sex]" id="sex-female" value="female">
+          <label for="sex-female">Female</label>
+        </li>
+      </ul>
+
+      <button class="sign-up-button">Sign Up</button>
+    </form>
+  </section>
+</main>
+
+<footer class="login-footer">
+  <small>Ryan Goldenberg &copy; 2015</small>
+</footer>
