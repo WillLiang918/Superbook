@@ -32,6 +32,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'react-rails', '~> 1.4.0'
 
+gem 'flux-rails-assets'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
