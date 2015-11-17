@@ -16,7 +16,6 @@ var UserPage = React.createClass({
       <div className="users-page">
         <h1>Welcome to my awesome page!</h1>
 
-
         <div className="flex-container users-page-container">
           <nav className="users-page-nav">
           </nav>
