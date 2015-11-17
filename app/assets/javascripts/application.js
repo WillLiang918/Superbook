@@ -18,6 +18,7 @@
 //= require react_ujs
 //= require react-router
 //= require router-util
+//= require key_mirror
 //= require flux
 //= require eventemitter
 //= require store_base
