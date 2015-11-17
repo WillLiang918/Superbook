@@ -1,4 +1,4 @@
-html, body, h1, h2, h3, h4, em, span, img, header, footer,
+html, body, h1, h2, h3, h4, em, span, img, header, footer, textarea,
 section, nav, p, ul, li, form, input[type="text"], button, figure, a, strong {
   padding: 0;
   margin: 0;
@@ -28,4 +28,8 @@ img {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+textarea {
+  resize: none;
 }

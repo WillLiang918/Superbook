@@ -21,8 +21,7 @@ var UserPage = React.createClass({
           <nav className="users-page-nav">
           </nav>
 
-          <section className="posts-index">
-          </section>
+          <PostsIndex />
         </div>
       </div>
     );
