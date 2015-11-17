@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token, :parse_birthday
   before_save :downcase_email
 
+  has_many :authored_posts, class_name: "Post", foreign_key: :author_id, dependent: :destroy
+  has_many :received_posts, class_name: "Post", foreign_key: :receiver_id, dependent: :destroy
+
   attr_accessor :email_confirmation, :birthday_day, :birthday_month, :birthday_year
   attr_reader :password
 
