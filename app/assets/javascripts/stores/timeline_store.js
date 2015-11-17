@@ -8,6 +8,10 @@
 
   root.TimelineStore = Object.assign({}, root.StoreBase, {
 
+    find: function(id) {
+      return _timelines[id];
+    },
+
     dispatcherId: AppDispatcher.register(function(payload) {
       switch(payload.actionType) {
 

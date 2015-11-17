@@ -1,15 +1,24 @@
 var UserPage = React.createClass({
-  getInitialState: function() {
-    return {};
+  getTimelineFromStore: function() {
+    var userId = this.props.params.id;
+    return {timeline: TimelineStore.find(userId)};
   },
-  componentWillMount: function() {
-
+  fetchTimeline: function(id) {
+    var userId = id || this.props.params.id;
+    ApiUtil.fetchTimeline(userId);
+  },
+  onChange: function() {
+    this.setState(this.getTimelineFromStore());
+  },
+  getInitialState: function() {
+    return getTimelineFromStore();
   },
   componentDidMount: function() {
-
+    TimelineStore.addChangeListener(this.onChange);
+    fetchTimeline();
   },
-  componentWillUnmount: function() {
-
+  componentWillReceiveProps: function(newProps) {
+    fetchTimeline(newProps.params.id);
   },
   render: function() {
     return (
