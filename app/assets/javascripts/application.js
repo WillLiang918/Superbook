@@ -17,5 +17,8 @@
 //= require react-dom
 //= require react_ujs
 //= require react-router
+//= require router-util
+//= require flux
+//= require eventemitter
 //= require components
 //= require_tree .
