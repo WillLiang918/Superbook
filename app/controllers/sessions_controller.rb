@@ -5,15 +5,15 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(*login_params)
     if @user
       log_in(@user, params[:remember_me])
-      render text: "Log in successful!"
+      redirect_to root_url
     else
-      render text: "Log in failed!"
+      redirect_to login_url
     end
   end
 
   def destroy
     log_out
-    render text: "Log out successful!"
+    redirect_to login_url
   end
 
   private
