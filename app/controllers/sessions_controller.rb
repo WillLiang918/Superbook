@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(*login_params)
     if @user
-      log_in(@user)
+      log_in(@user, params[:remember_me])
       render text: "Log in successful!"
     else
       render text: "Log in failed!"
