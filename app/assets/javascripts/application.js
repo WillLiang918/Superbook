@@ -20,5 +20,6 @@
 //= require router-util
 //= require flux
 //= require eventemitter
+//= require store_base
 //= require components
 //= require_tree .
