@@ -21,5 +21,6 @@
 //= require key_mirror
 //= require flux
 //= require eventemitter
+//= require stores/store_base
 //= require components
 //= require_tree .
