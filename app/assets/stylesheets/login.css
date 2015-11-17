@@ -11,11 +11,6 @@
   background-color: #edf0f5;
 }
 
-.flex-container {
-  display: flex;
-  justify-content: space-between;
-}
-
 .login-header-nav {
   margin: auto;
   width: 980px;

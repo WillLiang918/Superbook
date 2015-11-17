@@ -12,6 +12,7 @@
  *
  *= require normalize
  *= require reset
+ *= require utilities
  *= require_tree .
  *= require_self
  */

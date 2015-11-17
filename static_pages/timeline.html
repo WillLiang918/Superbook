@@ -6,80 +6,41 @@
 
     <link href="../vendor/assets/stylesheets/normalize.css" rel="stylesheet" type="text/css">
     <link href="../app/assets/stylesheets/reset.css" rel="stylesheet" type="text/css">
-    <link href="../app/assets/stylesheets/timeline.css" rel="stylesheet" type="text/css">
+    <link href="../app/assets/stylesheets/utilities.css" rel="stylesheet" type="text/css">
+    <link href="../app/assets/stylesheets/main-layout.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <header class="header">
-
-      <nav class="header-nav flex-container">
+      <nav class="header-nav clearfix">
         <a href="#" class="header-logo">
           <img src="../app/assets/images/logo.png">
         </a>
 
-        <div class="header-search-bar">
+        <form class="header-search-bar flex-container">
           <input type="text" class="header-search">
-          <button class="search-button"></button>
-        </div>
+          <button class="search-button">
+            <strong class="magnifying-glass"></strong>
+          </button>
+        </form>
 
-        <ul class="nav-link-list">
+        <ul class="nav-link-list flex-container">
           <li class="nav-link">
-            <a href="#">Username</a>
+            <a href="#"><div>Username</div></a>
           </li>
           <li class="nav-link">
-            <a href="#">Home</a>
+            <a href="#"><div>Home</div></a>
           </li>
           <li class="nav-link">
-            <a href="#">Log Out</a>
+            <a href="#"><div>Log Out</div></a>
           </li>
         </ul>
       </nav>
-
-
     </header>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <main class="timeline-main"></main>
-
-
+    <div class="main-container flex-container">
+      <nav class="side-nav"></nav>
+      <section class="feed"></section>
+      <aside class="aside"></aside>
+    </div>
   </body>
 </html>
