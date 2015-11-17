@@ -3,7 +3,7 @@
 
   root.TimelineStore = Object.assign({}, root.StoreBase, {
     dispatcherId: AppDispatcher.register(function(payload) {
-      
+
     })
   });
 })(this);
