@@ -3,10 +3,12 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :email, :birthday, :sex, :password_digest, :session_token, presence: true
   validates :email, :session_token, uniqueness: true
+  validates :email, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
   validates :sex, inclusion: SEXES
   validate :birthday_must_be_in_the_past
 
   after_initialize :ensure_session_token, :parse_birthday
+  before_save :downcase_email
 
   attr_accessor :email_confirmation, :birthday_day, :birthday_month, :birthday_year
   attr_reader :password
@@ -38,6 +40,10 @@ class User < ActiveRecord::Base
 
   def ensure_session_token
     self.session_token = User.generate_session_token unless self.session_token
+  end
+
+  def downcase_email
+    self.email = self.email.downcase
   end
 
   def confirm_email
