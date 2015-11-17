@@ -20,6 +20,9 @@ var UserPage = React.createClass({
   componentWillReceiveProps: function(newProps) {
     fetchTimeline(newProps.params.id);
   },
+  componentWillUnmount: function() {
+    TimelineStore.removeChangeListener(this.onChange);
+  },
   render: function() {
     return (
       <div className="users-page">
