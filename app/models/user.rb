@@ -64,4 +64,10 @@ class User < ActiveRecord::Base
     user = User.find_by(email: email)
     return user if user && user.is_password?(password)
   end
+
+  def to_builder
+    Jbuilder.new do |user|
+      user.(self, :id, :first_name, :last_name, :birthday, :sex, :email)
+    end
+  end
 end

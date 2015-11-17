@@ -5,4 +5,7 @@
     logo: "<%= asset_path "logo.png" %>",
     authToken: "<%= form_authenticity_token %>"
   };
+
+  var currentUser = JSON.parse('<%= current_user.to_builder.target!.html_safe %>')
+  Actions.receiveCurrentUser(currentUser);
 </script>

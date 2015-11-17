@@ -11,14 +11,14 @@ var UserPage = React.createClass({
     this.setState(this.getTimelineFromStore());
   },
   getInitialState: function() {
-    return getTimelineFromStore();
+    return this.getTimelineFromStore();
   },
   componentDidMount: function() {
     TimelineStore.addChangeListener(this.onChange);
-    fetchTimeline();
+    this.fetchTimeline();
   },
   componentWillReceiveProps: function(newProps) {
-    fetchTimeline(newProps.params.id);
+    this.fetchTimeline(newProps.params.id);
   },
   componentWillUnmount: function() {
     TimelineStore.removeChangeListener(this.onChange);

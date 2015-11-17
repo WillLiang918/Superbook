@@ -2,7 +2,7 @@ var ApiUtil = {
 
   fetchTimeline: function(userId) {
     $.ajax({
-      url: "api/users" + userId,
+      url: "api/users/" + userId,
       dataType: "json",
       success: function(timeline) {
         console.log(timeline);
