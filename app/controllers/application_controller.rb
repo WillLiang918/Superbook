@@ -6,8 +6,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
   def log_in(user, remember_me = nil)
-    cookies = (remember_me ? cookies.permanent : cookies)
-    cookies[:session_token] = user.reset_session_token!
+    if remember_me
+      cookies.permanent[:session_token] = user.reset_session_token!
+    else
+      cookies[:session_token] = user.reset_session_token!
+    end
   end
 
   def log_out
@@ -15,15 +18,14 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find_by(session_token: cookies[:session_token]) if session_token
+    @current_user ||= User.find_by(session_token: cookies[:session_token]) if cookies[:session_token]
   end
 
   def logged_in?
     !!current_user
   end
 
-  def require_logged_in!
+  def require_logged_in
     redirect_to login_url unless logged_in?
   end
-
 end
