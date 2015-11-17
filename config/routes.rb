@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   root 'static_pages#root'
 
   resources :users, only: [:new, :create]
-  resources :sessions, only: [:create, :destroy]
+  resources :sessions, only: [:create]
   get 'login' => 'users#new'
   get 'signup' => 'users#new'
+  delete 'logout' => 'sessions#destroy'
 
   namespace :api, default: {format: 'json'} do
     resources :posts, only: [:index, :show, :create, :update, :destroy]

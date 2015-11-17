@@ -9,7 +9,7 @@ var HeaderLinks = React.createClass({
           <a href="#"><div>Home</div></a>
         </li>
         <li className="nav-link">
-          <a href="#"><div>Log Out</div></a>
+          <LogoutButton />
         </li>
       </ul>
     );

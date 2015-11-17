@@ -27,13 +27,6 @@
   background-size: contain;
 }
 
-// .header-logo img {
-//   float: left;
-//   width: 28px;
-//   margin-right: 5px;
-//   margin-top: 7px;
-// }
-
 .header-search-bar {
   float: left;
   width: 448px;
@@ -88,12 +81,16 @@ input.header-search {
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.nav-link a {
+.logout-form {
+  height: 100%;
+}
+
+.nav-link a, .logout-button {
   display: block;
   height: 100%;
 }
 
-.nav-link div {
+.nav-link div:not(.center) {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
