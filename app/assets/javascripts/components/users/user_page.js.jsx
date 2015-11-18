@@ -24,15 +24,17 @@ var UserPage = React.createClass({
     TimelineStore.removeChangeListener(this.onChange);
   },
   render: function() {
+    var timeline = this.state.timeline;
+
     return (
       <div className="users-page">
-        <UserCover user={this.state.timeline.user} />
+        <UserCover user={timeline.user} />
 
         <div className="flex-container users-page-container">
           <nav className="users-page-side-nav">
           </nav>
 
-          <PostsIndex posts={this.state.timeline.posts} />
+          <PostsIndex posts={timeline.posts} user={timeline.user} />
         </div>
       </div>
     );

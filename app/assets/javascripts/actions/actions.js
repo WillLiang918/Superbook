@@ -12,6 +12,13 @@ var Actions = {
       actionType: Constants.RECEIVE_CURRENT_USER,
       user: user
     });
+  },
+
+  postAdded: function(post) {
+    AppDispatcher.dispatch({
+      actionType: Constants.POST_ADDED,
+      post: post
+    });
   }
 
 };

@@ -1,1 +1,1 @@
-json.(@post, :body, :author_id, :receiver_id)
+json.partial! 'api/posts/post', post: @post

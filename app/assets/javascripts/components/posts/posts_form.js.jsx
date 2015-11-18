@@ -23,7 +23,8 @@ var PostForm = React.createClass({
   },
   handleSubmit: function(e) {
     e.preventDefault();
-    console.log(this.state.body);
+    var post = {receiver_id: this.props.user.id, body: this.state.body};
+    ApiUtil.createPost(post);
     this.setState({body: ""});
   }
 });

@@ -9,7 +9,7 @@ var Author = React.createClass({
         <div className="thumbnail" />
         <div>
           <Link to={"users/" + author.id} className="user-link">{authorName}</Link>
-          <a href="#" className="post-link">{post.updated_at}</a>
+          <a href="javascript:void(0)" className="post-link">{post.updated_at}</a>
         </div>
       </section>
     );

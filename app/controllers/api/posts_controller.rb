@@ -2,7 +2,7 @@ class Api::PostsController < ApplicationController
   before_action :must_be_author, only: [:update, :destroy]
 
   def create
-    @post = Post.create!(post_params)
+    @post = current_user.authored_posts.create!(post_params)
     render :show
   end
 
