@@ -5,7 +5,7 @@ var Header = React.createClass({
         <nav className="header-nav">
           <Logo />
           <SearchBar />
-          <HeaderLinks />
+          <HeaderLinks {...this.props} />
         </nav>
       </header>
     );
