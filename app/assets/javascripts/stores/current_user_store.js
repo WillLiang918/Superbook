@@ -18,11 +18,10 @@
           setCurrentUser(payload.user);
           root.CurrentUserStore.emitChange();
           break;
-        default:
 
       }
     })
 
   });
-  
+
 })(this);

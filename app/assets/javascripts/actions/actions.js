@@ -19,6 +19,14 @@ var Actions = {
       actionType: Constants.POST_ADDED,
       post: post
     });
+  },
+
+  receiveFriendRequests: function(sentFriendRequests, receivedFriendRequests) {
+    AppDispatcher.dispatch({
+      actionType: Constants.RECEIVE_FRIEND_REQUESTS,
+      sentFriendRequests: sentFriendRequests,
+      receivedFriendRequests: receivedFriendRequests
+    });
   }
 
 };
