@@ -1,5 +1,7 @@
 $(function() {
   var root = document.getElementById("content");
+  if (!root) return;
+  
   var routes = (
     <Router>
       <Route path="/" component={App}>
