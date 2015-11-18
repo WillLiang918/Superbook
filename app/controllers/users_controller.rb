@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.confirm_email && @user.save
       log_in(@user)
-      render text: "Sign Up Success!"
+      redirect_to root_url
     else
       render :new
     end

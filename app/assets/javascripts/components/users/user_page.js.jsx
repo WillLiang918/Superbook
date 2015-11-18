@@ -29,7 +29,7 @@ var UserPage = React.createClass({
         <h1>Welcome to my awesome page!</h1>
 
         <div className="flex-container users-page-container">
-          <nav className="users-page-nav">
+          <nav className="users-page-side-nav">
           </nav>
 
           <PostsIndex />
