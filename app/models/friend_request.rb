@@ -6,7 +6,7 @@ class FriendRequest < ActiveRecord::Base
   validate :cannot_friend_request_yourself
 
   def cannot_friend_request_yourself
-    if sender_id == receiver_id
+    if sender_id && receiver_id && sender_id == receiver_id
       errors.add(:base, "cannot friend request yourself")
     end
   end

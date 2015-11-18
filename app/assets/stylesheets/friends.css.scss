@@ -1,0 +1,68 @@
+.friend-request-status {
+  width: calc(100% - 2px);
+  border: 1px solid #d2d3d6;
+  border-left-color: #d3d6db;
+  border-right-color: #d3d6db;
+  border-radius: 3px;
+  background-color: #fff;
+  margin-bottom: 16px;
+}
+
+.friend-request-status > header {
+  height: 36px;
+  width: 100%;
+  border-bottom: 1px solid #e9eaed;
+  background-color: #f6f7f8;
+  border-radius: 2px 2px 0 0;
+}
+
+.friend-request-status h3 {
+  color: #4e5665;
+  font-weight: 700;
+  font-size: 11px;
+  padding-left: 14px;
+}
+
+.friend-request-status-body {
+  background-color: #fff;
+  padding: 10px;
+  width: calc(100% - 20px);
+}
+
+.friend-request-status-body p {
+  font-size: 14px;
+  color: #9197a3;
+}
+
+.friend-request-button {
+  height: 26px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background-color: #6bb933;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  padding: 0 10px;
+  border: 1px solid;
+  border-color: #60a62e #519f18 #409701;
+  border-radius: 2px;
+  cursor: default;
+}
+
+.friend-request-button:active {
+  background-color: #46A800;
+  border-color: #3a8b00 #3f9700 #419b00;
+}
+
+.add-friend {
+  display: inline-block;
+  margin-right: 4px;
+  background: url("fb_icons2.png");
+  background-size: auto;
+  background-position: 0px -127px;
+  height: 12px;
+  width: 12px;
+  position: relative;
+  top: 2px;
+}
