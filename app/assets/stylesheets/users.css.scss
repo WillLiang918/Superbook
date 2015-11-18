@@ -160,14 +160,14 @@
 }
 
 .user-friends-thumbs {
-  width: 100%;
-  margin: 0 3px 3px 0;
+  width: calc(100% - 3px);
+  padding: 0 3px 3px 0;
   flex-wrap: wrap;
 }
 
 .friend-thumb {
-  width: 103px;
-  height: 103px;
+  width: 102px;
+  height: 102px;
   background-color: #a4a4a4;
   margin: 3px 0 0 3px;
 }

@@ -4,7 +4,7 @@ var Post = React.createClass({
 
     return (
       <article className="post">
-        <Author post={post} />
+        <Author {...this.props}/>
         <p className="body">{post.body}</p>
       </article>
     );
