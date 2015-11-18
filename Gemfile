@@ -39,7 +39,6 @@ gem 'flux-rails-assets'
 
 group :production do
   gem 'rails_12factor'
-  gem 'sprockets_better_errors'
 end
 
 group :development, :test do
