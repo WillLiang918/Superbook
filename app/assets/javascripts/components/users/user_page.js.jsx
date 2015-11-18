@@ -26,7 +26,7 @@ var UserPage = React.createClass({
   render: function() {
     return (
       <div className="users-page">
-        <h1>Welcome to my awesome page!</h1>
+        <UserCover />
 
         <div className="flex-container users-page-container">
           <nav className="users-page-side-nav">
