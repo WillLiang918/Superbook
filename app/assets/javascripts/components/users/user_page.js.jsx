@@ -26,13 +26,13 @@ var UserPage = React.createClass({
   render: function() {
     return (
       <div className="users-page">
-        <UserCover />
+        <UserCover user={this.state.timeline.user} />
 
         <div className="flex-container users-page-container">
           <nav className="users-page-side-nav">
           </nav>
 
-          <PostsIndex />
+          <PostsIndex posts={this.state.timeline.posts} />
         </div>
       </div>
     );

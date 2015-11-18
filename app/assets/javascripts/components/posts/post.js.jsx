@@ -1,9 +1,11 @@
 var Post = React.createClass({
   render: function() {
+    var post = this.props.post;
+
     return (
       <article className="post">
-        <Author />
-        <p className="body">{this.props.post.body}</p>
+        <Author post={post} />
+        <p className="body">{post.body}</p>
       </article>
     );
   }

@@ -1,6 +1,11 @@
 (function(root) {
   _timelines = {};
 
+  var _blankTimeline = {
+    user: {},
+    posts: []
+  };
+
   var addTimeline = function(timeline) {
     var user = timeline.user;
     _timelines[user.id] = timeline;
@@ -9,7 +14,7 @@
   root.TimelineStore = Object.assign({}, root.StoreBase, {
 
     find: function(id) {
-      return _timelines[id];
+      return _timelines[id] || _blankTimeline;
     },
 
     dispatcherId: AppDispatcher.register(function(payload) {

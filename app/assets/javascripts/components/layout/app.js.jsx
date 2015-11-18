@@ -15,10 +15,14 @@ var App = React.createClass({
     CurrentUserStore.removeChangeLister(this.onChange);
   },
   render: function() {
+    var children = React.Children.map(this.props.children, function(child) {
+      return React.cloneElement(child, {...this.state});
+    }, this);
+
     return (
       <div>
         <Header {...this.state} />
-        {this.props.children}
+        {children}
       </div>
     );
   }
