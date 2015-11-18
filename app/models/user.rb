@@ -12,7 +12,9 @@ class User < ActiveRecord::Base
 
   has_many :authored_posts, class_name: "Post", foreign_key: :author_id, dependent: :destroy
   has_many :received_posts, class_name: "Post", foreign_key: :receiver_id, dependent: :destroy
-  
+  has_many :sent_friend_requests, class_name: "FriendRequest", foreign_key: :sender_id, dependent: :destroy
+  has_many :received_friend_requests, class_name: "FriendRequest", foreign_key: :receiver_id, dependent: :destroy
+
   attr_accessor :email_confirmation, :birthday_day, :birthday_month, :birthday_year
   attr_reader :password
 
