@@ -17,10 +17,18 @@
 
   root.FriendRequestStore = Object.assign({}, root.StoreBase, {
 
+    sentFriendRequests: function() {
+      return _sentFriendRequests;
+    },
+
+    receivedFriendRequests: function() {
+      return _receivedFriendRequests;
+    },
+
     dispatcherId: AppDispatcher.register(function(payload) {
       switch(payload.actionType) {
 
-        case Consants.RECEIVE_FRIEND_REQUESTS:
+        case Constants.RECEIVE_FRIEND_REQUESTS:
           setSentFriendRequests(payload.sentFriendRequests);
           setReceivedFriendRequests(payload.receivedFriendRequests);
           root.FriendRequestStore.emitChange();

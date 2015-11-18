@@ -7,6 +7,9 @@ var UserPage = React.createClass({
     var userId = id || this.props.params.id;
     ApiUtil.fetchTimeline(userId);
   },
+  fetchFriendRequests: function() {
+    ApiUtil.fetchFriendRequests();
+  },
   onChange: function() {
     this.setState(this.getTimelineFromStore());
   },

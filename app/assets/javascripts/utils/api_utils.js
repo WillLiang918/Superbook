@@ -20,6 +20,19 @@ var ApiUtil = {
         Actions.postAdded(post);
       }
     });
+  },
+
+  fetchFriendRequests: function() {
+    $.ajax({
+      url: "api/friend_requests",
+      dataType: "json",
+      success: function(requests) {
+        Actions.receiveFriendRequests(
+          requests.sent_requests,
+          requests.received_requests
+        );
+      }
+    });
   }
 
 };
