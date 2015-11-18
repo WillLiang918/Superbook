@@ -31,9 +31,7 @@ var UserPage = React.createClass({
         <UserCover user={timeline.user} />
 
         <div className="flex-container users-page-container">
-          <nav className="users-page-side-nav">
-          </nav>
-
+          <UserSideNav user={timeline.user} />
           <PostsIndex posts={timeline.posts} user={timeline.user} />
         </div>
       </div>

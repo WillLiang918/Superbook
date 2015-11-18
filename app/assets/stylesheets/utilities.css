@@ -9,8 +9,19 @@
   justify-content: space-between;
 }
 
+.flex-container-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .center-vertical {
   position: relative;
   top: 50%;
+  transform: translateY(-50%);
+}
+
+.center-up-vertical {
+  position: relative;
+  top: 38%;
   transform: translateY(-50%);
 }

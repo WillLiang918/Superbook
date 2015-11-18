@@ -5,7 +5,6 @@ var ApiUtil = {
       url: "api/users/" + userId,
       dataType: "json",
       success: function(timeline) {
-        console.log(timeline);
         Actions.receiveTimeline(timeline);
       }
     });
@@ -18,7 +17,6 @@ var ApiUtil = {
       dataType: "json",
       data: {post: post},
       success: function(post) {
-        console.log(post);
         Actions.postAdded(post);
       }
     });
