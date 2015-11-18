@@ -69,6 +69,9 @@
 
     .users-page-nav a:hover {
       background: #f6f7f8;
+      height: calc(100% - 2px);
+      position: relative;
+      top: 1px;
     }
 
     .users-page-nav a.active {
@@ -86,7 +89,52 @@
       bottom: 19px;
       left: 17px;
       border: 4px solid #fff;
-      background: blue;
+      border-radius: 2px;
+      background: #a4a4a4;
+    }
+
+    .profile-picture:after {
+      content: "";
+      width: 168px;
+      height: 168px;
+      border: 1px solid #BDBDBD;
+      border-radius: 2px;
+      display: block;
+      position: absolute;
+      top: -5px;
+      left: -5px;
+    }
+
+    .users-cover .user-name {
+      position: absolute;
+      bottom: 60px;
+      left: 201px;
+      width: 275px;
+      height: 60px;
+      color: #fff;
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .user-friends-nav {
+      position: absolute;
+      right: 16px;
+      bottom: 58px;
+      color: #4e5665;
+      text-shadow: 0 1px 0 #fff;
+      font-size: 12px;
+      font-weight: 700;
+      background: #f6f7f8;
+      height: 26px;
+    }
+
+    .user-friends-nav button {
+      height: 100%;
+      padding: 0 10px;
+      border: 1px solid rgba(0, 0, 0, .4);
+      border-radius: 2px;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
     }
   </style>
 </head>
@@ -102,10 +150,19 @@
 
         <nav class="users-page-nav flex-container">
           <a href="#"><div class="center-vertical">Timeline</div></a>
-          <a href="#"><div class="<center-vertical></center-vertical>">Friends</div></a>
+          <a href="#"><div class="center-vertical">Friends</div></a>
         </nav>
 
         <div class="profile-picture"></div>
+
+        <a href="#" class="user-name">
+          <h2 class="first-name">First</h2>
+          <h2 class="last-name">Last</h2>
+        </a>
+
+        <nav class="user-friends-nav flex-container">
+          <button>Friends</button>
+        </nav>
       </section>
 
     </div>
