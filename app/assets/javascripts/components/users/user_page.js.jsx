@@ -1,27 +1,36 @@
 var UserPage = React.createClass({
-  getTimelineFromStore: function() {
-    var userId = this.props.params.id;
+  getStateFromStores: function() {
+    var userId = parseInt(this.props.params.id);
     return {timeline: TimelineStore.find(userId)};
   },
   fetchTimeline: function(id) {
     var userId = id || this.props.params.id;
     ApiUtil.fetchTimeline(userId);
   },
-  fetchFriendRequests: function() {
-    ApiUtil.fetchFriendRequests();
+  friendRequestStatus: function() {
+    var userId = parseInt(this.props.params.id);
+    if (this.props.sentFriendRequests.has(userId)) {
+      return FriendConstants.REQUEST_SENT;
+    } else if (this.props.receivedFriendRequests.has(userId)) {
+      return FriendConstants.REQUEST_RECEIVED;
+    } else {
+      return FriendConstants.NO_REQUEST;
+    }
   },
   onChange: function() {
-    this.setState(this.getTimelineFromStore());
+    this.setState(this.getStateFromStores());
   },
   getInitialState: function() {
-    return this.getTimelineFromStore();
+    return this.getStateFromStores();
   },
   componentDidMount: function() {
     TimelineStore.addChangeListener(this.onChange);
     this.fetchTimeline();
+    this.requestStatus = this.friendRequestStatus();
   },
   componentWillReceiveProps: function(newProps) {
     this.fetchTimeline(newProps.params.id);
+    this.requestStatus = this.friendRequestStatus();
   },
   componentWillUnmount: function() {
     TimelineStore.removeChangeListener(this.onChange);

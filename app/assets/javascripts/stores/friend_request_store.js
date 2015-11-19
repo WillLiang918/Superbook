@@ -24,17 +24,7 @@
     receivedFriendRequests: function() {
       return _receivedFriendRequests;
     },
-
-    requestStatus: function(userId) {
-      if (_sentFriendRequests.has(userId)) {
-        return FriendConstants.REQUEST_SENT;
-      } else if (_receivedFriendRequests.has(userId)) {
-        return FriendConstants.REQUEST_RECEIVED;
-      } else {
-        return FriendConstants.NO_REQUEST;
-      }
-    },
-
+    
     dispatcherId: AppDispatcher.register(function(payload) {
       switch(payload.actionType) {
 
