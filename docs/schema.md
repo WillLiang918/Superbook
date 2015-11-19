@@ -36,15 +36,15 @@ parent_id       | integer   | not null, foreign key (references comment)
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-requester_id    | integer   | not null, foreign key (references user)
-requestee_id    | integer   | not null, foreign key (references user)
+sender_id       | integer   | not null, foreign key (references user)
+receiver_id     | integer   | not null, foreign key (references user)
 
 ## friendships
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-friender_id     | integer   | not null, foreign key (references user)
-friendee_id     | integer   | not null, foreign key (references user)
+user_id         | integer   | not null, foreign key (references user)
+friend_id     | integer   | not null, foreign key (references user)
 
 ## photos
 column name     | data type | details

@@ -6,8 +6,7 @@
 
 ## Minimum Viable Product
 
-Superbook is a social networking web application for super-people (heros, villains, etc.)
-using Ruby on Rails and React.js. Superbook allows users to:
+Superbook is a social networking web application for super-people (heros, villains, etc.) using Ruby on Rails and React.js. Superbook allows users to:
 
 - [x] Create an account
 - [x] Log in / Log out
@@ -53,7 +52,7 @@ Introduce feed based on most recent friend posts.
 
 [Details][phase-three]
 
-### Phase 4: Photos and Likes (2 day)
+### Phase 4: Photos and Likes (2 days)
 
 Phase 4 introduces Photos and Likes for comments, photos, and posts as a
 polymorphic association. Also, comments should be polymorphic as well on

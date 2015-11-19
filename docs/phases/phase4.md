@@ -1,4 +1,4 @@
-# Phase 5: Reminders and Garbage Collection
+# Phase 4: Photos and Likes (2 days)
 
 ## Rails
 ### Models

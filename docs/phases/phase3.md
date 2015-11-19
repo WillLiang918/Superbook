@@ -1,4 +1,4 @@
-# Phase 4: Allow Complex Styling in Notes (1 day)
+# Phase 3: Friends (1 day)
 
 ## Rails
 ### Models
