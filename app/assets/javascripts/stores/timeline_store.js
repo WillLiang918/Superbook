@@ -16,6 +16,20 @@
     timeline.posts.push(post);
   };
 
+  var updatePost = function(updatedPost) {
+    var timeline = _timelines[updatedPost.receiver_id];
+    if (!timeline) return;
+    var posts = timeline.posts;
+
+    var arrayIdx = posts.findIndex(function(post) {
+      return post.id === updatedPost.id;
+    });
+
+    if (arrayIdx >= 0) {
+      posts[arrayIdx] = updatedPost;
+    }
+  };
+
   root.TimelineStore = Object.assign({}, root.StoreBase, {
 
     find: function(id) {
@@ -32,6 +46,11 @@
 
         case Constants.POST_ADDED:
           addPost(payload.post);
+          root.TimelineStore.emitChange();
+          break;
+
+        case Constants.POST_UPDATED:
+          updatePost(payload.post);
           root.TimelineStore.emitChange();
           break;
 

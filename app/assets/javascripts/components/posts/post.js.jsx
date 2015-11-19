@@ -4,17 +4,17 @@ var Post = React.createClass({
   },
   render: function() {
     var post = this.props.post;
-    var body;
+    var content;
     if (this.state.editable) {
-      body = <EditPostForm post={post} cancel={this.cancelEdit} update={this.updatePost} />;
+      content = <EditPostForm body={post.body} cancel={this.cancelEdit} update={this.updatePost} />;
     } else {
-      body = <p className="body">{post.body}</p>;
+      content = <p className="body">{post.body}</p>;
     }
 
     return (
       <article className="post drop-down-container">
         <Author {...this.props}/>
-        {body}
+        {content}
         <DropDown>
           <button _onClick={this.editPost}>Edit</button>
           <button>Delete</button>
@@ -29,7 +29,9 @@ var Post = React.createClass({
     this.setState({editable: false});
   },
   updatePost: function(body) {
-    console.log(body);
+    var post = this.props.post;
+    var updatedPost = Object.assign({}, post, {body: body});
+    ApiUtil.updatePost(updatedPost);
     this.cancelEdit();
   }
 });

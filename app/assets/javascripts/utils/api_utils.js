@@ -33,6 +33,18 @@ var ApiUtil = {
         );
       }
     });
+  },
+
+  updatePost: function(post) {
+    $.ajax({
+      url: "api/posts/" + post.id,
+      type: "PATCH",
+      dataType: "json",
+      data: {post: post},
+      success: function(post) {
+        Actions.postUpdated(post);
+      }
+    });
   }
 
 };

@@ -1,6 +1,6 @@
 var EditPostForm = React.createClass({
   getInitialState: function() {
-    return {body: this.props.post.body};
+    return {body: this.props.body};
   },
   render: function() {
     return (
