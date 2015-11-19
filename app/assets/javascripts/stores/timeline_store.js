@@ -30,6 +30,15 @@
     }
   };
 
+  var deletePost = function(deletedPost) {
+    var timeline = _timelines[deletedPost.receiver_id];
+    if (!timeline) return;
+
+    timeline.posts = timeline.posts.filter(function(post) {
+      return post.id !== deletedPost.id;
+    });
+  };
+
   root.TimelineStore = Object.assign({}, root.StoreBase, {
 
     find: function(id) {
@@ -51,6 +60,11 @@
 
         case Constants.POST_UPDATED:
           updatePost(payload.post);
+          root.TimelineStore.emitChange();
+          break;
+
+        case Constants.POST_DELETED:
+          deletePost(payload.post);
           root.TimelineStore.emitChange();
           break;
 

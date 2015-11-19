@@ -3,5 +3,6 @@ var Constants = keyMirror({
   "RECEIVE_CURRENT_USER": null,
   "POST_ADDED": null,
   "POST_UPDATED": null,
+  "POST_DELETED": null,
   "RECEIVE_FRIEND_REQUESTS": null
 });

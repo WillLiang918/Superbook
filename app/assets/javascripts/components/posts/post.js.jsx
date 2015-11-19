@@ -17,7 +17,7 @@ var Post = React.createClass({
         {content}
         <DropDown>
           <button _onClick={this.editPost}>Edit</button>
-          <button>Delete</button>
+          <button _onClick={this.deletePost}>Delete</button>
         </DropDown>
       </article>
     );
@@ -33,5 +33,8 @@ var Post = React.createClass({
     var updatedPost = Object.assign({}, post, {body: body});
     ApiUtil.updatePost(updatedPost);
     this.cancelEdit();
+  },
+  deletePost: function() {
+    ApiUtil.deletePost(this.props.post);
   }
 });

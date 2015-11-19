@@ -28,6 +28,13 @@ var Actions = {
     });
   },
 
+  postDeleted: function(post) {
+    AppDispatcher.dispatch({
+      actionType: Constants.POST_DELETED,
+      post: post
+    });
+  },
+
   receiveFriendRequests: function(sentFriendRequests, receivedFriendRequests) {
     AppDispatcher.dispatch({
       actionType: Constants.RECEIVE_FRIEND_REQUESTS,
