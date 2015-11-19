@@ -44,7 +44,7 @@ var UserPage = React.createClass({
     var answerFriendRequest, friendRequestStatus;
     switch(this.friendStatus) {
       case FriendConstants.REQUEST_RECEIVED:
-        answerFriendRequest = <AnswerFriendRequest />;
+        answerFriendRequest = <AnswerFriendRequest user={timeline.user} />;
         break;
       case FriendConstants.REQUEST_SENT:
       case FriendConstants.NO_REQUEST:
