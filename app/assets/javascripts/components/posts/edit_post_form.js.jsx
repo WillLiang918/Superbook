@@ -14,7 +14,7 @@ var EditPostForm = React.createClass({
 
         <nav className="post-form-sub-nav flex-container">
           <button className="cancel" onClick={this.props.cancel}>Cancel</button>
-          <button type="submit">Done Editing</button>
+          <button type="submit" disabled={!this.state.body}>Done Editing</button>
         </nav>
       </form>
     );
@@ -25,5 +25,6 @@ var EditPostForm = React.createClass({
   },
   handleSubmit: function(e) {
     e.preventDefault();
+    this.props.update(this.state.body);
   }
 });
