@@ -1,46 +1,38 @@
-# Phase 4: Allow Complex Styling in Notes (1 day)
+# Phase 5: Reminders and Garbage Collection
 
 ## Rails
 ### Models
-* FriendRequest
-* Friendship
+* Photo
+* Like
 
 ### Controllers
-* Api::FriendRequestsController
-* Api::FriendshipsController
+* Api::PhotosController (create, destroy, index, show, update)
+* Api::LikesController (like, unlike)
 
 ### Views
-* friend_requests/index.json.jbuilder
-* friend_requests/show.json.jbuilder
-* friend_ships/index.json.jbuilder
-* friendships/show.json.jbuilder
-
+* photos/index.json.jbuilder
+* photos/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* FriendList
-  - FriendItem
+* PhotoViewer
+  - Carousel
+    * Photo
+      - PhotoDetail
 
 ### Stores
-* FriendRequest
-* Friend
+* Photo
 
 ### Actions
-* ApiActions.receiveSingleFriendRequest
-* ApiActions.receiveAllFriendRequests
-* ApiActions.deleteFriendRequest
-* ApiActions.receiveSingleFriend
-* ApiActions.receiveAllFriends
-* ApiActions.deleteFriend
+* ApiActions.receiveAllPhotos
+* ApiActions.receiveSinglePhoto
+* ApiActions.deletePhoto
 
 ### ApiUtil
-* ApiUtil.sendFriendRequest
-* ApiUtil.denyFriendRequest
-* ApiUtil.acceptFriendRequest
-* ApiUtil.fetchAllFriendRequests
-* ApiUtil.fetchSingleFriendRequest
-* ApiUtil.fetchAllFriends
-* ApiUtil.fetchSingleFriend
-* ApiUtil.unFriend
+* ApiUtil.fetchAllPhoto
+* ApiUtil.fetchSinglePhoto
+* ApiUtil.createPhoto
+* ApiUtil.destroyPhoto
 
 ## Gems/Libraries
+Paperclip

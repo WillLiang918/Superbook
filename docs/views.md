@@ -6,14 +6,14 @@
 ## Users Page / Posts
 ![user_show]
 
-## Comments
-![comments]
-
 ## Friends
 ![friend_list]
 
 ## Photos
 ![photos]
+
+## Comments
+![comments]
 
 ## Messages
 ![messages]

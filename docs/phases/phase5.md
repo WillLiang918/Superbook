@@ -1,38 +1,35 @@
-# Phase 5: Reminders and Garbage Collection
+# Phase 3: Notebooks and Tags (2 days)
 
 ## Rails
 ### Models
-* Photo
-* Like
+* Comment
 
 ### Controllers
-* Api::PhotosController (create, destroy, index, show, update)
-* Api::LikesController (like, unlike)
+* Api::CommentsController (create, destroy, index, show, update)
 
 ### Views
-* photos/index.json.jbuilder
-* photos/show.json.jbuilder
+* comments/index.json.jbuilder
+* comments/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* PhotoViewer
-  - Carousel
-    * Photo
-      - PhotoDetail
+* CommentList
+  - CommentItem
+  - CommentForm
 
 ### Stores
-* Photo
+* Comment
 
 ### Actions
-* ApiActions.receiveAllPhotos
-* ApiActions.receiveSinglePhoto
-* ApiActions.deletePhoto
+* ApiActions.receiveAllComments
+* ApiActions.receiveSingleComment
+* ApiActions.deleteComment
 
 ### ApiUtil
-* ApiUtil.fetchAllPhoto
-* ApiUtil.fetchSinglePhoto
-* ApiUtil.createPhoto
-* ApiUtil.destroyPhoto
+* ApiUtil.fetchAllComments
+* ApiUtil.fetchSingleComment
+* ApiUtil.createComment
+* ApiUtil.editComment
+* ApiUtil.destroyComment
 
 ## Gems/Libraries
-Paperclip

@@ -1,35 +1,46 @@
-# Phase 3: Notebooks and Tags (2 days)
+# Phase 4: Allow Complex Styling in Notes (1 day)
 
 ## Rails
 ### Models
-* Comment
+* FriendRequest
+* Friendship
 
 ### Controllers
-* Api::CommentsController (create, destroy, index, show, update)
+* Api::FriendRequestsController
+* Api::FriendshipsController
 
 ### Views
-* comments/index.json.jbuilder
-* comments/show.json.jbuilder
+* friend_requests/index.json.jbuilder
+* friend_requests/show.json.jbuilder
+* friend_ships/index.json.jbuilder
+* friendships/show.json.jbuilder
+
 
 ## Flux
 ### Views (React Components)
-* CommentList
-  - CommentItem
-  - CommentForm
+* FriendList
+  - FriendItem
 
 ### Stores
-* Comment
+* FriendRequest
+* Friend
 
 ### Actions
-* ApiActions.receiveAllComments
-* ApiActions.receiveSingleComment
-* ApiActions.deleteComment
+* ApiActions.receiveSingleFriendRequest
+* ApiActions.receiveAllFriendRequests
+* ApiActions.deleteFriendRequest
+* ApiActions.receiveSingleFriend
+* ApiActions.receiveAllFriends
+* ApiActions.deleteFriend
 
 ### ApiUtil
-* ApiUtil.fetchAllComments
-* ApiUtil.fetchSingleComment
-* ApiUtil.createComment
-* ApiUtil.editComment
-* ApiUtil.destroyComment
+* ApiUtil.sendFriendRequest
+* ApiUtil.denyFriendRequest
+* ApiUtil.acceptFriendRequest
+* ApiUtil.fetchAllFriendRequests
+* ApiUtil.fetchSingleFriendRequest
+* ApiUtil.fetchAllFriends
+* ApiUtil.fetchSingleFriend
+* ApiUtil.unFriend
 
 ## Gems/Libraries

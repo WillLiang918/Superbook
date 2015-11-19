@@ -1,6 +1,6 @@
 # Superbook
 
-[Heroku link][heroku] **NB:** This should be a link to your production site
+[Superbook][heroku]
 
 [heroku]: http://super-book.herokuapp.com
 
@@ -9,8 +9,8 @@
 Superbook is a social networking web application for super-people (heros, villains, etc.)
 using Ruby on Rails and React.js. Superbook allows users to:
 
-- [ ] Create an account
-- [ ] Log in / Log out
+- [x] Create an account
+- [x] Log in / Log out
 - [ ] Create, read, edit, and delete posts
 - [ ] Comment on posts
 - [ ] Friend other users
@@ -44,26 +44,26 @@ show pages and create Posts.
 
 [Details][phase-two]
 
-### Phase 3: Comments (1 days)
+### Phase 3: Friends (1 day)
 
-Phase 3 adds comments to the Posts. Comments should nest arbitrarily deep.
+Phase 3 adds the ability to friend other users. Make FriendRequest model
+as well as a Friendship model which are user self joins.
+(Note: Using 2 models as opposed to status column in 1 to speed up friend lookup)
+Introduce feed based on most recent friend posts.
 
 [Details][phase-three]
 
-### Phase 4: Friends (1 day)
+### Phase 4: Photos and Likes (2 day)
 
-Phase 4 adds the ability to friend other users. Make FriendRequest model
-as well as a Friendship model which are user self joins.
-(Note: Using 2 models as opposed to status column in 1 to speed up friend lookup)  
-Introduce feed based on most recent friend posts.
+Phase 4 introduces Photos and Likes for comments, photos, and posts as a
+polymorphic association. Also, comments should be polymorphic as well on
+both posts and photos. Add avatar, and timeline background to User.
 
 [Details][phase-four]
 
-### Phase 5: Photos and Likes (2 day)
+### Phase 5: Comments (1 days)
 
-Phase 5 introduces Photos and Likes for comments, photos, and posts as a
-polymorphic association. Also, comments should be polymorphic as well on
-both posts and photos. Add avatar, and timeline background to User.
+Phase 5 adds comments to the Posts. Comments should nest arbitrarily deep.
 
 [Details][phase-five]
 
