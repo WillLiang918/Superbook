@@ -14,6 +14,10 @@
   justify-content: flex-start;
 }
 
+.hidden {
+  display: none;
+}
+
 .center-vertical {
   position: relative;
   top: 50%;
@@ -26,6 +30,59 @@
   transform: translateY(-50%);
 }
 
+.center-vertical-ib {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+}
+
 .upcase {
   text-transform: uppercase;
+}
+
+.drop-down-container {
+  position: relative;
+}
+
+.drop-down {
+  position: absolute;
+  top: 10px;
+  right: 7px;
+}
+
+.drop-down a {
+  display: block;
+  height: 20px;
+  width: 17px;
+  background: url("fb_icons.png");
+  background-position: -2px -11px;
+}
+
+.drop-down a:hover {
+  background-position: -23px -11px;
+}
+
+.drop-down > ul {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 3px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+  padding: 5px 0;
+  font-size: 12px;
+}
+
+
+.drop-down > ul > li {
+  width: calc(100% - 24px);
+  height: 24px;
+  padding: 0 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.drop-down > ul > li:hover {
+  background-color: #42599E;
+  color: #fff;
 }
