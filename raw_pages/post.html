@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Post</title>
+
+  <link href="../vendor/assets/stylesheets/normalize.css" type="text/css" rel="stylesheet">
+  <link href="../app/assets/stylesheets/reset.css" type="text/css" rel="stylesheet">
+  <link href="../app/assets/stylesheets/utilities.css" type="text/css" rel="stylesheet">
+
+  <script src="../vendor/assets/javascripts/react.js"></script>
+  <script src="../vendor/assets/javascripts/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <script src="../vendor/assets/javascripts/jquery-2.1.4.min.js"></script>
+
+  <style>
+
+    /* SETUP */
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .post {
+      width: 400px;
+      height: 200px;
+      border: 1px solid #000;
+      border-radius: 2px;
+      position: relative;
+    }
+
+    /* DROP-DOWN STYLES */
+    .drop-down {
+      position: absolute;
+      top: 10px;
+      right: 7px;
+    }
+
+    .drop-down a {
+      display: block;
+      height: 20px;
+      width: 17px;
+      background: url("../app/assets/images/fb_icons.png");
+      background-position: -2px -11px;
+    }
+
+    .drop-down a:hover {
+      background-position: -23px -11px;
+    }
+
+    .drop-down > ul {
+      position: absolute;
+      background-color: #fff;
+      border: 1px solid rgba(0, 0, 0, .15);
+      border-radius: 3px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+      padding: 5px 0;
+      font-size: 12px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .drop-down > ul > li {
+      width: calc(100% - 24px);
+      height: 24px;
+      padding: 0 12px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .drop-down > ul > li:hover {
+      background-color: #42599E;
+      color: #fff;
+    }
+
+    div.center-vertical {
+      display: inline-block;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div id="content"></div>
+
+  <script type="text/babel">
+    var DropDown = React.createClass({
+      getInitialState: function() {
+        return {active: false};
+      },
+      render: function() {
+        return (
+          <div className="drop-down">
+            <a href="#" onClick={this.onClick}></a>
+
+            <ul className={this.state.active ? "" : "hidden"}>
+              {
+                this.props.children.map(function(child, idx) {
+                  return <li key={idx}><div className="center-vertical">{child}</div></li>;
+                })
+              }
+            </ul>
+          </div>
+        );
+      },
+      onClick: function(e) {
+        e.preventDefault();
+        $(document).one("click", function() {
+          this.setState({active: false});
+        }.bind(this));
+        this.setState({active: true});
+      }
+    });
+
+    var Post = React.createClass({
+      render: function() {
+        return (
+          <article className="post">
+            <p className="body">Hello, world!</p>
+            <DropDown>
+              <button>Edit</button>
+              <button>Delete</button>
+            </DropDown>
+          </article>
+        );
+      }
+    });
+
+    var root = document.getElementById("content");
+    ReactDOM.render(<Post />, root);
+  </script>
+
+</body>
+</html>
