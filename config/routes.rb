@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :create, :update, :destroy]
     resources :users, only: [:show]
     resources :friend_requests, only: [:index]
+
+    post 'friend_requests/:user_id/accept' => 'friend_requests#accept'
+    post 'friend_requests/:user_id/send' => 'friend_requests#send'
+    delete 'friend_requests/:user_id/delete' => 'friend_requests#delete'
+    delete 'friend_requests/:user_id/cancel' => 'friend_requests#cancel'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
