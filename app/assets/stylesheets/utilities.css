@@ -86,3 +86,11 @@
   background-color: #42599E;
   color: #fff;
 }
+
+button.blue {
+  border-color: #435a8b #3c5488 #334c83;
+  background-color: #4e69a2;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+}

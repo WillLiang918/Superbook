@@ -31,6 +31,7 @@ var UserPage = React.createClass({
 
     return (
       <div className="users-page">
+        <AnswerFriendRequest />
         <UserCover user={timeline.user} />
         <FriendRequestStatus user={timeline.user} />
 
