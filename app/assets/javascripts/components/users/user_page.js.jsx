@@ -36,7 +36,7 @@ var UserPage = React.createClass({
 
         <div className="flex-container users-page-container">
           <UserSideNav user={timeline.user} />
-          <PostsIndex posts={timeline.posts} user={timeline.user} />
+          <PostsIndex posts={timeline.posts} user={timeline.user} currentUser={this.props.currentUser} />
         </div>
       </div>
     );

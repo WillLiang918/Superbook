@@ -3,7 +3,7 @@ var PostsIndex = React.createClass({
     return (
       <section className="posts-index">
         <PostForm user={this.props.user} />
-        <PostsList posts={this.props.posts} />
+        <PostsList posts={this.props.posts} currentUser={this.props.currentUser} />
       </section>
     );
   }

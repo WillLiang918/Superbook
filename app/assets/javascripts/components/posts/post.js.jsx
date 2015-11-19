@@ -11,14 +11,21 @@ var Post = React.createClass({
       content = <p className="body">{post.body}</p>;
     }
 
-    return (
-      <article className="post drop-down-container">
-        <Author {...this.props}/>
-        {content}
+    var dropdown;
+    if (this.props.currentUser.id === this.props.post.author_id) {
+      dropdown = (
         <DropDown>
           <button _onClick={this.editPost}>Edit</button>
           <button _onClick={this.deletePost}>Delete</button>
         </DropDown>
+      );
+    }
+
+    return (
+      <article className="post drop-down-container">
+        <Author {...this.props}/>
+        {content}
+        {dropdown}
       </article>
     );
   },

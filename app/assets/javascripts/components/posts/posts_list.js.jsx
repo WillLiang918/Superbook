@@ -4,8 +4,12 @@ var PostsList = React.createClass({
       <ul className="posts-list">
         {
           this.props.posts.map(function(post) {
-            return <li key={post.id}><Post post={post} /></li>;
-          })
+            return (
+              <li key={post.id}>
+                <Post post={post} currentUser={this.props.currentUser} />
+              </li>
+            );
+          }, this)
         }
       </ul>
     );
