@@ -51,6 +51,16 @@ var ApiUtil = {
         );
       }
     });
+  },
+
+  sendFriendRequest: function(userId) {
+    $.ajax({
+      url: "api/friend_requests/" + userId + "/send",
+      type: "POST",
+      success: function(request) {
+        console.log(request);
+      }
+    });
   }
 
 };

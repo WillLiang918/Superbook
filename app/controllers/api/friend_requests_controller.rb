@@ -7,24 +7,20 @@ class Api::FriendRequestsController < ApplicationController
   def accept
   end
 
-  def send
-    @friend_request = FriendRequest.create!(
-      receiver_id: params[:user_id]
-      sender_id: current_user.id
-    )
+  def create
+    @friend_request = FriendRequest.create!(receiver_id: params[:user_id], sender_id: current_user.id)
+    render :show
   end
 
-  def delete
-    @friend_request = FriendRequest.find(
-      receiver_id: current_user.id,
-      sender_id: params[:user_id]
-    )
+  def deny
+    @friend_request = FriendRequest.find(receiver_id: current_user.id, sender_id: params[:user_id])
+    @friend_request.destroy!
+    render :show
   end
 
   def cancel
-    @friend_request = FriendRequest.find(
-      receiver_id: params[:user_id],
-      sender_id: current_user.id
-    )
+    @friend_request = FriendRequest.find(receiver_id: params[:user_id], sender_id: current_user.id)
+    @friend_request.destroy!
+    render :show
   end
 end

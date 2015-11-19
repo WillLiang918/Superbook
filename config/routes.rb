@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     resources :friend_requests, only: [:index]
 
     post 'friend_requests/:user_id/accept' => 'friend_requests#accept'
-    post 'friend_requests/:user_id/send' => 'friend_requests#send'
-    delete 'friend_requests/:user_id/delete' => 'friend_requests#delete'
+    post 'friend_requests/:user_id/send' => 'friend_requests#create'
+    delete 'friend_requests/:user_id/delete' => 'friend_requests#deny'
     delete 'friend_requests/:user_id/cancel' => 'friend_requests#cancel'
   end
 

@@ -12,7 +12,7 @@ var FriendRequestButton = React.createClass({
 
 
     return (
-      <button className="friend-request-button">
+      <button className="friend-request-button" onClick={this.props.onClick}>
         <strong className="add-friend" />{buttonText}
       </button>
     );
