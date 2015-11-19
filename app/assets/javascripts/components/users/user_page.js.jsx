@@ -7,11 +7,15 @@ var UserPage = React.createClass({
     var userId = id || this.props.params.id;
     ApiUtil.fetchTimeline(userId);
   },
-  friendRequestStatus: function() {
-    var userId = parseInt(this.props.params.id);
-    if (this.props.sentFriendRequests.has(userId)) {
+  friendRequestStatus: function(props) {
+    var currentUserId = props.currentUser.id;
+    var userId = parseInt(props.params.id);
+
+    if (userId == currentUserId) {
+      return;
+    } else if (props.sentFriendRequests.has(userId)) {
       return FriendConstants.REQUEST_SENT;
-    } else if (this.props.receivedFriendRequests.has(userId)) {
+    } else if (props.receivedFriendRequests.has(userId)) {
       return FriendConstants.REQUEST_RECEIVED;
     } else {
       return FriendConstants.NO_REQUEST;
@@ -24,26 +28,37 @@ var UserPage = React.createClass({
     return this.getStateFromStores();
   },
   componentDidMount: function() {
+    this.friendStatus = this.friendRequestStatus(this.props);
     TimelineStore.addChangeListener(this.onChange);
     this.fetchTimeline();
-    this.requestStatus = this.friendRequestStatus();
   },
   componentWillReceiveProps: function(newProps) {
+    this.friendStatus = this.friendRequestStatus(newProps);
     this.fetchTimeline(newProps.params.id);
-    this.requestStatus = this.friendRequestStatus();
   },
   componentWillUnmount: function() {
     TimelineStore.removeChangeListener(this.onChange);
   },
   render: function() {
     var timeline = this.state.timeline;
+    var answerFriendRequest, friendRequestStatus;
+    switch(this.friendStatus) {
+      case FriendConstants.REQUEST_RECEIVED:
+        answerFriendRequest = <AnswerFriendRequest />;
+        break;
+      case FriendConstants.REQUEST_SENT:
+      case FriendConstants.NO_REQUEST:
+        friendRequestStatus = (
+          <FriendRequestStatus user={timeline.user} status={this.friendStatus} />
+        );
+        break;
+    }
 
     return (
       <div className="users-page">
-        <AnswerFriendRequest />
+        {answerFriendRequest}
         <UserCover user={timeline.user} />
-        <FriendRequestStatus user={timeline.user} status="sent" />
-        <FriendRequestStatus user={timeline.user} status="none" />
+        {friendRequestStatus}
 
         <div className="flex-container users-page-container">
           <UserSideNav user={timeline.user} />

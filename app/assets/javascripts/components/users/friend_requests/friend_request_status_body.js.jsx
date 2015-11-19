@@ -2,10 +2,10 @@ var FriendRequestStatusBody = React.createClass({
   render: function() {
     var message, status = this.props.status;
     switch(status) {
-      case "sent":
+      case FriendConstants.REQUEST_SENT:
         message = "Request Sent.";
         break;
-      case "none":
+      case FriendConstants.NO_REQUEST:
         message = (
           <span className="no-friend-request">
             To see what he shares with friends, <a href="#">send him a friend request.</a>

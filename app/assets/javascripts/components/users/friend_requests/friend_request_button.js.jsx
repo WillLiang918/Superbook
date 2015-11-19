@@ -2,10 +2,10 @@ var FriendRequestButton = React.createClass({
   render: function() {
     var buttonText, status = this.props.status;
     switch(status) {
-      case "sent":
+      case FriendConstants.REQUEST_SENT:
         buttonText = "Friend Request Sent";
         break;
-      case "none":
+      case FriendConstants.NO_REQUEST:
         buttonText = "Add Friend";
         break;
     }
