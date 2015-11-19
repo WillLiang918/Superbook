@@ -13,7 +13,7 @@ var EditPostForm = React.createClass({
         />
 
         <nav className="post-form-sub-nav flex-container">
-          <button className="cancel">Cancel</button>
+          <button className="cancel" onClick={this.props.cancel}>Cancel</button>
           <button type="submit">Done Editing</button>
         </nav>
       </form>

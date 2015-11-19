@@ -11,7 +11,7 @@ var DropDown = React.createClass({
           {
             this.props.children.map(function(child, idx) {
               return (
-                <li key={idx} onClick={child._onClick || this._blank}>
+                <li key={idx} onClick={child.props._onClick || this._blank}>
                   <div className="center-vertical-ib">{child}</div>
                 </li>
               );
