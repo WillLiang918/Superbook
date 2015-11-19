@@ -10,8 +10,12 @@ var DropDown = React.createClass({
         <ul className={this.state.active ? "" : "hidden"}>
           {
             this.props.children.map(function(child, idx) {
-              return <li key={idx}><div className="center-vertical-ib">{child}</div></li>;
-            })
+              return (
+                <li key={idx} onClick={child._onClick || this._blank}>
+                  <div className="center-vertical-ib">{child}</div>
+                </li>
+              );
+            }, this)
           }
         </ul>
       </div>
@@ -30,5 +34,6 @@ var DropDown = React.createClass({
   },
   toggleState: function() {
     this.setState({active: !this.state.active});
-  }
+  },
+  _blank: function() {}
 });
