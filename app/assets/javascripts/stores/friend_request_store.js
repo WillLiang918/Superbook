@@ -15,6 +15,10 @@
     _receivedFriendRequests = new Set();
   };
 
+  var addFriendRequest = function(request) {
+    _sentFriendRequests.add(request.receiver_id);
+  };
+
   root.FriendRequestStore = Object.assign({}, root.StoreBase, {
 
     sentFriendRequests: function() {
@@ -24,7 +28,7 @@
     receivedFriendRequests: function() {
       return _receivedFriendRequests;
     },
-    
+
     dispatcherId: AppDispatcher.register(function(payload) {
       switch(payload.actionType) {
 
@@ -36,6 +40,11 @@
 
         case Constants.RECEIVE_CURRENT_USER:
           resetFriendRequests();
+          root.FriendRequestStore.emitChange();
+          break;
+
+        case Constants.FRIEND_REQUEST_SENT:
+          addFriendRequest(payload.request);
           root.FriendRequestStore.emitChange();
           break;
 

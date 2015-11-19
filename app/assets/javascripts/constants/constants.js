@@ -4,7 +4,8 @@ var Constants = keyMirror({
   "POST_ADDED": null,
   "POST_UPDATED": null,
   "POST_DELETED": null,
-  "RECEIVE_FRIEND_REQUESTS": null
+  "RECEIVE_FRIEND_REQUESTS": null,
+  "FRIEND_REQUEST_SENT": null
 });
 
 var FriendConstants = keyMirror({

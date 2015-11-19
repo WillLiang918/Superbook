@@ -58,7 +58,7 @@ var ApiUtil = {
       url: "api/friend_requests/" + userId + "/send",
       type: "POST",
       success: function(request) {
-        console.log(request);
+        Actions.friendRequestSent(request);
       }
     });
   }

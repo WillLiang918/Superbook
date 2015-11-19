@@ -12,7 +12,7 @@ var FriendRequestStatusBody = React.createClass({
             To see what he shares with friends, <a href="#">send him a friend request.</a>
           </span>
         );
-        onClick = this.sendFriendRequest.bind(this);
+        onClick = this.sendFriendRequest;
         break;
     }
 
