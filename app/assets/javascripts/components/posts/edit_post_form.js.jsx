@@ -5,7 +5,12 @@ var EditPostForm = React.createClass({
   render: function() {
     return (
       <form className="post-form edit-post" onSubmit={this.handleSubmit}>
-        <textarea value={this.state.body} onChange={this.onChange} placeholder="Write something..." ref="body" />
+        <textarea
+          value={this.state.body}
+          onChange={this.onChange}
+          placeholder="Write something..."
+          ref={ function(body) {this.body = body;}.bind(this) }
+        />
 
         <nav className="post-form-sub-nav flex-container">
           <button className="cancel">Cancel</button>
@@ -15,8 +20,7 @@ var EditPostForm = React.createClass({
     );
   },
   onChange: function(e) {
-    var body = this.refs.body;
-    body.style.height = body.scrollHeight + "px";
+    this.body.style.height = this.body.scrollHeight + "px";
     this.setState({body: e.target.value});
   },
   handleSubmit: function(e) {
