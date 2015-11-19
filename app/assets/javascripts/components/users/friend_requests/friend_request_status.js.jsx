@@ -8,10 +8,7 @@ var FriendRequestStatus = React.createClass({
           </h3>
         </header>
 
-        <section className="friend-request-status-body flex-container">
-          <p>Request Sent.</p>
-          <FriendRequestButton />
-        </section>
+        <FriendRequestStatusBody {...this.props} />
       </section>
     );
   }

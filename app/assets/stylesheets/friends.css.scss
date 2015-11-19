@@ -35,7 +35,7 @@
 }
 
 .friend-request-button {
-  height: 26px;
+  height: 30px;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -92,4 +92,16 @@
 
 .answer-friend-request button:first-of-type {
   margin-left: 12px;
+}
+
+.no-friend-request {
+  color: #000;
+}
+
+.no-friend-request a {
+  color: #3b5998;
+}
+
+.no-friend-request a:hover {
+  text-decoration: underline;
 }
