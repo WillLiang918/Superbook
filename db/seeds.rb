@@ -58,6 +58,8 @@ users = [
   }
 ]
 
+User.destroy_all
+
 users.each do |user|
   attributes = user.except("image_url")
   image_path = user["image_url"]
