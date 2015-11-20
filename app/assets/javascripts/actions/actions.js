@@ -60,6 +60,10 @@ var Actions = {
 
   friendRequestDeleted: function(request) {
     console.log("Friend Request Deleted: ", request);
+    AppDispatcher.dispatch({
+      actionType: Constants.FRIEND_REQUEST_DELETED,
+      request: request
+    });
   }
 
 };

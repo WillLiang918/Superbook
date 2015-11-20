@@ -15,13 +15,13 @@ class Api::FriendRequestsController < ApplicationController
   end
 
   def deny
-    @friend_request = FriendRequest.find(receiver_id: current_user.id, sender_id: params[:user_id])
+    @friend_request = FriendRequest.find_by(receiver_id: current_user.id, sender_id: params[:user_id])
     @friend_request.destroy!
     render :show
   end
 
   def cancel
-    @friend_request = FriendRequest.find(receiver_id: params[:user_id], sender_id: current_user.id)
+    @friend_request = FriendRequest.find_by(receiver_id: params[:user_id], sender_id: current_user.id)
     @friend_request.destroy!
     render :show
   end
