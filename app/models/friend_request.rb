@@ -3,6 +3,7 @@ class FriendRequest < ActiveRecord::Base
   belongs_to :receiver, class_name: "User", foreign_key: :receiver_id
 
   validates :sender, :receiver, presence: true
+  validates :sender_id, uniqueness: { scope: :receiver_id }
   validate :cannot_friend_request_yourself
 
   def cannot_friend_request_yourself
