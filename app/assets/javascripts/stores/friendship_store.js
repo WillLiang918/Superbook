@@ -10,7 +10,7 @@
   };
 
   var acceptFriendRequest = function(request) {
-    var friendship = {user_id: request.sender_id, friend_id: request.friend_id};
+    var friendship = {user_id: request.sender_id, friend_id: request.receiver_id};
     addFriendship(friendship);
   };
 
