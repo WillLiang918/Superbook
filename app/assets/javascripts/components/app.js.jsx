@@ -3,7 +3,8 @@ var App = React.createClass({
     return {
       currentUser: CurrentUserStore.get(),
       sentFriendRequests: FriendRequestStore.sentFriendRequests(),
-      receivedFriendRequests: FriendRequestStore.receivedFriendRequests()
+      receivedFriendRequests: FriendRequestStore.receivedFriendRequests(),
+      friendships: FriendshipStore.all()
     };
   },
   getInitialState: function() {
@@ -15,12 +16,14 @@ var App = React.createClass({
   componentDidMount: function() {
     CurrentUserStore.addChangeListener(this.onChange);
     FriendRequestStore.addChangeListener(this.onChange);
+    FriendshipStore.addChangeListener(this.onChange);
 
     ApiUtil.fetchFriendRequests();
   },
   componentWillUnmount: function() {
     CurrentUserStore.removeChangeLister(this.onChange);
     FriendRequestStore.removeChangeLister(this.onChange);
+    FriendshipStore.removeChangeLister(this.onChange);
   },
   render: function() {
     var children = React.Children.map(this.props.children, function(child) {

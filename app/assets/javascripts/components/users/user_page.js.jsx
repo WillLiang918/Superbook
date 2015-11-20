@@ -77,6 +77,8 @@ var UserPage = React.createClass({
 
     if (userId == currentUserId) {
       return;
+    } else if (props.friendships[currentUserId].has(userId)) {
+      return FriendConstants.FRIENDS;
     } else if (props.sentFriendRequests.has(userId)) {
       return FriendConstants.REQUEST_SENT;
     } else if (props.receivedFriendRequests.has(userId)) {

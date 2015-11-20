@@ -14,5 +14,6 @@ var Constants = keyMirror({
 var FriendConstants = keyMirror({
   "REQUEST_SENT": null,
   "REQUEST_RECEIVED": null,
-  "NO_REQUEST": null
+  "NO_REQUEST": null,
+  "FRIENDS": null
 });

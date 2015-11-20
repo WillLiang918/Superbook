@@ -16,6 +16,10 @@
 
   root.FriendshipStore = Object.assign({}, root.StoreBase, {
 
+    all: function() {
+      return _friendships;
+    },
+
     find: function(userId) {
       return _friendships[userId] || new Set();
     },

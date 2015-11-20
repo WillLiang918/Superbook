@@ -91,6 +91,8 @@ var ApiUtil = {
         Actions.friendRequestDeleted(request);
       }
     });
-  }
+  },
+
+  fetchFriendships: function() {}
 
 };
