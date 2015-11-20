@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.confirm_email && @user.save
+      Avatar.create!(user: @user)
       log_in(@user)
       redirect_to root_url
     else
