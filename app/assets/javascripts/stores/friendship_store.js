@@ -14,6 +14,11 @@
     addFriendship(friendship);
   };
 
+  var setFriendships = function(data) {
+    var user_id = data.user_id, friend_ids = data.friend_ids;
+    _friendships[user_id] = new Set(friend_ids);
+  };
+
   root.FriendshipStore = Object.assign({}, root.StoreBase, {
 
     all: function() {
@@ -29,6 +34,11 @@
 
         case Constants.FRIEND_REQUEST_ACCEPTED:
           acceptFriendRequest(payload.request);
+          root.FriendshipStore.emitChange();
+          break;
+
+        case Constants.RECEIVE_FRIENDSHIPS:
+          setFriendships(payload);
           root.FriendshipStore.emitChange();
           break;
 

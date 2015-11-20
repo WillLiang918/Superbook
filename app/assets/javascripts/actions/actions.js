@@ -58,7 +58,6 @@ var Actions = {
   },
 
   friendRequestAccepted: function(request) {
-    console.log("Friend Request Accepted", request);
     AppDispatcher.dispatch({
       actionType: Constants.FRIEND_REQUEST_ACCEPTED,
       request: request
@@ -66,11 +65,16 @@ var Actions = {
   },
 
   friendRequestDeleted: function(request) {
-    console.log("Friend Request Deleted: ", request);
     AppDispatcher.dispatch({
       actionType: Constants.FRIEND_REQUEST_DELETED,
       request: request
     });
+  },
+
+  receiveFriendships: function(data) {
+    AppDispatcher.dispatch(Object.assign({}, data, {
+      actionType: Constants.RECEIVE_FRIENDSHIPS,
+    }));
   }
 
 };
