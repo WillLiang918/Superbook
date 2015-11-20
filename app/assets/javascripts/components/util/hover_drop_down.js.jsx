@@ -6,7 +6,7 @@ var HoverDropDown = React.createClass({
       <div className="hover-drop-down">
         <ul>
           {
-            this.props.children.map(function(child, idx) {
+            React.Children.map(this.props.children, function(child, idx) {
               return (
                 <li key={idx} onClick={child.props._onClick || this._blank}>
                   <div className="center-vertical-ib">

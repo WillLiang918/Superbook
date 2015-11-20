@@ -9,7 +9,7 @@ var DropDown = React.createClass({
 
         <ul className={this.state.active ? "" : "hidden"}>
           {
-            this.props.children.map(function(child, idx) {
+            React.Children.map(this.props.children, function(child, idx) {
               return (
                 <li key={idx} onClick={child.props._onClick || this._blank}>
                   <div className="center-vertical-ib">{child}</div>

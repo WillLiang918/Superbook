@@ -19,7 +19,7 @@ var FriendRequestStatusBody = React.createClass({
     return (
       <section className="friend-request-status-body flex-container">
         <p>{message}</p>
-        <FriendRequestButton {...this.props} onClick={onClick}/>
+        <FriendRequestButton {...this.props} onClick={onClick} />
       </section>
     );
   }
