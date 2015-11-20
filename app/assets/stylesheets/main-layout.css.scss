@@ -30,7 +30,7 @@ body {
   height: 28px;
   margin-right: 5px;
   margin-top: 7px;
-  background-image: url("logo.png");
+  background-image: image-url("logo.png");
   background-size: contain;
 }
 
@@ -64,7 +64,7 @@ input.header-search {
   width: 14px;
   height: 14px;
   margin: auto;
-  background-image: url("fb_sprite.png");
+  background-image: image-url("fb_sprite.png");
   background-position: -19px -238px;
   background-size: auto;
 }
