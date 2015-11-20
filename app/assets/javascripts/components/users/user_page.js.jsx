@@ -54,7 +54,14 @@ var UserPage = React.createClass({
     return (
       <div className="users-page">
         {answerFriendRequest}
-        <UserCover user={timeline.user} status={this.friendStatus} />
+        <UserCover
+          user={timeline.user}
+          status={this.friendStatus}
+          send={this.sendFriendRequest}
+          accept={this.acceptFriendRequest}
+          cancel={this.cancelFriendRequest}
+          delete={this.deleteFriendRequest}
+        />
         {friendRequestStatus}
 
         <div className="flex-container users-page-container">

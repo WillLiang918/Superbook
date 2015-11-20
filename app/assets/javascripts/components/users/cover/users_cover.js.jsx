@@ -5,7 +5,7 @@ var UserCover = React.createClass({
         <CoverPhoto />
         <ProfilePicture />
         <UserTitle user={this.props.user} />
-        <UserFriendNav status={this.props.status} />
+        <UserFriendNav {...this.props} />
         <UserPageNav />
       </section>
     );
