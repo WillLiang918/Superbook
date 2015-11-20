@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hover Bubble</title>
+
+  <link href="../vendor/assets/stylesheets/normalize.css" type="text/css" rel="stylesheet">
+  <link href="../app/assets/stylesheets/reset.css" type="text/css" rel="stylesheet">
+  <link href="../app/assets/stylesheets/utilities.css" type="text/css" rel="stylesheet">
+
+  <script src="../vendor/assets/javascripts/react.js"></script>
+  <script src="../vendor/assets/javascripts/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <script src="../vendor/assets/javascripts/jquery-2.1.4.min.js"></script>
+
+
+  <style>
+
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .button-container {
+      width: 0px;
+      height: 0px;
+      /*background: #E9EAED;*/
+      margin: 200px;
+      padding: 200px;
+    }
+
+    .button-container > button {
+      height: 28px;
+      padding: 0 10px;
+      border: 1px solid;
+      border-radius: 2px;
+      font-size: 12px;
+      margin-left: 4px;
+      /*box-shadow: 0 1px 1px rgba(0, 0, 0, .05);*/
+      width: auto;
+      white-space: nowrap;
+
+      /*border-color: #cccccc #c5c6c8 #b6b7b9;*/
+      border-color: #a4a4a4;
+      color: #4e5665;
+      text-shadow: 0 1px 0 #fff;
+      background-color: #f6f7f8;
+      font-weight: 600;
+    }
+
+    .hover-drop-down-container {
+      position: relative;
+    }
+
+    .hover-drop-down {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: none;
+    }
+
+    .hover-drop-down-container:hover > .hover-drop-down {
+      display: block;
+    }
+
+    .hover-drop-down > ul {
+      position: relative;
+      top: 13px;
+      left: 0;
+      background-color: #fff;
+      border: 1px solid #8C8C8C;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+      padding: 8px 0;
+      font-size: 12px;
+      color: #141823;
+      text-align: left;
+      font-weight: 400;
+      text-shadow: none;
+    }
+
+    .hover-drop-down > ul:before {
+      content: "";
+      height: 0;
+      width: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid #fff;
+      position: absolute;
+      bottom: 100%;
+      left: 14px;
+      z-index: 20;
+    }
+
+    .hover-drop-down > ul:after {
+      content: "";
+      height: 0;
+      width: 0;
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+      border-bottom: 9px solid #8C8C8C;
+      position: absolute;
+      bottom: 100%;
+      left: 13px;
+      z-index: 10;
+    }
+
+    .hover-drop-down li {
+      width: calc(100% - 46px);
+      height: 20px;
+      padding: 0 23px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .hover-drop-down li:hover {
+      background-color: #6D84B4;
+      color: #fff;
+    }
+
+  </style>
+
+</head>
+<body>
+  <div id="content"></div>
+
+  <script type="text/babel">
+    var root = document.getElementById("content");
+
+    var HoverDropDown = React.createClass({
+      render: function() {
+        return (
+          <div className="hover-drop-down">
+            <ul>
+              <li>
+                <div className="center-vertical">Confirm</div>
+              </li>
+              <li>
+                <div className="center-vertical">Delete Request</div>
+              </li>
+            </ul>
+          </div>
+        );
+      }
+    });
+
+
+    ReactDOM.render(
+      <div className="button-container">
+        <button className="hover-drop-down-container">
+          Respond To Friend Request
+          <HoverDropDown />
+        </button>
+      </div>
+    , root);
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>
