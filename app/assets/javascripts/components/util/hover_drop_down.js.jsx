@@ -3,7 +3,7 @@
 var HoverDropDown = React.createClass({
   render: function() {
     return (
-      <div className="hover-drop-down">
+      <div className={"hover-drop-down " + (this.props.className || "")}>
         <ul>
           {
             React.Children.map(this.props.children, function(child, idx) {

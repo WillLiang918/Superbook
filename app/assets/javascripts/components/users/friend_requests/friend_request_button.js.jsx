@@ -5,8 +5,8 @@ var FriendRequestButton = React.createClass({
       case FriendConstants.REQUEST_SENT:
         buttonText = "Friend Request Sent";
         dropdown = (
-          <HoverDropDown>
-            <a _onClick={this.props.cancel}>Cancel</a>
+          <HoverDropDown className="wide-drop-down">
+            <span _onClick={this.props.cancel}>Cancel Request</span>
           </HoverDropDown>
         );
         break;
