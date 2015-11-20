@@ -33,7 +33,7 @@ var UserFriendNav = React.createClass({
         );
         dropdown = (
           <HoverDropDown className="wide-drop-down">
-            <span>Unfriend</span>
+            <span _onClick={this.props.unfriend}>Unfriend</span>
           </HoverDropDown>
         );
         break;

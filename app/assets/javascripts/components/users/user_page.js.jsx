@@ -65,6 +65,7 @@ var UserPage = React.createClass({
           accept={this.acceptFriendRequest}
           cancel={this.cancelFriendRequest}
           delete={this.deleteFriendRequest}
+          unfriend={this.unfriend}
         />
         {friendRequestStatus}
 
@@ -107,5 +108,9 @@ var UserPage = React.createClass({
   deleteFriendRequest: function() {
     var userId = parseInt(this.props.params.id);
     ApiUtil.deleteFriendRequest(userId);
+  },
+  unfriend: function() {
+    var userId = parseInt(this.props.params.id);
+    ApiUtil.unfriend(userId);
   }
 });

@@ -19,6 +19,14 @@
     _friendships[user_id] = new Set(friend_ids);
   };
 
+  var unfriend = function(friendship) {
+    var user_id = friendship.user_id, friend_id = friendship.friend_id;
+    _friendships[user_id] = _friendships[user_id] || new Set();
+    _friendships[friend_id] = _friendships[friend_id] || new Set();
+    _friendships[user_id].delete(friend_id);
+    _friendships[friend_id].delete(user_id);
+  };
+
   root.FriendshipStore = Object.assign({}, root.StoreBase, {
 
     all: function() {
@@ -39,6 +47,11 @@
 
         case Constants.RECEIVE_FRIENDSHIPS:
           setFriendships(payload);
+          root.FriendshipStore.emitChange();
+          break;
+
+        case Constants.UNFRIEND:
+          unfriend(payload.friendship);
           root.FriendshipStore.emitChange();
           break;
 

@@ -100,6 +100,16 @@ var ApiUtil = {
         Actions.receiveFriendships(data);
       }
     });
+  },
+
+  unfriend: function(userId) {
+    $.ajax({
+      url: "api/users/" + userId + "/friendships",
+      type: "DELETE",
+      success: function(friendship) {
+        Actions.unfriend(friendship);
+      }
+    });
   }
 
 };
