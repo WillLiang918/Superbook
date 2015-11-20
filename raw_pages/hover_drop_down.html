@@ -23,28 +23,25 @@
     .button-container {
       width: 0px;
       height: 0px;
-      /*background: #E9EAED;*/
       margin: 200px;
       padding: 200px;
     }
 
-    .button-container > button {
+    .button-container > nav {
       height: 28px;
       padding: 0 10px;
       border: 1px solid;
       border-radius: 2px;
       font-size: 12px;
       margin-left: 4px;
-      /*box-shadow: 0 1px 1px rgba(0, 0, 0, .05);*/
       width: auto;
       white-space: nowrap;
-
-      /*border-color: #cccccc #c5c6c8 #b6b7b9;*/
       border-color: #a4a4a4;
       color: #4e5665;
       text-shadow: 0 1px 0 #fff;
       background-color: #f6f7f8;
       font-weight: 600;
+      display: inline-block;
     }
 
     .hover-drop-down-container {
@@ -130,25 +127,37 @@
         return (
           <div className="hover-drop-down">
             <ul>
-              <li>
-                <div className="center-vertical">Confirm</div>
-              </li>
-              <li>
-                <div className="center-vertical">Delete Request</div>
-              </li>
+              {
+                this.props.children.map(function(child, idx) {
+                  return (
+                    <li key={idx} onClick={child.props._onClick || this._blank}>
+                      <div className="center-vertical">
+                        {child}
+                      </div>
+                    </li>
+                  );
+                }, this)
+              }
             </ul>
           </div>
         );
-      }
+      },
+      _blank: function() {}
     });
+
+    function confirm() {console.log("Confirm!");}
+    function deny() {console.log("Denied.");}
 
 
     ReactDOM.render(
       <div className="button-container">
-        <button className="hover-drop-down-container">
+        <nav className="hover-drop-down-container">
           Respond To Friend Request
-          <HoverDropDown />
-        </button>
+          <HoverDropDown>
+            <button _onClick={confirm}>Confirm</button>
+            <button _onClick={deny}>Delete Request</button>
+          </HoverDropDown>
+        </nav>
       </div>
     , root);
 
