@@ -51,7 +51,10 @@ var Actions = {
   },
 
   friendRequestCanceled: function(request) {
-    console.log("Friend Request Canceled: ", request);
+    AppDispatcher.dispatch({
+      actionType: Constants.FRIEND_REQUEST_CANCELED,
+      request: request
+    });
   },
 
   friendRequestAccepted: function() {
