@@ -53,7 +53,6 @@ var UserPage = React.createClass({
         );
         break;
     }
-    console.log(this.friendStatus);
 
     return (
       <div className="users-page">
