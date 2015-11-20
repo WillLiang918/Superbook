@@ -13,6 +13,9 @@ var UserPage = React.createClass({
   getInitialState: function() {
     return this.getStateFromStores();
   },
+  componentWillMount: function() {
+    this.friendStatus = FriendConstants.SELF;
+  },
   componentDidMount: function() {
     this.friendStatus = this.friendRequestStatus(this.props);
     TimelineStore.addChangeListener(this.onChange);
