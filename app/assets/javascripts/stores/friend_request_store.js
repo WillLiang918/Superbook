@@ -27,6 +27,8 @@
     _sentFriendRequests.delete(request.receiver_id);
   };
 
+  var acceptFriendRequest = deleteFriendRequest;
+
   root.FriendRequestStore = Object.assign({}, root.StoreBase, {
 
     sentFriendRequests: function() {
@@ -63,6 +65,11 @@
 
         case Constants.FRIEND_REQUEST_CANCELED:
           cancelFriendRequest(payload.request);
+          root.FriendRequestStore.emitChange();
+          break;
+
+        case Constants.FRIEND_REQUEST_ACCEPTED:
+          acceptFriendRequest(payload.request);
           root.FriendRequestStore.emitChange();
           break;
 

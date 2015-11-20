@@ -5,8 +5,15 @@ class Api::FriendRequestsController < ApplicationController
   end
 
   def accept
-    @user = User.find(params[:user_id])
-    render text: "Accepting friend request from #{@user.first_name} #{@user.last_name}"
+    sender_id, receiver_id = params[:user_id].to_i, current_user.id
+    @friend_request = FriendRequest.find_by(sender_id: sender_id, receiver_id: receiver_id)
+
+    ActiveRecord::Base.transaction do
+      @friend_request.destroy!
+      Friendship.create!(user_id: sender_id, friend_id: receiver_id)
+      Friendship.create!(user_id: receiver_id, friend_id: sender_id)
+    end
+    render :show
   end
 
   def create

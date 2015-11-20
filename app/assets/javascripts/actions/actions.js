@@ -57,8 +57,12 @@ var Actions = {
     });
   },
 
-  friendRequestAccepted: function() {
-    console.log("Friend Request Accepted");
+  friendRequestAccepted: function(request) {
+    console.log("Friend Request Accepted", request);
+    AppDispatcher.dispatch({
+      actionType: Constants.FRIEND_REQUEST_ACCEPTED,
+      request: request
+    });
   },
 
   friendRequestDeleted: function(request) {

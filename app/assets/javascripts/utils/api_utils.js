@@ -77,8 +77,8 @@ var ApiUtil = {
     $.ajax({
       url: "api/friend_requests/" + userId + "/accept",
       type: "POST",
-      success: function() {
-        Actions.friendRequestAccepted();
+      success: function(request) {
+        Actions.friendRequestAccepted(request);
       }
     });
   },
