@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   SEXES = ["male", "female"]
 
   validates :first_name, :last_name, :email, :birthday, :sex, :password_digest, :session_token, presence: true
-  validates :email, :session_token, uniqueness: true
+  validates :session_token, uniqueness: true
+  validates :email, uniqueness: { case_sensitive: false }
   validates :email, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
   validates :sex, inclusion: SEXES
   validate :birthday_must_be_in_the_past
@@ -14,6 +15,9 @@ class User < ActiveRecord::Base
   has_many :received_posts, class_name: "Post", foreign_key: :receiver_id, dependent: :destroy
   has_many :sent_friend_requests, class_name: "FriendRequest", foreign_key: :sender_id, dependent: :destroy
   has_many :received_friend_requests, class_name: "FriendRequest", foreign_key: :receiver_id, dependent: :destroy
+  has_many :friendships, dependent: :destroy
+  has_many :reverse_friendships, class_name: "Friendship", foreign_key: :friend_id, dependent: :destroy
+  has_many :friends, through: :friendships, source: :friend
 
   attr_accessor :email_confirmation, :birthday_day, :birthday_month, :birthday_year
   attr_reader :password
