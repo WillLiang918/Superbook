@@ -5,10 +5,17 @@ class FriendRequest < ActiveRecord::Base
   validates :sender, :receiver, presence: true
   validates :sender_id, uniqueness: { scope: :receiver_id }
   validate :cannot_friend_request_yourself
+  validate :not_friends
 
   def cannot_friend_request_yourself
     if sender_id && receiver_id && sender_id == receiver_id
       errors.add(:base, "cannot friend request yourself")
+    end
+  end
+
+  def not_friends
+    unless Friendship.find_by(user_id: sender_id, friend_id: receiver_id).nil?
+      errors.add(:base, "already friends")
     end
   end
 end
