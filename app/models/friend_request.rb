@@ -18,4 +18,6 @@ class FriendRequest < ActiveRecord::Base
       errors.add(:base, "already friends")
     end
   end
+
+  # validate that reverse friend request doesn't already exist
 end

@@ -12,7 +12,7 @@ Superbook is a social networking web application for super-people (heros, villai
 - [x] Log in / Log out
 - [x] Create, read, edit, and delete posts
 - [ ] Comment on posts
-- [ ] Friend other users
+- [x] Friend other users
 - [ ] Upload photos
 - [ ] Like posts, comments, and photos
 - [ ] Receive notifications

@@ -31,6 +31,8 @@ gem 'react-rails', '~> 1.4.0'
 
 gem 'flux-rails-assets'
 
+gem "paperclip", "~> 4.3"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
