@@ -112,12 +112,16 @@ button.blue {
   padding: 7px 8px 0 8px;
   font-weight: 400;
   letter-spacing: 0;
+  text-shadow: none;
+  color: #fff;
+  z-index: 30;
 }
 
 .hover-bubble:hover:after {
   content: "";
   display: block;
   position: absolute;
+  z-index: 30;
   top: 100%;
   left: 0;
   transform: translateX(50%);
