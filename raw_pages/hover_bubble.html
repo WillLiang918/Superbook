@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hover Bubble</title>
+
+  <link href="../vendor/assets/stylesheets/normalize.css" type="text/css" rel="stylesheet">
+  <link href="../app/assets/stylesheets/reset.css" type="text/css" rel="stylesheet">
+  <link href="../app/assets/stylesheets/utilities.css" type="text/css" rel="stylesheet">
+
+  <script src="../vendor/assets/javascripts/react.js"></script>
+  <script src="../vendor/assets/javascripts/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <script src="../vendor/assets/javascripts/jquery-2.1.4.min.js"></script>
+
+
+  <style>
+
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    #hover-container {
+      width: 0px;
+      height: 0px;
+      background: #E9EAED;
+      margin: 200px;
+      padding: 200px;
+    }
+
+    #hover-container > button {
+      height: 28px;
+      padding: 0 10px;
+      border: 1px solid;
+      border-radius: 2px;
+      font-size: 12px;
+      margin-left: 4px;
+      font-weight: 600;
+      border-color: #435a8b #3c5488 #334c83;
+      background-color: #4e69a2;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+      color: #fff;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+      width: auto;
+      white-space: nowrap;
+    }
+
+    .hover-bubble {
+      position: relative;
+    }
+
+    .hover-bubble:hover:before {
+      content: attr( data-hover );
+      height: 21px;
+      display: block;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      background-color: #2B2B2B;
+      border-radius: 2px;
+      padding: 7px 8px 0 8px;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .hover-bubble:hover:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      transform: translateX(50%);
+      height: 0px;
+      width: 0px;
+      border-bottom: 5px solid #2B2B2B;
+      border-right: 5px solid transparent;
+      border-left: 5px solid transparent;
+    }
+
+
+  </style>
+
+
+
+</head>
+<body>
+  <div id="hover-container">
+
+    <button class="blue hover-bubble" data-hover="Confirm Request">Confirm Request</button>
+
+  </div>
+</body>
+</html>
