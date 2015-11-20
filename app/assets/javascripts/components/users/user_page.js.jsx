@@ -54,7 +54,7 @@ var UserPage = React.createClass({
     return (
       <div className="users-page">
         {answerFriendRequest}
-        <UserCover user={timeline.user} />
+        <UserCover user={timeline.user} status={this.friendStatus} />
         {friendRequestStatus}
 
         <div className="flex-container users-page-container">

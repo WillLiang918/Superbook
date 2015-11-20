@@ -55,7 +55,7 @@
   border-color: #3a8b00 #3f9700 #419b00;
 }
 
-.add-friend {
+.add-friend, .add-friend-gray {
   display: inline-block;
   margin-right: 4px;
   background: image-url("fb_icons2.png");
@@ -65,6 +65,10 @@
   width: 12px;
   position: relative;
   top: 2px;
+}
+
+.add-friend-gray {
+  background-position: 0px -114px;
 }
 
 .answer-friend-request {
