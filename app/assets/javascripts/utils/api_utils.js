@@ -61,6 +61,36 @@ var ApiUtil = {
         Actions.friendRequestSent(request);
       }
     });
+  },
+
+  cancelFriendRequest: function(userId) {
+    $.ajax({
+      url: "api/friend_requests/" + userId + "/cancel",
+      type: "DELETE",
+      success: function(request) {
+        Actions.friendRequestCanceled(request);
+      }
+    });
+  },
+
+  acceptFriendRequest: function(userId) {
+    $.ajax({
+      url: "api/friend_requests/" + userId + "/accept",
+      type: "POST",
+      success: function() {
+        Actions.friendRequestAccepted();
+      }
+    });
+  },
+
+  deleteFriendRequest: function(userId) {
+    $.ajax({
+      url: "api/friend_requests/" + userId + "/delete",
+      type: "DELETE",
+      success: function(request) {
+        Actions.friendRequestDeleted(request);
+      }
+    });
   }
 
 };

@@ -48,6 +48,18 @@ var Actions = {
       actionType: Constants.FRIEND_REQUEST_SENT,
       request: request
     });
+  },
+
+  friendRequestCanceled: function(request) {
+    console.log("Friend Request Canceled: ", request);
+  },
+
+  friendRequestAccepted: function() {
+    console.log("Friend Request Accepted");
+  },
+
+  friendRequestDeleted: function(request) {
+    console.log("Friend Request Deleted: ", request);
   }
 
 };

@@ -5,6 +5,8 @@ class Api::FriendRequestsController < ApplicationController
   end
 
   def accept
+    @user = User.find(params[:user_id])
+    render text: "Accepting friend request from #{@user.first_name} #{@user.last_name}"
   end
 
   def create

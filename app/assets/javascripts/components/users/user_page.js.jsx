@@ -7,20 +7,6 @@ var UserPage = React.createClass({
     var userId = id || this.props.params.id;
     ApiUtil.fetchTimeline(userId);
   },
-  friendRequestStatus: function(props) {
-    var currentUserId = props.currentUser.id;
-    var userId = parseInt(props.params.id);
-
-    if (userId == currentUserId) {
-      return;
-    } else if (props.sentFriendRequests.has(userId)) {
-      return FriendConstants.REQUEST_SENT;
-    } else if (props.receivedFriendRequests.has(userId)) {
-      return FriendConstants.REQUEST_RECEIVED;
-    } else {
-      return FriendConstants.NO_REQUEST;
-    }
-  },
   onChange: function() {
     this.setState(this.getStateFromStores());
   },
@@ -44,12 +30,23 @@ var UserPage = React.createClass({
     var answerFriendRequest, friendRequestStatus;
     switch(this.friendStatus) {
       case FriendConstants.REQUEST_RECEIVED:
-        answerFriendRequest = <AnswerFriendRequest user={timeline.user} />;
+        answerFriendRequest = (
+          <AnswerFriendRequest
+            user={timeline.user}
+            accept={this.acceptFriendRequest}
+            delete={this.deleteFriendRequest}
+          />
+        );
         break;
       case FriendConstants.REQUEST_SENT:
       case FriendConstants.NO_REQUEST:
         friendRequestStatus = (
-          <FriendRequestStatus user={timeline.user} status={this.friendStatus} />
+          <FriendRequestStatus
+            user={timeline.user}
+            status={this.friendStatus}
+            cancel={this.cancelFriendRequest}
+            send={this.sendFriendRequest}
+          />
         );
         break;
     }
@@ -66,5 +63,35 @@ var UserPage = React.createClass({
         </div>
       </div>
     );
+  },
+  friendRequestStatus: function(props) {
+    var currentUserId = props.currentUser.id;
+    var userId = parseInt(props.params.id);
+
+    if (userId == currentUserId) {
+      return;
+    } else if (props.sentFriendRequests.has(userId)) {
+      return FriendConstants.REQUEST_SENT;
+    } else if (props.receivedFriendRequests.has(userId)) {
+      return FriendConstants.REQUEST_RECEIVED;
+    } else {
+      return FriendConstants.NO_REQUEST;
+    }
+  },
+  sendFriendRequest: function() {
+    var userId = parseInt(this.props.params.id);
+    ApiUtil.sendFriendRequest(userId);
+  },
+  cancelFriendRequest: function() {
+    var userId = parseInt(this.props.params.id);
+    ApiUtil.cancelFriendRequest(userId);
+  },
+  acceptFriendRequest: function() {
+    var userId = parseInt(this.props.params.id);
+    ApiUtil.acceptFriendRequest(userId);
+  },
+  deleteFriendRequest: function() {
+    var userId = parseInt(this.props.params.id);
+    ApiUtil.deleteFriendRequest(userId);
   }
 });
