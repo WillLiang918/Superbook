@@ -50,6 +50,7 @@ var UserPage = React.createClass({
         );
         break;
     }
+    console.log(this.friendStatus);
 
     return (
       <div className="users-page">
@@ -74,10 +75,11 @@ var UserPage = React.createClass({
   friendRequestStatus: function(props) {
     var currentUserId = props.currentUser.id;
     var userId = parseInt(props.params.id);
+    var currentUserFriendships = props.friendships[currentUserId];
 
     if (userId == currentUserId) {
       return;
-    } else if (props.friendships[currentUserId].has(userId)) {
+    } else if (currentUserFriendships && currentUserFriendships.has(userId)) {
       return FriendConstants.FRIENDS;
     } else if (props.sentFriendRequests.has(userId)) {
       return FriendConstants.REQUEST_SENT;

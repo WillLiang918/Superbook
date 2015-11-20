@@ -93,6 +93,13 @@ var ApiUtil = {
     });
   },
 
-  fetchFriendships: function() {}
+  fetchFriendships: function(userId) {
+    $.ajax({
+      url: "api/users/" + userId + "/friendships",
+      success: function(friendships) {
+        console.log("Received friendships: ", friendships);
+      }
+    });
+  }
 
 };

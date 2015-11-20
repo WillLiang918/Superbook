@@ -15,10 +15,12 @@ var App = React.createClass({
   },
   componentDidMount: function() {
     CurrentUserStore.addChangeListener(this.onChange);
+    CurrentUserStore.addChangeListener(this.fetchCurrentUserFriendships);
     FriendRequestStore.addChangeListener(this.onChange);
     FriendshipStore.addChangeListener(this.onChange);
 
     ApiUtil.fetchFriendRequests();
+    this.fetchCurrentUserFriendships();
   },
   componentWillUnmount: function() {
     CurrentUserStore.removeChangeLister(this.onChange);
@@ -36,5 +38,11 @@ var App = React.createClass({
         {children}
       </div>
     );
+  },
+  fetchCurrentUserFriendships: function() {
+    var currentUser = CurrentUserStore.get();
+    if (!!currentUser) {
+      ApiUtil.fetchFriendships(currentUser.id);
+    }
   }
 });

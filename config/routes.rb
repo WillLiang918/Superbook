@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   namespace :api, default: {format: 'json'} do
     resources :posts, only: [:index, :show, :create, :update, :destroy]
-    resources :users, only: [:show]
+    resources :users, only: [:show] do
+      resources :friendships, only: [:index]
+    end
+
+
     resources :friend_requests, only: [:index]
 
     post 'friend_requests/:user_id/accept' => 'friend_requests#accept'
