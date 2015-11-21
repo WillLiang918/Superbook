@@ -85,7 +85,10 @@ var Actions = {
   },
 
   receiveUsers: function(users) {
-    
+     AppDispatcher.dispatch({
+       actionType: Constants.RECEIVE_USERS,
+       users: users
+     });
   }
 
 };

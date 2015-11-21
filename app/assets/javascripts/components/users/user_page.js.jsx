@@ -23,7 +23,8 @@ var UserPage = React.createClass({
   },
   componentWillReceiveProps: function(newProps) {
     this.friendStatus = this.friendRequestStatus(newProps);
-    this.fetchUserPageData(newProps.params.id);
+    if (this.props.params.id !== newProps.params.id)
+      this.fetchUserPageData(newProps.params.id);
   },
   componentWillUnmount: function() {
     TimelineStore.removeChangeListener(this.onChange);

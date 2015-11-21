@@ -15,8 +15,14 @@ json.friendships do
   json.friend_ids @friends.map(&:id)
 end
 
-json.users @friends do |friend|
-  json.set! friend.id do
-    json.partial! 'api/users/user', user: friend
+json.users do
+  @friends.each do |friend|
+    json.set! friend.id do
+      json.partial! 'api/users/user', user: friend
+    end
+  end
+
+  json.set! @user.id do
+    json.partial! 'api/users/user', user: @user
   end
 end
