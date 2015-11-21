@@ -54,6 +54,11 @@ var UserPage = React.createClass({
         break;
     }
 
+    var children = React.Children.map(this.props.children, function(child, idx) {
+      return React.cloneElement(child,Object.assign({}, this.props, this.state));
+    }, this);
+
+
     return (
       <div className="users-page">
         {answerFriendRequest}
@@ -68,9 +73,8 @@ var UserPage = React.createClass({
         />
         {friendRequestStatus}
 
-        <div className="flex-container users-page-container">
-          <UserSideNav user={timeline.user} />
-          <PostsIndex posts={timeline.posts} user={timeline.user} currentUser={this.props.currentUser} />
+        <div className="users-page-container">
+          {children}
         </div>
       </div>
     );
