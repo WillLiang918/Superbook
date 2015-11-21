@@ -88,7 +88,7 @@ var UserPage = React.createClass({
     var userId = parseInt(this.props.params.id);
     var friendIdSet = this.props.friendships[userId] || new Set();
     var users = this.props.users;
-    return friendIdSet.map(function(friendId) {
+    return friendIdSet.compactMap(function(friendId) {
       return users[friendId];
     });
   },
