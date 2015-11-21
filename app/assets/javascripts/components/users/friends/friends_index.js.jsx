@@ -3,10 +3,7 @@ var FriendsIndex = React.createClass({
     return (
       <section className="friends-index">
         <FriendsHeader />
-
-        <div className="">
-
-        </div>
+        <FriendsList {...this.props} />
       </section>
     );
   }

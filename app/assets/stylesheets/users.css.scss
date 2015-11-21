@@ -151,12 +151,21 @@
   height: 26px;
 }
 
-.user-friend-nav button {
+.user-friend-nav button, .friend-status-button {
   height: 100%;
   padding: 0 10px;
   border: 1px solid rgba(0, 0, 0, .4);
   border-radius: 2px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.friend-status-button {
+  color: #4e5665;
+  text-shadow: 0 1px 0 #fff;
+  font-size: 12px;
+  font-weight: 700;
+  background: #f6f7f8;
+  height: 26px;
 }
 
 .user-friends-thumbs {

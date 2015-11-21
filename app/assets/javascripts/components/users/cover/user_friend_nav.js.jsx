@@ -1,6 +1,8 @@
 var UserFriendNav = React.createClass({
   render: function() {
-    var buttonText, button, dropdown, self = false, iconClass="add-friend-gray", onClick = function() {}, status = this.props.status;
+    var buttonText, button, dropdown, self = false, iconClass="add-friend-gray",
+        onClick = function() {}, status = this.props.status;
+
     switch(status) {
       case FriendConstants.REQUEST_SENT:
         buttonText = "Friend Request Sent";
@@ -50,7 +52,9 @@ var UserFriendNav = React.createClass({
     }
 
     return (
-      <nav className="user-friend-nav flex-container">{button}</nav>
+      <nav className="user-friend-nav flex-container">
+        <FriendStatusButton user={this.props.user} status={status} />
+      </nav>
     );
   }
 });
