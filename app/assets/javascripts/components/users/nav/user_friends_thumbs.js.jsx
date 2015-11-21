@@ -1,7 +1,13 @@
 var UserFriendsThumbs = React.createClass({
   render: function() {
     var friendThumbs = this.props.friends.map(function(friend) {
-      return <li key={friend.id}><FriendThumb friend={friend} /></li>;
+      return (
+        <li key={friend.id}>
+          <Link to={"/users/" + friend.id}>
+            <FriendThumb friend={friend} />
+          </Link>
+        </li>
+      );
     });
 
     return (
