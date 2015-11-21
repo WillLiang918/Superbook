@@ -3,9 +3,9 @@ var UserPage = React.createClass({
     var userId = parseInt(this.props.params.id);
     return {timeline: TimelineStore.find(userId)};
   },
-  fetchTimeline: function(id) {
+  fetchUserPageData: function(id) {
     var userId = id || this.props.params.id;
-    ApiUtil.fetchTimeline(userId);
+    ApiUtil.fetchUserPageData(userId);
   },
   onChange: function() {
     this.setState(this.getStateFromStores());
@@ -19,11 +19,11 @@ var UserPage = React.createClass({
   componentDidMount: function() {
     this.friendStatus = this.friendRequestStatus(this.props);
     TimelineStore.addChangeListener(this.onChange);
-    this.fetchTimeline();
+    this.fetchUserPageData();
   },
   componentWillReceiveProps: function(newProps) {
     this.friendStatus = this.friendRequestStatus(newProps);
-    this.fetchTimeline(newProps.params.id);
+    this.fetchUserPageData(newProps.params.id);
   },
   componentWillUnmount: function() {
     TimelineStore.removeChangeListener(this.onChange);

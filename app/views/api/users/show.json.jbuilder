@@ -1,15 +1,19 @@
-image = @user.avatar.image
+json.timeline do
+  json.user do
+    json.partial! 'api/users/user', user: @user
+  end
 
-json.user do
-  json.(@user, :id, :first_name, :last_name, :email, :birthday, :sex, :created_at, :updated_at)
-  json.avatar do
-    json.normal image_path(image.url)
-    json.thumb image_path(image.url(:thumb))
-    json.profile image_path(image.url(:profile))
+  json.posts do
+    json.array! @posts do |post|
+      json.partial! 'api/posts/post', post: post
+    end
   end
 end
-json.posts do
-  json.array! @posts do |post|
-    json.partial! 'api/posts/post', post: post
+
+json.friend_ids @friends.map(&:id)
+
+json.friends @friends do |friend|
+  json.set! friend.id do
+    json.partial! 'api/users/user', user: friend
   end
 end
