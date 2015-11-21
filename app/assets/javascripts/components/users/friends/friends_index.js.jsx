@@ -1,7 +1,13 @@
 var FriendsIndex = React.createClass({
   render: function() {
     return (
-      <h1>Friends Index</h1>
+      <section className="friends-index">
+        <FriendsHeader />
+
+        <div className="">
+
+        </div>
+      </section>
     );
   }
 });
