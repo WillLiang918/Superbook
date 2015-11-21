@@ -8,7 +8,7 @@
 
 .friends-header {
   background-color: #f6f7f8;
-  padding: 16px 12px;
+  padding: 16px 12px 0 12px;
   border-bottom: 1px solid #d3d6db;
   margin-bottom: 15px;
 }
@@ -85,9 +85,11 @@
 }
 
 .friends-nav {
-  margin-top: 8px;
+  margin-top: 13px;
   width: 100%;
   font-size: 13px;
+  align-items: baseline;
+  margin-bottom: 10px;
 }
 
 .friends-nav a {
@@ -95,9 +97,28 @@
   font-weight: 700;
 }
 
+.search-friends-container {
+  position: relative;
+}
+
 input.search-friends {
-  width: 222px;
+  width: 195px;
   height: 21px;
   border: 1px solid #bdc7d8;
   position: relative;
+  padding-left: 5px;
+  padding-right: 22px;
+  font-size: 12px;
+}
+
+.small-magnifying-glass {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 19px;
+  background-image: image-url("fb_sprite.png");
+  background-size: auto;
+  background-position: 0 -137px;
 }
