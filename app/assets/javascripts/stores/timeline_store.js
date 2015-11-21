@@ -69,7 +69,12 @@
           break;
 
         case Constants.RECEIVE_USER_DATA:
+          AppDispatcher.waitFor([
+            root.UserStore.dispatcherId,
+            root.FriendshipStore.dispatcherId
+          ]);
           addTimeline(payload.timeline);
+          root.TimelineStore.emitChange();
           break;
 
         default:

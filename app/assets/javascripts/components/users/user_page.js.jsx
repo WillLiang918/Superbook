@@ -63,6 +63,7 @@ var UserPage = React.createClass({
     }, this);
 
 
+
     return (
       <div className="users-page">
         {answerFriendRequest}
@@ -86,8 +87,9 @@ var UserPage = React.createClass({
   friends: function() {
     var userId = parseInt(this.props.params.id);
     var friendIdSet = this.props.friendships[userId] || new Set();
+    var users = this.props.users;
     return friendIdSet.map(function(friendId) {
-      return UserStore.find(friendId);
+      return users[friendId];
     });
   },
   friendRequestStatus: function(props) {

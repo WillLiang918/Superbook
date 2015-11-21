@@ -4,7 +4,8 @@ var App = React.createClass({
       currentUser: CurrentUserStore.get(),
       sentFriendRequests: FriendRequestStore.sentFriendRequests(),
       receivedFriendRequests: FriendRequestStore.receivedFriendRequests(),
-      friendships: FriendshipStore.all()
+      friendships: FriendshipStore.all(),
+      users: UserStore.all()
     };
   },
   getInitialState: function() {
@@ -18,6 +19,7 @@ var App = React.createClass({
     CurrentUserStore.addChangeListener(this.fetchCurrentUserFriendships);
     FriendRequestStore.addChangeListener(this.onChange);
     FriendshipStore.addChangeListener(this.onChange);
+    UserStore.addChangeListener(this.onChange);
 
     ApiUtil.fetchFriendRequests();
     this.fetchCurrentUserFriendships();

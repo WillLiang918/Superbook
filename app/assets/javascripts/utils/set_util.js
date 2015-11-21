@@ -5,3 +5,13 @@ Set.prototype.map = function(callback, thisArg) {
   });
   return result;
 };
+
+Set.prototype.compactMap = function(callback, thisArg) {
+  var result = [];
+  this.forEach(function(el, _, set) {
+    var subResult = callback.call(thisArg, el, el, set);
+    if (typeof subResult !== "undefined")
+      result.push(subResult);
+  });
+  return result;
+};
