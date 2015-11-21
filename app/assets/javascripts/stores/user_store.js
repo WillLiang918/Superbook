@@ -27,6 +27,15 @@
           root.UserStore.emitChange();
           break;
 
+        case Constants.RECEIVE_USER_DATA:
+          AppDispatcher.waitFor([
+            root.TimelineStore.dispatcherId,
+            root.FriendshipStore.dispatcherId
+          ]);
+          setUsers(payload.users);
+          root.UserStore.emitChange();
+          break;
+
       }
     })
 

@@ -4,9 +4,11 @@ var ApiUtil = {
     $.ajax({
       url: "api/users/" + userId,
       success: function(data) {
-        Actions.receiveTimeline(data.timeline);
-        Actions.receiveFriendships(data.friendships);
-        Actions.receiveUsers(data.users);
+        Actions.receiveUserData(data);
+        // debugger
+        // Actions.receiveTimeline(data.timeline);
+        // Actions.receiveFriendships(data.friendships);
+        // Actions.receiveUsers(data.users);
       }
     });
   },

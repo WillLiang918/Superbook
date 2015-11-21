@@ -55,6 +55,10 @@
           root.FriendshipStore.emitChange();
           break;
 
+        case Constants.RECEIVE_USER_DATA:
+          setFriendships(payload.friendships);
+          break;
+
       }
     })
 

@@ -1,9 +1,7 @@
 var UserPage = React.createClass({
   getStateFromStores: function() {
     var userId = parseInt(this.props.params.id);
-    return {
-      timeline: TimelineStore.find(userId)
-    };
+    return {timeline: TimelineStore.find(userId)};
   },
   fetchUserPageData: function(id) {
     var userId = id || this.props.params.id;
@@ -25,8 +23,9 @@ var UserPage = React.createClass({
   },
   componentWillReceiveProps: function(newProps) {
     this.friendStatus = this.friendRequestStatus(newProps);
-    if (this.props.params.id !== newProps.params.id)
+    if (this.props.params.id !== newProps.params.id) {
       this.fetchUserPageData(newProps.params.id);
+    }
   },
   componentWillUnmount: function() {
     TimelineStore.removeChangeListener(this.onChange);
@@ -57,8 +56,10 @@ var UserPage = React.createClass({
         break;
     }
 
+    var derivedState = {friends: this.friends()};
+
     var children = React.Children.map(this.props.children, function(child, idx) {
-      return React.cloneElement(child,Object.assign({}, this.props, this.state));
+      return React.cloneElement(child,Object.assign({}, this.props, this.state, derivedState));
     }, this);
 
 
@@ -81,6 +82,13 @@ var UserPage = React.createClass({
         </div>
       </div>
     );
+  },
+  friends: function() {
+    var userId = parseInt(this.props.params.id);
+    var friendIdSet = this.props.friendships[userId] || new Set();
+    return friendIdSet.map(function(friendId) {
+      return UserStore.find(friendId);
+    });
   },
   friendRequestStatus: function(props) {
     var currentUserId = props.currentUser.id;

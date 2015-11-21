@@ -68,6 +68,10 @@
           root.TimelineStore.emitChange();
           break;
 
+        case Constants.RECEIVE_USER_DATA:
+          addTimeline(payload.timeline);
+          break;
+
         default:
       }
     })

@@ -89,6 +89,12 @@ var Actions = {
        actionType: Constants.RECEIVE_USERS,
        users: users
      });
+  },
+
+  receiveUserData: function(data) {
+    AppDispatcher.dispatch(Object.assign(data, {
+      actionType: Constants.RECEIVE_USER_DATA
+    }));
   }
 
 };

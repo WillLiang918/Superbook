@@ -1,13 +1,10 @@
 var UserFriends = React.createClass({
   render: function() {
-    var friends = [];
-    for (var i = 1; i < 10; i++) {
-      friends.push({"id": i});
-    }
+    var friends = this.props.friends;
 
     return (
       <article className="user-friends">
-        <UserSideNavHeader title={"Friends"} small={"XXX"} />
+        <UserSideNavHeader title={"Friends"} small={friends.length} />
         <UserFriendsThumbs friends={friends} />
       </article>
     );
