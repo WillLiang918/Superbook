@@ -82,6 +82,10 @@ var Actions = {
       actionType: Constants.UNFRIEND,
       friendship: friendship
     });
+  },
+
+  receiveUsers: function(users) {
+    
   }
 
 };

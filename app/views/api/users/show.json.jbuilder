@@ -10,9 +10,12 @@ json.timeline do
   end
 end
 
-json.friend_ids @friends.map(&:id)
+json.friendships do
+  json.user_id @user.id
+  json.friend_ids @friends.map(&:id)
+end
 
-json.friends @friends do |friend|
+json.users @friends do |friend|
   json.set! friend.id do
     json.partial! 'api/users/user', user: friend
   end

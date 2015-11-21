@@ -1,10 +1,12 @@
 var ApiUtil = {
-  
+
   fetchUserPageData: function(userId) {
     $.ajax({
       url: "api/users/" + userId,
       success: function(data) {
         Actions.receiveTimeline(data.timeline);
+        Actions.receiveFriendships(data.friendships);
+        Actions.receiveUsers(data.users);
       }
     });
   },
