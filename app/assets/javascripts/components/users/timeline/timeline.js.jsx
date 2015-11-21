@@ -1,7 +1,6 @@
 var Timeline = React.createClass({
   render: function() {
     var timeline = this.props.timeline, currentUser = this.props.currentUser;
-    console.log("Rendering timeline");
 
     return (
       <div className="timeline flex-container">

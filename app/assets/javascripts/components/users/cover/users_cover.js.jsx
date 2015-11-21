@@ -11,7 +11,7 @@ var UserCover = React.createClass({
         <ProfilePicture url={url} />
         <UserTitle user={user} />
         <UserFriendNav {...this.props} />
-        <UserPageNav />
+        <UserPageNav user={user} />
       </section>
     );
   }
