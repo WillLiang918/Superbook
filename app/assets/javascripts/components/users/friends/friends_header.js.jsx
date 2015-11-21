@@ -6,6 +6,8 @@ var FriendsHeader = React.createClass({
           <strong className="friends-icon" />
           <a>Friends</a>
         </h2>
+
+        <FriendsNav {...this.props} />
       </header>
     );
   }

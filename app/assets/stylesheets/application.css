@@ -11,8 +11,8 @@
  * file per style scope.
  *
  *= require normalize
- *= require reset
- *= require utilities
- *= require_tree .
+ *= require_tree ./reset
+ *= require_tree ./util
+ *= require_tree ./main
  *= require_self
  */

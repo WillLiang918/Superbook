@@ -83,3 +83,21 @@
 .friend-body > a:hover {
   text-decoration: underline;
 }
+
+.friends-nav {
+  margin-top: 8px;
+  width: 100%;
+  font-size: 13px;
+}
+
+.friends-nav a {
+  color: #3b5998;
+  font-weight: 700;
+}
+
+input.search-friends {
+  width: 222px;
+  height: 21px;
+  border: 1px solid #bdc7d8;
+  position: relative;
+}
