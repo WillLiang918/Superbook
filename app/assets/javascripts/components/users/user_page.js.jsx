@@ -1,7 +1,9 @@
 var UserPage = React.createClass({
   getStateFromStores: function() {
     var userId = parseInt(this.props.params.id);
-    return {timeline: TimelineStore.find(userId)};
+    return {
+      timeline: TimelineStore.find(userId)
+    };
   },
   fetchUserPageData: function(id) {
     var userId = id || this.props.params.id;
