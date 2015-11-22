@@ -56,10 +56,10 @@ var UserPage = React.createClass({
         break;
     }
 
-    var derivedState = {friends: this.friends()};
+    var derivedState = {friends: this.friends(), status: this.friendStatus};
 
     var children = React.Children.map(this.props.children, function(child, idx) {
-      return React.cloneElement(child,Object.assign({}, this.props, this.state, derivedState));
+      return React.cloneElement(child, Object.assign({}, this.props, this.state, derivedState));
     }, this);
 
     return (

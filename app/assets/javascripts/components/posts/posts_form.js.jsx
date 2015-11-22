@@ -3,6 +3,10 @@ var PostForm = React.createClass({
     return {body: ""};
   },
   render: function() {
+    var status = this.props.status;
+    if (status != FriendConstants.SELF && status != FriendConstants.FRIENDS)
+      return false;
+
     return (
       <form className="post-form" onSubmit={this.handleSubmit}>
         <nav className="post-form-nav flex-container">
