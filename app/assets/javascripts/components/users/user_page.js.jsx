@@ -1,7 +1,14 @@
 var UserPage = React.createClass({
   getStateFromStores: function() {
     var userId = parseInt(this.props.params.id);
-    return {timeline: TimelineStore.find(userId)};
+    var user = this.props.users[userId];
+
+    var postIds = TimelineStore.find(userId);
+    var posts = postIds.map(function(postId) {
+      return PostStore.find(postId);
+    });
+
+    return {user: user || {}, posts: posts};
   },
   fetchUserPageData: function(id) {
     var userId = id || this.props.params.id;
@@ -31,13 +38,13 @@ var UserPage = React.createClass({
     TimelineStore.removeChangeListener(this.onChange);
   },
   render: function() {
-    var timeline = this.state.timeline;
-    var answerFriendRequest, friendRequestStatus;
+    var {user, posts} = this.state, answerFriendRequest, friendRequestStatus;
+
     switch(this.friendStatus) {
       case FriendConstants.REQUEST_RECEIVED:
         answerFriendRequest = (
           <AnswerFriendRequest
-            user={timeline.user}
+            user={user}
             accept={this.acceptFriendRequest}
             delete={this.deleteFriendRequest}
           />
@@ -47,7 +54,7 @@ var UserPage = React.createClass({
       case FriendConstants.NO_REQUEST:
         friendRequestStatus = (
           <FriendRequestStatus
-            user={timeline.user}
+            user={user}
             status={this.friendStatus}
             cancel={this.cancelFriendRequest}
             send={this.sendFriendRequest}
@@ -66,7 +73,7 @@ var UserPage = React.createClass({
       <div className="users-page">
         {answerFriendRequest}
         <UserCover
-          user={timeline.user}
+          user={user}
           status={this.friendStatus}
           send={this.sendFriendRequest}
           accept={this.acceptFriendRequest}

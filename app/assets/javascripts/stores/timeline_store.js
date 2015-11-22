@@ -1,15 +1,14 @@
 (function(root) {
   _timelines = {};
 
-  var _blankTimeline = {
-    user: {},
-    posts: []
+  var addTimeline = function(timeline) {
+    Object.assign(_timelines, timeline);
   };
 
-  var addTimeline = function(timeline) {
-    var user = timeline.user;
-    _timelines[user.id] = timeline;
-  };
+  // var addTimeline = function(timeline) {
+  //   var user = timeline.user;
+  //   _timelines[user.id] = timeline;
+  // };
 
   var addPost = function(post) {
     var timeline = _timelines[post.receiver_id] = _timelines[post.receiver_id] || Object.assign({}, _blankTimeline);
@@ -42,7 +41,7 @@
   root.TimelineStore = Object.assign({}, root.StoreBase, {
 
     find: function(id) {
-      return _timelines[id] || _blankTimeline;
+      return _timelines[id] || [];
     },
 
     dispatcherId: AppDispatcher.register(function(payload) {
@@ -66,7 +65,8 @@
         case Constants.RECEIVE_USER_DATA:
           AppDispatcher.waitFor([
             root.UserStore.dispatcherId,
-            root.FriendshipStore.dispatcherId
+            root.FriendshipStore.dispatcherId,
+            root.PostStore.dispatcherId
           ]);
           addTimeline(payload.timeline);
           root.TimelineStore.emitChange();

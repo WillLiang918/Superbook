@@ -1,6 +1,6 @@
 var UserCover = React.createClass({
   render: function() {
-    var { user, pathname, ...other } = this.props, url = "";
+    var {user, pathname, ...other} = this.props, url = "";
     if (!!user.avatar) {
       url = user.avatar.profile;
     }
