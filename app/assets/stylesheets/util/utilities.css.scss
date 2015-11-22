@@ -14,6 +14,12 @@
   justify-content: flex-start;
 }
 
+.flex-center {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
 .hidden {
   display: none;
 }

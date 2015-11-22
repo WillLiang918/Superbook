@@ -5,13 +5,13 @@ var HeaderLinks = React.createClass({
     return (
       <ul className="nav-link-list flex-container">
         <li className="nav-link">
-          <Link to={"users/" + currentUser.id}>
+          <Link to={"users/" + currentUser.id} className="flex-center">
             <img src={currentUser.avatar.profile} className="profile-preview" />
-            <div>{currentUser.first_name}</div>
+            <span>{currentUser.first_name}</span>
           </Link>
         </li>
         <li className="nav-link">
-          <a href="#"><div>Home</div></a>
+          <a className="flex-center" href="#"><span>Home</span></a>
         </li>
         <li className="nav-link">
           <LogoutButton />
