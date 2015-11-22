@@ -41,6 +41,7 @@
       switch(payload.actionType) {
 
         case Constants.FRIEND_REQUEST_ACCEPTED:
+          AppDispatcher.waitFor([root.FriendRequestStore.dispatcherId]);
           acceptFriendRequest(payload.request);
           root.FriendshipStore.emitChange();
           break;

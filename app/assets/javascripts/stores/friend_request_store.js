@@ -70,7 +70,6 @@
 
         case Constants.FRIEND_REQUEST_ACCEPTED:
           acceptFriendRequest(payload.request);
-          root.FriendRequestStore.emitChange();
           break;
 
       }
