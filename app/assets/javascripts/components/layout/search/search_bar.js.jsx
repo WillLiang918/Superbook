@@ -3,6 +3,8 @@ var SearchBar = React.createClass({
     return {search: "", focus: false, hover: false};
   },
   render: function() {
+    var active = this.state.focus || this.state.hover;
+
     return (
       <form
         className="header-search-bar flex-container"
@@ -18,12 +20,12 @@ var SearchBar = React.createClass({
                onBlur={this.onBlur}
         />
 
-        <button className="search-button">
+        <button className={"search-button " + (active ? "active" : "")}>
           <strong className="magnifying-glass" />
         </button>
 
         <SearchResults
-          {...this.state}
+          active={active}
           results={this.results()}
           handleClick={this.handleClick}
           onMouseEnter={this.onMouseEnter}
