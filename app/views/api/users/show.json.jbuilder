@@ -1,12 +1,6 @@
 json.timeline do
-  json.user do
-    json.partial! 'api/users/user', user: @user
-  end
-
-  json.posts do
-    json.array! @posts do |post|
-      json.partial! 'api/posts/post', post: post
-    end
+  json.set! @user.id do
+    json.array! @posts.map(&:id)
   end
 end
 
@@ -24,5 +18,34 @@ json.users do
 
   json.set! @user.id do
     json.partial! 'api/users/user', user: @user
+  end
+end
+
+json.posts do
+  @posts.each do |post|
+    json.set! post.id do
+      json.partial! 'api/posts/post', post: post
+    end
+  end
+end
+
+json.comments do
+  @posts.each do |post|
+    comments = post.comments
+    nested_comments = comments.reduce(Hash.new { |h, k| h[k] = [] }) do |accum, comment|
+      accum[comment.parent_id] << comment; accum
+    end
+
+    json.set! post.id do
+      if nested_comments.size == 0
+        json.array! []
+      else
+        nested_comments.each do |parent_id, comments|
+          json.set! (parent_id || "null") do
+            json.array! comments
+          end
+        end
+      end
+    end
   end
 end
