@@ -95,6 +95,12 @@ var Actions = {
     AppDispatcher.dispatch(Object.assign(data, {
       actionType: Constants.RECEIVE_USER_DATA
     }));
+  },
+
+  receiveFriendData: function(data) {
+    AppDispatcher.dispatch(Object.assign(data, {
+      actionType: Constants.RECEIVE_FRIEND_DATA
+    }));
   }
 
 };

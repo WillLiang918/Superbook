@@ -116,7 +116,7 @@ var ApiUtil = {
     $.ajax({
       url: "api/friends",
       success: function(data) {
-        console.log(data);
+        Actions.receiveFriendData(data);
       }
     });
   }

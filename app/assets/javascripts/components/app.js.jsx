@@ -22,7 +22,7 @@ var App = React.createClass({
     UserStore.addChangeListener(this.onChange);
 
     ApiUtil.fetchFriendRequests();
-    this.fetchCurrentUserFriendships();
+    ApiUtil.fetchCurrentUserFriends();
   },
   componentWillUnmount: function() {
     CurrentUserStore.removeChangeLister(this.onChange);

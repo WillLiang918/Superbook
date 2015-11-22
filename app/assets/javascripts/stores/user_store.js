@@ -31,6 +31,12 @@
           setUsers(payload.users);
           break;
 
+        case Constants.RECEIVE_FRIEND_DATA:
+          AppDispatcher.waitFor([root.FriendshipStore.dispatcherId]);
+          setUsers(payload.users);
+          root.UserStore.emitChange();
+          break;
+
       }
     })
 

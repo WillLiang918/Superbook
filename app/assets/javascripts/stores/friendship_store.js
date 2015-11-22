@@ -59,6 +59,10 @@
           setFriendships(payload.friendships);
           break;
 
+        case Constants.RECEIVE_FRIEND_DATA:
+          setFriendships(payload.friendships);
+          break;
+
       }
     })
 
