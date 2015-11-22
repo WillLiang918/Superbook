@@ -5,10 +5,6 @@ var ApiUtil = {
       url: "api/users/" + userId,
       success: function(data) {
         Actions.receiveUserData(data);
-        // debugger
-        // Actions.receiveTimeline(data.timeline);
-        // Actions.receiveFriendships(data.friendships);
-        // Actions.receiveUsers(data.users);
       }
     });
   },
@@ -97,6 +93,16 @@ var ApiUtil = {
     });
   },
 
+  unfriend: function(userId) {
+    $.ajax({
+      url: "api/users/" + userId + "/friendships",
+      type: "DELETE",
+      success: function(friendship) {
+        Actions.unfriend(friendship);
+      }
+    });
+  },
+
   fetchFriendships: function(userId) {
     $.ajax({
       url: "api/users/" + userId + "/friendships",
@@ -106,12 +112,11 @@ var ApiUtil = {
     });
   },
 
-  unfriend: function(userId) {
+  fetchCurrentUserFriends: function() {
     $.ajax({
-      url: "api/users/" + userId + "/friendships",
-      type: "DELETE",
-      success: function(friendship) {
-        Actions.unfriend(friendship);
+      url: "api/friends",
+      success: function(data) {
+        console.log(data);
       }
     });
   }

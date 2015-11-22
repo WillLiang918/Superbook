@@ -14,8 +14,8 @@ Rails.application.routes.draw do
       delete 'friendships' => 'friendships#destroy'
     end
 
-
     resources :friend_requests, only: [:index]
+    resources :friends, only: [:index]
 
     post 'friend_requests/:user_id/accept' => 'friend_requests#accept'
     post 'friend_requests/:user_id/send' => 'friend_requests#create'
