@@ -1,6 +1,7 @@
 var Constants = keyMirror({
   "RECEIVE_TIMELINE": null,
   "RECEIVE_CURRENT_USER": null,
+  "RECEIVE_CURRENT_USER_FRIEND_REQUESTS": null,
   "POST_ADDED": null,
   "POST_UPDATED": null,
   "POST_DELETED": null,

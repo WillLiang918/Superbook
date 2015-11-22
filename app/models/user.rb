@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :received_posts, class_name: "Post", foreign_key: :receiver_id, dependent: :destroy
   has_many :sent_friend_requests, class_name: "FriendRequest", foreign_key: :sender_id, dependent: :destroy
   has_many :received_friend_requests, class_name: "FriendRequest", foreign_key: :receiver_id, dependent: :destroy
+  has_many :requesters, through: :received_friend_requests, source: :sender
   has_many :friendships, dependent: :destroy
   has_many :reverse_friendships, class_name: "Friendship", foreign_key: :friend_id, dependent: :destroy
   has_many :friends, through: :friendships, source: :friend

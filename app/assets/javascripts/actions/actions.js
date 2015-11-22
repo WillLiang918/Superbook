@@ -14,6 +14,12 @@ var Actions = {
     });
   },
 
+  receiveCurrentUserFriendRequests: function(data) {
+    AppDispatcher.dispatch(Object.assign(data, {
+      actionType: Constants.RECEIVE_CURRENT_USER_FRIEND_REQUESTS
+    }));
+  },
+
   postAdded: function(post) {
     AppDispatcher.dispatch({
       actionType: Constants.POST_ADDED,

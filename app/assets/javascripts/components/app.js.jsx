@@ -16,18 +16,18 @@ var App = React.createClass({
   },
   componentDidMount: function() {
     CurrentUserStore.addChangeListener(this.onChange);
-    CurrentUserStore.addChangeListener(this.fetchCurrentUserFriendships);
     FriendRequestStore.addChangeListener(this.onChange);
     FriendshipStore.addChangeListener(this.onChange);
     UserStore.addChangeListener(this.onChange);
 
-    ApiUtil.fetchFriendRequests();
+    ApiUtil.fetchCurrentUserFriendRequests();
     ApiUtil.fetchCurrentUserFriends();
   },
   componentWillUnmount: function() {
-    CurrentUserStore.removeChangeLister(this.onChange);
-    FriendRequestStore.removeChangeLister(this.onChange);
-    FriendshipStore.removeChangeLister(this.onChange);
+    CurrentUserStore.removeChangeListener(this.onChange);
+    FriendRequestStore.removeChangeListener(this.onChange);
+    FriendshipStore.removeChangeListener(this.onChange);
+    UserStore.removeChangeListener(this.onChange);
   },
   render: function() {
     var children = React.Children.map(this.props.children, function(child) {
@@ -40,11 +40,5 @@ var App = React.createClass({
         {children}
       </div>
     );
-  },
-  fetchCurrentUserFriendships: function() {
-    var currentUser = CurrentUserStore.get();
-    if (!!currentUser) {
-      ApiUtil.fetchFriendships(currentUser.id);
-    }
   }
 });

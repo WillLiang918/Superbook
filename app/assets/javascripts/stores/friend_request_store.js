@@ -48,6 +48,11 @@
           root.FriendRequestStore.emitChange();
           break;
 
+        case Constants.RECEIVE_CURRENT_USER_FRIEND_REQUESTS:
+          setSentFriendRequests(payload.sent_requests);
+          setReceivedFriendRequests(payload.received_requests);
+          break;
+
         case Constants.RECEIVE_CURRENT_USER:
           resetFriendRequests();
           break;

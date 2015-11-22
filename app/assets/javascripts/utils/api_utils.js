@@ -41,18 +41,6 @@ var ApiUtil = {
     });
   },
 
-  fetchFriendRequests: function() {
-    $.ajax({
-      url: "api/friend_requests",
-      success: function(requests) {
-        Actions.receiveFriendRequests(
-          requests.sent_requests,
-          requests.received_requests
-        );
-      }
-    });
-  },
-
   sendFriendRequest: function(userId) {
     $.ajax({
       url: "api/friend_requests/" + userId + "/send",
@@ -117,6 +105,15 @@ var ApiUtil = {
       url: "api/friends",
       success: function(data) {
         Actions.receiveFriendData(data);
+      }
+    });
+  },
+
+  fetchCurrentUserFriendRequests: function() {
+    $.ajax({
+      url: "api/friend_requests",
+      success: function(data) {
+        Actions.receiveCurrentUserFriendRequests(data);
       }
     });
   }

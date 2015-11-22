@@ -41,6 +41,12 @@
           root.UserStore.emitChange();
           break;
 
+        case Constants.RECEIVE_CURRENT_USER_FRIEND_REQUESTS:
+          AppDispatcher.waitFor([root.FriendRequestStore.dispatcherId]);
+          setUsers(payload.users);
+          root.UserStore.emitChange();
+          break;
+
       }
     })
 
