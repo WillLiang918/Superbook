@@ -5,8 +5,6 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: "User", foreign_key: :author_id
   belongs_to :receiver, class_name: "User", foreign_key: :receiver_id
 
-  before
-
   def must_have_permission_to_create
     if (author_id && receiver_id && author_id != receiver_id &&
        Friendship.find_by(user_id: author_id, friend_id: receiver_id).nil?)
