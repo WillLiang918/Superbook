@@ -10,13 +10,18 @@ var HeaderLinks = React.createClass({
             <span>{currentUser.first_name}</span>
           </Link>
         </li>
+
         <li className="nav-link">
-          <a className="flex-center" href="#"><span>Home</span></a>
+          <Link to="/" className="flex-center"><span>Home</span></Link>
         </li>
-        <li className="nav-link">
-          <LogoutButton />
+
+        <li className="flex-center">
+          <HeaderIconLinks />
         </li>
       </ul>
     );
   }
 });
+        // <li className="nav-link">
+        //   <LogoutButton />
+        // </li>
