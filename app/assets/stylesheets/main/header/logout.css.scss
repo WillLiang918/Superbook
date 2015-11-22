@@ -25,6 +25,8 @@
   right: -13px;
   background: #fff;
   width: auto;
+  z-index: 30;
+  text-align: left;
 }
 
 .logout-menu.drop-down li {
@@ -43,4 +45,5 @@
   right: 6px;
   bottom: calc(100% - 5px);
   transform: none;
+  z-index: 100;
 }

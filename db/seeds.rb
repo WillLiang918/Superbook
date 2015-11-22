@@ -14,7 +14,7 @@ users = [
     "password" => "password",
     "sex" => "male",
     "birthday" => 30.years.ago,
-    "image_url" => "bruce_wayne.jpg"
+    "image_url" => "avatars/bruce_wayne.jpg"
   },
 
   {
@@ -24,7 +24,7 @@ users = [
     "password" => "password",
     "sex" => "male",
     "birthday" => 80.years.ago,
-    "image_url" => "charles_xavier.jpg"
+    "image_url" => "avatars/charles_xavier.jpg"
   },
 
   {
@@ -34,7 +34,7 @@ users = [
     "password" => "password",
     "sex" => "male",
     "birthday" => 100.years.ago,
-    "image_url" => "clark_kent.jpg"
+    "image_url" => "avatars/clark_kent.jpg"
   },
 
   {
@@ -44,7 +44,7 @@ users = [
     "password" => "password",
     "sex" => "male",
     "birthday" => 30.years.ago,
-    "image_url" => "erik_lensherr.jpg"
+    "image_url" => "avatars/erik_lensherr.jpg"
   },
 
   {
@@ -54,7 +54,7 @@ users = [
     "password" => "password",
     "sex" => "male",
     "birthday" => 30.years.ago,
-    "image_url" => "peter_parker.gif"
+    "image_url" => "avatars/peter_parker.gif"
   }
 ]
 
