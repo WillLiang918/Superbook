@@ -77,6 +77,7 @@
 
 .user-page-nav a {
   display: block;
+  position: relative;
   height: 100%;
   padding: 0 17px;
   color: #3b5998;
@@ -102,6 +103,32 @@
 
 .user-page-nav a.active:hover {
   background: #fff;
+}
+
+.user-page-nav a.active:before, .user-page-nav a.active:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-bottom: 8px solid #E9EAED;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+
+.user-page-nav a.active:hover:before, .user-page-nav a.active:hover:after {
+  bottom: -1px;
+}
+
+.user-page-nav a.active:before {
+  border-bottom: 9px solid #d3d6db;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  z-index: 10;
 }
 
 .profile-picture {

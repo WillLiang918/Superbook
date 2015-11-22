@@ -62,8 +62,6 @@ var UserPage = React.createClass({
       return React.cloneElement(child,Object.assign({}, this.props, this.state, derivedState));
     }, this);
 
-
-
     return (
       <div className="users-page">
         {answerFriendRequest}
@@ -75,6 +73,7 @@ var UserPage = React.createClass({
           cancel={this.cancelFriendRequest}
           delete={this.deleteFriendRequest}
           unfriend={this.unfriend}
+          pathname={this.props.location.pathname}
         />
         {friendRequestStatus}
 
