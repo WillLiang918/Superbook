@@ -49,7 +49,8 @@
           AppDispatcher.waitFor([
             root.UserStore.dispatcherId,
             root.FriendshipStore.dispatcherId,
-            root.PostStore.dispatcherId
+            root.PostStore.dispatcherId,
+            root.CommentStore.dispatcherId
           ]);
           addTimeline(payload.timeline);
           root.TimelineStore.emitChange();
