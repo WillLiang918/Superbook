@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120215102) do
+ActiveRecord::Schema.define(version: 20151122202721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,20 @@ ActiveRecord::Schema.define(version: 20151120215102) do
   end
 
   add_index "avatars", ["user_id"], name: "index_avatars_on_user_id", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "author_id",        null: false
+    t.integer  "commentable_id",   null: false
+    t.string   "commentable_type", null: false
+    t.string   "body",             null: false
+    t.integer  "parent_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+  add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
 
   create_table "friend_requests", force: :cascade do |t|
     t.integer  "sender_id",   null: false
