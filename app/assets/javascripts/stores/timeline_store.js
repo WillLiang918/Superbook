@@ -5,37 +5,23 @@
     Object.assign(_timelines, timeline);
   };
 
-  // var addTimeline = function(timeline) {
-  //   var user = timeline.user;
-  //   _timelines[user.id] = timeline;
-  // };
-
   var addPost = function(post) {
-    var timeline = _timelines[post.receiver_id] = _timelines[post.receiver_id] || Object.assign({}, _blankTimeline);
-    timeline.posts.push(post);
-  };
-
-  var updatePost = function(updatedPost) {
-    var timeline = _timelines[updatedPost.receiver_id];
-    if (!timeline) return;
-    var posts = timeline.posts;
-
-    var arrayIdx = posts.findIndex(function(post) {
-      return post.id === updatedPost.id;
-    });
-
-    if (arrayIdx >= 0) {
-      posts[arrayIdx] = updatedPost;
-    }
+    var timeline = _timelines[post.receiver_id] = (_timelines[post.receiver_id] || []);
+    timeline.push(post.id);
   };
 
   var deletePost = function(deletedPost) {
-    var timeline = _timelines[deletedPost.receiver_id];
-    if (!timeline) return;
+    var postIds = _timelines[deletedPost.receiver_id];
+    if (!postIds) return;
 
-    timeline.posts = timeline.posts.filter(function(post) {
-      return post.id !== deletedPost.id;
+
+    var arrayIdx = postIds.findIndex(function(postId) {
+      return postId === deletedPost.id;
     });
+
+    if (arrayIdx >= 0) {
+      postIds.splice(arrayIdx, 1);
+    }
   };
 
   root.TimelineStore = Object.assign({}, root.StoreBase, {
@@ -48,16 +34,13 @@
       switch(payload.actionType) {
 
         case Constants.POST_ADDED:
+          AppDispatcher.waitFor([root.PostStore.dispatcherId]);
           addPost(payload.post);
           root.TimelineStore.emitChange();
           break;
 
-        case Constants.POST_UPDATED:
-          updatePost(payload.post);
-          root.TimelineStore.emitChange();
-          break;
-
         case Constants.POST_DELETED:
+          AppDispatcher.waitFor([root.PostStore.dispatcherId]);
           deletePost(payload.post);
           root.TimelineStore.emitChange();
           break;

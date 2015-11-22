@@ -5,6 +5,15 @@
     Object.assign(_posts, posts);
   };
 
+  var addPost = function(post) {
+    _posts[post.id] = post;
+  };
+  var updatePost = addPost;
+
+  var deletePost = function(post) {
+    delete _posts[post.id];
+  };
+
   root.PostStore = Object.assign({}, root.StoreBase, {
 
     find: function(postId) {
@@ -20,6 +29,19 @@
 
         case Constants.RECEIVE_USER_DATA:
           addPosts(payload.posts);
+          break;
+
+        case Constants.POST_ADDED:
+          addPost(payload.post);
+          break;
+
+        case Constants.POST_UPDATED:
+          updatePost(payload.post);
+          root.PostStore.emitChange();
+          break;
+
+        case Constants.POST_DELETED:
+          deletePost(payload.post);
           break;
       }
     })

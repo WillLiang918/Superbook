@@ -4,9 +4,11 @@ var UserPage = React.createClass({
     var user = this.props.users[userId];
 
     var postIds = TimelineStore.find(userId);
-    var posts = postIds.map(function(postId) {
-      return PostStore.find(postId);
-    });
+    var posts = postIds.reduceRight(function(posts, postId) {
+      var post = PostStore.find(postId);
+      posts.push(post);
+      return posts;
+    }, []);
 
     return {user: user || {}, posts: posts};
   },
@@ -26,6 +28,7 @@ var UserPage = React.createClass({
   componentDidMount: function() {
     this.friendStatus = this.friendRequestStatus(this.props);
     TimelineStore.addChangeListener(this.onChange);
+    PostStore.addChangeListener(this.onChange);
     this.fetchUserPageData();
   },
   componentWillReceiveProps: function(newProps) {
@@ -36,6 +39,7 @@ var UserPage = React.createClass({
   },
   componentWillUnmount: function() {
     TimelineStore.removeChangeListener(this.onChange);
+    PostStore.removeChangeListener(this.onChange);
   },
   render: function() {
     var {user, posts} = this.state, answerFriendRequest, friendRequestStatus;

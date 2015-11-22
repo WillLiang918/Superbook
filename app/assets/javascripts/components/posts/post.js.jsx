@@ -12,7 +12,7 @@ var Post = React.createClass({
     }
 
     var dropdown;
-    var { currentUser, post, ...other } = this.props;
+    var {currentUser, post, ...other} = this.props;
     if (currentUser.id === post.author_id) {
       dropdown = (
         <DropDown>
