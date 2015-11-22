@@ -39,7 +39,7 @@
 }
 
 .friends-list > li {
-  min-width: 390px;
+  width: calc(50% - 15px);
   height: 98px;
   border: 1px solid #e9eaed;
   margin: 0 0 13px 13px;
@@ -70,6 +70,7 @@
   height: 100%;
   margin: 0 10px;
   flex-grow: 1;
+  flex-shrink: 1;
   align-items: center;
 }
 
@@ -124,7 +125,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-}   
+}
 
 .search-friends-container {
   position: relative;
