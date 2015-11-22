@@ -77,12 +77,6 @@ var Actions = {
     });
   },
 
-  receiveFriendships: function(data) {
-    AppDispatcher.dispatch(Object.assign({}, data, {
-      actionType: Constants.RECEIVE_FRIENDSHIPS,
-    }));
-  },
-
   unfriend: function(friendship) {
     AppDispatcher.dispatch({
       actionType: Constants.UNFRIEND,
