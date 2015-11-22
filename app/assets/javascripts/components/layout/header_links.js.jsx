@@ -18,10 +18,11 @@ var HeaderLinks = React.createClass({
         <li className="flex-center">
           <HeaderIconLinks {...this.props} />
         </li>
+
+        <li className="logout-container flex-center">
+          <LogoutMenu />
+        </li>
       </ul>
     );
   }
 });
-        // <li className="nav-link">
-        //   <LogoutButton />
-        // </li>

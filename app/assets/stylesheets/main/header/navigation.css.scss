@@ -1,0 +1,55 @@
+
+.nav-link-list {
+  float: right;
+  justify-content: flex-end;
+  height: 27px;
+  margin-top: 9px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.nav-link {
+  padding: 0 6px 0 12px;
+  height: 100%;
+}
+
+.nav-link:first-of-type {
+  padding-left: 4px;
+}
+
+.nav-link:not(:last-of-type) {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-link:nth-child(2) {
+  border-right: 0;
+  margin-right: 30px;
+}
+
+.logout-form {
+  height: 100%;
+}
+
+.nav-link a, .logout-button {
+  height: 100%;
+}
+
+.nav-link div:not(.center) {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-link:hover {
+  background-color: rgba(0, 0, 0, .1);
+  border-radius: 2px;
+}
+
+.nav-link .profile-preview {
+  width: 19px;
+  height: 19px;
+  margin-right: 8px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.7)
+}

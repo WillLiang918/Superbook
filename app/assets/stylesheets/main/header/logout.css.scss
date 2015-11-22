@@ -1,0 +1,46 @@
+.logout-container {
+  position: relative;
+  padding-left: 17px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.drop-down.logout-menu {
+  position: relative;
+  top: 0;
+  right: 0;
+  color: #141823;
+  font-weight: 400;
+}
+
+.logout-menu.drop-down a {
+  background: image-url("fb_icons5.png");
+  background-position: -51px -105px;
+  width: 11px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.logout-menu.drop-down ul {
+  top: calc(100% + 18px);
+  right: -13px;
+  background: #fff;
+  width: auto;
+}
+
+.logout-menu.drop-down li {
+  padding: 0 34px;
+  width: calc(100% - 68px);
+}
+
+.logout-menu.drop-down li:hover {
+  color: #fff;
+}
+
+.logout-menu > ul:not(.hidden):before,
+.logout-menu > ul:not(.hidden):after {
+  top: initial;
+  left: initial;
+  right: 6px;
+  bottom: calc(100% - 5px);
+  transform: none;
+}
