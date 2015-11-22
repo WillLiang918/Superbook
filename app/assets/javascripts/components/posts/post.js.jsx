@@ -12,10 +12,17 @@ var Post = React.createClass({
     }
 
     var dropdown;
-    if (this.props.currentUser.id === this.props.post.author_id) {
+    var { currentUser, post, ...other } = this.props;
+    if (currentUser.id === post.author_id) {
       dropdown = (
         <DropDown>
           <button _onClick={this.editPost}>Edit</button>
+          <button _onClick={this.deletePost}>Delete</button>
+        </DropDown>
+      );
+    } else if (currentUser.id === post.receiver_id) {
+      dropdown = (
+        <DropDown>
           <button _onClick={this.deletePost}>Delete</button>
         </DropDown>
       );

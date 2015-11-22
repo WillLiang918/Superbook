@@ -6,7 +6,7 @@ var PostsList = React.createClass({
           this.props.posts.map(function(post) {
             return (
               <li key={post.id}>
-                <Post post={post} currentUser={this.props.currentUser} />
+                <Post post={post} currentUser={this.props.currentUser} status={this.props.status} />
               </li>
             );
           }, this)
