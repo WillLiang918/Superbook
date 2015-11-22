@@ -1,5 +1,4 @@
 var Constants = keyMirror({
-  "RECEIVE_TIMELINE": null,
   "RECEIVE_CURRENT_USER": null,
   "RECEIVE_CURRENT_USER_FRIEND_REQUESTS": null,
   "POST_ADDED": null,
@@ -10,9 +9,7 @@ var Constants = keyMirror({
   "FRIEND_REQUEST_DELETED": null,
   "FRIEND_REQUEST_CANCELED": null,
   "FRIEND_REQUEST_ACCEPTED": null,
-  "RECEIVE_FRIENDSHIPS": null,
   "UNFRIEND": null,
-  "RECEIVE_USERS": null,
   "RECEIVE_USER_DATA": null,
   "RECEIVE_FRIEND_DATA": null
 });

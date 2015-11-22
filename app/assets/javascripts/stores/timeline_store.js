@@ -48,11 +48,6 @@
     dispatcherId: AppDispatcher.register(function(payload) {
       switch(payload.actionType) {
 
-        case Constants.RECEIVE_TIMELINE:
-          addTimeline(payload.timeline);
-          root.TimelineStore.emitChange();
-          break;
-
         case Constants.POST_ADDED:
           addPost(payload.post);
           root.TimelineStore.emitChange();

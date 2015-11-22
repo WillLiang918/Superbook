@@ -26,11 +26,6 @@
           setUser(payload.user);
           break;
 
-        case Constants.RECEIVE_USERS:
-          setUsers(payload.users);
-          root.UserStore.emitChange();
-          break;
-
         case Constants.RECEIVE_USER_DATA:
           setUsers(payload.users);
           break;

@@ -46,11 +46,6 @@
           root.FriendshipStore.emitChange();
           break;
 
-        case Constants.RECEIVE_FRIENDSHIPS:
-          setFriendships(payload);
-          root.FriendshipStore.emitChange();
-          break;
-
         case Constants.UNFRIEND:
           unfriend(payload.friendship);
           root.FriendshipStore.emitChange();

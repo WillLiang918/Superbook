@@ -1,12 +1,5 @@
 var Actions = {
 
-  receiveTimeline: function(timeline) {
-    AppDispatcher.dispatch({
-      actionType: Constants.RECEIVE_TIMELINE,
-      timeline: timeline
-    });
-  },
-
   receiveCurrentUser: function(user) {
     AppDispatcher.dispatch({
       actionType: Constants.RECEIVE_CURRENT_USER,
@@ -82,13 +75,6 @@ var Actions = {
       actionType: Constants.UNFRIEND,
       friendship: friendship
     });
-  },
-
-  receiveUsers: function(users) {
-     AppDispatcher.dispatch({
-       actionType: Constants.RECEIVE_USERS,
-       users: users
-     });
   },
 
   receiveUserData: function(data) {
