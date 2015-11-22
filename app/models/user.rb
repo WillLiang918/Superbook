@@ -72,9 +72,8 @@ class User < ActiveRecord::Base
     return user if user && user.is_password?(password)
   end
 
-  def to_builder
-    Jbuilder.new do |user|
-      user.(self, :id, :first_name, :last_name, :birthday, :sex, :email)
-    end
+  def as_json
+    context = ApplicationController.new.view_context
+    context.render('/api/users/user.json.jbuilder', handlers: [:jbuilder], user: self)
   end
 end

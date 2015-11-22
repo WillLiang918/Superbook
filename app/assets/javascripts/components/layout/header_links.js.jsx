@@ -6,8 +6,9 @@ var HeaderLinks = React.createClass({
       <ul className="nav-link-list flex-container">
         <li className="nav-link">
           <Link to={"users/" + currentUser.id}>
+            <img src={currentUser.avatar.profile} className="profile-preview" />
             <div>{currentUser.first_name}</div>
-            </Link>
+          </Link>
         </li>
         <li className="nav-link">
           <a href="#"><div>Home</div></a>
