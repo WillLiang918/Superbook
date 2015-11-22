@@ -22,6 +22,10 @@
     dispatcherId: AppDispatcher.register(function(payload) {
       switch(payload.actionType) {
 
+        case Constants.RECEIVE_CURRENT_USER:
+          setUser(payload.user);
+          break;
+
         case Constants.RECEIVE_USERS:
           setUsers(payload.users);
           root.UserStore.emitChange();
