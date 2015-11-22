@@ -50,7 +50,6 @@
 
         case Constants.RECEIVE_CURRENT_USER:
           resetFriendRequests();
-          root.FriendRequestStore.emitChange();
           break;
 
         case Constants.FRIEND_REQUEST_SENT:

@@ -15,6 +15,7 @@
       switch(payload.actionType) {
 
         case Constants.RECEIVE_CURRENT_USER:
+          AppDispatcher.waitFor([root.FriendRequestStore.dispatcherId]);
           setCurrentUser(payload.user);
           root.CurrentUserStore.emitChange();
           break;
