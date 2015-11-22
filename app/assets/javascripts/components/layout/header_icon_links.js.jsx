@@ -26,16 +26,7 @@ var HeaderIconLinks = React.createClass({
               <h3>Header</h3>
             </header>
 
-            <ul>
-              <li>Row #1</li>
-              <li>Row #2</li>
-              <li>Row #1</li>
-              <li>Row #2</li>
-              <li>Row #1</li>
-              <li>Row #2</li>
-              <li>Row #1</li>
-              <li>Row #2</li>
-            </ul>
+            <FriendRequestList requesters={this.props.requesters} />
           </article>
         </section>
       </div>

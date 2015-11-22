@@ -16,7 +16,7 @@ var HeaderLinks = React.createClass({
         </li>
 
         <li className="flex-center">
-          <HeaderIconLinks />
+          <HeaderIconLinks {...this.props} />
         </li>
       </ul>
     );

@@ -36,9 +36,14 @@ var App = React.createClass({
 
     return (
       <div>
-        <Header {...this.state} />
+        <Header {...this.state} requesters={this.requesters()} />
         {children}
       </div>
     );
+  },
+  requesters: function() {
+    return this.state.receivedFriendRequests.compactMap(function(userId) {
+      return this.state.users[userId];
+    }, this);
   }
 });
