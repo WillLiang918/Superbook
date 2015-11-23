@@ -12,7 +12,7 @@ var Post = React.createClass({
     }
 
     var dropdown;
-    var {currentUser, post, ...other} = this.props;
+    var {currentUser, post, comments, ...other} = this.props;
     if (currentUser.id === post.author_id) {
       dropdown = (
         <DropDown>
@@ -33,6 +33,8 @@ var Post = React.createClass({
         <Author {...this.props}/>
         {content}
         {dropdown}
+
+        <Comments comments={comments} />
       </article>
     );
   },

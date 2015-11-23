@@ -1,7 +1,6 @@
 var UserPage = React.createClass({
   getStateFromStores: function() {
     var userId = parseInt(this.props.params.id);
-    var user = this.props.users[userId];
 
     var postIds = TimelineStore.find(userId);
     var posts = postIds.reduceRight(function(posts, postId) {
@@ -10,7 +9,9 @@ var UserPage = React.createClass({
       return posts;
     }, []);
 
-    return {user: user || {}, posts: posts};
+    var comments = CommentStore.hashSlice(postIds);
+
+    return {posts: posts, comments: comments};
   },
   fetchUserPageData: function(id) {
     var userId = id || this.props.params.id;
@@ -29,6 +30,7 @@ var UserPage = React.createClass({
     this.friendStatus = this.friendRequestStatus(this.props);
     TimelineStore.addChangeListener(this.onChange);
     PostStore.addChangeListener(this.onChange);
+    CommentStore.addChangeListener(this.onChange);
     this.fetchUserPageData();
   },
   componentWillReceiveProps: function(newProps) {
@@ -40,9 +42,12 @@ var UserPage = React.createClass({
   componentWillUnmount: function() {
     TimelineStore.removeChangeListener(this.onChange);
     PostStore.removeChangeListener(this.onChange);
+    CommentStore.removeChangeListener(this.onChange);
   },
   render: function() {
-    var {user, posts} = this.state, answerFriendRequest, friendRequestStatus;
+    var posts = this.state.posts, answerFriendRequest, friendRequestStatus;
+    var userId = parseInt(this.props.params.id);
+    var user = this.props.users[userId] || {};
 
     switch(this.friendStatus) {
       case FriendConstants.REQUEST_RECEIVED:
@@ -67,7 +72,7 @@ var UserPage = React.createClass({
         break;
     }
 
-    var derivedState = {friends: this.friends(), status: this.friendStatus};
+    var derivedState = {friends: this.friends(), status: this.friendStatus, user: user};
 
     var children = React.Children.map(this.props.children, function(child, idx) {
       return React.cloneElement(child, Object.assign({}, this.props, this.state, derivedState));

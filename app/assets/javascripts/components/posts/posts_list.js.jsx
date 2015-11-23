@@ -1,15 +1,19 @@
 var PostsList = React.createClass({
   render: function() {
+    var {posts, currentUser, status, comments, ...other} = this.props;
+
     return (
       <ul className="posts-list">
         {
-          this.props.posts.map(function(post) {
+          posts.map(function(post) {
+            commentsByParent = comments[post.id];
+
             return (
               <li key={post.id}>
-                <Post post={post} currentUser={this.props.currentUser} status={this.props.status} />
+                <Post post={post} currentUser={currentUser} status={status} comments={commentsByParent}/>
               </li>
             );
-          }, this)
+          })
         }
       </ul>
     );

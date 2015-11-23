@@ -90,7 +90,7 @@ var ApiUtil = {
       }
     });
   },
-  
+
   fetchCurrentUserFriends: function() {
     $.ajax({
       url: "api/friends",
