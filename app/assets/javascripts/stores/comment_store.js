@@ -1,8 +1,17 @@
 (function(root) {
+  //NOTE: _comments structure::
+  // { post_id : {parent_comment_id => [comments]} }
   var _comments = {};
 
   var addComments = function(commentsHash) {
     Object.assign(_comments, commentsHash);
+  };
+
+  var addComment = function(comment) {
+    var post_id = comment.commentable_id, parent_id = comment.parent_id;
+    var commentsHash = _comments[post_id] = (_comments[post_id] || {});
+    var commentsArr = commentsHash[parent_id] = (commentsHash[parent_id] || []);
+    commentsArr.push(comment);
   };
 
   var addBlankComments = function(newPost) {
@@ -43,6 +52,11 @@
 
         case Constants.POST_DELETED:
           deletePostComments(payload.post);
+          break;
+
+        case Constants.COMMENT_CREATED:
+          addComment(payload.comment);
+          root.CommentStore.emitChange();
           break;
 
       }

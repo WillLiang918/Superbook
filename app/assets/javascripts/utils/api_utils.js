@@ -107,6 +107,18 @@ var ApiUtil = {
         Actions.receiveCurrentUserFriendRequests(data);
       }
     });
+  },
+
+  createComment: function(comment) {
+    $.ajax({
+      url: "api/comments",
+      type: "POST",
+      data: {comment: comment},
+      dataType: "json",
+      success: function(comment) {
+        Actions.commentCreated(comment);
+      }
+    });
   }
 
 };

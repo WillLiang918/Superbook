@@ -87,6 +87,13 @@ var Actions = {
     AppDispatcher.dispatch(Object.assign(data, {
       actionType: Constants.RECEIVE_FRIEND_DATA
     }));
+  },
+
+  commentCreated: function(comment) {
+    AppDispatcher.dispatch({
+      actionType: Constants.COMMENT_CREATED,
+      comment: comment
+    });
   }
 
 };

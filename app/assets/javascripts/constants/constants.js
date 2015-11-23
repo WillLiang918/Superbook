@@ -11,5 +11,6 @@ var Constants = keyMirror({
   "FRIEND_REQUEST_ACCEPTED": null,
   "UNFRIEND": null,
   "RECEIVE_USER_DATA": null,
-  "RECEIVE_FRIEND_DATA": null
+  "RECEIVE_FRIEND_DATA": null,
+  "COMMENT_CREATED": null
 });

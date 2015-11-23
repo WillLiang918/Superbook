@@ -1,7 +1,9 @@
-class Api::CommentsContrller < ApplicationContrller
+class Api::CommentsController < ApplicationController
 
   def create
-    @comment = Comment.create!(**comment_params, author_id: current_user.id)
+    @comment = Comment.new(comment_params)
+    @comment.author = current_user
+    @comment.save!
     render :show
   end
 

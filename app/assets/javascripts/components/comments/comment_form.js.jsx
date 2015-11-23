@@ -23,6 +23,13 @@ var CommentForm = React.createClass({
   },
   handleSubmit: function(e) {
     e.preventDefault();
-    console.log("Form submitted!");
+    var post = this.props.post;
+    var commentData = {
+      commentable_type: "Post",
+      commentable_id: post.id,
+      body: this.state.body
+    };
+    ApiUtil.createComment(commentData);
+    this.setState({body: ""});
   }
 });
