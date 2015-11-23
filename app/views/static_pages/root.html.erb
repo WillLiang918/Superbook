@@ -1,4 +1,4 @@
-<div>
+<div id="content-container">
   <%= render 'comments/modal' %>
   <div id="content">
 
@@ -7,7 +7,6 @@
 
 <script type="text/javascript">
 (function(root) {
-
   root.Assets = {
     "logo": "<%= image_path('logo.png') %>",
     "authToken": "<%= form_authenticity_token %>"

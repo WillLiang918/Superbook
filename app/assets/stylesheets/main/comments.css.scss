@@ -94,20 +94,3 @@ div.profile-thumb {
 .edit-comment:hover {
   background-position: -117px -409px;
 }
-
-
-
-
-
-#comment-modal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-#delete-comment {
-  display: none;
-}

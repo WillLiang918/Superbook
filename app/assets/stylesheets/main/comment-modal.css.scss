@@ -1,0 +1,69 @@
+#comment-modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+#comment-modal.is-active {
+  display: block;
+}
+
+#delete-comment {
+  width: 467px;
+  height: 131px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
+  font-size: 12px;
+}
+
+#delete-comment h3 {
+  width: calc(100% - 26px);
+  padding: 10px 12px;
+  background: #f6f7f8;
+  border-bottom: 1px solid #e5e5e5;
+  font-weight: bold;
+}
+
+#delete-comment p {
+  width: calc(100% - 24px);
+  padding: 12px;
+  font-size: 14px;
+}
+
+#delete-comment footer {
+  margin: 0 12px;
+  width: calc(100% - 24px);
+  padding: 12px 0;
+  border-top: 1px solid #dcdee3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#delete-comment button {
+  padding: 0 8px;
+  height: 24px;
+  border: 1px solid;
+  border-radius: 2px;
+}
+
+#delete-comment button:last-of-type {
+  margin-left: 4px;
+}
+
+#delete-comment .gray {
+  border-color: #cccccc #c5c6c8 #b6b7b9;
+}
+
+#delete-comment .blue {
+  border-color: #435a8b #3c5488 #334c83;
+}

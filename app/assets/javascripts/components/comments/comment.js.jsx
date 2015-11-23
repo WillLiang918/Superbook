@@ -1,4 +1,7 @@
 var Comment = React.createClass({
+  componentDidMount: function() {
+    this.$modal = $("#comment-modal");
+  },
   render: function() {
     var {comment, users, ...other} = this.props;
     var user = users[comment.author_id];
@@ -13,8 +16,21 @@ var Comment = React.createClass({
           <Link to={userUrl} className="author-name">{userName}</Link>
           {comment.body}
         </p>
-        <button className="edit-comment hover-bubble-above" data-hover="Remove" />
+        <button
+          className="edit-comment hover-bubble-above"
+          data-hover="Remove"
+          onClick={this.activateModal}
+        />
       </article>
     );
+  },
+  activateModal: function() {
+    this.$modal.addClass("is-active");
+  },
+  deactivateModal: function() {
+    this.$modal.removeClass("is-active");
+  },
+  cancel: function() {
+
   }
 });
