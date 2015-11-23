@@ -44,8 +44,8 @@ li.active > .friend-requests-icon {
   z-index: 20;
 }
 
-.icon-link-list > li.active:after,
-.logout-menu > ul:not(.hidden):after
+.icon-link-list > li.active:after
+// .logout-menu > ul:not(.hidden):after
 {
   border-bottom: 11px solid #F8EBE5;
   border-left: 11px solid transparent;

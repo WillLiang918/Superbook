@@ -1,6 +1,14 @@
 var Comment = React.createClass({
+  getInitialState: function() {
+    return {editOpened: false};
+  },
   componentDidMount: function() {
     this.$modal = $("#comment-modal");
+  },
+  openEdit: function() {
+    if (!this.state.editOpened) {
+      this.setState({editOpened: true});
+    }
   },
   render: function() {
     var {comment, users, currentUser, post, ...other} = this.props;
@@ -13,7 +21,11 @@ var Comment = React.createClass({
     var changeCommentButton;
     if (currentUser.id === comment.author_id) {
       changeCommentButton = (
-        <DropDown className="edit-comment hover-bubble-above" data-hover="Edit or Delete">
+        <DropDown
+          className={"edit-comment " + (this.state.editOpened ? "" : "hover-bubble-above")}
+          data-hover="Edit or Delete"
+          onClick={this.openEdit}
+        >
           <button>Edit...</button>
           <button>Delete...</button>
         </DropDown>
