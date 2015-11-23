@@ -58,8 +58,7 @@
 }
 
 .comment-body {
-  flex-grow: 1;
-  flex-shrink: 1;
+  flex: 1 1 auto;
 }
 
 .comment-body > .author-name {
@@ -75,4 +74,39 @@
 
 div.profile-thumb {
   background: #a4a4a4;
+}
+
+.edit-comment {
+  display: none;
+  position: relative;
+  width: 12px;
+  height: 12px;
+  background: image-url("fb_icons3.png");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: -91px -409px;
+}
+
+.comment:hover > .edit-comment {
+  display: block;
+}
+
+.edit-comment:hover {
+  background-position: -117px -409px;
+}
+
+.edit-comment:hover:before, .edit-comment:hover:after {
+  top: auto;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.edit-comment:hover:before {
+  bottom: calc(100% + 4px);
+}
+
+.edit-comment:hover:after {
+  border-bottom: 0;
+  border-top: 5px solid #000;
 }
