@@ -26,7 +26,7 @@ var Comment = React.createClass({
           data-hover="Edit or Delete"
           onClick={this.openEdit}
         >
-          <button>Edit...</button>
+          <button _onClick={this.editComment}>Edit...</button>
           <button _onClick={this.deleteComment}>Delete...</button>
         </DropDown>
       );
@@ -40,16 +40,26 @@ var Comment = React.createClass({
       );
     }
 
-    return (
-      <article className="comment flex-container">
-        <Thumbnail user={user} />
-        <p className="comment-body">
-          <Link to={userUrl} className="author-name">{userName}</Link>
-          {comment.body}
-        </p>
-        {changeCommentButton}
-      </article>
-    );
+    if (this.state.editing) {
+      return (
+        <EditCommentForm
+          comment={comment}
+          currentUser={currentUser}
+          finishEditing={this.finishEditing}
+        />
+      );
+    } else {
+      return (
+        <article className="comment flex-container">
+          <Thumbnail user={user} />
+          <p className="comment-body">
+            <Link to={userUrl} className="author-name">{userName}</Link>
+            {comment.body}
+          </p>
+          {changeCommentButton}
+        </article>
+      );
+    }
   },
   activateModal: function() {
     this.$modal.addClass("is-active").off("click");
@@ -63,5 +73,11 @@ var Comment = React.createClass({
     var comment = this.props.comment;
     ApiUtil.deleteComment(comment.id);
     this.deactivateModal();
+  },
+  editComment: function() {
+    this.setState({editing: true});
+  },
+  finishEditing: function() {
+    this.setState({editing: false});
   }
 });

@@ -160,3 +160,19 @@ div.profile-thumb {
 .edit-comment.drop-down > ul > li:hover {
   background-color: #3B5998;
 }
+
+
+.edit-comment-form {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.edit-comment-form > textarea {
+  background: #fff;
+  border: 1px solid #dcdee3;
+  height: auto;
+  min-height: 32px;
+  padding: 7px 5px 7px 3px;
+  width: calc(100% - 16px);
+  word-wrap: break-word;
+}
