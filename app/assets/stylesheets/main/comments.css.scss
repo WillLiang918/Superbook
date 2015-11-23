@@ -76,7 +76,7 @@ div.profile-thumb {
   background: #a4a4a4;
 }
 
-.edit-comment {
+.delete-comment, .edit-comment {
   display: none;
   position: relative;
   width: 12px;
@@ -87,10 +87,14 @@ div.profile-thumb {
   background-position: -91px -409px;
 }
 
-.comment:hover > .edit-comment {
+.comment:hover > .delete-comment, .comment:hover > .edit-comment {
   display: block;
 }
 
-.edit-comment:hover {
+.delete-comment:hover {
   background-position: -117px -409px;
+}
+
+.edit-comment:hover:before {
+  white-space: nowrap;
 }

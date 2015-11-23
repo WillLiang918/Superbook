@@ -3,11 +3,30 @@ var Comment = React.createClass({
     this.$modal = $("#comment-modal");
   },
   render: function() {
-    var {comment, users, ...other} = this.props;
+    var {comment, users, currentUser, post, ...other} = this.props;
     var user = users[comment.author_id];
     var avatarUrl = user.avatar.profile;
     var userUrl = "/users/" + user.id;
     var userName = user.first_name + " " + user.last_name;
+
+
+    var changeCommentButton;
+    if (currentUser.id === comment.author_id) {
+      changeCommentButton = (
+        <button
+          className="edit-comment hover-bubble-above"
+          data-hover="Edit or Delete"
+        />
+      )
+    } else if (currentUser.id === post.author_id || currentUser.id === post.receiver_id) {
+      changeCommentButton = (
+        <button
+          className="delete-comment hover-bubble-above"
+          data-hover="Remove"
+          onClick={this.activateModal}
+        />
+      );
+    }
 
     return (
       <article className="comment flex-container">
@@ -16,11 +35,7 @@ var Comment = React.createClass({
           <Link to={userUrl} className="author-name">{userName}</Link>
           {comment.body}
         </p>
-        <button
-          className="edit-comment hover-bubble-above"
-          data-hover="Remove"
-          onClick={this.activateModal}
-        />
+        {changeCommentButton}
       </article>
     );
   },
