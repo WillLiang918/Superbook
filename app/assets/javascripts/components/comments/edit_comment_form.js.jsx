@@ -17,11 +17,17 @@ var EditCommentForm = React.createClass({
     return (
       <form className="edit-comment-form">
         <Thumbnail user={user} />
-        <textarea value={this.state.body} onKeyPress={this.onKeyPress} onChange={this.onChange} />
+        <textarea
+          value={this.state.body}
+          onKeyPress={this.onKeyPress}
+          onChange={this.onChange}
+          ref={ function(body) {this.body = body;}.bind(this) }
+        />
       </form>
     );
   },
   onChange: function(e) {
+    this.body.style.height = (this.body.scrollHeight - 14) + "px"; //NOTE: 14 is for padding
     this.setState({body: e.target.value});
   },
   onKeyPress: function(e) {
