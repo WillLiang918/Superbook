@@ -17,12 +17,19 @@ var EditCommentForm = React.createClass({
     return (
       <form className="edit-comment-form">
         <Thumbnail user={user} />
-        <textarea
-          value={this.state.body}
-          onKeyPress={this.onKeyPress}
-          onChange={this.onChange}
-          ref={ function(body) {this.body = body;}.bind(this) }
-        />
+
+        <div>
+          <textarea
+            value={this.state.body}
+            onKeyPress={this.onKeyPress}
+            onChange={this.onChange}
+            ref={ function(body) {this.body = body;}.bind(this) }
+          />
+
+          <a href="javascript:void(0)" className="cancel-edit" onClick={this.cancel}>
+            Cancel
+          </a>
+        </div>
       </form>
     );
   },
@@ -38,6 +45,9 @@ var EditCommentForm = React.createClass({
   updateComment: function(comment) {
     var updatedComment = Object.assign({}, this.props.comment, comment);
     ApiUtil.updateComment(updatedComment);
+    this.props.finishEditing();
+  },
+  cancel: function() {
     this.props.finishEditing();
   }
 });

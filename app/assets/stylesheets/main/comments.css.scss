@@ -167,9 +167,14 @@ div.profile-thumb {
 .edit-comment-form {
   display: flex;
   justify-content: flex-start;
+  text-align: left;
 }
 
-.edit-comment-form > textarea {
+.edit-comment-form > div {
+  width: 100%;
+}
+
+.edit-comment-form textarea {
   background: #fff;
   border: 1px solid #dcdee3;
   height: auto;
@@ -177,4 +182,14 @@ div.profile-thumb {
   padding: 7px 5px 7px 3px;
   width: calc(100% - 16px);
   word-wrap: break-word;
+}
+
+.cancel-edit {
+  font-size: 9px;
+  color: #3b5998;
+  cursor: pointer;
+}
+
+.cancel-edit:hover {
+  text-decoration: underline;
 }
