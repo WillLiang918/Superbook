@@ -34,13 +34,19 @@
       switch(payload.actionType) {
 
         case Constants.POST_ADDED:
-          AppDispatcher.waitFor([root.PostStore.dispatcherId]);
+          AppDispatcher.waitFor([
+            root.PostStore.dispatcherId,
+            root.CommentStore.dispatcherId
+          ]);
           addPost(payload.post);
           root.TimelineStore.emitChange();
           break;
 
         case Constants.POST_DELETED:
-          AppDispatcher.waitFor([root.PostStore.dispatcherId]);
+          AppDispatcher.waitFor([
+            root.PostStore.dispatcherId,
+            root.CommentStore.dispatcherId
+          ]);
           deletePost(payload.post);
           root.TimelineStore.emitChange();
           break;
