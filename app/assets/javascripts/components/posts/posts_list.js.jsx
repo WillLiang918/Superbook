@@ -1,6 +1,6 @@
 var PostsList = React.createClass({
   render: function() {
-    var {posts, currentUser, status, comments, ...other} = this.props;
+    var {posts, currentUser, users, status, comments, ...other} = this.props;
 
     return (
       <ul className="posts-list">
@@ -10,7 +10,13 @@ var PostsList = React.createClass({
 
             return (
               <li key={post.id}>
-                <Post post={post} currentUser={currentUser} status={status} comments={commentsByParent}/>
+                <Post
+                  post={post}
+                  currentUser={currentUser}
+                  users={users}
+                  status={status}
+                  comments={commentsByParent}
+                />
               </li>
             );
           })

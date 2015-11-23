@@ -36,10 +36,10 @@ json.comments do
       accum[comment.parent_id] << comment; accum
     end
 
-    json.set! post.id do
-      if nested_comments.size == 0
-        json.array! []
-      else
+    if nested_comments.size == 0
+      json.set! post.id, {}
+    else
+      json.set! post.id do
         nested_comments.each do |parent_id, comments|
           json.set! (parent_id || "null") do
             json.array! comments

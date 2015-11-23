@@ -12,7 +12,7 @@ var Post = React.createClass({
     }
 
     var dropdown;
-    var {currentUser, post, comments, ...other} = this.props;
+    var {currentUser, users, post, comments, ...other} = this.props;
     if (currentUser.id === post.author_id) {
       dropdown = (
         <DropDown>
@@ -29,7 +29,7 @@ var Post = React.createClass({
     }
 
     var commentsByParent = comments;
-    var topLevelComments = comments[null];
+    var topLevelComments = comments[null] || [];
     return (
       <div>
         <article className="post drop-down-container">
@@ -43,6 +43,7 @@ var Post = React.createClass({
           commentsByParent={commentsByParent}
           post={post}
           currentUser={currentUser}
+          users={users}
         />
       </div>
     );

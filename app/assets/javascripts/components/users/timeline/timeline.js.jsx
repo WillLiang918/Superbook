@@ -1,11 +1,18 @@
 var Timeline = React.createClass({
   render: function() {
-    var {user, posts, currentUser, friends, status, comments, ...other} = this.props;
+    var {user, users, posts, currentUser, friends, status, comments, ...other} = this.props;
 
     return (
       <div className="timeline flex-container">
         <UserSideNav friends={friends} />
-        <PostsIndex posts={posts} user={user} currentUser={currentUser} status={status} comments={comments} />
+        <PostsIndex
+          posts={posts}
+          user={user}
+          users={users}
+          currentUser={currentUser}
+          status={status}
+          comments={comments}
+        />
       </div>
     );
   }
