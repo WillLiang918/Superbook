@@ -137,23 +137,22 @@ button.gray {
 }
 
 .posts-list > li {
-  width: calc(100% - 26px);
+  width: 100%;
   margin-bottom: 10px;
   background-color: #fff;
   border-radius: 3px;
-  padding: 12px;
   padding-bottom: 0;
   border: 1px solid;
   border-color: #e5e6e9 #dfe0e4 #d0d1d5;
 }
 
 .post {
-
+  padding: 12px 12px 0 12px;
 }
 
 .post .drop-down {
-  top: -2px;
-  right: -5px;
+  top: 10px;
+  right: 7px;
 }
 
 .author-details {

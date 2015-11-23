@@ -28,14 +28,23 @@ var Post = React.createClass({
       );
     }
 
+    var commentsByParent = comments;
+    var topLevelComments = comments[null];
     return (
-      <article className="post drop-down-container">
-        <Author {...this.props}/>
-        {content}
-        {dropdown}
+      <div>
+        <article className="post drop-down-container">
+          <Author {...this.props}/>
+          {content}
+          {dropdown}
+        </article>
 
-        <Comments comments={comments} />
-      </article>
+        <Comments
+          comments={topLevelComments}
+          commentsByParent={commentsByParent}
+          post={post}
+          currentUser={currentUser}
+        />
+      </div>
     );
   },
   editPost: function() {
