@@ -51,6 +51,7 @@
 .comment {
   flex-align: flex-start;
   text-align: left;
+  position: relative;
 }
 
 .comment-list > li:first-of-type {
@@ -76,24 +77,45 @@ div.profile-thumb {
   background: #a4a4a4;
 }
 
-.delete-comment, .edit-comment {
+.delete-comment, .edit-comment > a {
   display: none;
   position: relative;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+.delete-comment {
   width: 12px;
   height: 12px;
   background: image-url("fb_icons3.png");
-  background-size: auto;
-  background-repeat: no-repeat;
   background-position: -91px -409px;
 }
 
-.comment:hover > .delete-comment, .comment:hover > .edit-comment {
+.comment:hover > .delete-comment,
+.comment:hover > .edit-comment > a,
+.edit-comment > a.activated {
   display: block;
 }
 
 .delete-comment:hover {
   background-position: -117px -409px;
 }
+
+.edit-comment > a {
+  width: 10px;
+  height: 10px;
+  background: image-url("fb_icons.png");
+  background-position: -12px -72px;
+}
+
+.edit-comment > a:hover {
+  background-position: -34px -72px;
+}
+
+.edit-comment > a:active {
+  background-position: -23px -72px;
+}
+
 
 .edit-comment:hover:before {
   white-space: nowrap;
