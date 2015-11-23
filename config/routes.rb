@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
     resources :friend_requests, only: [:index]
     resources :friends, only: [:index]
+    resources :comments, only: [:create]
 
     post 'friend_requests/:user_id/accept' => 'friend_requests#accept'
     post 'friend_requests/:user_id/send' => 'friend_requests#create'
