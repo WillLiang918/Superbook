@@ -25,6 +25,14 @@ var Comment = React.createClass({
     );
   },
   activateModal: function() {
-    this.$modal.addClass("is-active");
+    this.$modal.addClass("is-active").off("click");
+    this.$modal.on("click", ".cancel", this.deactivateModal);
+    this.$modal.on("click", ".delete", this.deleteComment);
+  },
+  deactivateModal: function() {
+    this.$modal.removeClass("is-active");
+  },
+  deleteComment: function(e) {
+    console.log("Deleting comment #", this.props.comment.id);
   }
 });
