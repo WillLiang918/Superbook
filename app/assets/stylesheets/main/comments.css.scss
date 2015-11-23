@@ -94,19 +94,3 @@ div.profile-thumb {
 .edit-comment:hover {
   background-position: -117px -409px;
 }
-
-.edit-comment:hover:before, .edit-comment:hover:after {
-  top: auto;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.edit-comment:hover:before {
-  bottom: calc(100% + 4px);
-}
-
-.edit-comment:hover:after {
-  border-bottom: 0;
-  border-top: 5px solid #000;
-}

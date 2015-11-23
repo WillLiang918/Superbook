@@ -13,7 +13,7 @@ var Comment = React.createClass({
           <Link to={userUrl} className="author-name">{userName}</Link>
           {comment.body}
         </p>
-        <button className="edit-comment hover-bubble" data-hover="Remove" />
+        <button className="edit-comment hover-bubble-above" data-hover="Remove" />
       </article>
     );
   }

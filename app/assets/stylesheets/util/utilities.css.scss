@@ -106,7 +106,7 @@ button.blue {
   position: relative;
 }
 
-.hover-bubble:hover:before {
+.hover-bubble:hover:before, .hover-bubble-above:hover:before {
   content: attr( data-hover );
   height: 21px;
   display: block;
@@ -123,7 +123,7 @@ button.blue {
   z-index: 30;
 }
 
-.hover-bubble:hover:after {
+.hover-bubble:hover:after, .hover-bubble-above:hover:after {
   content: "";
   display: block;
   position: absolute;
@@ -136,10 +136,22 @@ button.blue {
   border-bottom: 5px solid #2B2B2B;
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
-},
+}
 
-.hover-bubble-above {
-  
+.hover-bubble-above:hover:before, .hover-bubble-above:hover:after {
+  top: auto;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hover-bubble-above:hover:before {
+  bottom: calc(100% + 4px);
+}
+
+.hover-bubble-above:hover:after {
+  border-bottom: 0;
+  border-top: 5px solid #000;
 }
 
 .hover-drop-down-container {
