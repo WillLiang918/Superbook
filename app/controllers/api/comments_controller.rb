@@ -22,8 +22,8 @@ class Api::CommentsController < ApplicationController
     end
 
     def must_have_permission_to_destroy
-      return unless params[:commentable_type] == "Post"
-      return if current_user.id == params[:author_id].to_i
+      return if params[:commentable_type] != "Post" || current_user.id == params[:author_id].to_i
+
       post = Post.find(params[:commentable_id])
       if current_user.id != post.sender_id && current_user.id != post.receiver_id
         render text: "You do not have permission to delete comment", status: :unauthorized

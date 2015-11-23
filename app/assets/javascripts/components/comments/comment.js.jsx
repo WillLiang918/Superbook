@@ -33,6 +33,8 @@ var Comment = React.createClass({
     this.$modal.removeClass("is-active");
   },
   deleteComment: function(e) {
-    console.log("Deleting comment #", this.props.comment.id);
+    var comment = this.props.comment;
+    ApiUtil.deleteComment(comment.id);
+    this.deactivateModal();
   }
 });

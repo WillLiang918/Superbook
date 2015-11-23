@@ -119,6 +119,16 @@ var ApiUtil = {
         Actions.commentCreated(comment);
       }
     });
+  },
+
+  deleteComment: function(commentId) {
+    $.ajax({
+      url: "api/comments/" + commentId,
+      type: "DELETE",
+      success: function(comment) {
+        Actions.commentDeleted(comment);
+      }
+    });
   }
 
 };

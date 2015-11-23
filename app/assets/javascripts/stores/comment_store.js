@@ -22,6 +22,21 @@
     delete _comments[deletedPost.id];
   };
 
+  var deleteComment = function(comment) {
+    if (comment.commentable_type !== "Post") return;
+
+    var commentsHash = _comments[comment.commentable_id];
+    var commentsArr = commentsHash[comment.parent_id];
+    if (commentsArr) {
+      var arrayIdx = commentsArr.findIndex(function(otherComment) {
+        return otherComment.id === comment.id;
+      });
+      if (arrayIdx >= 0) {
+        commentsArr.splice(arrayIdx, 1);
+      }
+    }
+  };
+
   root.CommentStore = Object.assign({}, root.StoreBase, {
 
     all: function() {
@@ -56,6 +71,11 @@
 
         case Constants.COMMENT_CREATED:
           addComment(payload.comment);
+          root.CommentStore.emitChange();
+          break;
+
+        case Constants.COMMENT_DELETED:
+          deleteComment(payload.comment);
           root.CommentStore.emitChange();
           break;
 

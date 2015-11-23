@@ -94,6 +94,13 @@ var Actions = {
       actionType: Constants.COMMENT_CREATED,
       comment: comment
     });
+  },
+
+  commentDeleted: function(comment) {
+    AppDispatcher.dispatch({
+      actionType: Constants.COMMENT_DELETED,
+      comment: comment
+    });
   }
 
 };
