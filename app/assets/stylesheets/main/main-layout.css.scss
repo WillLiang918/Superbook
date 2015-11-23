@@ -6,14 +6,16 @@ body {
 
 #content-container {
   position: relative;
+  height: auto;
   min-height: 100%;
 }
 
 #content {
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   background-color: #E9EAED;
-  position: absolute;
+  position: relative;
 }
 
 .main-container {

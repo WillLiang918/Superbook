@@ -101,6 +101,11 @@ div.profile-thumb {
   background-position: -117px -409px;
 }
 
+.edit-comment.drop-down {
+  top: 0;
+  right: 0;
+}
+
 .edit-comment > a {
   width: 10px;
   height: 10px;
@@ -116,7 +121,42 @@ div.profile-thumb {
   background-position: -23px -72px;
 }
 
-
 .edit-comment:hover:before {
   white-space: nowrap;
+}
+
+.edit-comment > ul {
+  right: -14px;
+  top: 19px;
+}
+
+.edit-comment > ul:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 100%;
+  right: 11px;
+  border-bottom: 8px solid #fff;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  z-index: 10;
+}
+
+.edit-comment > ul:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 100%;
+  right: 10px;
+  border-bottom: 9px solid rgba(0, 0, 0, .15);
+  border-right: 9px solid transparent;
+  border-left: 9px solid transparent;
+}
+
+.edit-comment.drop-down > ul > li:hover {
+  background-color: #3B5998;
 }
