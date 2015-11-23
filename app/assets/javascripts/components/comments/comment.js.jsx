@@ -1,6 +1,6 @@
 var Comment = React.createClass({
   getInitialState: function() {
-    return {editOpened: false};
+    return {editOpened: false, editing: false};
   },
   componentDidMount: function() {
     this.$modal = $("#comment-modal");
@@ -27,7 +27,7 @@ var Comment = React.createClass({
           onClick={this.openEdit}
         >
           <button>Edit...</button>
-          <button>Delete...</button>
+          <button _onClick={this.deleteComment}>Delete...</button>
         </DropDown>
       );
     } else if (currentUser.id === post.author_id || currentUser.id === post.receiver_id) {
