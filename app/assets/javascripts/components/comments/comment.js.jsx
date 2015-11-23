@@ -13,11 +13,11 @@ var Comment = React.createClass({
     var changeCommentButton;
     if (currentUser.id === comment.author_id) {
       changeCommentButton = (
-        <button
-          className="edit-comment hover-bubble-above"
-          data-hover="Edit or Delete"
-        />
-      )
+        <DropDown className="edit-comment hover-bubble-above" data-hover="Edit or Delete">
+          <button>Edit...</button>
+          <button>Delete...</button>
+        </DropDown>
+      );
     } else if (currentUser.id === post.author_id || currentUser.id === post.receiver_id) {
       changeCommentButton = (
         <button

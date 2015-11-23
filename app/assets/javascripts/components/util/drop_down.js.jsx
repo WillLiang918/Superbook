@@ -3,8 +3,10 @@ var DropDown = React.createClass({
     return {active: false};
   },
   render: function() {
+    var {className, ...other} = this.props;
+
     return (
-      <div className={"drop-down " + (this.props.className || "")}>
+      <div className={"drop-down " + (className || "")} {...other}>
         <a href="#" onClick={this.onClick} ref="link"></a>
 
         <ul className={this.state.active ? "" : "hidden"}>
