@@ -14,6 +14,10 @@ var Comment = React.createClass({
           {comment.body}
         </p>
         <button className="edit-comment hover-bubble-above" data-hover="Remove" />
+
+        <div className="comment-modal">
+          
+        </div>
       </article>
     );
   }
