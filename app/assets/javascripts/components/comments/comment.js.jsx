@@ -26,11 +26,5 @@ var Comment = React.createClass({
   },
   activateModal: function() {
     this.$modal.addClass("is-active");
-  },
-  deactivateModal: function() {
-    this.$modal.removeClass("is-active");
-  },
-  cancel: function() {
-
   }
 });
