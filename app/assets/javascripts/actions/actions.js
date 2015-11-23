@@ -101,6 +101,13 @@ var Actions = {
       actionType: Constants.COMMENT_DELETED,
       comment: comment
     });
+  },
+
+  commentUpdated: function(comment) {
+    AppDispatcher.dispatch({
+      actionType: Constants.COMMENT_UPDATED,
+      comment: comment
+    });
   }
 
 };

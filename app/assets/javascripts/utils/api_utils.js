@@ -129,6 +129,17 @@ var ApiUtil = {
         Actions.commentDeleted(comment);
       }
     });
+  },
+
+  updateComment: function(updatedComment) {
+    $.ajax({
+      url: "api/comments/" + updatedComment.id,
+      type: "PATCH",
+      data: {comment: {body: updatedComment.body}},
+      success: function(comment) {
+        Actions.commentUpdated(comment);
+      }
+    });
   }
 
 };

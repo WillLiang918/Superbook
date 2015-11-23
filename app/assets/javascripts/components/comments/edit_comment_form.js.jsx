@@ -31,6 +31,7 @@ var EditCommentForm = React.createClass({
   },
   updateComment: function(comment) {
     var updatedComment = Object.assign({}, this.props.comment, comment);
+    ApiUtil.updateComment(updatedComment);
     this.props.finishEditing();
   }
 });

@@ -22,18 +22,33 @@
     delete _comments[deletedPost.id];
   };
 
-  var deleteComment = function(comment) {
-    if (comment.commentable_type !== "Post") return;
+  var deleteComment = function(deletedComment) {
+    if (deletedComment.commentable_type !== "Post") return;
 
-    var commentsHash = _comments[comment.commentable_id];
-    var commentsArr = commentsHash[comment.parent_id];
+    var commentsHash = _comments[deletedComment.commentable_id];
+    var commentsArr = commentsHash[deletedComment.parent_id];
     if (commentsArr) {
-      var arrayIdx = commentsArr.findIndex(function(otherComment) {
-        return otherComment.id === comment.id;
+      var arrayIdx = commentsArr.findIndex(function(comment) {
+        return comment.id === deletedComment.id;
       });
       if (arrayIdx >= 0) {
         commentsArr.splice(arrayIdx, 1);
       }
+    }
+  };
+
+  var updateComment = function(updatedComment) {
+    var commentsHash = _comments[updatedComment.commentable_id];
+    var commentsArr = commentsHash[updatedComment.parent_id];
+    if (commentsArr) {
+      var arrayIdx = commentsArr.findIndex(function(comment) {
+        return updatedComment.id === comment.id;
+      });
+      if (arrayIdx >= 0) {
+        commentsArr[arrayIdx] = updatedComment;
+      }
+    } else {
+      commentsArr = [updatedComment];
     }
   };
 
@@ -78,6 +93,10 @@
           deleteComment(payload.comment);
           root.CommentStore.emitChange();
           break;
+
+        case Constants.COMMENT_UPDATED:
+          updateComment(payload.comment);
+          root.CommentStore.emitChange();
 
       }
     })

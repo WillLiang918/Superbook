@@ -16,7 +16,7 @@ class Api::CommentsController < ApplicationController
     render :show
   end
 
-  def udpate
+  def update
     @comment.update!(update_params)
     render :show
   end
@@ -27,8 +27,8 @@ class Api::CommentsController < ApplicationController
       params.require(:comment).permit(:commentable_type, :commentable_id, :body, :parent_id)
     end
 
-    def udpate_params
-      params.requere(:comment).permit(:body)
+    def update_params
+      params.require(:comment).permit(:body)
     end
 
     def must_have_permission_to_destroy
