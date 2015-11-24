@@ -5,15 +5,16 @@ body {
 }
 
 #content-container {
+  display: table;
   position: relative;
-  height: auto;
-  min-height: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 #content {
+  display: table-row;
   width: 100%;
-  height: auto;
-  min-height: 100%;
+  height: 100%;
   background-color: #E9EAED;
   position: relative;
 }
