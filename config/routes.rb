@@ -18,10 +18,13 @@ Rails.application.routes.draw do
     resources :friends, only: [:index]
     resources :comments, only: [:create, :destroy, :update]
 
-    post 'friend_requests/:user_id/accept' => 'friend_requests#accept'
-    post 'friend_requests/:user_id/send' => 'friend_requests#create'
+    post   'friend_requests/:user_id/accept' => 'friend_requests#accept'
+    post   'friend_requests/:user_id/send' => 'friend_requests#create'
     delete 'friend_requests/:user_id/delete' => 'friend_requests#deny'
     delete 'friend_requests/:user_id/cancel' => 'friend_requests#cancel'
+
+    post   'likes' => 'likes#like'
+    delete 'likes' => 'likes#unlike'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
