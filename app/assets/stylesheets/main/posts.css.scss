@@ -236,3 +236,11 @@ button.gray {
 .post-action-nav .post-comment-action:before {
   background-position: -28px -55px;
 }
+
+.post-like-action.liked {
+  color: #5890ff;
+}
+
+.post-like-action.liked:before {
+  background-position: -58px -55px;
+}
