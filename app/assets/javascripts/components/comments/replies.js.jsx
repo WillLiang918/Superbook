@@ -12,20 +12,24 @@ var Replies = React.createClass({
 
   },
   render: function() {
-    var replies = this.props.replies;
+    var {replies, currentUser, parent, users, post, ...other} = this.props;
 
     return (
-      <ul className="replies">
-        {
-          replies.map(function(reply) {
-            return (
-              <li key={reply.id} className="reply">
-                <Comment comment={reply} {...this.props} commentsByParent={{}} />
-              </li>
-            );
-          }, this)
-        }
-      </ul>
+      <div className="replies">
+        <ul>
+          {
+            replies.map(function(reply) {
+              return (
+                <li key={reply.id} className="reply">
+                  <Comment comment={reply} {...this.props} commentsByParent={{}} />
+                </li>
+              );
+            }, this)
+          }
+        </ul>
+
+        <CommentForm currentUser={currentUser} post={post} parent={parent} className="reply-form" />
+      </div>
     );
   }
 });

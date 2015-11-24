@@ -1,0 +1,20 @@
+.replies {
+  margin: 8px 12px 6px 44px;
+  width: calc(100% - 58px);
+  border-left: 2px solid #dcdee3;
+}
+
+.reply, .reply-form {
+  padding: 0 4px 4px 8px;
+  width: calc(100% - 12px);
+  word-wrap: break-word;
+}
+
+.reply .profile-thumb, .replies .profile-thumb {
+  width: 20px;
+  height: 20px;
+}
+
+.reply-form {
+  height: auto;
+}
