@@ -11,12 +11,8 @@ var Comment = React.createClass({
     }
   },
   render: function() {
-    var {comment, users, currentUser, post, ...other} = this.props;
+    var {comment, commentsByParent, users, currentUser, post, ...other} = this.props;
     var user = users[comment.author_id];
-    var avatarUrl = user.avatar.profile;
-    var userUrl = "/users/" + user.id;
-    var userName = user.first_name + " " + user.last_name;
-
 
     var changeCommentButton;
     if (currentUser.id === comment.author_id) {
@@ -40,26 +36,30 @@ var Comment = React.createClass({
       );
     }
 
+    var replies, childComments = commentsByParent[comment.id];
+    if (childComments && childComments.length > 0) {
+      replies = <Replies replies={childComments} parent={comment} users={users} currentUser={currentUser} post={post} />;
+    }
+
+    var mainComment;
     if (this.state.editing) {
-      return (
-        <EditCommentForm
-          comment={comment}
-          currentUser={currentUser}
-          finishEditing={this.finishEditing}
-        />
-      );
+      mainComment = <EditCommentForm comment={comment} currentUser={currentUser} finishEditing={this.finishEditing} />;
     } else {
-      return (
+      mainComment = (
         <article className="comment flex-container">
           <Thumbnail user={user} />
-          <p className="comment-body">
-            <Link to={userUrl} className="author-name">{userName}</Link>
-            {comment.body}
-          </p>
+          <CommentBody user={user} comment={comment} />
           {changeCommentButton}
         </article>
       );
     }
+
+    return (
+      <div className="comment-container">
+        {mainComment}
+        {replies}
+      </div>
+    )
   },
   activateModal: function() {
     this.$modal.addClass("is-active").off("click");
