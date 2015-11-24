@@ -99,6 +99,6 @@ var Comment = React.createClass({
   focusForm: function() {
     var $this = $(ReactDOM.findDOMNode(this));
     var $form = $this.find(".reply-form");
-    $form.find("input").eq(0).focus();
+    var $input = $form.find("input").eq(0).focus();
   }
 });
