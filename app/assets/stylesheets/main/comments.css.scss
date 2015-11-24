@@ -194,7 +194,21 @@ div.profile-thumb {
   text-decoration: underline;
 }
 
+.comment-nav {
+  padding-top: 2px;
+}
 
-.reply-form input[type="text"] {
-  padding: 0 0 0 5px;
+.comment-nav a {
+  color: #3b5998;
+}
+
+.comment-nav a:first-of-type:after {
+  content: "·";
+  width: 10px;
+  display: inline-block;
+  text-align: center;
+}
+
+.comment-nav a:hover {
+  text-decoration: underline;
 }

@@ -5,10 +5,14 @@ var CommentBody = React.createClass({
     var userName = user.first_name + " " + user.last_name;
 
     return (
-      <p className="comment-body">
+      <div className="comment-body">
         <Link to={userUrl} className="author-name">{userName}</Link>
         {comment.body}
-      </p>
+        <div className="comment-nav">
+          <a href="javascript:void(0)">Like</a>
+          <a href="javascript:void(0)">Reply</a>
+        </div>
+      </div>
     );
   }
 });
