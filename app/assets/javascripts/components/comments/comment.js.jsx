@@ -11,7 +11,7 @@ var Comment = React.createClass({
     }
   },
   render: function() {
-    var {comment, commentsByParent, users, currentUser, post, ...other} = this.props;
+    var {comment, commentsByParent, users, currentUser, post, isReply, ...other} = this.props;
     var user = users[comment.author_id];
 
     var changeCommentButton;
@@ -45,6 +45,7 @@ var Comment = React.createClass({
         currentUser={currentUser}
         post={post}
         showReplyForm={this.state.showReplyForm}
+        isReply={isReply}
       />
     );
 
@@ -55,7 +56,7 @@ var Comment = React.createClass({
       mainComment = (
         <article className="comment flex-container">
           <Thumbnail user={user} />
-          <CommentBody user={user} comment={comment} showReplyForm={this.showReplyForm} />
+          <CommentBody user={user} comment={comment} showReplyForm={this.showReplyForm} isReply={isReply} />
           {changeCommentButton}
         </article>
       );
@@ -90,6 +91,8 @@ var Comment = React.createClass({
     this.props.finishEdit();
   },
   showReplyForm: function() {
-    this.setState({showReplyForm: true});
+    if (!this.props.isReply) {
+      this.setState({showReplyForm: true});
+    }
   }
 });

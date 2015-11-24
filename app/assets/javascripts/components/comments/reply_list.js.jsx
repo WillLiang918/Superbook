@@ -11,7 +11,7 @@ var ReplyList = React.createClass({
         replies.map(function(reply) {
           return (
             <li key={reply.id} className="reply">
-              <Comment comment={reply} {...this.props} commentsByParent={{}} />
+              <Comment comment={reply} {...this.props} commentsByParent={{}} isReply={true} />
             </li>
           );
         }, this)

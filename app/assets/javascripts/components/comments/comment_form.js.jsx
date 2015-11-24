@@ -11,7 +11,7 @@ var CommentForm = React.createClass({
     return (
       <form className={className} onSubmit={this.handleSubmit}>
         <img src={avatarUrl} className="profile-thumb" />
-        <input type="text" value={this.state.body} onChange={this.onChange} placeholder={placeholder} />
+        <input type="text" value={this.state.body} onChange={this.onChange} placeholder={placeholder} autofocus />
       </form>
     );
   },
