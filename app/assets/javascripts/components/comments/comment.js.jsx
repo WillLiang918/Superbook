@@ -1,6 +1,6 @@
 var Comment = React.createClass({
   getInitialState: function() {
-    return {editOpened: false, editing: false};
+    return {editOpened: false, editing: false, showReplyForm: false};
   },
   componentDidMount: function() {
     this.$modal = $("#comment-modal");
@@ -36,10 +36,17 @@ var Comment = React.createClass({
       );
     }
 
-    var replies, childComments = commentsByParent[comment.id];
-    if (childComments && childComments.length > 0) {
-      replies = <Replies replies={childComments} parent={comment} users={users} currentUser={currentUser} post={post} />;
-    }
+    var childComments = commentsByParent[comment.id];
+    var replies = (
+      <Replies
+        replies={childComments}
+        parent={comment}
+        users={users}
+        currentUser={currentUser}
+        post={post}
+        showReplyForm={this.state.showReplyForm}
+      />
+    );
 
     var mainComment;
     if (this.state.editing) {
@@ -48,7 +55,7 @@ var Comment = React.createClass({
       mainComment = (
         <article className="comment flex-container">
           <Thumbnail user={user} />
-          <CommentBody user={user} comment={comment} />
+          <CommentBody user={user} comment={comment} showReplyForm={this.showReplyForm} />
           {changeCommentButton}
         </article>
       );
@@ -81,5 +88,8 @@ var Comment = React.createClass({
   finishEditing: function() {
     this.setState({editing: false});
     this.props.finishEdit();
+  },
+  showReplyForm: function() {
+    this.setState({showReplyForm: true});
   }
 });

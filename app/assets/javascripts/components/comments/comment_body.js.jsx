@@ -9,8 +9,8 @@ var CommentBody = React.createClass({
         <Link to={userUrl} className="author-name">{userName}</Link>
         {comment.body}
         <div className="comment-nav">
-          <a href="javascript:void(0)">Like</a>
-          <a href="javascript:void(0)">Reply</a>
+          <a>Like</a>
+          <a onClick={this.props.showReplyForm}>Reply</a>
         </div>
       </div>
     );

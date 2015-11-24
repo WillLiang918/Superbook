@@ -1,34 +1,17 @@
 var Replies = React.createClass({
-  getInitialState: function() {
-    return {};
-  },
-  componentWillMount: function() {
-
-  },
-  componentDidMount: function() {
-
-  },
-  componentWillUnmount: function() {
-
-  },
   render: function() {
-    var {replies, currentUser, parent, users, post, ...other} = this.props;
+    var {replies, currentUser, parent, users, post, showReplyForm, ...other} = this.props;
+    var className = "reply-form" + (showReplyForm ? "" : " hidden");
 
     return (
       <div className="replies">
-        <ul>
-          {
-            replies.map(function(reply) {
-              return (
-                <li key={reply.id} className="reply">
-                  <Comment comment={reply} {...this.props} commentsByParent={{}} />
-                </li>
-              );
-            }, this)
-          }
-        </ul>
-
-        <CommentForm currentUser={currentUser} post={post} parent={parent} className="reply-form" />
+        <ReplyList {...this.props} />
+        <CommentForm
+          currentUser={currentUser}
+          post={post}
+          parent={parent}
+          className={className}
+        />
       </div>
     );
   }

@@ -7,6 +7,7 @@ class Comment < ActiveRecord::Base
   validates :author, :commentable, :body, presence: true
   validate :valid_parent_comment
   validate :has_permission_to_create
+  validate :can_only_nest_one_level
 
   def valid_parent_comment
     return if self.parent_id.nil?
@@ -30,6 +31,13 @@ class Comment < ActiveRecord::Base
         friend_id: [post.author_id, post.receiver_id]
        ).count == 0
       errors.add(:base, "you do not have permission to comment")
+    end
+  end
+
+  def can_only_nest_one_level
+    return unless self.parent_id
+    if self.parent && self.parent.parent_id
+      errors.add(:base, "you can only nest comments one level")
     end
   end
 end
