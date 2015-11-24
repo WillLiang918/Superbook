@@ -140,6 +140,28 @@ var ApiUtil = {
         Actions.commentUpdated(comment);
       }
     });
+  },
+
+  like: function(data) {
+    $.ajax({
+      url: "api/likes",
+      type: "POST",
+      data: data,
+      success: function(like) {
+        Actions.likeCreated(like);
+      }
+    });
+  },
+
+  unlike: function(data) {
+    $.ajax({
+      url: "api/likes",
+      type: "DELETE",
+      data: data,
+      success: function(like) {
+        Actions.likeDestroyed(like);
+      }
+    });
   }
 
 };

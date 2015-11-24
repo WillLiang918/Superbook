@@ -29,13 +29,16 @@ var Post = React.createClass({
 
     var commentsByParent = comments;
     var topLevelComments = comments[null] || [];
+    var postLikes = likes.post[post.id];
+    var liked = postLikes && postLikes.indexOf(currentUser.id) >= 0;
+
     return (
       <div>
         <article className="post drop-down-container">
           <Author {...this.props}/>
           {content}
           {dropdown}
-          <PostActionNav />
+          <PostActionNav liked={liked} post={post} />
         </article>
 
         <Comments

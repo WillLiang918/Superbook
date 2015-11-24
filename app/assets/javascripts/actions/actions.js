@@ -108,6 +108,20 @@ var Actions = {
       actionType: Constants.COMMENT_UPDATED,
       comment: comment
     });
+  },
+
+  likeCreated: function(like) {
+    AppDispatcher.dispatch({
+      actionType: Constants.LIKE_CREATED,
+      like: like
+    });
+  },
+
+  likeDestroyed: function(like) {
+    AppDispatcher.dispatch({
+      actionType: Constants.LIKE_DESTROYED,
+      like: like
+    });
   }
 
 };
