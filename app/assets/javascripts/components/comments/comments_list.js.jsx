@@ -1,6 +1,6 @@
 var CommentsList = React.createClass({
   render: function() {
-    var {comments, commentsByParent, users, currentUser, post, ...other} = this.props;
+    var {comments, commentsByParent, users, currentUser, post, startEdit, finishEdit, ...other} = this.props;
     if (comments.length === 0) return false;
 
     return (
@@ -15,6 +15,8 @@ var CommentsList = React.createClass({
                   users={users}
                   currentUser={currentUser}
                   post={post}
+                  startEdit={startEdit}
+                  finishEdit={finishEdit}
                 />
               </li>
             );

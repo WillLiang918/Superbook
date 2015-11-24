@@ -5,9 +5,10 @@ var CommentForm = React.createClass({
   render: function() {
     var currentUser = this.props.currentUser;
     var avatarUrl = currentUser.avatar.profile;
+    var className = "comment-form flex-container " + (this.props.className || "");
 
     return (
-      <form className="comment-form flex-container" onSubmit={this.handleSubmit}>
+      <form className={className} onSubmit={this.handleSubmit}>
         <img src={avatarUrl} className="profile-thumb" />
         <input
           type="text"

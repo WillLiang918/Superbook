@@ -76,8 +76,10 @@ var Comment = React.createClass({
   },
   editComment: function() {
     this.setState({editing: true});
+    this.props.startEdit();
   },
   finishEditing: function() {
     this.setState({editing: false});
+    this.props.finishEdit();
   }
 });
