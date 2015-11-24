@@ -9,6 +9,10 @@
 
   root.LikeStore = Object.assign({}, root.StoreBase, {
 
+    all: function() {
+      return _likes;
+    },
+
     dispatcherId: AppDispatcher.register(function(payload) {
       switch(payload.actionType) {
 
