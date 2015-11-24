@@ -4,11 +4,21 @@ var CommentActionNav = React.createClass({
     var liked = commentLikes && commentLikes.indexOf(currentUser.id) >= 0;
     var onLike = (liked ? this.unlike : this.like);
 
+    var likeCount;
+    if (commentLikes && commentLikes.length > 0) {
+      likeCount = (
+        <a className="comment-like-count">
+          <span className="comment-like-icon" />
+          {commentLikes.length}
+        </a>
+      );
+    }
+
     return (
       <div className="comment-nav">
-        <a onClick={onLike}>Like</a>
+        <a onClick={onLike}>{liked ? "Unlike" : "Like"}</a>
         <a onClick={onReply}>Reply</a>
-        <span>{commentLikes && commentLikes.length || 0} Like(s)</span>
+        {likeCount}
       </div>
     );
   },

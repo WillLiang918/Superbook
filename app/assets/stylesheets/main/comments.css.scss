@@ -203,13 +203,23 @@ div.profile-thumb {
   cursor: pointer;
 }
 
-.comment-nav a:first-of-type:after {
+.comment-nav a:first-of-type:after, .comment-like-icon:before {
   content: "·";
   width: 10px;
   display: inline-block;
   text-align: center;
 }
 
-.comment-nav a:hover {
+.comment-nav a:not(.comment-like-count):hover {
   text-decoration: underline;
+}
+
+.comment-nav a:hover .comment-like-icon {
+  text-decoration: none;
+}
+
+.comment-nav .comment-like-icon:after {
+  background: image-url("fb_icons3.png");
+  background-position: 0 -422px;
+  margin-right: 3px;
 }

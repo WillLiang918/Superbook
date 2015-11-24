@@ -219,7 +219,7 @@ button.gray {
   text-decoration: underline;
 }
 
-.post-action-nav a:before {
+.post-action-nav a:before, .comment-like-icon:after {
   content: "";
   display: inline-block;
   width: 14px;
