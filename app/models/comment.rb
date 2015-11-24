@@ -3,11 +3,13 @@ class Comment < ActiveRecord::Base
   belongs_to :author, class_name: "User", foreign_key: :author_id
   belongs_to :parent, class_name: "Comment", foreign_key: :parent_id
   has_many   :children, class_name: "Comment", foreign_key: :parent_id, dependent: :destroy
+  has_many   :likes, as: :likeable, dependent: :destroy
+
 
   validates :author, :commentable, :body, presence: true
-  validate :valid_parent_comment
-  validate :has_permission_to_create
-  validate :can_only_nest_one_level
+  validate  :valid_parent_comment
+  validate  :has_permission_to_create
+  validate  :can_only_nest_one_level
 
   def valid_parent_comment
     return if self.parent_id.nil?
