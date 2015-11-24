@@ -1,6 +1,7 @@
 class Api::LikesController < ApplicationController
 
   def like
+    debugger
   end
 
   def unlike

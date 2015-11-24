@@ -36,6 +36,7 @@ var Post = React.createClass({
           <Author {...this.props}/>
           {content}
           {dropdown}
+          <PostActionNav />
         </article>
 
         <Comments

@@ -197,3 +197,42 @@ button.gray {
   background-color: #585858;
   margin-right: 9px;
 }
+
+.post-action-nav {
+  padding: 4px 0;
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.post-action-nav a {
+  color: #7f7f7f;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 4px 4px 0;
+  cursor: pointer;
+  margin-right: 28px;
+}
+
+.post-action-nav a:hover {
+  text-decoration: underline;
+}
+
+.post-action-nav a:before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  background: image-url("fb_icons.png");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: -44px -55px;
+  position: relative;
+  top: 2px;
+}
+
+.post-action-nav .post-comment-action:before {
+  background-position: -28px -55px;
+}
