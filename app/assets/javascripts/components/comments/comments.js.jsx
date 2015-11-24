@@ -9,10 +9,13 @@ var Comments = React.createClass({
     this.setState({numEditing: this.state.numEditing - 1});
   },
   render: function() {
-    var {currentUser, post, ...other} = this.props;
+    var {currentUser, post, likes, ...other} = this.props;
+    var postLikes = likes.post[post.id] || [];
 
     return (
       <section className="comment-box">
+        <PostLikes likes={postLikes} />
+
         <CommentsList
           {...this.props}
           startEdit={this.startEdit}

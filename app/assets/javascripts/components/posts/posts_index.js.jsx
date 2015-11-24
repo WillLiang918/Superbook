@@ -1,6 +1,6 @@
 var PostsIndex = React.createClass({
   render: function() {
-    var {status, posts, currentUser, comments, users, user, ...other} = this.props;
+    var {status, posts, currentUser, comments, users, user, likes, ...other} = this.props;
 
     return (
       <section className="posts-index">
@@ -11,6 +11,7 @@ var PostsIndex = React.createClass({
           status={status}
           comments={comments}
           users={users}
+          likes={likes}
         />
       </section>
     );

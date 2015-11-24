@@ -3,16 +3,15 @@ var Post = React.createClass({
     return {editable: false};
   },
   render: function() {
-    var post = this.props.post;
-    var content;
+    var {currentUser, users, post, comments, likes, ...other} = this.props;
+    var content, dropdown;
+
     if (this.state.editable) {
       content = <EditPostForm body={post.body} cancel={this.cancelEdit} update={this.updatePost} />;
     } else {
       content = <p className="body">{post.body}</p>;
     }
 
-    var dropdown;
-    var {currentUser, users, post, comments, ...other} = this.props;
     if (currentUser.id === post.author_id) {
       dropdown = (
         <DropDown>
@@ -45,6 +44,7 @@ var Post = React.createClass({
           post={post}
           currentUser={currentUser}
           users={users}
+          likes={likes}
         />
       </div>
     );

@@ -10,8 +10,9 @@ var UserPage = React.createClass({
     }, []);
 
     var comments = CommentStore.hashSlice(postIds);
+    var likes = LikeStore.all();
 
-    return {posts: posts, comments: comments};
+    return {posts: posts, comments: comments, likes: likes};
   },
   fetchUserPageData: function(id) {
     var userId = id || this.props.params.id;
@@ -31,6 +32,7 @@ var UserPage = React.createClass({
     TimelineStore.addChangeListener(this.onChange);
     PostStore.addChangeListener(this.onChange);
     CommentStore.addChangeListener(this.onChange);
+    LikeStore.addChangeListener(this.onChange);
     this.fetchUserPageData();
   },
   componentWillReceiveProps: function(newProps) {
@@ -43,6 +45,7 @@ var UserPage = React.createClass({
     TimelineStore.removeChangeListener(this.onChange);
     PostStore.removeChangeListener(this.onChange);
     CommentStore.removeChangeListener(this.onChange);
+    LikeStore.removeChangeListener(this.onChange);
   },
   render: function() {
     var posts = this.state.posts, answerFriendRequest, friendRequestStatus;

@@ -1,6 +1,6 @@
 var Timeline = React.createClass({
   render: function() {
-    var {user, users, posts, currentUser, friends, status, comments, ...other} = this.props;
+    var {user, users, posts, currentUser, friends, status, comments, likes, ...other} = this.props;
 
     return (
       <div className="timeline flex-container">
@@ -12,6 +12,7 @@ var Timeline = React.createClass({
           currentUser={currentUser}
           status={status}
           comments={comments}
+          likes={likes}
         />
       </div>
     );

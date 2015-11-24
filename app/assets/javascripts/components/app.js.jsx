@@ -5,7 +5,7 @@ var App = React.createClass({
       sentFriendRequests: FriendRequestStore.sentFriendRequests(),
       receivedFriendRequests: FriendRequestStore.receivedFriendRequests(),
       friendships: FriendshipStore.all(),
-      users: UserStore.all()
+      users: UserStore.all(),
     };
   },
   getInitialState: function() {

@@ -1,7 +1,10 @@
 (function(root) {
   //NOTE: _likes structure::
   // { likeable_type : {likeable_id => [user_ids]} }
-  var _likes = {};
+  var _likes = {
+    "post": {},
+    "comment": {}
+  };
 
   var addLikes = function(likesHash) {
     Object.assign(_likes, likesHash);
