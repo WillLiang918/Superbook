@@ -3,19 +3,15 @@ var CommentForm = React.createClass({
     return {body: ""};
   },
   render: function() {
-    var currentUser = this.props.currentUser;
+    var {currentUser, className, ...other} = this.props;
     var avatarUrl = currentUser.avatar.profile;
-    var className = "comment-form flex-container " + (this.props.className || "");
+    var placeholder = (className === "reply-form" ? "Write a reply..." : "Write a comment...");
+    var className = "comment-form flex-container " + (className || "");
 
     return (
       <form className={className} onSubmit={this.handleSubmit}>
         <img src={avatarUrl} className="profile-thumb" />
-        <input
-          type="text"
-          value={this.state.body}
-          onChange={this.onChange}
-          placeholder="Write a comment..."
-        />
+        <input type="text" value={this.state.body} onChange={this.onChange} placeholder={placeholder} />
       </form>
     );
   },
