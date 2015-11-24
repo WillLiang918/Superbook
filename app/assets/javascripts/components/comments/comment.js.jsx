@@ -93,6 +93,12 @@ var Comment = React.createClass({
   showReplyForm: function() {
     if (!this.props.isReply) {
       this.setState({showReplyForm: true});
+      setTimeout(this.focusForm, 0);
     }
+  },
+  focusForm: function() {
+    var $this = $(ReactDOM.findDOMNode(this));
+    var $form = $this.find(".reply-form");
+    $form.find("input").eq(0).focus();
   }
 });

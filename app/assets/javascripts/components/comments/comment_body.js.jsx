@@ -3,7 +3,11 @@ var CommentBody = React.createClass({
     var {user, comment, isReply, showReplyForm, ...other} = this.props;
     var userUrl = "/users/" + user.id;
     var userName = user.first_name + " " + user.last_name;
-    var onClick = (isReply ? this.focusReplyForm : showReplyForm);
+    var focusReplyForm = this.focusReplyForm;
+    var onClick = function() {
+      showReplyForm();
+      if (isReply) focusReplyForm();
+    };
 
     return (
       <div className="comment-body">
