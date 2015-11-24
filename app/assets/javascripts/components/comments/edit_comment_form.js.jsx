@@ -26,7 +26,7 @@ var EditCommentForm = React.createClass({
             ref={ function(body) {this.body = body;}.bind(this) }
           />
 
-          <a href="javascript:void(0)" className="cancel-edit" onClick={this.cancel}>
+          <a className="cancel-edit" onClick={this.cancel}>
             Cancel
           </a>
         </div>

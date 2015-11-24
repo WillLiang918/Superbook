@@ -3,7 +3,7 @@ var FriendsNav = React.createClass({
     return (
       <nav className="friends-nav flex-container">
         <div>
-          <a className="active" href="javascript:void(0)">All Friends</a>
+          <a className="active">All Friends</a>
         </div>
 
         <div className="search-friends-container">

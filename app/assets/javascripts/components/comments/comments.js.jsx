@@ -20,6 +20,7 @@ var Comments = React.createClass({
           {...this.props}
           startEdit={this.startEdit}
           finishEdit={this.finishEdit}
+          likes={likes}
         />
         <CommentForm
           currentUser={currentUser}
