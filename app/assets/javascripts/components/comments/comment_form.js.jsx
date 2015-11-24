@@ -28,9 +28,11 @@ var CommentForm = React.createClass({
     var commentData = {
       commentable_type: "Post",
       commentable_id: post.id,
-      body: this.state.body,
-      parent_id: (parent && parent.id) || "null"
+      body: this.state.body
     };
+    if (parent && parent.id) {
+      commentData.parent_id = parent.id;
+    }
     ApiUtil.createComment(commentData);
     this.setState({body: ""});
   }
