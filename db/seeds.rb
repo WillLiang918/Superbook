@@ -6,6 +6,25 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+men = [
+  ["Bruce", "Wayne"],
+  ["Bruce", "Banner"],
+  ["Charles", "Xavier"],
+  ["Clark", "Kent"],
+  ["Erik", "Lehnsherr"],
+  ["James", "Howlett"],
+  ["Nick", "Fury"],
+  ["Peter", "Parker"],
+  ["Scott", "Summers"],
+  ["Steve", "Rogers"],
+  ["Thor", "Odinson"],
+  ["Tony", "Stark"]
+]
+
+
+
+
 users = [
   {
     "first_name" => "Bruce",
@@ -14,7 +33,7 @@ users = [
     "password" => "password",
     "sex" => "male",
     "birthday" => 30.years.ago,
-    "image_url" => "avatars/bruce_wayne.jpg"
+    "avatar_url" => "avatars/bruce_wayne.jpg"
   },
 
   {
@@ -24,7 +43,7 @@ users = [
     "password" => "password",
     "sex" => "male",
     "birthday" => 80.years.ago,
-    "image_url" => "avatars/charles_xavier.jpg"
+    "avatar_url" => "avatars/charles_xavier.jpg"
   },
 
   {
@@ -34,7 +53,7 @@ users = [
     "password" => "password",
     "sex" => "male",
     "birthday" => 100.years.ago,
-    "image_url" => "avatars/clark_kent.jpg"
+    "avatar_url" => "avatars/clark_kent.jpg"
   },
 
   {
@@ -44,7 +63,7 @@ users = [
     "password" => "password",
     "sex" => "male",
     "birthday" => 30.years.ago,
-    "image_url" => "avatars/erik_lensherr.jpg"
+    "avatar_url" => "avatars/erik_lensherr.jpg"
   },
 
   {
@@ -54,15 +73,15 @@ users = [
     "password" => "password",
     "sex" => "male",
     "birthday" => 30.years.ago,
-    "image_url" => "avatars/peter_parker.gif"
+    "avatar_url" => "avatars/peter_parker.gif"
   }
 ]
 
 User.destroy_all
 
 users.each do |user|
-  attributes = user.except("image_url")
-  image_path = user["image_url"]
+  attributes = user.except("avatar_url")
+  image_path = user["avatar_url"]
   u = User.new(attributes)
   u.save!
   a = Avatar.new(user: u)
