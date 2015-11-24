@@ -27,7 +27,7 @@ var Comment = React.createClass({
           onClick={this.openEdit}
         >
           <button _onClick={this.editComment}>Edit...</button>
-          <button _onClick={this.deleteComment}>Delete...</button>
+          <button _onClick={this.activateModal}>Delete...</button>
         </DropDown>
       );
     } else if (currentUser.id === post.author_id || currentUser.id === post.receiver_id) {
