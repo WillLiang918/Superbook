@@ -1,5 +1,5 @@
 (function(root) {
-  _timelines = {};
+  var _timelines = {};
 
   var addTimeline = function(timeline) {
     Object.assign(_timelines, timeline);
