@@ -1,5 +1,5 @@
 var NewsFeed = React.createClass({
-  stores: [TimelineStore, PostStore, CommentStore, LikeStore],
+  stores: [NewsFeedStore, PostStore, CommentStore, LikeStore],
   getStateFromStores: function() {
     var postIds = NewsFeedStore.all();
     var posts = postIds.reduceRight(function(posts, postId) {

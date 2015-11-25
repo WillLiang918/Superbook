@@ -8,7 +8,6 @@ var PostsIndex = React.createClass({
         <PostsList
           posts={posts}
           currentUser={currentUser}
-          status={status}
           comments={comments}
           users={users}
           likes={likes}
