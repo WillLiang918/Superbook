@@ -175,6 +175,7 @@ var ApiUtil = {
 
   fetchUserSearchPreview: function(name) {
     $.ajax({
+      url: "api/search/users_preview",
       data: {name: name},
       success: function(users) {
         Actions.receiveUserSearchPreview(users);
