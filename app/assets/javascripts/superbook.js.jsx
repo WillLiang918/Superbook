@@ -5,6 +5,7 @@ $(function() {
   var routes = (
     <Router>
       <Route path="/" component={App}>
+        <IndexRoute component={NewsFeed} />
         <Route path="users/:id" component={UserPage}>
           <IndexRoute component={Timeline} />
           <Route path="friends" component={FriendsIndex} />
