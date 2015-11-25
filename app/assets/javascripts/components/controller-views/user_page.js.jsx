@@ -1,4 +1,5 @@
 var UserPage = React.createClass({
+  stores: [TimelineStore, PostStore, CommentStore, LikeStore],
   getStateFromStores: function() {
     var userId = parseInt(this.props.params.id);
 
@@ -29,10 +30,9 @@ var UserPage = React.createClass({
   },
   componentDidMount: function() {
     this.friendStatus = this.friendRequestStatus(this.props);
-    TimelineStore.addChangeListener(this.onChange);
-    PostStore.addChangeListener(this.onChange);
-    CommentStore.addChangeListener(this.onChange);
-    LikeStore.addChangeListener(this.onChange);
+    this.stores.forEach(function(store) {
+      store.addChangeListener(this.onChange);
+    }, this);
     this.fetchUserPageData();
   },
   componentWillReceiveProps: function(newProps) {
@@ -42,10 +42,9 @@ var UserPage = React.createClass({
     }
   },
   componentWillUnmount: function() {
-    TimelineStore.removeChangeListener(this.onChange);
-    PostStore.removeChangeListener(this.onChange);
-    CommentStore.removeChangeListener(this.onChange);
-    LikeStore.removeChangeListener(this.onChange);
+    this.stores.forEach(function(store) {
+      store.removeChangeListener(this.onChange);
+    }, this);
   },
   render: function() {
     var posts = this.state.posts, answerFriendRequest, friendRequestStatus;
