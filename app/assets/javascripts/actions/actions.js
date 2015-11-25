@@ -127,7 +127,14 @@ var Actions = {
   receiveNewsFeedData: function(data) {
     AppDispatcher.dispatch(Object.assign(data, {
       actionType: Constants.RECEIVE_NEWS_FEED_DATA,
-    })); 
+    }));
+  },
+
+  receiveUserSearchPreview: function(users) {
+    AppDispatcher.dispatch({
+      actionType: Constants.RECEIVE_USER_SEARCH_PREVIEW_RESULTS,
+      users: users
+    });
   }
 
 };

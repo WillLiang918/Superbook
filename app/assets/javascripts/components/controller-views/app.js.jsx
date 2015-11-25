@@ -1,4 +1,5 @@
 var App = React.createClass({
+  stores: [CurrentUserStore, FriendRequestStore, FriendshipStore, UserStore, SearchStore],
   getStateFromStore: function() {
     return {
       currentUser: CurrentUserStore.get(),
@@ -15,19 +16,17 @@ var App = React.createClass({
     this.setState(this.getStateFromStore());
   },
   componentDidMount: function() {
-    CurrentUserStore.addChangeListener(this.onChange);
-    FriendRequestStore.addChangeListener(this.onChange);
-    FriendshipStore.addChangeListener(this.onChange);
-    UserStore.addChangeListener(this.onChange);
+    this.stores.forEach(function(store) {
+      store.addChangeListener(this.onChange);
+    }, this);
 
     ApiUtil.fetchCurrentUserFriendRequests();
     ApiUtil.fetchCurrentUserFriends();
   },
   componentWillUnmount: function() {
-    CurrentUserStore.removeChangeListener(this.onChange);
-    FriendRequestStore.removeChangeListener(this.onChange);
-    FriendshipStore.removeChangeListener(this.onChange);
-    UserStore.removeChangeListener(this.onChange);
+    this.stores.forEach(function(store) {
+      store.removeChangeListener(this.onChange);
+    }, this);
   },
   render: function() {
     var children = React.Children.map(this.props.children, function(child) {

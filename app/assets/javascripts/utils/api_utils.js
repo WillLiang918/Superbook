@@ -171,6 +171,15 @@ var ApiUtil = {
         Actions.likeDestroyed(like);
       }
     });
+  },
+
+  fetchUserSearchPreview: function(name) {
+    $.ajax({
+      data: {name: name},
+      success: function(users) {
+        Actions.receiveUserSearchPreview(users);
+      }
+    });
   }
 
 };

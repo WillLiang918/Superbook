@@ -74,5 +74,8 @@ var SearchBar = React.createClass({
     }
 
     return results;
+  },
+  fetchPreview: function() {
+    
   }
 });
