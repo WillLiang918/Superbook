@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_full_name, against: [:first_name, :last_name], using: {tsearch: {prefix: true}}
+
   SEXES = ["male", "female"]
 
   validates :first_name, :last_name, :email, :birthday, :sex, :password_digest, :session_token, presence: true
