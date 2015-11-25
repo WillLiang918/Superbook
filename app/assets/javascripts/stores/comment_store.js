@@ -97,6 +97,11 @@
         case Constants.COMMENT_UPDATED:
           updateComment(payload.comment);
           root.CommentStore.emitChange();
+          break;
+
+        case Constants.RECEIVE_NEWS_FEED_DATA:
+          addComments(payload.comments);
+          break;
 
       }
     })

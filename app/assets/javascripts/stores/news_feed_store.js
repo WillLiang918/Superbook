@@ -15,6 +15,12 @@
       switch(payload.actionType) {
 
         case Constants.RECEIVE_NEWS_FEED_DATA:
+          AppDispatcher.waitFor([
+            root.UserStore.dispatcherId,
+            root.PostStore.dispatcherId,
+            root.CommentStore.dispatcherId,
+            root.LikeStore.dispatcherId
+          ]);
           addNewsFeed(payload.news_feed);
           root.NewsFeedStore.emitChange();
           break;

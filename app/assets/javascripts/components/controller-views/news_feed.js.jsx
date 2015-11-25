@@ -32,12 +32,13 @@ var NewsFeed = React.createClass({
   },
   render: function() {
     console.log("News Feed State: ", this.state);
+    var user = this.props.currentUser;
 
     return (
       <div className="main-container flex-container">
         <nav className="side-nav"></nav>
         <section className="feed">
-
+          <PostsIndex status={FriendConstants.SELF} {...this.state} {...this.props} user={user} />
         </section>
         <aside className="aside"></aside>
       </div>

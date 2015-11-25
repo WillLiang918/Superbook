@@ -43,6 +43,10 @@
         case Constants.POST_DELETED:
           deletePost(payload.post);
           break;
+
+        case Constants.RECEIVE_NEWS_FEED_DATA:
+          addPosts(payload.posts);
+          break;
       }
     })
 

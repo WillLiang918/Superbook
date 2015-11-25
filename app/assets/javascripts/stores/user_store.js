@@ -42,6 +42,10 @@
           root.UserStore.emitChange();
           break;
 
+        case Constants.RECEIVE_NEWS_FEED_DATA:
+          setUsers(payload.users);
+          break;
+
       }
     })
 
