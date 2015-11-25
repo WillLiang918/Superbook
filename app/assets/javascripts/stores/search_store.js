@@ -6,7 +6,7 @@
   };
 
   root.SearchStore = Object.assign({}, root.StoreBase, {
-    users: function() {
+    results: function() {
       return _users;
     },
 
