@@ -64,7 +64,7 @@ var SearchBar = React.createClass({
 
     for (var id in users) {
       var user = users[id];
-      var name = user.first_name + user.last_name;
+      var name = user.first_name + " " + user.last_name;
       if (searchRegex.test(name)) {
         results.push(user);
       }
