@@ -1,3 +1,7 @@
+json.news_feed do
+  json.array! @posts.map(&:id)
+end
+
 json.users do
   @posts.each do |post|
     json.set! post.author_id do
