@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-color
+//= require jquery-throttle-debounce
 //= require turbolinks
 //= require react
 //= require react-dom
@@ -25,5 +26,6 @@
 //= require_tree ./dispatcher
 //= require stores/store_base
 //= require_tree ./stores
+//= require_tree ./utils
 //= require components
 //= require_tree .
