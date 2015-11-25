@@ -5,6 +5,17 @@
     _newsFeed = newsFeed;
   };
 
+  var addPost = function(post) {
+    _newsFeed.push(post.id);
+  };
+
+  var deletePost = function(post) {
+    var idx = _newsFeed.indexOf(post.id);
+    if (idx >= 0) {
+      _newsFeed.splice(idx, 1);
+    }
+  };
+
   root.NewsFeedStore = Object.assign({}, root.StoreBase, {
 
     all: function() {
@@ -23,6 +34,14 @@
           ]);
           addNewsFeed(payload.news_feed);
           root.NewsFeedStore.emitChange();
+          break;
+
+        case Constants.POST_ADDED:
+          addPost(payload.post);
+          break;
+
+        case Constants.POST_DELETED:
+          deletePost(payload.post);
           break;
 
       }

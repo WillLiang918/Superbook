@@ -32,16 +32,28 @@
           break;
 
         case Constants.POST_ADDED:
+          AppDispatcher.waitFor([
+            root.CommentStore.dispatcherId,
+            root.TimelineStore.dispatcherId,
+            root.NewsFeedStore.dispatcherId
+          ]);
           addPost(payload.post);
+          root.PostStore.emitChange();
+          break;
+
+        case Constants.POST_DELETED:
+          AppDispatcher.waitFor([
+            root.CommentStore.dispatcherId,
+            root.TimelineStore.dispatcherId,
+            root.NewsFeedStore.dispatcherId
+          ]);
+          deletePost(payload.post);
+          root.PostStore.emitChange();
           break;
 
         case Constants.POST_UPDATED:
           updatePost(payload.post);
           root.PostStore.emitChange();
-          break;
-
-        case Constants.POST_DELETED:
-          deletePost(payload.post);
           break;
 
         case Constants.RECEIVE_NEWS_FEED_DATA:
