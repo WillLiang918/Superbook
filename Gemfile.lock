@@ -104,6 +104,10 @@ GEM
       mimemagic (= 0.3.0)
     pg (0.18.4)
     pg (0.18.4-x86-mingw32)
+    pg_search (1.0.5)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -195,6 +199,7 @@ DEPENDENCIES
   newrelic_rpm
   paperclip (~> 4.3)
   pg
+  pg_search
   rails (= 4.2.4)
   rails_12factor
   react-rails (~> 1.4.0)
