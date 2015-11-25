@@ -31,14 +31,19 @@ var NewsFeed = React.createClass({
     }, this);
   },
   render: function() {
-    console.log("News Feed State: ", this.state);
     var user = this.props.currentUser;
 
     return (
       <div className="main-container flex-container">
         <nav className="side-nav"></nav>
         <section className="feed">
-          <PostsIndex status={FriendConstants.SELF} {...this.state} {...this.props} user={user} />
+          <PostsIndex
+            status={FriendConstants.SELF}
+            {...this.state}
+            {...this.props}
+            user={user}
+            parent="news-feed"
+          />
         </section>
         <aside className="aside"></aside>
       </div>

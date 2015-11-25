@@ -1,0 +1,21 @@
+.post-form.news-feed {
+  background: #fff;
+}
+
+.post-form.news-feed textarea {
+  padding: 23px 7px 0 12px;
+  width: calc(100% - 19px);
+  border-bottom: 0;
+  height: 45px;
+}
+
+.status-container {
+  background: #fff;
+  border-bottom: 1px solid #dcdee3;
+}
+
+.status-container .profile-thumb {
+  margin: 12px 0 0 12px;
+  width: 40px;
+  height: 40px;
+}

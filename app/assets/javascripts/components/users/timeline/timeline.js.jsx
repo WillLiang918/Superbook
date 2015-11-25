@@ -13,6 +13,7 @@ var Timeline = React.createClass({
           status={status}
           comments={comments}
           likes={likes}
+          parent="timeline"
         />
       </div>
     );

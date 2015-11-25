@@ -3,19 +3,27 @@ var PostForm = React.createClass({
     return {body: ""};
   },
   render: function() {
-    var status = this.props.status;
-    if (status != FriendConstants.SELF && status != FriendConstants.FRIENDS)
+    var {status, parent, user, ...other} = this.props;
+    if (status != FriendConstants.SELF && status != FriendConstants.FRIENDS) {
       return false;
+    }
+
+    var placeholder = (status === FriendConstants.SELF ? "What's on your mind?" : "Write something...");
+    var linkText = (parent === "news-feed" ? "Update Status" : "Status");
+    var thumbnail = (parent === "news-feed" ? <Thumbnail user={user} /> : "");
 
     return (
-      <form className="post-form" onSubmit={this.handleSubmit}>
+      <form className={"post-form " + parent} onSubmit={this.handleSubmit}>
         <nav className="post-form-nav flex-container">
           <button>
             <strong className="post-icon" />
-            <div className="label active">Post</div>
+            <div className="label active">{linkText}</div>
           </button>
         </nav>
-        <textarea value={this.state.body} onChange={this.onChange} placeholder="Write something..." />
+        <div className="flex-container status-container">
+          {thumbnail}
+          <textarea value={this.state.body} onChange={this.onChange} placeholder={placeholder} />
+        </div>
         <nav className="post-form-sub-nav flex-container">
           <button type="submit">Post</button>
         </nav>
