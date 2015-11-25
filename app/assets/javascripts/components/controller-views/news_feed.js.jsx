@@ -1,4 +1,5 @@
 var NewsFeed = React.createClass({
+  stores: [TimelineStore, PostStore, CommentStore, LikeStore],
   getStateFromStores: function() {
     var postIds = NewsFeedStore.all();
     var posts = postIds.reduceRight(function(posts, postId) {
@@ -19,12 +20,19 @@ var NewsFeed = React.createClass({
     return this.getStateFromStores();
   },
   componentDidMount: function() {
-
+    this.stores.forEach(function(store) {
+      store.addChangeListener(this.onChange);
+    }, this);
+    ApiUtil.fetchNewsFeedData();
   },
   componentWillUnmount: function() {
-
+    this.stores.forEach(function(store) {
+      store.removeChangeListener(this.onChange);
+    }, this);
   },
   render: function() {
+    console.log("News Feed State: ", this.state);
+
     return (
       <div className="main-container flex-container">
         <nav className="side-nav"></nav>

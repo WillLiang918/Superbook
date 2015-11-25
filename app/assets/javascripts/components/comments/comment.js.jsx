@@ -14,6 +14,11 @@ var Comment = React.createClass({
     var {comment, commentsByParent, users, currentUser, post, isReply, likes, ...other} = this.props;
     var user = users[comment.author_id];
 
+    if (!user) {
+      // debugger
+      return false;
+    }
+
     var changeCommentButton;
     if (currentUser.id === comment.author_id) {
       changeCommentButton = (

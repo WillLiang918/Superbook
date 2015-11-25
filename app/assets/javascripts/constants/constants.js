@@ -16,5 +16,6 @@ var Constants = keyMirror({
   "COMMENT_DELETED": null,
   "COMMENT_UPDATED": null,
   "LIKE_CREATED": null,
-  "LIKED_DESTROYED": null
+  "LIKED_DESTROYED": null,
+  "RECEIVE_NEWS_FEED_DATA": null
 });

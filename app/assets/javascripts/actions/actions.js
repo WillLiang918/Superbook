@@ -122,6 +122,12 @@ var Actions = {
       actionType: Constants.LIKE_DESTROYED,
       like: like
     });
+  },
+
+  receiveNewsFeedData: function(data) {
+    AppDispatcher.dispatch(Object.assign(data, {
+      actionType: Constants.RECEIVE_NEWS_FEED_DATA,
+    })); 
   }
 
 };

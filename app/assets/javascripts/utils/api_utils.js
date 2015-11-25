@@ -9,6 +9,15 @@ var ApiUtil = {
     });
   },
 
+  fetchNewsFeedData: function() {
+    $.ajax({
+      url: "api/users",
+      success: function(data) {
+        Actions.receiveNewsFeedData(data);
+      }
+    });
+  },
+
   createPost: function(post) {
     $.ajax({
       url: "api/posts",
