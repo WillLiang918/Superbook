@@ -14,8 +14,11 @@ var CommentActionNav = React.createClass({
       );
     }
 
+    var className = "comment-nav";
+    if (commentLikes && commentLikes.length > 0) className += " liked";
+
     return (
-      <div className={"comment-nav" + (liked ? " liked" : "")}>
+      <div className={className}>
         <a onClick={onLike}>{liked ? "Unlike" : "Like"}</a>
         <a onClick={onReply}>Reply</a>
         {likeCount}
