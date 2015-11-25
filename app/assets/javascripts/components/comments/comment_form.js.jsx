@@ -5,7 +5,7 @@ var CommentForm = React.createClass({
   render: function() {
     var {currentUser, className, ...other} = this.props;
     var avatarUrl = currentUser.avatar.profile;
-    var placeholder = (className === "reply-form" ? "Write a reply..." : "Write a comment...");
+    var placeholder = (/reply/.test(className) ? "Write a reply..." : "Write a comment...");
     var className = "comment-form flex-container " + (className || "");
 
     return (
