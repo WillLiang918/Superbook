@@ -6,8 +6,9 @@ class Api::UsersController < ApplicationController
   end
 
   def index
-    @friends = current_user.friends.includes(:avatar)
-    @friend_ids = @friends.map(&:id)
-    @posts = Post.where(author_id: @friend_ids + [current_user.id]).includes(:likes, comments: :likes)
+    @friend_ids = current_user.friendships.map(&:friend_id)
+    @posts = Post
+              .where(author_id: @friend_ids + [current_user.id])
+              .includes(:likes, comments: :likes, author: :avatar)
   end
 end
