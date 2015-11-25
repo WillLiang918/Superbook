@@ -6,12 +6,6 @@ json.users do
   end
 end
 
-json.posts do
-  @posts.each do |post|
-    json.set! post.id do
-      json.partial! 'api/posts/post', post: post
-    end
-  end
-end
-
-json.comments
+json.partial! 'api/posts/posts', posts: @posts
+json.partial! 'api/posts/post_comments', posts: @posts
+json.partial! 'api/posts/post_likes', posts: @posts
