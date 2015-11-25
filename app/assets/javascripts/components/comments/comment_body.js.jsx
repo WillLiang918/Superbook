@@ -26,6 +26,7 @@ var CommentBody = React.createClass({
     var $this = $(ReactDOM.findDOMNode(this));
     var $replies = $this.closest(".replies");
     var $form = $replies.find(".reply-form").removeClass("hidden");
-    $form.find("input").eq(0).focus();
+    var $input = $form.find("input").eq(0);
+    $input.focus().blink();
   }
 });

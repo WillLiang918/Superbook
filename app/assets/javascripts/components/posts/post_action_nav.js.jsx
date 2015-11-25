@@ -26,11 +26,6 @@ var PostActionNav = React.createClass({
     var $li = $this.closest("li");
     var $form = $li.find(".comment-box > .comment-form");
     var $input = $form.find("input[type='text']");
-
-    $input.focus().css({ backgroundColor: "#F9FDC8" });
-
-    setTimeout(function() {
-      $input.animate({ backgroundColor: "#fff" }, 200);
-    }, 0);
+    $input.focus().blink();
   }
 });
