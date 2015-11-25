@@ -6,8 +6,9 @@ var CommentBody = React.createClass({
     var focusReplyForm = this.focusReplyForm;
     var onClick = function() {
       showReplyForm();
-      if (isReply) focusReplyForm();
-    };
+      var $input = (isReply ? this.getInput() : this.getNestedInput());
+      $input.focus().blink();
+    }.bind(this);
 
     return (
       <div className="comment-body">
@@ -22,11 +23,16 @@ var CommentBody = React.createClass({
       </div>
     );
   },
-  focusReplyForm: function() {
+  getInput: function() {
     var $this = $(ReactDOM.findDOMNode(this));
     var $replies = $this.closest(".replies");
-    var $form = $replies.find(".reply-form").removeClass("hidden");
-    var $input = $form.find("input").eq(0);
-    $input.focus().blink();
+    var $form = $replies.find(".reply-form");
+    return $form.find("input").eq(0);
+  },
+  getNestedInput: function() {
+    var $this = $(ReactDOM.findDOMNode(this));
+    var $replies = $this.closest(".comment-container").find(".replies");
+    var $form = $replies.find(".reply-form");
+    return $form.find("input").eq(0);
   }
 });
