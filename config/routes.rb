@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     post   'likes' => 'likes#like'
     delete 'likes' => 'likes#unlike'
 
-    get 'search/users'         => 'serach#user_search'
+    get 'search/users'         => 'search#user_search'
     get 'search/users_preview' => 'search#user_search_preview'
   end
 

@@ -6,7 +6,7 @@ class Api::SearchController < ApplicationController
   end
 
   def user_search_preview
-    @users = User.search_by_full_name(params[:name]).includes(:avatar).limit(8)
+    @users = User.search_by_full_name(params[:name]).includes(:avatar).limit(10)
     render :users
   end
 
