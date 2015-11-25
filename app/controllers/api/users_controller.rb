@@ -3,15 +3,11 @@ class Api::UsersController < ApplicationController
     @user = User.includes(:avatar).find(params[:id])
     @posts = @user.received_posts.includes(:likes, comments: :likes, author: :avatar)
 
-    @author_ids = @posts.map(&:author_id)
     @friend_ids = @user.friendships.map(&:friend_id)
-    @commenter_ids = @posts.reduce(Set.new) do |commenter_ids, post|
-      post.comments.each { |comment| commenter_ids << comment.author_id }
-      commenter_ids
-    end
+    @commenter_ids = Post.commenter_ids(@posts)
 
-    @user_ids = (@commenter_ids + @friend_ids) - @author_ids
-    @users = User.where(id: @user_ids).includes(:avatar)
+    @user_ids = (@commenter_ids + @friend_ids) - @posts.map(&:author_id)
+    @users = User.where(id: @user_ids.to_a).includes(:avatar)
   end
 
   def index
@@ -19,5 +15,9 @@ class Api::UsersController < ApplicationController
     @posts = Post
               .where(author_id: @friend_ids + [current_user.id])
               .includes(:likes, comments: :likes, author: :avatar)
+
+    @commenter_ids = Post.commenter_ids(@posts)
+    @user_ids = @commenter_ids - @posts.map(&:author_id)
+    @users = User.where(id: @user_ids.to_a).includes(:avatar)
   end
 end

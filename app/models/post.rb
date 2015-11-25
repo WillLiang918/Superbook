@@ -13,4 +13,11 @@ class Post < ActiveRecord::Base
        errors.add(:base, "you do not have permission to post.")
     end
   end
+
+  def self.commenter_ids(posts)
+    posts.reduce(Set.new) do |commenter_ids, post|
+      post.comments.each { |comment| commenter_ids << comment.author_id }
+      commenter_ids
+    end
+  end
 end
