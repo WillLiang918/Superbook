@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :friendships, dependent: :destroy
   has_many :reverse_friendships, class_name: "Friendship", foreign_key: :friend_id, dependent: :destroy
   has_many :friends, through: :friendships, source: :friend
-  has_one  :avatar, dependent: :destroy
+  has_one  :avatar, dependent: :destroy, inverse_of: :user
   has_many :authored_comments, class_name: "Comment", foreign_key: :author_id, dependent: :destroy
   has_many :likes, dependent: :destroy
 
