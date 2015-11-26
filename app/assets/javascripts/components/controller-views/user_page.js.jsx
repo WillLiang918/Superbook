@@ -13,8 +13,9 @@ var UserPage = React.createClass({
     var comments = CommentStore.hashSlice(postIds);
     var likes = LikeStore.all();
     var cover = CoverStore.get();
+    var profile = ProfileStore.get(userId);
 
-    return {posts: posts, comments: comments, likes: likes, cover: cover};
+    return {posts: posts, comments: comments, likes: likes, cover: cover, profile: profile};
   },
   fetchUserPageData: function(id) {
     var userId = id || this.props.params.id;

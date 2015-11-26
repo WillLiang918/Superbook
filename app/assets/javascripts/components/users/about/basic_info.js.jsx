@@ -1,5 +1,8 @@
+var SEXES = {"male": "Male", "female": "Female"};
 var BasicInfo = React.createClass({
   render: function() {
+    var {profile, user, ...other} = this.props;
+
     return (
       <article className="user-basic-info">
         <h4>Basic Information</h4>
@@ -7,12 +10,12 @@ var BasicInfo = React.createClass({
         <ul>
           <li>
             <div>Birth Date</div>
-            <div>Jan 1 1999</div>
+            <div>{moment(user.birthday).format("MMM Do YYYY")}</div>
           </li>
 
           <li>
             <div>Sex</div>
-            <div>Male</div>
+            <div>{SEXES[user.sex]}</div>
           </li>
 
           <li>

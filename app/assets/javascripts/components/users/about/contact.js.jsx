@@ -1,5 +1,7 @@
 var Contact = React.createClass({
   render: function() {
+    var {profile, user, ...other} = this.props;
+
     return (
       <article className="user-contact">
         <h4>Contact Information</h4>
@@ -7,7 +9,7 @@ var Contact = React.createClass({
         <ul>
           <li>
             <div>Email</div>
-            <div>user@gmail.com</div>
+            <div>{user.email}</div>
           </li>
 
           <li>

@@ -4,6 +4,8 @@ var About = React.createClass({
   },
   render: function() {
     var activeIdx = this.state.activeIdx;
+    var {user, profile, ...other} = this.props;
+
     return (
       <section className="about-page">
         <header className="about-header">
@@ -12,11 +14,11 @@ var About = React.createClass({
 
         <div className="flex-container">
           <AboutSideNav activeIdx={activeIdx} setActiveIdx={this.setActiveIdx} />
-          
+
           <AboutContent activeIdx={activeIdx}>
-            <BasicInfo />
-            <Contact />
-            <Details />
+            <BasicInfo user={user} profile={profile} />
+            <Contact   user={user} profile={profile} />
+            <Details   user={user} profile={profile} />
           </AboutContent>
         </div>
       </section>

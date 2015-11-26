@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-color
 //= require jquery-throttle-debounce
+//= require moment
 //= require turbolinks
 //= require react
 //= require react-dom
