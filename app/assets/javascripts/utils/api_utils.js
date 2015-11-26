@@ -181,6 +181,16 @@ var ApiUtil = {
         Actions.receiveUserSearchPreview(users);
       }
     });
+  },
+
+  fetchUserSearch: function(name) {
+    $.ajax({
+      url: "api/search/users",
+      data: {name: name},
+      success: function(users) {
+        Actions.receiveUserSearchResults(users);
+      }
+    });
   }
 
 };

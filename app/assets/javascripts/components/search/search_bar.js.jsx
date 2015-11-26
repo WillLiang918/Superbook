@@ -66,15 +66,15 @@ var SearchBar = React.createClass({
   },
   MAX_RESULTS: 8,
   results: function() {
-    var {users, searchResults, ...other} = this.props;
+    var {users, searchResultsPreview, ...other} = this.props;
     var results = [], MAX = this.MAX_RESULTS, seenIds = new Set(),
         searchRegex = new RegExp(this.state.search, "i"), user, name,
         search = this.state.search;
 
     if (search.length === 0) { return []; }
 
-    for (var i = 0, n = searchResults.length; i < n; i++) {
-      user = searchResults[i];
+    for (var i = 0, n = searchResultsPreview.length; i < n; i++) {
+      user = searchResultsPreview[i];
       name = user.first_name + " " + user.last_name;
       if (!seenIds.has(user.id) && searchRegex.test(name)) {
         results.push(user);

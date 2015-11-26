@@ -1,11 +1,11 @@
 var Header = React.createClass({
   render: function() {
-    var {users, searchResults, ...other} = this.props;
+    var {users, searchResults, searchResultsPreview, ...other} = this.props;
     return (
       <header className="header">
         <nav className="header-nav">
           <Logo />
-          <SearchBar users={users} searchResults={searchResults} />
+          <SearchBar users={users} searchResultsPreview={searchResultsPreview} />
           <HeaderLinks {...this.props} />
         </nav>
       </header>

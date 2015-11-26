@@ -7,7 +7,8 @@ var App = React.createClass({
       receivedFriendRequests: FriendRequestStore.receivedFriendRequests(),
       friendships: FriendshipStore.all(),
       users: UserStore.all(),
-      searchResults: SearchStore.results()
+      searchResults: SearchStore.results(),
+      searchResultsPreview: SearchStore.previews()
     };
   },
   getInitialState: function() {

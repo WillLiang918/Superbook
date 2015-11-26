@@ -13,3 +13,33 @@
   background-position: 0 -771px;
   margin: 4px 8px 0 6px;
 }
+
+.search-result-list {
+  width: calc(100% - 2px);
+  background: #fff;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  border-radius: 3px;
+}
+
+.search-result-list > li {
+  padding: 12px;
+  width: calc(100% - 24px);
+  border-bottom: 1px solid #e7e8eb;
+}
+
+.search-result-list > li:last-of-type {
+  border-bottom: 0;
+}
+
+.user-search-result .friend-body a {
+  color: #141823;
+}
+
+.user-search-result .friend-body a:hover {
+  text-decoration: none;
+}
+
+.search-results-title {
+  font-weight: bold;
+}
