@@ -9,10 +9,16 @@ var FriendsIndex = React.createClass({
       return searchRegex.test(friend.first_name + " " + friend.last_name);
     });
 
+    var friendsList;
+    if (friends.length > 0) {
+      friendsList = <FriendsList {...other} friends={filteredFriends} />;
+    } else {
+      friendsList = <NoFriendsFiller />;
+    }
     return (
       <section className="friends-index">
         <FriendsHeader _onChange={this._onChange} search={this.state.search} />
-        <FriendsList {...other} friends={filteredFriends} />
+        {friendsList}
       </section>
     );
   },
