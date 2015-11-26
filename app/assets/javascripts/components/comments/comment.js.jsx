@@ -2,7 +2,7 @@ var Comment = React.createClass({
   getInitialState: function() {
     return {editOpened: false, editing: false, showReplyForm: false};
   },
-  componentDidMount: function() {
+  componentWillMount: function() {
     this.$modal = $("#modal");
     this.$form = this.$modal.find("#delete-comment");
   },

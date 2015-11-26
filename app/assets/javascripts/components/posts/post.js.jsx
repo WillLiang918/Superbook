@@ -1,4 +1,8 @@
 var Post = React.createClass({
+  componentWillMount: function() {
+    this.$modal = $("#modal");
+    this.$form = this.$modal.find("#delete-post");
+  },
   getInitialState: function() {
     return {editable: false};
   },
@@ -16,13 +20,13 @@ var Post = React.createClass({
       dropdown = (
         <DropDown>
           <button _onClick={this.editPost}>Edit</button>
-          <button _onClick={this.deletePost}>Delete</button>
+          <button _onClick={this.activateModal}>Delete</button>
         </DropDown>
       );
     } else if (currentUser.id === post.receiver_id) {
       dropdown = (
         <DropDown>
-          <button _onClick={this.deletePost}>Delete</button>
+          <button _onClick={this.activateModal}>Delete</button>
         </DropDown>
       );
     }
@@ -66,5 +70,16 @@ var Post = React.createClass({
   },
   deletePost: function() {
     ApiUtil.deletePost(this.props.post);
+    this.deactivateModal();
+  },
+  activateModal: function() {
+    this.$modal.addClass("is-active");
+    this.$form.removeClass("hidden").off("click");
+    this.$form.on("click", ".cancel", this.deactivateModal);
+    this.$form.on("click", ".delete", this.deletePost);
+  },
+  deactivateModal: function() {
+    this.$modal.removeClass("is-active");
+    this.$form.addClass("hidden");
   }
 });
