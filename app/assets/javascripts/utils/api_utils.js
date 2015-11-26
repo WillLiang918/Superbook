@@ -191,6 +191,20 @@ var ApiUtil = {
         Actions.receiveUserSearchResults(users);
       }
     });
+  },
+
+  uploadAvatar: function(formData) {
+    $.ajax({
+      url: "api/avatars",
+      type: "POST",
+      processData: false,
+      contentType: false,
+      dataType: "json",
+      data: formData,
+      success: function(avatar) {
+        Actions.receiveNewAvatar(avatar);
+      }
+    });
   }
 
 };

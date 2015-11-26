@@ -19,5 +19,6 @@ var Constants = keyMirror({
   "LIKED_DESTROYED": null,
   "RECEIVE_NEWS_FEED_DATA": null,
   "RECEIVE_USER_SEARCH_PREVIEW_RESULTS": null,
-  "RECEIVE_USER_SEARCH_RESULTS": null
+  "RECEIVE_USER_SEARCH_RESULTS": null,
+  "AVATAR_CREATED": null
 });

@@ -142,6 +142,13 @@ var Actions = {
       actionType: Constants.RECEIVE_USER_SEARCH_RESULTS,
       users: users
     });
+  },
+
+  receiveNewAvatar: function(avatar) {
+    AppDispatcher.dispatch({
+      actionType: Constants.AVATAR_CREATED,
+      avatar: avatar
+    });
   }
 
 };

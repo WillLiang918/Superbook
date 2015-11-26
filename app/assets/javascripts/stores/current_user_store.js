@@ -5,6 +5,10 @@
     _currentUser = user;
   };
 
+  var updateAvatar = function(avatar) {
+    if (_currentUser) _currentUser.avatar = avatar;
+  };
+
   root.CurrentUserStore = Object.assign({}, root.StoreBase, {
 
     get: function() {
@@ -20,6 +24,14 @@
             root.UserStore.dispatcherId
           ]);
           setCurrentUser(payload.user);
+          root.CurrentUserStore.emitChange();
+          break;
+
+        case Constants.AVATAR_CREATED:
+          AppDispatcher.waitFor([
+            root.UserStore.dispatcherId
+          ]);
+          updateAvatar(payload.avatar);
           root.CurrentUserStore.emitChange();
           break;
 

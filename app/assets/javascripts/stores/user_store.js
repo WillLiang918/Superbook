@@ -9,6 +9,14 @@
     _users[user.id] = user;
   };
 
+  var updateAvatar = function(avatar) {
+    var user_id = avatar.user_id;
+    var user = _users[user_id];
+    if (user) {
+      user.avatar = avatar;
+    }
+  };
+
   root.UserStore = Object.assign({}, root.StoreBase, {
 
     all: function() {
@@ -44,6 +52,10 @@
 
         case Constants.RECEIVE_NEWS_FEED_DATA:
           setUsers(payload.users);
+          break;
+
+        case Constants.AVATAR_CREATED:
+          updateAvatar(payload.avatar);
           break;
 
       }
