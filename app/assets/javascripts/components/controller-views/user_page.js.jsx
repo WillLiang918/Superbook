@@ -12,8 +12,9 @@ var UserPage = React.createClass({
 
     var comments = CommentStore.hashSlice(postIds);
     var likes = LikeStore.all();
+    var cover = CoverStore.get();
 
-    return {posts: posts, comments: comments, likes: likes};
+    return {posts: posts, comments: comments, likes: likes, cover: cover};
   },
   fetchUserPageData: function(id) {
     var userId = id || this.props.params.id;
@@ -92,6 +93,7 @@ var UserPage = React.createClass({
           delete={this.deleteFriendRequest}
           unfriend={this.unfriend}
           pathname={this.props.location.pathname}
+          cover={this.state.cover}
         />
         {friendRequestStatus}
 
