@@ -3,7 +3,7 @@ var FriendsIndex = React.createClass({
     return {search: ""};
   },
   render: function() {
-    var { friends, ...other } = this.props;
+    var {friends, ...other} = this.props;
     var searchRegex = new RegExp(this.state.search, "i");
     var filteredFriends = friends.filter(function(friend) {
       return searchRegex.test(friend.first_name + " " + friend.last_name);

@@ -6,7 +6,7 @@
   };
 
   var addOldNewsFeed = function(newsFeed) {
-    _newsFeed.push(...newsFeed);
+    // _newsFeed.push(...newsFeed);
   };
 
   var addPost = function(post) {

@@ -3,7 +3,7 @@ var UserPageNav = React.createClass({
     var userId = this.props.user.id;
     var userPath = "/users/" + userId;
     var friendPath = userPath + "/friends";
-    var aboutPath = userPath + "/about"
+    var aboutPath = userPath + "/about";
     var pathname = this.props.pathname;
 
     return (

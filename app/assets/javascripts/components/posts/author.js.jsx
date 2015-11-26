@@ -7,9 +7,9 @@ var Author = React.createClass({
     var authorPath = "users/" + author.id;
 
     if (parent === "news-feed" && post.author_id !== post.receiver_id) {
-      title = <NewsFeedPostTitle {...this.props} />
+      title = <NewsFeedPostTitle {...this.props} />;
     } else {
-      title = <TimelinePostTitle authorPath={authorPath} authorName={authorName} />
+      title = <TimelinePostTitle authorPath={authorPath} authorName={authorName} />;
     }
 
     return (
