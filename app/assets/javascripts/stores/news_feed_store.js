@@ -6,6 +6,7 @@
   };
 
   var addOldNewsFeed = function(newsFeed) {
+    newsFeed.forEach(function(postId) { _newsFeed.push(postId); });
     // _newsFeed.push(...newsFeed);
   };
 
