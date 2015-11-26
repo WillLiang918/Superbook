@@ -46,3 +46,11 @@
 .upcase {
   text-transform: uppercase;
 }
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  background: image-url("spinner.gif");
+  background-size: auto;
+  background-repeat: no-repeat;
+}

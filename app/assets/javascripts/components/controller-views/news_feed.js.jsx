@@ -55,15 +55,18 @@ var NewsFeed = React.createClass({
     }.bind(this));
   },
   fetchOlderPosts: function() {
-    if (this._isFetching) return;
+    if (this._isFetching || this._done) return;
 
     this._isFetching = true;
     var posts = this.state.posts;
     var lastPost = posts[posts.length - 1];
 
-    ApiUtil.fetchOlderNewsFeedData(lastPost.created_at).done(function() {
+    ApiUtil.fetchOlderNewsFeedData(lastPost.created_at).done(function(data) {
       this._isFetching = false;
-      console.log("done");
+      if (data.news_feed.length === 0) {
+        this._done = true;
+      }
+
     }.bind(this));
   },
   scrollFetchPercentage: .75,
@@ -73,7 +76,6 @@ var NewsFeed = React.createClass({
 
     if (percentage >= this.scrollFetchPercentage) {
       this.fetchOlderPosts();
-      console.log("fetching");
     }
   }
 });
