@@ -1,7 +1,4 @@
 var Search = React.createClass({
-  fetchSearchResults: function() {
-
-  },
   componentDidMount: function() {
     ApiUtil.fetchUserSearch(this.props.params.search);
   },
@@ -12,7 +9,8 @@ var Search = React.createClass({
     }
   },
   render: function() {
-    var results = this.props.searchResults.map(function(result) {
+    var searchResults = this.props.searchResults, search = this.props.params.search, results;
+    results = this.props.searchResults.map(function(result) {
       return (
         <li key={result.id}>
           <UserSearchResult user={result} status={this.friendStatus(result)} />
@@ -23,7 +21,7 @@ var Search = React.createClass({
     return (
       <HomeLayout>
         <ul className="search-result-list">
-          <UserSearchTitle />
+          {searchResults.length > 0 ? <UserSearchTitle /> : <BlankSearch search={search} />}
           {results}
         </ul>
       </HomeLayout>

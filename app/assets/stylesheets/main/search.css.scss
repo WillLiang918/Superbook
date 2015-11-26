@@ -43,3 +43,28 @@
 .search-results-title {
   font-weight: bold;
 }
+
+.blank-search {
+  align-items: center;
+}
+
+.blank-search p {
+  font-size: 14px;
+  text-align: left;
+  flex: 1 1 auto;
+}
+
+.search-text {
+  font-weight: bold;
+}
+
+.blank-search-icon {
+  display: block;
+  padding: 7px;
+  margin-right: 16px;
+  width: 86px;
+  height: 86px;
+  background: image-url("blank-search.png");
+  background-size: auto;
+  background-repeat: no-repeat;
+}
