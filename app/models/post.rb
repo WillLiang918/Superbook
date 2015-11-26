@@ -20,4 +20,11 @@ class Post < ActiveRecord::Base
       commenter_ids
     end
   end
+
+  def self.receiver_ids(posts)
+    posts.reduce(Set.new) do |receiver_ids, post|
+      receiver_ids << post.receiver_id
+      receiver_ids
+    end
+  end
 end

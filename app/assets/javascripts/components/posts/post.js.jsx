@@ -7,7 +7,7 @@ var Post = React.createClass({
     return {editable: false};
   },
   render: function() {
-    var {currentUser, users, post, comments, likes, ...other} = this.props;
+    var {currentUser, users, post, comments, likes, parent, ...other} = this.props;
     var content, dropdown;
 
     if (this.state.editable) {

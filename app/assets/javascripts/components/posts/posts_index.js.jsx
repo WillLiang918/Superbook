@@ -11,6 +11,7 @@ var PostsIndex = React.createClass({
           comments={comments}
           users={users}
           likes={likes}
+          parent={parent}
         />
       </section>
     );

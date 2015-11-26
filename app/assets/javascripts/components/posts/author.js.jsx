@@ -1,9 +1,16 @@
 var Author = React.createClass({
   render: function() {
-    var post = this.props.post;
+    var {post, users, parent, ...other} = this.props, title;
+
     var author = post.author;
     var authorName = author.first_name + " " + author.last_name;
     var authorPath = "users/" + author.id;
+
+    if (parent === "news-feed" && post.author_id !== post.receiver_id) {
+      title = <NewsFeedPostTitle {...this.props} />
+    } else {
+      title = <TimelinePostTitle authorPath={authorPath} authorName={authorName} />
+    }
 
     return (
       <section className="author-details flex-container">
@@ -12,9 +19,7 @@ var Author = React.createClass({
         </Link>
 
         <div>
-          <Link to={authorPath}>
-            <h4 className="user-link">{authorName}</h4>
-          </Link>
+          {title}
           <span className="post-link">{post.updated_at}</span>
         </div>
       </section>

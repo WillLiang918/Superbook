@@ -245,3 +245,21 @@ button.gray {
   position: relative;
   right: 1px;
 }
+
+.news-feed-post-title {
+  display: flex;
+  align-items: center;
+}
+
+.post-arrow {
+  content: "";
+  width: 11px;
+  height: 9px;
+  background: image-url("fb_icons3.png");
+  background-position: -157px -411px;
+  background-size: auto;
+  background-repeat: no-repeat;
+  display: block;
+  margin: 0 5px;
+
+}

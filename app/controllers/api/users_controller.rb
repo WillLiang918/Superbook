@@ -16,7 +16,8 @@ class Api::UsersController < ApplicationController
                  .includes(:likes, comments: :likes, author: :avatar)
 
     @commenter_ids = Post.commenter_ids(@posts)
-    @user_ids = @commenter_ids - @posts.map(&:author_id)
+    @receiver_ids = Post.receiver_ids(@posts)
+    @user_ids = (@commenter_ids + @receiver_ids) - @posts.map(&:author_id)
     @users = User.where(id: @user_ids.to_a).includes(:avatar)
   end
 end
