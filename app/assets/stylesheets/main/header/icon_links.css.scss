@@ -68,6 +68,7 @@ li.active > .friend-requests-icon {
 .content-tab {
   display: none;
   width: 100%;
+  overflow: auto;
 }
 
 .content-tab.active {
@@ -94,7 +95,6 @@ li.active > .friend-requests-icon {
   width: 100%;
   margin-top: 31px;
   max-height: 400px;
-  overflow: scroll;
 }
 
 .content-tab li {

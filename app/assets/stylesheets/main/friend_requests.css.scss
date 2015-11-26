@@ -131,3 +131,15 @@
 .request-body a:hover {
   text-decoration: underline;
 }
+
+.content-tab li.no-new-requests {
+  color: #757575;
+  height: 40px;
+  width: 100%;
+  background: #F6F7F8;
+  padding: 0 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

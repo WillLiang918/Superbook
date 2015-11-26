@@ -66,13 +66,12 @@
   border-color: rgba(0, 0, 0, 0.25);
   border-bottom-color: rgba(0,0,0,.4);
   border-top-color: rgba(0, 0, 0, .1);
-  position: relative;
 }
 
 .cover-photo > img {
-  width: calc(100% + 1px);
-  height: 100%;
-  position: absolute;
+  width: 100%;
+  height: calc(100% + 1px);
+  position: relative;
   top: -1px;
 }
 

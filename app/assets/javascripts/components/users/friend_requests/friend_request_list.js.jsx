@@ -1,8 +1,6 @@
 var FriendRequestList = React.createClass({
   render: function() {
     var requesters = this.props.requesters;
-    if (requesters.length === 0) return false;
-
     return (
       <ul>
         {
@@ -14,6 +12,8 @@ var FriendRequestList = React.createClass({
             );
           })
         }
+
+        {requesters.length === 0 ? <NoRequestsListItem /> : ""}
       </ul>
     );
   }
