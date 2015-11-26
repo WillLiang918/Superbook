@@ -1,5 +1,5 @@
 $.fn.blink = function(color) {
-  color = color || "#F9FDC8";
+  color = color || "#F3FBFB";
 
   return this.each(function() {
     var $el = $(this);

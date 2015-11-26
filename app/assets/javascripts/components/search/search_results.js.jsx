@@ -8,7 +8,7 @@ var SearchResults = React.createClass({
         onMouseEnter={this.props.onMouseEnter}
         onMouseLeave={this.props.onMouseLeave}
       >
-      
+
         <ul>
           {this.props.results.map(function(result) {
             var name = result.first_name + " " + result.last_name;
@@ -19,6 +19,10 @@ var SearchResults = React.createClass({
               </li>
             );
           }, this)}
+
+          <li key="submit">
+            <SearchSubmitRow search={this.props.search} />
+          </li>
         </ul>
 
       </section>

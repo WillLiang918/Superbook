@@ -45,6 +45,7 @@ var Comment = React.createClass({
         currentUser={currentUser}
         post={post}
         showReplyForm={this.state.showReplyForm}
+        onReply={this.showReplyForm}
         isReply={isReply}
         likes={likes}
       />
@@ -66,7 +67,7 @@ var Comment = React.createClass({
           <CommentBody
             user={user}
             comment={comment}
-            showReplyForm={this.showReplyForm}
+            showReplyForm={this.props.onReply || this.showReplyForm}
             isReply={isReply}
             commentLikes={commentLikes}
             currentUser={currentUser}
@@ -81,7 +82,7 @@ var Comment = React.createClass({
         {mainComment}
         {replies}
       </div>
-    )
+    );
   },
   activateModal: function() {
     this.$modal.addClass("is-active").off("click");

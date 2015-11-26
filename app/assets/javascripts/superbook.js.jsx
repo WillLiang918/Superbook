@@ -6,7 +6,7 @@ $(function() {
     <Router>
       <Route path="/" component={App}>
         <IndexRoute component={NewsFeed} />
-        <Route path="search" component={Search} />
+        <Route path="search/:search" component={Search} />
         <Route path="users/:id" component={UserPage}>
           <IndexRoute component={Timeline} />
           <Route path="friends" component={FriendsIndex} />

@@ -6,7 +6,8 @@ var SearchBar = React.createClass({
     return {search: "", focus: false, hover: false};
   },
   render: function() {
-    var active = this.state.focus || this.state.hover;
+    var {search, focus, hover, ...other} = this.state;
+    var active = focus || hover;
 
     return (
       <form
@@ -33,6 +34,7 @@ var SearchBar = React.createClass({
           handleClick={this.handleClick}
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}
+          search={search}
         />
       </form>
     );
