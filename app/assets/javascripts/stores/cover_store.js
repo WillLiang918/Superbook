@@ -17,6 +17,11 @@
           setCover(payload.cover);
           break;
 
+        case Constants.COVER_CREATED:
+          setCover(payload.cover);
+          root.CoverStore.emitChange();
+          break;
+
       }
     })
   });

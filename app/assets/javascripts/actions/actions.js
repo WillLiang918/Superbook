@@ -149,6 +149,13 @@ var Actions = {
       actionType: Constants.AVATAR_CREATED,
       avatar: avatar
     });
+  },
+
+  receiveNewCover: function(cover) {
+    AppDispatcher.dispatch({
+      actionType: Constants.COVER_CREATED,
+      cover: cover
+    });
   }
 
 };

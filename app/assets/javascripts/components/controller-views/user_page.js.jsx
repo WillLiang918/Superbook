@@ -1,5 +1,5 @@
 var UserPage = React.createClass({
-  stores: [TimelineStore, PostStore, CommentStore, LikeStore],
+  stores: [TimelineStore, PostStore, CommentStore, LikeStore, CoverStore],
   getStateFromStores: function() {
     var userId = parseInt(this.props.params.id);
 

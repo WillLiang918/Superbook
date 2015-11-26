@@ -7,16 +7,21 @@ var ImageUpload = React.createClass({
     this.$submit = this.$form.find("button[type='submit']");
   },
   render: function() {
+    var {title, className, ...other} = this.props;
+
     return (
-      <a className="image-upload-button flex-container" onClick={this.activateModal}>
+      <a className={"image-upload-button flex-container " + (className || "")}
+         onClick={this.activateModal}
+      >
         <strong className="image-upload-icon" />
-        <p>{this.props.title}</p>
+        <p>{title}</p>
       </a>
     );
   },
   activateModal: function() {
     this.$modal.addClass("is-active");
     this.$form.removeClass("hidden");
+    this.$form.find(".title").text(this.props.title);
     this.$form.on("click", ".cancel", this.deactivateModal);
     this.$form.on("change", "input[type='file']", this.setPreview);
     this.$form.on("submit", this.handleSubmit);
@@ -46,7 +51,7 @@ var ImageUpload = React.createClass({
     if (this.file) {
       var formData = new FormData();
       formData.append("image", this.file);
-      ApiUtil.uploadAvatar(formData);
+      this.props.save(formData);
     }
 
     this.deactivateModal();

@@ -205,6 +205,20 @@ var ApiUtil = {
         Actions.receiveNewAvatar(avatar);
       }
     });
+  },
+
+  uploadCover: function(formData) {
+    $.ajax({
+      url: "api/covers",
+      type: "POST",
+      processData: false,
+      contentType: false,
+      dataType: "json",
+      data: formData,
+      success: function(data) {
+        Actions.receiveNewCover(data.cover);
+      }
+    });
   }
 
 };
