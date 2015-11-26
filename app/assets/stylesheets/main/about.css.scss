@@ -1,0 +1,100 @@
+.about-page {
+  width: calc(100% - 2px);
+  background: #fff;
+  border: 1px solid #d3d6db;
+  border-radius: 2px;
+}
+
+.about-header {
+  width: 100%;
+  padding: 16px 0 12px 0;
+  background: #f6f7f8;
+  border-bottom: 1px solid #d3d6db;
+  border-radius: 2px 2px 0 0;
+  display: flex;
+  flex-direction: flex-start;
+  align-items: flex-start;
+}
+
+.about-header > h3 {
+  color: #141823;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.about-header:before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: image-url("about-icon.png");
+  background-size: auto;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  margin-right: 9px;
+  margin-left: 12px;
+}
+
+.about-side-nav {
+  width: 242px;
+  border-right: 1px solid #ccc;
+  font-size: 14px;
+  color: #9197a3;
+}
+
+.about-side-nav > li {
+  width: calc(100% - 15px);
+  padding: 12px 4px 12px 16px;
+  cursor: pointer;
+}
+
+.about-side-nav > li:hover {
+  color: #000;
+}
+
+.about-side-nav > li.active {
+  font-weight: 700;
+  color: #000;
+  border-left: 2px solid #3b5998;
+  padding-left: 14px;
+}
+
+.about-content {
+  flex: 1 1 auto;
+  padding: 30px 24px 0 24px;
+  color: #9197a3;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.about-content h4 {
+  line-height: 26px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 1px solid #dcdee3;
+}
+
+.about-content a.field {
+  color: #5890ff;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 8px;
+}
+
+.plus-icon {
+  display: block;
+  background: image-url("fb_icons9.png");
+  background-position: 0 -39px;
+  background-size: auto;
+  background-repeat: no-repeat;
+  color: #5890ff;
+  width: 12px;
+  height: 12px;
+  margin: 2px 5px 0 0;
+}
+
+.user-details li {
+  padding-bottom: 30px;
+}

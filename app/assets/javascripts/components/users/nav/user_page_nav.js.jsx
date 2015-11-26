@@ -3,6 +3,7 @@ var UserPageNav = React.createClass({
     var userId = this.props.user.id;
     var userPath = "/users/" + userId;
     var friendPath = userPath + "/friends";
+    var aboutPath = userPath + "/about"
     var pathname = this.props.pathname;
 
     return (
@@ -13,6 +14,10 @@ var UserPageNav = React.createClass({
 
         <Link to={friendPath} className={pathname == friendPath ? "active" : ""}>
           <div className="center-vertical">Friends</div>
+        </Link>
+
+        <Link to={aboutPath} className={pathname == aboutPath ? "active" : ""}>
+          <div className="center-vertical">About</div>
         </Link>
       </nav>
     );
