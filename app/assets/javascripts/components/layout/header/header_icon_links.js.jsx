@@ -51,7 +51,7 @@ var HeaderIconLinks = React.createClass({
           }, this)}
         </ul>
 
-        <section className="header-icon-content">
+        <section className={"header-icon-content" + (activeIdx < 0 ? " hidden" : "")}>
           {tabContent.map(function(content, idx) {
             return (
               <article className={"content-tab " + (activeIdx === idx ? "active" : "")} key={idx}>
