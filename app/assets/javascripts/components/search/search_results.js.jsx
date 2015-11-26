@@ -2,26 +2,27 @@ var SearchResults = React.createClass({
   render: function() {
     if (!this.props.active) return false;
 
+    var {search, handleSubmit, handleClick, className, onMouseEnter, onMouseLeave, results, ...other} = this.props;
     return (
       <section
         className={"search-results " + (this.props.className || "")}
-        onMouseEnter={this.props.onMouseEnter}
-        onMouseLeave={this.props.onMouseLeave}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
 
         <ul>
-          {this.props.results.map(function(result) {
+          {results.map(function(result) {
             var name = result.first_name + " " + result.last_name;
 
             return (
-              <li key={result.id} onClick={this.props.handleClick} data-name={name}>
+              <li key={result.id} onClick={handleClick} data-name={name}>
                 <SearchResult result={result} />
               </li>
             );
           }, this)}
 
           <li key="submit">
-            <SearchSubmitRow search={this.props.search} />
+            <SearchSubmitRow search={search} handleSubmit={handleSubmit}/>
           </li>
         </ul>
 

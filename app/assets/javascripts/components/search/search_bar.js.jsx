@@ -1,4 +1,5 @@
 var SearchBar = React.createClass({
+  mixins:[History],
   componentWillMount: function() {
     this.lastSearch = "";
   },
@@ -24,7 +25,7 @@ var SearchBar = React.createClass({
                onBlur={this.onBlur}
         />
 
-        <button className={"search-button " + (active ? "active" : "")}>
+        <button className={"search-button " + (active ? "active" : "")} type="submit">
           <strong className="magnifying-glass" />
         </button>
 
@@ -35,6 +36,7 @@ var SearchBar = React.createClass({
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}
           search={search}
+          handleSubmit={this.handleSubmit}
         />
       </form>
     );
@@ -56,7 +58,7 @@ var SearchBar = React.createClass({
   },
   handleSubmit: function(e) {
     e.preventDefault();
-    this.setState({search: ""});
+    this.history.pushState(null, "search/" + this.state.search);
   },
   handleClick: function(e) {
     var name = e.currentTarget.dataset.name;
