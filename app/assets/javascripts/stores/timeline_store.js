@@ -48,7 +48,8 @@
             root.PostStore.dispatcherId,
             root.CommentStore.dispatcherId,
             root.LikeStore.dispatcherId,
-            root.CoverStore.dispatcherId
+            root.CoverStore.dispatcherId,
+            root.ProfileStore.dispatcherId
           ]);
           addTimeline(payload.timeline);
           root.TimelineStore.emitChange();
