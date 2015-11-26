@@ -47,7 +47,8 @@
             root.FriendshipStore.dispatcherId,
             root.PostStore.dispatcherId,
             root.CommentStore.dispatcherId,
-            root.LikeStore.dispatcherId
+            root.LikeStore.dispatcherId,
+            root.CoverStore.dispatcherId
           ]);
           addTimeline(payload.timeline);
           root.TimelineStore.emitChange();
