@@ -1,7 +1,7 @@
-var ImageUploadButton = React.createClass({
+var ImageUpload = React.createClass({
   componentWillMount: function() {
     this.$modal = $("#modal");
-    this.$form = this.$modal.find("#upload-profile-picture");
+    this.$form = this.$modal.find("#upload-image");
     this.$previewImg = this.$form.find(".preview-image");
     this.$fileInput = this.$form.find("input[type='file']");
     this.$submit = this.$form.find("button[type='submit']");
@@ -10,7 +10,7 @@ var ImageUploadButton = React.createClass({
     return (
       <a className="image-upload-button flex-container" onClick={this.activateModal}>
         <strong className="image-upload-icon" />
-        <p>Update Profile Picture</p>
+        <p>{this.props.title}</p>
       </a>
     );
   },

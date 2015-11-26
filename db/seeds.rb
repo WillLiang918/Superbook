@@ -58,12 +58,12 @@ users = [
 
   {
     "first_name" => "Erik",
-    "last_name" => "Lensherr",
+    "last_name" => "Lehnsherr",
     "email" => "erik@gmail.com",
     "password" => "password",
     "sex" => "male",
     "birthday" => 30.years.ago,
-    "avatar_url" => "avatars/erik_lensherr.jpg"
+    "avatar_url" => "avatars/erik_lehnsherr.jpg"
   },
 
   {

@@ -95,12 +95,12 @@
   margin: 0 6px 3px 0;
 }
 
-#upload-profile-picture {
+#upload-image {
   border-radius: 3px;
   background: #fff;
 }
 
-#upload-profile-picture h3 {
+#upload-image h3 {
   font-size: 14px;
 }
 
@@ -123,8 +123,8 @@
 
 .action-field {
   background: #fff;
-  padding: 10px 5px;
-  width: calc(100% - 10px);
+  padding: 15px;
+  width: calc(100% - 30px);
   display: flex;
   justify-content: flex-end;
 }

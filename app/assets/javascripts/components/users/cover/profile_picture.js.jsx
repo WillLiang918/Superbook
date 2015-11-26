@@ -3,7 +3,7 @@ var ProfilePicture = React.createClass({
     return (
       <div className="profile-picture">
         <img src={this.props.url} />
-        <ImageUploadButton />
+        <ImageUpload title="Update Profile Picture" />
       </div>
     );
   }
