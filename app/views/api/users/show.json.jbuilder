@@ -27,6 +27,7 @@ json.users do
   end
 end
 
+json.cover @user.cover.image.url
 
 json.partial! 'api/posts/posts', posts: @posts
 json.partial! 'api/posts/post_comments', posts: @posts
