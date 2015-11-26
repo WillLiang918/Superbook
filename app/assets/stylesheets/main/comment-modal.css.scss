@@ -1,4 +1,4 @@
-#comment-modal {
+#modal {
   display: none;
   position: fixed;
   top: 0;
@@ -9,7 +9,7 @@
   z-index: 1000;
 }
 
-#comment-modal.is-active {
+#modal.is-active {
   display: block;
 }
 

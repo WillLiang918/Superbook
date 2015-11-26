@@ -3,7 +3,8 @@ var Comment = React.createClass({
     return {editOpened: false, editing: false, showReplyForm: false};
   },
   componentDidMount: function() {
-    this.$modal = $("#comment-modal");
+    this.$modal = $("#modal");
+    this.$form = this.$modal.find("#delete-comment");
   },
   openEdit: function() {
     if (!this.state.editOpened) {
@@ -85,12 +86,14 @@ var Comment = React.createClass({
     );
   },
   activateModal: function() {
-    this.$modal.addClass("is-active").off("click");
-    this.$modal.on("click", ".cancel", this.deactivateModal);
-    this.$modal.on("click", ".delete", this.deleteComment);
+    this.$modal.addClass("is-active");
+    this.$form.removeClass("hidden").off("click");
+    this.$form.on("click", ".cancel", this.deactivateModal);
+    this.$form.on("click", ".delete", this.deleteComment);
   },
   deactivateModal: function() {
     this.$modal.removeClass("is-active");
+    this.$form.addClass("hidden");
   },
   deleteComment: function(e) {
     var comment = this.props.comment;
