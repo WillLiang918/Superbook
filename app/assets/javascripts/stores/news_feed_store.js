@@ -5,8 +5,12 @@
     _newsFeed = newsFeed;
   };
 
+  var addOldNewsFeed = function(newsFeed) {
+    _newsFeed.push(...newsFeed);
+  };
+
   var addPost = function(post) {
-    _newsFeed.push(post.id);
+    _newsFeed.unshift(post.id);
   };
 
   var deletePost = function(post) {
@@ -33,6 +37,17 @@
             root.LikeStore.dispatcherId
           ]);
           addNewsFeed(payload.news_feed);
+          root.NewsFeedStore.emitChange();
+          break;
+
+        case Constants.RECEIVE_OLDER_NEWS_FEED_DATA:
+          AppDispatcher.waitFor([
+            root.UserStore.dispatcherId,
+            root.PostStore.dispatcherId,
+            root.CommentStore.dispatcherId,
+            root.LikeStore.dispatcherId
+          ]);
+          addOldNewsFeed(payload.news_feed);
           root.NewsFeedStore.emitChange();
           break;
 

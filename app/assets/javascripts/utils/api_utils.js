@@ -9,15 +9,6 @@ var ApiUtil = {
     });
   },
 
-  fetchNewsFeedData: function() {
-    $.ajax({
-      url: "api/users",
-      success: function(data) {
-        Actions.receiveNewsFeedData(data);
-      }
-    });
-  },
-
   createPost: function(post) {
     $.ajax({
       url: "api/posts",
@@ -217,6 +208,25 @@ var ApiUtil = {
       data: formData,
       success: function(data) {
         Actions.receiveNewCover(data.cover);
+      }
+    });
+  },
+
+  fetchNewsFeedData: function() {
+    return $.ajax({
+      url: "api/users",
+      success: function(data) {
+        Actions.receiveNewsFeedData(data);
+      }
+    });
+  },
+
+  fetchOlderNewsFeedData: function(created_before) {
+    return $.ajax({
+      url: "api/users",
+      data: {created_before: created_before},
+      success: function(data) {
+        Actions.receiveOlderNewsFeedData(data);
       }
     });
   }

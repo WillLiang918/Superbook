@@ -21,5 +21,6 @@ var Constants = keyMirror({
   "RECEIVE_USER_SEARCH_PREVIEW_RESULTS": null,
   "RECEIVE_USER_SEARCH_RESULTS": null,
   "AVATAR_CREATED": null,
-  "COVER_CREATED": null
+  "COVER_CREATED": null,
+  "RECEIVE_OLDER_NEWS_FEED_DATA": null
 });

@@ -100,6 +100,7 @@
           break;
 
         case Constants.RECEIVE_NEWS_FEED_DATA:
+        case Constants.RECEIVE_OLDER_NEWS_FEED_DATA:
           addComments(payload.comments);
           break;
 

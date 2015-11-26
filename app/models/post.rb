@@ -27,4 +27,14 @@ class Post < ActiveRecord::Base
       receiver_ids
     end
   end
+
+  def self.created_after(date = nil)
+    return where({}) unless date
+    self.where("created_at > ?", date)
+  end
+
+  def self.created_before(date = nil)
+    return where({}) unless date
+    self.where("created_at < ?", date)
+  end
 end

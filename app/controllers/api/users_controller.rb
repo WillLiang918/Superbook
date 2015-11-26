@@ -12,9 +12,10 @@ class Api::UsersController < ApplicationController
 
   def index
     @friend_ids = current_user.friendships.map(&:friend_id)
-    @posts = Post.where(author_id: @friend_ids + [current_user.id])
-                 .includes(:likes, comments: :likes, author: :avatar)
-                 .order(:created_at)
+    @posts = Post.includes(:likes, comments: :likes, author: :avatar)
+                 .where(author_id: @friend_ids + [current_user.id])
+                 .created_before(params[:created_before])
+                 .order(created_at: :desc)
                  .limit(10)
 
     @commenter_ids = Post.commenter_ids(@posts)

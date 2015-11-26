@@ -156,6 +156,12 @@ var Actions = {
       actionType: Constants.COVER_CREATED,
       cover: cover
     });
+  },
+
+  receiveOlderNewsFeedData: function(data) {
+    AppDispatcher.dispatch(Object.assign(data, {
+      actionType: Constants.RECEIVE_OLDER_NEWS_FEED_DATA
+    }));
   }
 
 };
