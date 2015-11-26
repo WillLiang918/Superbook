@@ -71,7 +71,7 @@ var NewsFeed = React.createClass({
 
     }.bind(this));
   },
-  scrollFetchPercentage: .75,
+  scrollFetchPercentage: 0.75,
   onScroll: function(e) {
     var maxScroll = $(document).height() - $(window).height();
     var percentage = window.scrollY / maxScroll;
