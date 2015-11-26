@@ -31,6 +31,8 @@ var NewsFeed = React.createClass({
     this.stores.forEach(function(store) {
       store.removeChangeListener(this.onChange);
     }, this);
+
+    $(window).off("scroll", this.onScroll);
   },
   render: function() {
     var user = this.props.currentUser;

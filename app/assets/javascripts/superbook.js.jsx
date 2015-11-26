@@ -10,6 +10,7 @@ $(function() {
         <Route path="users/:id" component={UserPage}>
           <IndexRoute component={Timeline} />
           <Route path="friends" component={FriendsIndex} />
+          <Route path="about" component={About} />
         </Route>
       </Route>
     </Router>
