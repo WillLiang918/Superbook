@@ -14,6 +14,8 @@ class Api::UsersController < ApplicationController
     @friend_ids = current_user.friendships.map(&:friend_id)
     @posts = Post.where(author_id: @friend_ids + [current_user.id])
                  .includes(:likes, comments: :likes, author: :avatar)
+                 .order(:created_at)
+                 .limit(10)
 
     @commenter_ids = Post.commenter_ids(@posts)
     @receiver_ids = Post.receiver_ids(@posts)
