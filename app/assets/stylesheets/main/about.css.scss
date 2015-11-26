@@ -75,6 +75,10 @@
   border-bottom: 1px solid #dcdee3;
 }
 
+.about-page a {
+  cursor: pointer;
+}
+
 .about-content a.field {
   color: #5890ff;
   font-size: 14px;
@@ -97,4 +101,12 @@
 
 .user-details li {
   padding-bottom: 30px;
+}
+
+
+.user-basic-info li, .user-contact li {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e9eaed;
 }
