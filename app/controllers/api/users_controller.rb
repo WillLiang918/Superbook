@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def show
-    @user = User.includes(:avatar, :cover).find(params[:id])
+    @user = User.includes(:avatar, :cover, profile: [:nicknames, :abilities]).find(params[:id])
     @posts = @user.received_posts.includes(:likes, comments: :likes, author: :avatar)
 
     @friend_ids = @user.friendships.map(&:friend_id)
