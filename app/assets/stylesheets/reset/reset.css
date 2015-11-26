@@ -8,6 +8,7 @@ section, nav, p, ul, li, form, input[type="text"], button, figure, a, strong {
   text-decoration: inherit;
   color: inherit;
   background: transparent;
+  word-wrap: inherit;
 }
 
 html, body {

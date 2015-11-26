@@ -1,8 +1,8 @@
 var SearchResults = React.createClass({
   render: function() {
-    if (!this.props.active) return false;
+    var {active, search, handleSubmit, handleClick, className, onMouseEnter, onMouseLeave, results, ...other} = this.props;
+    if (!active || !search) { return false; }
 
-    var {search, handleSubmit, handleClick, className, onMouseEnter, onMouseLeave, results, ...other} = this.props;
     return (
       <section
         className={"search-results " + (this.props.className || "")}
@@ -21,7 +21,7 @@ var SearchResults = React.createClass({
             );
           }, this)}
 
-          <li key="submit">
+          <li key="submit" className={results.length === 0 ? "no-result" : ""}>
             <SearchSubmitRow search={search} handleSubmit={handleSubmit}/>
           </li>
         </ul>
