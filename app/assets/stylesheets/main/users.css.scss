@@ -55,7 +55,6 @@
   height: 357px;
   border: 1px solid #d3d6db;
   border-radius: 0 0 3px 3px;
-  background: #fff;
   position: relative;
   margin-bottom: 16px;
 }
@@ -67,12 +66,21 @@
   border-color: rgba(0, 0, 0, 0.25);
   border-bottom-color: rgba(0,0,0,.4);
   border-top-color: rgba(0, 0, 0, .1);
+  position: relative;
+}
+
+.cover-photo > img {
+  width: calc(100% + 1px);
+  height: 100%;
+  position: absolute;
+  top: -1px;
 }
 
 .user-page-nav {
   justify-content: flex-start;
   padding-left: 201px;
   height: 43px;
+  background: #fff;
 }
 
 .user-page-nav a {
