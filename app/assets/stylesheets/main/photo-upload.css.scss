@@ -121,10 +121,14 @@
   max-width: 100%;
 }
 
-.preview-progress {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.action-field {
+  background: #fff;
+  padding: 10px 5px;
+  width: calc(100% - 10px);
+  display: flex;
+  justify-content: flex-end;
+}
+
+button.blue[disabled] {
+  background: #677AA3;
 }

@@ -4,6 +4,7 @@ var ImageUploadButton = React.createClass({
     this.$form = this.$modal.find("#upload-profile-picture");
     this.$previewImg = this.$form.find(".preview-image");
     this.$fileInput = this.$form.find("input[type='file']");
+    this.$submit = this.$form.find("button[type='submit']");
   },
   render: function() {
     return (
@@ -18,10 +19,12 @@ var ImageUploadButton = React.createClass({
     this.$form.removeClass("hidden");
     this.$form.on("click", ".cancel", this.deactivateModal);
     this.$form.on("change", "input[type='file']", this.setPreview);
+    this.$form.on("submit", this.handleSubmit);
   },
   deactivateModal: function() {
     this.$modal.removeClass("is-active");
-    this.$form.addClass("hidden");
+    this.$previewImg.attr("src", "").addClass("hidden");
+    this.$form.addClass("hidden").off();
   },
   setPreview: function(e) {
     var reader = new FileReader();
@@ -30,11 +33,22 @@ var ImageUploadButton = React.createClass({
 
     reader.onloadend = function() {
       self.$previewImg.removeClass("hidden").attr("src", reader.result);
+      self.$submit.prop("disabled", false);
     };
 
     if (file) {
       reader.readAsDataURL(file);
       self.$previewImg.addClass("hidden");
     }
+  },
+  handleSubmit: function(e) {
+    e.preventDefault();
+    if (this.file) {
+      var formData = new FormData();
+      formData.append("image", this.file);
+      ApiUtil.uploadAvatar(formData);
+    }
+
+    this.deactivateModal();
   }
 });
