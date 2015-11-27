@@ -1,1 +1,1 @@
-json.cover @cover.image.url
+json.cover @cover.image.url(:cover)

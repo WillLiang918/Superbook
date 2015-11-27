@@ -46,6 +46,8 @@ end
 
 User.all.each do |user|
   User.where.not(id: user.id).sample(30).each do |other_user|
+    next if Friendship.find_by(user_id: user.id, friend_id: other_user.id)
+
     request = FriendRequest.find_by(sender_id: other_user.id, receiver_id: user.id)
     if request.nil?
       FriendRequest.create!(sender_id: user.id, receiver_id: other_user.id)
