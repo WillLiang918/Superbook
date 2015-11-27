@@ -4,7 +4,20 @@
       <h1 class="login-logo">superbook</h1>
     </a>
 
-    <form class="login-form flex-container" method="POST" action="<%= sessions_url %>">
+    <div class="demo-user-sign-in">
+      <h3>Demo Users</h3>
+      <select id="demo-user">
+        <option value="">
+        <option value="bruce.wayne@gmail.com">
+          Bruce Wayne
+        </option>
+        <option value="clark.kent@gmail.com">
+          Clark Kent
+        </option>
+      </select>
+    </div>
+
+    <form class="login-form flex-container" method="POST" action="<%= sessions_url %>" id="login-form">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
       <div class="field-flex-item">
@@ -136,3 +149,15 @@
 <footer class="login-footer">
   <small>Ryan Goldenberg &copy; 2015</small>
 </footer>
+
+<script>
+$(function() {
+
+  $("#demo-user").on("change", function(e) {
+    document.getElementById("login-email").value = e.currentTarget.value;
+    document.getElementById("login-password").value = "password";
+    document.getElementById("login-form").submit();
+  });
+
+})
+</script>

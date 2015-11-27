@@ -50,6 +50,13 @@ class User < ActiveRecord::Base
     TokenGenerator.generate_token { |token| User.find_by(session_token: token).nil? }
   end
 
+  def self.find_by_name(name)
+    name_parts = name.split
+    first_name = name_parts.first
+    last_name = name_parts.drop(1).join(" ")
+    self.find_by(first_name: first_name, last_name: last_name)
+  end
+
   def reset_session_token!
     self.session_token = User.generate_session_token
     self.save!
@@ -88,7 +95,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_credentials(email, password)
-    user = User.find_by(email: email)
+    user = User.find_by(email: email.downcase)
     return user if user && user.is_password?(password)
   end
 
