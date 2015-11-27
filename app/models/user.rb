@@ -96,4 +96,13 @@ class User < ActiveRecord::Base
     context = ApplicationController.new.view_context
     context.render('/api/users/user.json.jbuilder', handlers: [:jbuilder], user: self)
   end
+
+  def friend!(other_user)
+    ActiveRecord::Base.transaction do
+      Friendship.create!(user_id: self.id, friend_id: other_user.id)
+      Friendship.create!(user_id: other_user.id, friend_id: self.id)
+      FriendRequest.where(sender_id: self.id, receiver_id: other_user.id).each(&:destroy!)
+      FriendRequest.where(sender_id: other_user.id, receiver_id: self.id).each(&:destroy!)
+    end
+  end
 end

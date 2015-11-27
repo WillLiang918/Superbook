@@ -30,5 +30,5 @@ class FriendRequest < ActiveRecord::Base
   alias_method :deny!, :destroy!
   alias_method :cancel!, :destroy!
 
-  # validate that reverse friend request doesn't already exist
+  # TODO: validate that reverse friend request doesn't already exist
 end
