@@ -26,6 +26,7 @@ var NewsFeed = React.createClass({
 
     this.fetchInitialPosts();
     $(window).on("scroll", this.onScroll);
+    this.startPolling();
   },
   componentWillUnmount: function() {
     this.stores.forEach(function(store) {
@@ -33,6 +34,7 @@ var NewsFeed = React.createClass({
     }, this);
 
     $(window).off("scroll", this.onScroll);
+    this.stopPolling();
   },
   render: function() {
     var user = this.props.currentUser;
@@ -78,5 +80,15 @@ var NewsFeed = React.createClass({
     if (percentage >= 0.75) {
       this.fetchOlderPosts();
     }
+  },
+  startPolling: function() {
+    this._intervalId = setInterval(function() {
+      var posts = this.state.posts;
+      var firstPost = posts[0];
+      ApiUtil.fetchNewerNewsFeedData(firstPost.created_at);
+    }.bind(this), 3000);
+  },
+  stopPolling: function() {
+    clearInterval(this._intervalId);
   }
 });

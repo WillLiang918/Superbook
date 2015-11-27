@@ -7,7 +7,19 @@
 
   var addOldNewsFeed = function(newsFeed) {
     newsFeed.forEach(function(postId) { _newsFeed.push(postId); });
-    // _newsFeed.push(...newsFeed);
+  };
+
+  var addNewNewsFeed = function(newsFeed) {
+    seenPosts = new Set(newsFeed);
+
+    _newsFeed.forEach(function(postId) {
+      if (!seenPosts.has(postId)) {
+        newsFeed.push(postId);
+        seenPosts.add(postId);
+      }
+    });
+    
+    _newsFeed = newsFeed;
   };
 
   var addPost = function(post) {
@@ -49,6 +61,17 @@
             root.LikeStore.dispatcherId
           ]);
           addOldNewsFeed(payload.news_feed);
+          root.NewsFeedStore.emitChange();
+          break;
+
+        case Constants.RECEIVE_NEWER_NEWS_FEED_DATA:
+          AppDispatcher.waitFor([
+            root.UserStore.dispatcherId,
+            root.PostStore.dispatcherId,
+            root.CommentStore.dispatcherId,
+            root.LikeStore.dispatcherId
+          ]);
+          addNewNewsFeed(payload.news_feed);
           root.NewsFeedStore.emitChange();
           break;
 

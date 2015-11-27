@@ -6,7 +6,7 @@ class Friendship < ActiveRecord::Base
   validates :user_id, uniqueness: { scope: :friend_id }
   validate :cannot_friend_yourself
 
-  after_create :create_reverse_friendship!
+  after_create :create_reverse_friendship!, :destroy_friend_requests!
   after_destroy :destroy_reverse_friendship!
 
   def cannot_friend_yourself
@@ -20,6 +20,11 @@ class Friendship < ActiveRecord::Base
     if reverse_friendship.nil?
       Friendship.create!(user_id: self.friend_id, friend_id: self.user_id)
     end
+  end
+
+  def destroy_friend_requests!
+    FriendRequest.where(sender_id: self.user_id, receiver_id: self.friend_id).each(&:destroy!)
+    FriendRequest.where(sender_id: self.friend_id, receiver_id: self.user_id).each(&:destroy!)
   end
 
   def destroy_reverse_friendship!

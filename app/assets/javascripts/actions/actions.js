@@ -162,6 +162,12 @@ var Actions = {
     AppDispatcher.dispatch(Object.assign(data, {
       actionType: Constants.RECEIVE_OLDER_NEWS_FEED_DATA
     }));
+  },
+
+  receiverNewerNewsFeedData: function(data) {
+    AppDispatcher.dispatch(Object.assign(data, {
+      actionType: Constants.RECEIVE_NEWER_NEWS_FEED_DATA
+    }));
   }
 
 };

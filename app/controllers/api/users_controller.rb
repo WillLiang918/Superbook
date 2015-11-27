@@ -15,6 +15,7 @@ class Api::UsersController < ApplicationController
     @posts = Post.includes(:likes, comments: :likes, author: :avatar)
                  .where(author_id: @friend_ids + [current_user.id])
                  .created_before(params[:created_before])
+                 .created_after(params[:created_after])
                  .order(created_at: :desc)
                  .limit(10)
 

@@ -26,13 +26,15 @@
 
 .demo-user-sign-in {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-top: 30px;
+  margin-top: 16px;
 }
 
 .demo-user-sign-in h3 {
-  margin-right: 5px;
+  font-size: 12px;
+  margin-bottom: 4px;
 }
 
 .login-form {

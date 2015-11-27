@@ -72,6 +72,14 @@ User.all.each do |user|
   end
 end
 
+friend_pairs = ["Clark Kent", "Bruce Wayne"]
+friend_pairs.each do |pair|
+  user = User.find_by_name(pair.first)
+  friend = User.find_by_name(pair.last)
+  Friendship.create!(user_id: user.id, friend_id: friend.id)
+end
+
+
 timeline_posts = {
   "Bruce Banner"    => [
                         "Part of me is getting the urge to SMASH",
@@ -178,4 +186,20 @@ comments.each do |comment_body, comment_attributes|
   end
 
   Comment.create!(commentable: post, author: author, body: comment_attributes[:body])
+end
+
+
+users = User.all
+Post.all.each do |post|
+  num_likes = (rand * 10).floor
+  users.sample(num_likes).each do |user|
+    Like.create!(user: user, likeable: post)
+  end
+end
+
+Comment.all.each do |comment|
+  num_likes = (rand * 3).floor
+  users.sample(num_likes).each do |user|
+    Like.create!(user: user, likeable: comment)
+  end
 end

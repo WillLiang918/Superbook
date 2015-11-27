@@ -229,6 +229,16 @@ var ApiUtil = {
         Actions.receiveOlderNewsFeedData(data);
       }
     });
+  },
+
+  fetchNewerNewsFeedData: function(created_after) {
+    return $.ajax({
+      url: "api/users",
+      data: {created_after: created_after},
+      success: function(data) {
+        Actions.receiverNewerNewsFeedData(data);
+      }
+    });
   }
 
 };
