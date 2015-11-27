@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token, :parse_birthday
   before_save :downcase_email
-  after_save  :create_profile
+  after_save  :create_profile, :create_avatar, :create_cover
 
   has_many :authored_posts, class_name: "Post", foreign_key: :author_id, dependent: :destroy
   has_many :received_posts, class_name: "Post", foreign_key: :receiver_id, dependent: :destroy
@@ -77,6 +77,14 @@ class User < ActiveRecord::Base
 
   def create_profile
     Profile.create!(user: self)
+  end
+
+  def create_avatar
+    Avatar.create!(user: self)
+  end
+
+  def create_cover
+    Cover.create!(user: self)
   end
 
   def self.find_by_credentials(email, password)

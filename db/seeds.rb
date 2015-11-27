@@ -6,85 +6,53 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-men = [
-  ["Bruce", "Wayne"],
-  ["Bruce", "Banner"],
-  ["Charles", "Xavier"],
-  ["Clark", "Kent"],
-  ["Erik", "Lehnsherr"],
-  ["James", "Howlett"],
-  ["Nick", "Fury"],
-  ["Peter", "Parker"],
-  ["Scott", "Summers"],
-  ["Steve", "Rogers"],
-  ["Thor", "Odinson"],
-  ["Tony", "Stark"]
-]
-
-
-
-
-users = [
-  {
-    "first_name" => "Bruce",
-    "last_name" => "Wayne",
-    "email" => "bruce@gmail.com",
-    "password" => "password",
-    "sex" => "male",
-    "birthday" => 30.years.ago,
-    "avatar_url" => "avatars/bruce_wayne.jpg"
-  },
-
-  {
-    "first_name" => "Charles",
-    "last_name" => "Xavier",
-    "email" => "charles@gmail.com",
-    "password" => "password",
-    "sex" => "male",
-    "birthday" => 80.years.ago,
-    "avatar_url" => "avatars/charles_xavier.jpg"
-  },
-
-  {
-    "first_name" => "Clark",
-    "last_name" => "Kent",
-    "email" => "clark@gmail.com",
-    "password" => "password",
-    "sex" => "male",
-    "birthday" => 100.years.ago,
-    "avatar_url" => "avatars/clark_kent.jpg"
-  },
-
-  {
-    "first_name" => "Erik",
-    "last_name" => "Lehnsherr",
-    "email" => "erik@gmail.com",
-    "password" => "password",
-    "sex" => "male",
-    "birthday" => 30.years.ago,
-    "avatar_url" => "avatars/erik_lehnsherr.jpg"
-  },
-
-  {
-    "first_name" => "Peter",
-    "last_name" => "Parker",
-    "email" => "peter@gmail.com",
-    "password" => "password",
-    "sex" => "male",
-    "birthday" => 30.years.ago,
-    "avatar_url" => "avatars/peter_parker.gif"
-  }
-]
-
 User.destroy_all
 
-users.each do |user|
-  attributes = user.except("avatar_url")
-  image_path = user["avatar_url"]
-  u = User.new(attributes)
-  u.save!
-  a = Avatar.new(user: u)
-  a.image = File.new("#{Rails.root}/app/assets/images/#{image_path}")
-  a.save!
+seed_image_root = "#{Rails.root}/app/assets/images/seeds/"
+
+["male", "female"].each do |sex|
+  avatar_root = seed_image_root + "#{sex}/avatars/"
+  cover_root  = seed_image_root + "#{sex}/covers/"
+
+  Dir.foreach(avatar_root) do |path|
+    next if path.starts_with?(".")
+
+    name_path, extension = path.split(".")
+    name_parts = name_path.split("_").map(&:capitalize)
+    first_name = name_parts.first
+    last_name = name_parts.drop(1).join(" ")
+    email = name_path.gsub("_", ".") + "@gmail.com"
+    birthday = 50.years.ago
+
+    user = User.create!(
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      password: "password",
+      sex: sex,
+      birthday: birthday
+    )
+
+    avatar_path = avatar_root + path
+    user.avatar.update!(image: File.new(avatar_path))
+
+    cover_path = Dir.glob(cover_root + name_path + ".*").first
+    user.cover.update!(image: File.new(cover_path))
+  end
 end
+
+
+# ["male", "female"].each do |sex|
+#   avatar_root = seed_image_root + "#{sex}/avatars/"
+#   cover_root = seed_image_root + "#{sex}/covers/"
+#
+#   Dir.foreach(avatar_root) do |path|
+#     next if path.starts_with?(".")
+#
+#     name_path, extension = path.split(".")
+#     cover_paths = Dir.glob(cover_root + name_path + ".*")
+#     if (cover_paths.length === 0)
+#       debugger
+#     end
+#   end
+# end
