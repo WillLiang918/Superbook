@@ -85,7 +85,11 @@ var NewsFeed = React.createClass({
     this._intervalId = setInterval(function() {
       var posts = this.state.posts;
       var firstPost = posts[0];
-      ApiUtil.fetchNewerNewsFeedData(firstPost.created_at);
+      if (firstPost) {
+        ApiUtil.fetchNewerNewsFeedData(firstPost.created_at);
+      } else {
+        ApiUtil.fetchNewerNewsFeedData();
+      }
     }.bind(this), 3000);
   },
   stopPolling: function() {
