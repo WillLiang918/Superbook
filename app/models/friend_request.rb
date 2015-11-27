@@ -19,5 +19,16 @@ class FriendRequest < ActiveRecord::Base
     end
   end
 
+  def accept!
+    ActiveRecord::Base.transaction do
+      Friendship.create!(user_id: self.sender_id, friend_id: self.receiver_id)
+      Friendship.create!(user_id: self.receiver_id, friend_id: self.sender_id)
+      self.destroy!
+    end
+  end
+
+  alias_method :deny!, :destroy!
+  alias_method :cancel!, :destroy!
+
   # validate that reverse friend request doesn't already exist
 end

@@ -7,12 +7,7 @@ class Api::FriendRequestsController < ApplicationController
   def accept
     sender_id, receiver_id = params[:user_id].to_i, current_user.id
     @friend_request = FriendRequest.find_by(sender_id: sender_id, receiver_id: receiver_id)
-
-    ActiveRecord::Base.transaction do
-      @friend_request.destroy!
-      Friendship.create!(user_id: sender_id, friend_id: receiver_id)
-      Friendship.create!(user_id: receiver_id, friend_id: sender_id)
-    end
+    @friend_request.accept!
     render :show
   end
 
@@ -23,13 +18,13 @@ class Api::FriendRequestsController < ApplicationController
 
   def deny
     @friend_request = FriendRequest.find_by(receiver_id: current_user.id, sender_id: params[:user_id])
-    @friend_request.destroy!
+    @friend_request.deny!
     render :show
   end
 
   def cancel
     @friend_request = FriendRequest.find_by(receiver_id: params[:user_id], sender_id: current_user.id)
-    @friend_request.destroy!
+    @friend_request.cancel!
     render :show
   end
 end

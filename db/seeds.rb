@@ -33,11 +33,14 @@ seed_image_root = "#{Rails.root}/app/assets/images/seeds/"
       birthday: birthday
     )
 
-    avatar_path = avatar_root + path
-    user.avatar.update!(image: File.new(avatar_path))
+    avatar = user.avatar
+    avatar.image = File.new(avatar_root + path)
+    avatar.save!
 
     cover_path = Dir.glob(cover_root + name_path + ".*").first
-    user.cover.update!(image: File.new(cover_path))
+    cover = user.cover
+    cover.image = File.new(cover_path)
+    cover.save!
   end
 end
 
