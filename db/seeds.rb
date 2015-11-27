@@ -72,11 +72,13 @@ User.all.each do |user|
   end
 end
 
-friend_pairs = ["Clark Kent", "Bruce Wayne"]
+friend_pairs = [["Clark Kent", "Bruce Wayne"]]
 friend_pairs.each do |pair|
   user = User.find_by_name(pair.first)
   friend = User.find_by_name(pair.last)
-  Friendship.create!(user_id: user.id, friend_id: friend.id)
+  if user && friend
+    Friendship.create!(user_id: user.id, friend_id: friend.id)
+  end
 end
 
 
