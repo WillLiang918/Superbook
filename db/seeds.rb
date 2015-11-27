@@ -44,6 +44,17 @@ seed_image_root = "#{Rails.root}/app/assets/images/seeds/"
   end
 end
 
+User.all.each do |user|
+  User.where.not(id: user.id).sample(30).each do |other_user|
+    request = FriendRequest.find_by(sender_id: other_user.id, receiver_id: user.id)
+    if request.nil?
+      FriendRequest.create!(sender_id: user.id, receiver_id: other_user.id)
+    else
+      request.accept!
+    end
+  end
+end
+
 
 # ["male", "female"].each do |sex|
 #   avatar_root = seed_image_root + "#{sex}/avatars/"
