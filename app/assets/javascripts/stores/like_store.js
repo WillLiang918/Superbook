@@ -7,7 +7,11 @@
   };
 
   var addLikes = function(likesHash) {
-    Object.assign(_likes, likesHash);
+    var postLikes = _likes.post;
+    var commentLikes = _likes.comment;
+
+    Object.assign(postLikes, likesHash.post);
+    Object.assign(commentLikes, likesHash.comment);
   };
 
   var addLike = function(like) {
