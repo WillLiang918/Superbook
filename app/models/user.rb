@@ -87,15 +87,15 @@ class User < ActiveRecord::Base
   end
 
   def create_profile
-    Profile.create!(user: self)
+    Profile.create!(user: self) if self.profile.nil?
   end
 
   def create_avatar
-    Avatar.create!(user: self)
+    Avatar.create!(user: self) if self.avatar.nil?
   end
 
   def create_cover
-    Cover.create!(user: self)
+    Cover.create!(user: self) if self.cover.nil?
   end
 
   def self.find_by_credentials(email, password)
