@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
   def log_in(user, remember_me = nil)
+    DemoUsers.remove(user.name)  #TODO: move to demo users controller
     if remember_me
       cookies.permanent[:session_token] = user.reset_session_token!
     else
@@ -16,6 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def log_out
+    DemoUsers.add(current_user.name) #TODO: move to demo users controller
     cookies.delete(:session_token)
   end
 
