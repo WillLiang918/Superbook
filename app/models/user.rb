@@ -57,6 +57,10 @@ class User < ActiveRecord::Base
     self.find_by(first_name: first_name, last_name: last_name)
   end
 
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   def reset_session_token!
     self.session_token = User.generate_session_token
     self.save!

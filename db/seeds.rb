@@ -71,7 +71,7 @@ User.all.each do |user|
     end
   end
 end
-# 
+
 # friend_pairs = [["Clark Kent", "Bruce Wayne"]]
 # friend_pairs.each do |(user_name, friend_name)|
 #   user = User.find_by_name(user_name)
@@ -98,7 +98,7 @@ timeline_posts = {
   "En Sabah Nur"    => ["I am APOCALYPSE! Look upon the future, AND TREMBLE! All who oppose me... shall be crushed!"],
   "Eric Brooks"     => ["It's open season on all suckheads."],
   "Erik Lehnsherr"  => ["Humans, you're time has come...", "Meet the next phase of evolution!"],
-  "Hank Mccoy"      => [""],
+  "Hank Mccoy"      => ["Oh my stars and garters!"],
   "Harvey Dent"     => [
                          "The night is darkest just before the dawn. And I promise you, the dawn is coming.",
                          "You either die a hero or you live long enough to see yourself become the villain."

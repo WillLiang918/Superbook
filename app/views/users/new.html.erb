@@ -8,12 +8,12 @@
       <h3>Demo Users</h3>
       <select id="demo-user">
         <option value="">
-        <option value="bruce.wayne@gmail.com">
-          Bruce Wayne
-        </option>
-        <option value="clark.kent@gmail.com">
-          Clark Kent
-        </option>
+        <% DemoUsers.all.each do |name| %>
+          <% email = name.split(" ").map(&:downcase).join(".") + "@gmail.com" %>
+          <option value="<%= email %>">
+            <%= name %>
+          </option>
+        <% end %>
       </select>
     </div>
 

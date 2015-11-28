@@ -24,11 +24,23 @@ var App = React.createClass({
 
     ApiUtil.fetchCurrentUserFriendRequests();
     ApiUtil.fetchCurrentUserFriends();
+
+    var currentUser = this.state.currentUser;
+    if (currentUser) {
+      var name = currentUser.first_name + " " + currentUser.last_name;
+      ApiUtil.removeDemoUser(name);
+    }
   },
   componentWillUnmount: function() {
     this.stores.forEach(function(store) {
       store.removeChangeListener(this.onChange);
     }, this);
+
+    var currentUser = this.state.currentUser;
+    if (currentUser) {
+      var name = currentUser.first_name + " " + currentUser.last_name;
+      ApiUtil.addDemoUser(name);
+    }
   },
   render: function() {
     var children = React.Children.map(this.props.children, function(child) {

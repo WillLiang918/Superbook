@@ -30,6 +30,9 @@ Rails.application.routes.draw do
 
     get 'search/users'         => 'search#user_search'
     get 'search/users_preview' => 'search#user_search_preview'
+
+    post   'demo_users/add'    => 'demo_users#add'
+    delete 'demo_users/remove' => 'demo_users#remove'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

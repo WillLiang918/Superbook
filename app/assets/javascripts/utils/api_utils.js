@@ -239,6 +239,22 @@ var ApiUtil = {
         Actions.receiverNewerNewsFeedData(data);
       }
     });
+  },
+
+  addDemoUser: function(name) {
+    $.ajax({
+      url: "api/demo_users/add",
+      type: "POST",
+      data: {name: name}
+    });
+  },
+
+  removeDemoUser: function(name) {
+    $.ajax({
+      url: "api/demo_users/remove",
+      type: "DELETE",
+      data: {name: name}
+    })
   }
 
 };

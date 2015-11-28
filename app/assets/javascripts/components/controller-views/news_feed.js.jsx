@@ -90,7 +90,7 @@ var NewsFeed = React.createClass({
       } else {
         ApiUtil.fetchNewerNewsFeedData();
       }
-    }.bind(this), 3000);
+    }.bind(this), 5000);
   },
   stopPolling: function() {
     clearInterval(this._intervalId);
