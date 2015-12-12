@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
                   .created_before(params[:created_before])
                   .created_after(params[:created_after])
                   .order(created_at: :desc)
-                  .limit(10)
+                  .limit(8)
 
     @friend_ids = @user.friendships.map(&:friend_id)
     @commenter_ids = Post.commenter_ids(@posts)
@@ -22,7 +22,7 @@ class Api::UsersController < ApplicationController
                  .created_before(params[:created_before])
                  .created_after(params[:created_after])
                  .order(created_at: :desc)
-                 .limit(10)
+                 .limit(8)
 
     @commenter_ids = Post.commenter_ids(@posts)
     @receiver_ids = Post.receiver_ids(@posts)
