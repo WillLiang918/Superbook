@@ -44,7 +44,7 @@ var App = React.createClass({
   },
   render: function() {
     var children = React.Children.map(this.props.children, function(child) {
-      return React.cloneElement(child, {...this.state});
+      return React.cloneElement(child, this.state);
     }, this);
 
     return (

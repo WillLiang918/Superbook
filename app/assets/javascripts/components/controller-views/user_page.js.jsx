@@ -4,11 +4,9 @@ var UserPage = React.createClass({
     var userId = parseInt(this.props.params.id);
 
     var postIds = TimelineStore.find(userId);
-    var posts = postIds.reduceRight(function(posts, postId) {
-      var post = PostStore.find(postId);
-      posts.push(post);
-      return posts;
-    }, []);
+    var posts = postIds.map(function(postId) {
+      return PostStore.find(postId);
+    });
 
     var comments = CommentStore.hashSlice(postIds);
     var likes = LikeStore.all();

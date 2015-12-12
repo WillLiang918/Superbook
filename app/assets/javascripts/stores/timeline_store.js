@@ -7,7 +7,7 @@
 
   var addPost = function(post) {
     var timeline = _timelines[post.receiver_id] = (_timelines[post.receiver_id] || []);
-    timeline.push(post.id);
+    timeline.unshift(post.id);
   };
 
   var deletePost = function(deletedPost) {

@@ -1,14 +1,5 @@
 var ApiUtil = {
 
-  fetchUserPageData: function(userId) {
-    return $.ajax({
-      url: "api/users/" + userId,
-      success: function(data) {
-        Actions.receiveUserData(data);
-      }
-    });
-  },
-
   createPost: function(post) {
     return $.ajax({
       url: "api/posts",
@@ -237,6 +228,15 @@ var ApiUtil = {
       data: {created_after: created_after},
       success: function(data) {
         Actions.receiverNewerNewsFeedData(data);
+      }
+    });
+  },
+  
+  fetchUserPageData: function(userId) {
+    return $.ajax({
+      url: "api/users/" + userId,
+      success: function(data) {
+        Actions.receiveUserData(data);
       }
     });
   },
