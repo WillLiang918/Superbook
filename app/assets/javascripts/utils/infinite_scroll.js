@@ -1,18 +1,20 @@
 var InfiniteScroll = {
   _SCROLL_RATIO: 0.75,
+  _CONTAINER: window,
+  _CONTENT: document,
 
   componentDidMount: function() {
     this._fetchInitialData();
-    $(window).on("scroll", this._onScroll);
+    $(this._CONTAINER).on("scroll", this._onScroll);
   },
 
   componentWillUnmount: function() {
-    $(window).off("scroll", this._onScroll);
+    $(this._CONTAINER).off("scroll", this._onScroll);
   },
 
   _onScroll: function(e) {
-    var maxScroll = $(document).height() - $(window).height();
-    var percentage = window.scrollY / maxScroll;
+    var maxScroll = $(this._CONTENT).height() - $(this._CONTAINER).height();
+    var percentage = this._CONTAINER.scrollY / maxScroll;
 
     if (percentage >= this._SCROLL_RATIO)
       this._fetchMoreData();
