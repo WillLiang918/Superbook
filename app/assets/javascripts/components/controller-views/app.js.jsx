@@ -1,6 +1,7 @@
 var App = React.createClass({
   stores: [CurrentUserStore, FriendRequestStore, FriendshipStore, UserStore, SearchStore],
-  getStateFromStore: function() {
+  mixins: [ControllerView],
+  getStateFromStores: function() {
     return {
       currentUser: CurrentUserStore.get(),
       sentFriendRequests: FriendRequestStore.sentFriendRequests(),
@@ -11,17 +12,7 @@ var App = React.createClass({
       searchResultsPreview: SearchStore.previews()
     };
   },
-  getInitialState: function() {
-    return this.getStateFromStore();
-  },
-  onChange: function() {
-    this.setState(this.getStateFromStore());
-  },
   componentDidMount: function() {
-    this.stores.forEach(function(store) {
-      store.addChangeListener(this.onChange);
-    }, this);
-
     ApiUtil.fetchCurrentUserFriendRequests();
     ApiUtil.fetchCurrentUserFriends();
 
@@ -32,10 +23,6 @@ var App = React.createClass({
     }
   },
   componentWillUnmount: function() {
-    this.stores.forEach(function(store) {
-      store.removeChangeListener(this.onChange);
-    }, this);
-
     var currentUser = this.state.currentUser;
     if (currentUser) {
       var name = currentUser.first_name + " " + currentUser.last_name;
