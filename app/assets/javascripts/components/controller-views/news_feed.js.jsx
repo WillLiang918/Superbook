@@ -1,6 +1,6 @@
 var NewsFeed = React.createClass({
   stores: [NewsFeedStore, PostStore, CommentStore, LikeStore],
-  mixins: [InfiniteScroll, Polling],
+  mixins: [ControllerView, InfiniteScroll, Polling],
   getStateFromStores: function() {
     var postIds = NewsFeedStore.all();
     var posts = postIds.reduce(function(posts, postId) {
@@ -13,22 +13,6 @@ var NewsFeed = React.createClass({
     var likes = LikeStore.all();
 
     return {posts: posts, comments: comments, likes: likes};
-  },
-  onChange: function() {
-    this.setState(this.getStateFromStores());
-  },
-  getInitialState: function() {
-    return this.getStateFromStores();
-  },
-  componentDidMount: function() {
-    this.stores.forEach(function(store) {
-      store.addChangeListener(this.onChange);
-    }, this);
-  },
-  componentWillUnmount: function() {
-    this.stores.forEach(function(store) {
-      store.removeChangeListener(this.onChange);
-    }, this);
   },
   render: function() {
     var user = this.props.currentUser;

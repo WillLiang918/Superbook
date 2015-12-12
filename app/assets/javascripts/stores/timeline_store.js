@@ -9,8 +9,13 @@
     for (var userId in timeline) {
       var posts = _timelines[userId] = (_timelines[userId] || []);
       var olderPosts = timeline[userId];
+
+      var seenPosts = new Set(posts);
       olderPosts.forEach(function(post) {
-        posts.push(post);
+        if (!seenPosts.has(post)) {
+          posts.push(post);
+          seenPosts.add(post);
+        }
       });
     }
   };

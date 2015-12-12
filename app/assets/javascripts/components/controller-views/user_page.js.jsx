@@ -1,6 +1,6 @@
 var UserPage = React.createClass({
-  mixins: [InfiniteScroll, Polling],
   stores: [TimelineStore, PostStore, CommentStore, LikeStore, CoverStore],
+  mixins: [ControllerView, InfiniteScroll, Polling],
   pollingInterval: 10000,
   getStateFromStores: function() {
     var userId = parseInt(this.props.params.id);
@@ -34,31 +34,17 @@ var UserPage = React.createClass({
     var created_after = (firstPost && firstPost.created_at) || undefined;
     return ApiUtil.fetchNewerUserPageData(userId, created_after);
   },
-  onChange: function() {
-    this.setState(this.getStateFromStores());
-  },
-  getInitialState: function() {
-    return this.getStateFromStores();
-  },
   componentWillMount: function() {
     this.friendStatus = FriendConstants.SELF;
   },
   componentDidMount: function() {
     this.friendStatus = this.friendRequestStatus(this.props);
-    this.stores.forEach(function(store) {
-      store.addChangeListener(this.onChange);
-    }, this);
   },
   componentWillReceiveProps: function(newProps) {
     this.friendStatus = this.friendRequestStatus(newProps);
     if (this.props.params.id !== newProps.params.id) {
       this.fetchInitialData(newProps.params.id);
     }
-  },
-  componentWillUnmount: function() {
-    this.stores.forEach(function(store) {
-      store.removeChangeListener(this.onChange);
-    }, this);
   },
   render: function() {
     var posts = this.state.posts, answerFriendRequest, friendRequestStatus;
