@@ -1,7 +1,7 @@
 var ApiUtil = {
 
   fetchUserPageData: function(userId) {
-    $.ajax({
+    return $.ajax({
       url: "api/users/" + userId,
       success: function(data) {
         Actions.receiveUserData(data);
@@ -10,7 +10,7 @@ var ApiUtil = {
   },
 
   createPost: function(post) {
-    $.ajax({
+    return $.ajax({
       url: "api/posts",
       type: "POST",
       data: {post: post},
@@ -21,7 +21,7 @@ var ApiUtil = {
   },
 
   updatePost: function(post) {
-    $.ajax({
+    return $.ajax({
       url: "api/posts/" + post.id,
       type: "PATCH",
       data: {post: post},
@@ -32,7 +32,7 @@ var ApiUtil = {
   },
 
   deletePost: function(post) {
-    $.ajax({
+    return $.ajax({
       url: "api/posts/" + post.id,
       type: "DELETE",
       success: function(post) {
@@ -42,7 +42,7 @@ var ApiUtil = {
   },
 
   sendFriendRequest: function(userId) {
-    $.ajax({
+    return $.ajax({
       url: "api/friend_requests/" + userId + "/send",
       type: "POST",
       success: function(request) {
@@ -52,7 +52,7 @@ var ApiUtil = {
   },
 
   cancelFriendRequest: function(userId) {
-    $.ajax({
+    return $.ajax({
       url: "api/friend_requests/" + userId + "/cancel",
       type: "DELETE",
       success: function(request) {
@@ -62,7 +62,7 @@ var ApiUtil = {
   },
 
   acceptFriendRequest: function(userId) {
-    $.ajax({
+    return $.ajax({
       url: "api/friend_requests/" + userId + "/accept",
       type: "POST",
       success: function(request) {
@@ -72,7 +72,7 @@ var ApiUtil = {
   },
 
   deleteFriendRequest: function(userId) {
-    $.ajax({
+    return $.ajax({
       url: "api/friend_requests/" + userId + "/delete",
       type: "DELETE",
       success: function(request) {
@@ -82,7 +82,7 @@ var ApiUtil = {
   },
 
   unfriend: function(userId) {
-    $.ajax({
+    return $.ajax({
       url: "api/users/" + userId + "/friendships",
       type: "DELETE",
       success: function(friendship) {
@@ -92,7 +92,7 @@ var ApiUtil = {
   },
 
   fetchCurrentUserFriends: function() {
-    $.ajax({
+    return $.ajax({
       url: "api/friends",
       success: function(data) {
         Actions.receiveFriendData(data);
@@ -101,7 +101,7 @@ var ApiUtil = {
   },
 
   fetchCurrentUserFriendRequests: function() {
-    $.ajax({
+    return $.ajax({
       url: "api/friend_requests",
       success: function(data) {
         Actions.receiveCurrentUserFriendRequests(data);
@@ -110,7 +110,7 @@ var ApiUtil = {
   },
 
   createComment: function(comment) {
-    $.ajax({
+    return $.ajax({
       url: "api/comments",
       type: "POST",
       data: {comment: comment},
@@ -122,7 +122,7 @@ var ApiUtil = {
   },
 
   deleteComment: function(commentId) {
-    $.ajax({
+    return $.ajax({
       url: "api/comments/" + commentId,
       type: "DELETE",
       success: function(comment) {
@@ -132,7 +132,7 @@ var ApiUtil = {
   },
 
   updateComment: function(updatedComment) {
-    $.ajax({
+    return $.ajax({
       url: "api/comments/" + updatedComment.id,
       type: "PATCH",
       data: {comment: {body: updatedComment.body}},
@@ -143,7 +143,7 @@ var ApiUtil = {
   },
 
   like: function(data) {
-    $.ajax({
+    return $.ajax({
       url: "api/likes",
       type: "POST",
       data: data,
@@ -154,7 +154,7 @@ var ApiUtil = {
   },
 
   unlike: function(data) {
-    $.ajax({
+    return $.ajax({
       url: "api/likes",
       type: "DELETE",
       data: data,
@@ -165,7 +165,7 @@ var ApiUtil = {
   },
 
   fetchUserSearchPreview: function(name) {
-    $.ajax({
+    return $.ajax({
       url: "api/search/users_preview",
       data: {name: name},
       success: function(users) {
@@ -175,7 +175,7 @@ var ApiUtil = {
   },
 
   fetchUserSearch: function(name) {
-    $.ajax({
+    return $.ajax({
       url: "api/search/users",
       data: {name: name},
       success: function(users) {
@@ -185,7 +185,7 @@ var ApiUtil = {
   },
 
   uploadAvatar: function(formData) {
-    $.ajax({
+    return $.ajax({
       url: "api/avatars",
       type: "POST",
       processData: false,
@@ -242,7 +242,7 @@ var ApiUtil = {
   },
 
   addDemoUser: function(name) {
-    $.ajax({
+    return $.ajax({
       url: "api/demo_users/add",
       type: "POST",
       data: {name: name}
@@ -250,11 +250,11 @@ var ApiUtil = {
   },
 
   removeDemoUser: function(name) {
-    $.ajax({
+    return $.ajax({
       url: "api/demo_users/remove",
       type: "DELETE",
       data: {name: name}
-    })
+    });
   }
 
 };

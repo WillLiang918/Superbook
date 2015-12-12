@@ -7,6 +7,7 @@
   };
 
   var addLikes = function(likesHash) {
+    if (!likesHash) return;
     var postLikes = _likes.post;
     var commentLikes = _likes.comment;
 
