@@ -15,6 +15,7 @@
 
         case Constants.RECEIVE_USER_DATA:
         case Constants.RECEIVE_OLDER_USER_DATA:
+        case Constants.RECEIVE_NEWER_USER_DATA:
           setCover(payload.cover);
           break;
 

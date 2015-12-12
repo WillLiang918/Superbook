@@ -7,11 +7,28 @@
 
   var addOlderTimeline = function(timeline) {
     for (var userId in timeline) {
-      var posts = _timelines[userId] = (_timelines[userId] || {});
+      var posts = _timelines[userId] = (_timelines[userId] || []);
       var olderPosts = timeline[userId];
       olderPosts.forEach(function(post) {
         posts.push(post);
       });
+    }
+  };
+
+  var addNewerTimeline = function(timeline) {
+    for (var userId in timeline) {
+      var posts = _timelines[userId] || [];
+      var newerPosts = timeline[userId];
+
+      var seenPosts = new Set(newerPosts);
+      posts.forEach(function(post) {
+        if (!seenPosts.has(post)) {
+          newerPosts.push(post);
+          seenPosts.add(post);
+        }
+      });
+
+      _timelines[userId] = newerPosts;
     }
   };
 
@@ -76,6 +93,20 @@
             root.ProfileStore.dispatcherId
           ]);
           addOlderTimeline(payload.timeline);
+          root.TimelineStore.emitChange();
+          break;
+
+        case Constants.RECEIVE_NEWER_USER_DATA:
+          AppDispatcher.waitFor([
+            root.UserStore.dispatcherId,
+            root.FriendshipStore.dispatcherId,
+            root.PostStore.dispatcherId,
+            root.CommentStore.dispatcherId,
+            root.LikeStore.dispatcherId,
+            root.CoverStore.dispatcherId,
+            root.ProfileStore.dispatcherId
+          ]);
+          addNewerTimeline(payload.timeline);
           root.TimelineStore.emitChange();
           break;
 

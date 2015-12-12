@@ -1,6 +1,7 @@
 var UserPage = React.createClass({
-  mixins: [InfiniteScroll],
+  mixins: [InfiniteScroll, Polling],
   stores: [TimelineStore, PostStore, CommentStore, LikeStore, CoverStore],
+  pollingInterval: 10000,
   getStateFromStores: function() {
     var userId = parseInt(this.props.params.id);
 
@@ -25,6 +26,13 @@ var UserPage = React.createClass({
     var posts = this.state.posts;
     var lastPost = posts[posts.length - 1];
     return ApiUtil.fetchOlderUserPageData(userId, lastPost.created_at);
+  },
+  fetchNewerData: function() {
+    var userId = this.props.params.id;
+    var posts = this.state.posts;
+    var firstPost = posts[0];
+    var created_after = (firstPost && firstPost.created_at) || undefined;
+    return ApiUtil.fetchNewerUserPageData(userId, created_after);
   },
   onChange: function() {
     this.setState(this.getStateFromStores());

@@ -251,6 +251,16 @@ var ApiUtil = {
     });
   },
 
+  fetchNewerUserPageData: function(userId, created_after) {
+    return $.ajax({
+      url: "api/users/" + userId,
+      data: {created_after: created_after},
+      success: function(data) {
+        Actions.receiveNewerUserData(data);
+      }
+    });
+  },
+
   addDemoUser: function(name) {
     return $.ajax({
       url: "api/demo_users/add",

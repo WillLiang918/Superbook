@@ -174,5 +174,11 @@ var Actions = {
     AppDispatcher.dispatch(Object.assign(data, {
       actionType: Constants.RECEIVE_OLDER_USER_DATA
     }));
+  },
+
+  receiveNewerUserData: function(data) {
+    AppDispatcher.dispatch(Object.assign(data, {
+      actionType: Constants.RECEIVE_NEWER_USER_DATA
+    }));
   }
 };

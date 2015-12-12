@@ -1,6 +1,6 @@
 var NewsFeed = React.createClass({
   stores: [NewsFeedStore, PostStore, CommentStore, LikeStore],
-  mixins: [InfiniteScroll],
+  mixins: [InfiniteScroll, Polling],
   getStateFromStores: function() {
     var postIds = NewsFeedStore.all();
     var posts = postIds.reduce(function(posts, postId) {
@@ -24,15 +24,11 @@ var NewsFeed = React.createClass({
     this.stores.forEach(function(store) {
       store.addChangeListener(this.onChange);
     }, this);
-
-    this.startPolling();
   },
   componentWillUnmount: function() {
     this.stores.forEach(function(store) {
       store.removeChangeListener(this.onChange);
     }, this);
-
-    this.stopPolling();
   },
   render: function() {
     var user = this.props.currentUser;
@@ -57,18 +53,10 @@ var NewsFeed = React.createClass({
     var lastPost = posts[posts.length - 1];
     return ApiUtil.fetchOlderNewsFeedData(lastPost.created_at);
   },
-  startPolling: function() {
-    this._intervalId = setInterval(function() {
-      var posts = this.state.posts;
-      var firstPost = posts[0];
-      if (firstPost) {
-        ApiUtil.fetchNewerNewsFeedData(firstPost.created_at);
-      } else {
-        ApiUtil.fetchNewerNewsFeedData();
-      }
-    }.bind(this), 5000);
-  },
-  stopPolling: function() {
-    clearInterval(this._intervalId);
+  fetchNewerData: function() {
+    var posts = this.state.posts;
+    var firstPost = posts[0];
+    var created_after = (firstPost && firstPost.created_at) || undefined;
+    ApiUtil.fetchNewerNewsFeedData(created_after);
   }
 });
