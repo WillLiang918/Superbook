@@ -231,12 +231,22 @@ var ApiUtil = {
       }
     });
   },
-  
+
   fetchUserPageData: function(userId) {
     return $.ajax({
       url: "api/users/" + userId,
       success: function(data) {
         Actions.receiveUserData(data);
+      }
+    });
+  },
+
+  fetchOlderUserPageData: function(userId, created_before) {
+    return $.ajax({
+      url: "api/users/" + userId,
+      data: {created_before: created_before},
+      success: function(data) {
+        Actions.receiveOlderUserData(data);
       }
     });
   },

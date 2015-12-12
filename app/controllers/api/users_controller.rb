@@ -3,8 +3,10 @@ class Api::UsersController < ApplicationController
     @user = User.includes(:avatar, :cover, profile: [:nicknames, :abilities]).find(params[:id])
     @posts = @user.received_posts
                   .includes(:likes, comments: :likes, author: :avatar)
+                  .created_before(params[:created_before])
+                  .created_after(params[:created_after])
                   .order(created_at: :desc)
-                  .limit(10)
+                  .limit(2)
 
     @friend_ids = @user.friendships.map(&:friend_id)
     @commenter_ids = Post.commenter_ids(@posts)

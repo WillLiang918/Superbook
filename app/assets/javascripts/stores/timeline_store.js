@@ -5,6 +5,16 @@
     Object.assign(_timelines, timeline);
   };
 
+  var addOlderTimeline = function(timeline) {
+    for (var userId in timeline) {
+      var posts = _timelines[userId] = (_timelines[userId] || {});
+      var olderPosts = timeline[userId];
+      olderPosts.forEach(function(post) {
+        posts.push(post);
+      });
+    }
+  };
+
   var addPost = function(post) {
     var timeline = _timelines[post.receiver_id] = (_timelines[post.receiver_id] || []);
     timeline.unshift(post.id);
@@ -52,6 +62,20 @@
             root.ProfileStore.dispatcherId
           ]);
           addTimeline(payload.timeline);
+          root.TimelineStore.emitChange();
+          break;
+
+        case Constants.RECEIVE_OLDER_USER_DATA:
+          AppDispatcher.waitFor([
+            root.UserStore.dispatcherId,
+            root.FriendshipStore.dispatcherId,
+            root.PostStore.dispatcherId,
+            root.CommentStore.dispatcherId,
+            root.LikeStore.dispatcherId,
+            root.CoverStore.dispatcherId,
+            root.ProfileStore.dispatcherId
+          ]);
+          addOlderTimeline(payload.timeline);
           root.TimelineStore.emitChange();
           break;
 

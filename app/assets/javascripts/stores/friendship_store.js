@@ -52,6 +52,7 @@
           break;
 
         case Constants.RECEIVE_USER_DATA:
+        case Constants.RECEIVE_OLDER_USER_DATA:
           setFriendships(payload.friendships);
           break;
 

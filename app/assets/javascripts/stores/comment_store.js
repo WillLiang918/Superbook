@@ -73,6 +73,7 @@
       switch(payload.actionType) {
 
         case Constants.RECEIVE_USER_DATA:
+        case Constants.RECEIVE_OLDER_USER_DATA:
           addComments(payload.comments);
           break;
 

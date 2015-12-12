@@ -35,6 +35,7 @@
           break;
 
         case Constants.RECEIVE_USER_DATA:
+        case Constants.RECEIVE_OLDER_USER_DATA:
           setUsers(payload.users);
           break;
 

@@ -77,12 +77,6 @@ var Actions = {
     });
   },
 
-  receiveUserData: function(data) {
-    AppDispatcher.dispatch(Object.assign(data, {
-      actionType: Constants.RECEIVE_USER_DATA
-    }));
-  },
-
   receiveFriendData: function(data) {
     AppDispatcher.dispatch(Object.assign(data, {
       actionType: Constants.RECEIVE_FRIEND_DATA
@@ -124,12 +118,6 @@ var Actions = {
     });
   },
 
-  receiveNewsFeedData: function(data) {
-    AppDispatcher.dispatch(Object.assign(data, {
-      actionType: Constants.RECEIVE_NEWS_FEED_DATA,
-    }));
-  },
-
   receiveUserSearchPreview: function(users) {
     AppDispatcher.dispatch({
       actionType: Constants.RECEIVE_USER_SEARCH_PREVIEW_RESULTS,
@@ -158,6 +146,12 @@ var Actions = {
     });
   },
 
+  receiveNewsFeedData: function(data) {
+    AppDispatcher.dispatch(Object.assign(data, {
+      actionType: Constants.RECEIVE_NEWS_FEED_DATA,
+    }));
+  },
+
   receiveOlderNewsFeedData: function(data) {
     AppDispatcher.dispatch(Object.assign(data, {
       actionType: Constants.RECEIVE_OLDER_NEWS_FEED_DATA
@@ -168,6 +162,17 @@ var Actions = {
     AppDispatcher.dispatch(Object.assign(data, {
       actionType: Constants.RECEIVE_NEWER_NEWS_FEED_DATA
     }));
-  }
+  },
 
+  receiveUserData: function(data) {
+    AppDispatcher.dispatch(Object.assign(data, {
+      actionType: Constants.RECEIVE_USER_DATA
+    }));
+  },
+
+  receiveOlderUserData: function(data) {
+    AppDispatcher.dispatch(Object.assign(data, {
+      actionType: Constants.RECEIVE_OLDER_USER_DATA
+    }));
+  }
 };

@@ -1,4 +1,5 @@
 var UserPage = React.createClass({
+  mixins: [InfiniteScroll],
   stores: [TimelineStore, PostStore, CommentStore, LikeStore, CoverStore],
   getStateFromStores: function() {
     var userId = parseInt(this.props.params.id);
@@ -17,7 +18,18 @@ var UserPage = React.createClass({
   },
   fetchUserPageData: function(id) {
     var userId = id || this.props.params.id;
-    ApiUtil.fetchUserPageData(userId);
+    return ApiUtil.fetchUserPageData(userId);
+  },
+  fetchInitialData: function() {
+    console.log("Initial fetch");
+    return this.fetchUserPageData();
+  },
+  fetchMoreData: function() {
+    console.log("Fetching more");
+    var userId = this.props.params.id;
+    var posts = this.state.posts;
+    var lastPost = posts[posts.length - 1];
+    return ApiUtil.fetchOlderUserPageData(userId, lastPost.created_at);
   },
   onChange: function() {
     this.setState(this.getStateFromStores());
