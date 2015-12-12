@@ -20,13 +20,12 @@
 //= require react-dom
 //= require react_ujs
 //= require react-router
-//= require router-util
+//= require_tree ./utils
 //= require key_mirror
 //= require flux
 //= require eventemitter
 //= require_tree ./dispatcher
 //= require stores/store_base
 //= require_tree ./stores
-//= require_tree ./utils
 //= require components
 //= require_tree .
