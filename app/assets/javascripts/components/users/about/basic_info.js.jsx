@@ -1,7 +1,10 @@
 var SEXES = {"male": "Male", "female": "Female"};
 var BasicInfo = React.createClass({
+  getInitialState: function() {
+    return {editing: new Set()};
+  },
   render: function() {
-    var {profile, user, ...other} = this.props;
+    var {profile, user, currentUser, ...other} = this.props;
 
     return (
       <article className="user-basic-info">
@@ -9,8 +12,7 @@ var BasicInfo = React.createClass({
 
         <ul>
           <li>
-            <div>Birth Date</div>
-            <div>{moment(user.birthday).format("MMM Do YYYY")}</div>
+            <Birthday toggleEdit={this.toggleEdit} {...this.state} {...this.props} />
           </li>
 
           <li>
@@ -34,5 +36,14 @@ var BasicInfo = React.createClass({
         </ul>
       </article>
     );
+  },
+  toggleEdit: function(e) {
+    var name = e.target.dataset.name, editing = this.state.editing;
+    if (editing.has(name)) {
+      editing.delete(name);
+    } else {
+      editing.add(name);
+    }
+    this.forceUpdate();
   }
 });

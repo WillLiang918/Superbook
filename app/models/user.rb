@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   validates :sex, inclusion: SEXES
   validate :birthday_must_be_in_the_past
 
-  after_initialize :ensure_session_token, :parse_birthday
-  before_save :downcase_email
+  after_initialize :ensure_session_token
+  before_save :downcase_email, :parse_birthday
   after_save  :create_profile, :create_avatar, :create_cover
 
   has_many :authored_posts, class_name: "Post", foreign_key: :author_id, dependent: :destroy

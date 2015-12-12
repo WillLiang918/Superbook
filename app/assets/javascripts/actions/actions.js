@@ -180,5 +180,12 @@ var Actions = {
     AppDispatcher.dispatch(Object.assign(data, {
       actionType: Constants.RECEIVE_NEWER_USER_DATA
     }));
+  },
+
+  userUpdated: function(user) {
+    AppDispatcher.dispatch({
+      user: user,
+      actionType: Constants.USER_UPDATED
+    });
   }
 };

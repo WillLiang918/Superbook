@@ -275,6 +275,17 @@ var ApiUtil = {
       type: "DELETE",
       data: {name: name}
     });
+  },
+
+  updateUser: function(userId, userData) {
+    return $.ajax({
+      url: "api/users/" + userId,
+      type: "PATCH",
+      data: {user: userData},
+      success: function(data) {
+        Actions.userUpdated(data);
+      }
+    });
   }
 
 };

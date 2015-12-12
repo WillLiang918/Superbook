@@ -4,7 +4,7 @@ var About = React.createClass({
   },
   render: function() {
     var activeIdx = this.state.activeIdx;
-    var {user, profile, ...other} = this.props;
+    var {user, profile, currentUser, ...other} = this.props;
 
     return (
       <section className="about-page">
@@ -16,9 +16,9 @@ var About = React.createClass({
           <AboutSideNav activeIdx={activeIdx} setActiveIdx={this.setActiveIdx} />
 
           <AboutContent activeIdx={activeIdx}>
-            <BasicInfo user={user} profile={profile} />
-            <Contact   user={user} profile={profile} />
-            <Details   user={user} profile={profile} />
+            <BasicInfo user={user} profile={profile} currentUser={currentUser} />
+            <Contact   user={user} profile={profile} currentUser={currentUser} />
+            <Details   user={user} profile={profile} currentUser={currentUser} />
           </AboutContent>
         </div>
       </section>

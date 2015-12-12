@@ -62,6 +62,11 @@
           updateAvatar(payload.avatar);
           break;
 
+        case Constants.USER_UPDATED:
+          setUser(payload.user);
+          root.UserStore.emitChange();
+          break;
+
       }
     })
 

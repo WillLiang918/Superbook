@@ -25,5 +25,6 @@ var Constants = keyMirror({
   "RECEIVE_OLDER_NEWS_FEED_DATA": null,
   "RECEIVE_NEWER_NEWS_FEED_DATA": null,
   "RECEIVE_OLDER_USER_DATA": null,
-  "RECEIVE_NEWER_USER_DATA": null
+  "RECEIVE_NEWER_USER_DATA": null,
+  "USER_UPDATED": null
 });

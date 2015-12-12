@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+  before_action :ensure_update_permission, only: [:update]
+
   def show
     @user = User.includes(:avatar, :cover, profile: [:nicknames, :abilities]).find(params[:id])
     @posts = @user.received_posts
@@ -29,4 +31,21 @@ class Api::UsersController < ApplicationController
     @user_ids = (@commenter_ids + @receiver_ids) - @posts.map(&:author_id)
     @users = User.where(id: @user_ids.to_a).includes(:avatar)
   end
+
+  def update
+    current_user.update!(user_params)
+    render partial: "api/users/user", locals: {user: current_user}
+  end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:birthday_day, :birthday_month, :birthday_year)
+    end
+
+    def ensure_update_permission
+      if current_user.id != params[:id].to_i
+        render text: "You do not have permission to update user.", status: :forbidden
+      end
+    end
 end
