@@ -16,16 +16,11 @@ var UserPage = React.createClass({
 
     return {posts: posts, comments: comments, likes: likes, cover: cover, profile: profile};
   },
-  fetchUserPageData: function(id) {
+  fetchInitialData: function(id) {
     var userId = id || this.props.params.id;
     return ApiUtil.fetchUserPageData(userId);
   },
-  fetchInitialData: function() {
-    console.log("Initial fetch");
-    return this.fetchUserPageData();
-  },
   fetchMoreData: function() {
-    console.log("Fetching more");
     var userId = this.props.params.id;
     var posts = this.state.posts;
     var lastPost = posts[posts.length - 1];
@@ -45,12 +40,11 @@ var UserPage = React.createClass({
     this.stores.forEach(function(store) {
       store.addChangeListener(this.onChange);
     }, this);
-    this.fetchUserPageData();
   },
   componentWillReceiveProps: function(newProps) {
     this.friendStatus = this.friendRequestStatus(newProps);
     if (this.props.params.id !== newProps.params.id) {
-      this.fetchUserPageData(newProps.params.id);
+      this.fetchInitialData(newProps.params.id);
     }
   },
   componentWillUnmount: function() {
