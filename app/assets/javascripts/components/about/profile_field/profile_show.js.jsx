@@ -2,7 +2,7 @@ var ProfileShow = React.createClass({
   render: function() {
     var {profile, toggleEdit, name, ...other} = this.props;
 
-    if (!profile || !profile.hometown) {
+    if (!profile || !profile[name]) {
       return <ProfileAdd {...this.props} />;
     }
 

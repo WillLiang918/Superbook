@@ -14,7 +14,7 @@ var ProfileForm = React.createClass({
 
         <form className="about-field-form" data-name={name} onSubmit={this.save}>
           <input
-            type={inputType}
+            type={inputType || "text"}
             name={name}
             onChange={this.onChange}
             value={this.state[name]}
