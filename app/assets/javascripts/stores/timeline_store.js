@@ -81,7 +81,8 @@
             root.CommentStore.dispatcherId,
             root.LikeStore.dispatcherId,
             root.CoverStore.dispatcherId,
-            root.ProfileStore.dispatcherId
+            root.ProfileStore.dispatcherId,
+            root.NicknameStore.dispatcherId
           ]);
           addTimeline(payload.timeline);
           root.TimelineStore.emitChange();
@@ -95,7 +96,8 @@
             root.CommentStore.dispatcherId,
             root.LikeStore.dispatcherId,
             root.CoverStore.dispatcherId,
-            root.ProfileStore.dispatcherId
+            root.ProfileStore.dispatcherId,
+            root.NicknameStore.dispatcherId
           ]);
           addOlderTimeline(payload.timeline);
           root.TimelineStore.emitChange();
@@ -109,7 +111,8 @@
             root.CommentStore.dispatcherId,
             root.LikeStore.dispatcherId,
             root.CoverStore.dispatcherId,
-            root.ProfileStore.dispatcherId
+            root.ProfileStore.dispatcherId,
+            root.NicknameStore.dispatcherId
           ]);
           addNewerTimeline(payload.timeline);
           root.TimelineStore.emitChange();
