@@ -187,5 +187,11 @@ var Actions = {
       user: user,
       actionType: Constants.USER_UPDATED
     });
+  },
+
+  profileUpdated: function(data) {
+    AppDispatcher.dispatch(Object.assign(data, {
+      actionType: Constants.PROFILE_UPDATED
+    }));
   }
 };

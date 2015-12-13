@@ -4,13 +4,13 @@ class Api::ProfilesController < ApplicationController
   def update
     @profile = Profile.find_by(user_id: params[:user_id])
     @profile.update!(profile_params)
-    render partial "api/profiles/profile", locals: {profile: @profile}
+    render partial: "api/profiles/profile", locals: {profile: @profile}
   end
 
   private
 
     def ensure_update_permission
-      if params[:user_id].to_id != current_user.id
+      if params[:user_id].to_i != current_user.id
         render text: "You do not have permission to update profile.", status: :forbidden
       end
     end

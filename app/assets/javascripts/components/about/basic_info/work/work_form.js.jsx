@@ -31,7 +31,7 @@ var WorkForm = React.createClass({
     this.forceUpdate();
   },
   save: function(e) {
-    // TODO Save
+    ApiUtil.updateProfile(this.props.user.id, this.state);
     this.props.toggleEdit(e);
   }
 });

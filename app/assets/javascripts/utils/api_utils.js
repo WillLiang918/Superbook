@@ -286,6 +286,17 @@ var ApiUtil = {
         Actions.userUpdated(data);
       }
     });
+  },
+
+  updateProfile: function(userId, profileData) {
+    return $.ajax({
+      url: "api/users/" + userId + "/profile",
+      type: "PATCH",
+      data: {profile: profileData},
+      success: function(data) {
+        Actions.profileUpdated(data);
+      }
+    });
   }
 
 };

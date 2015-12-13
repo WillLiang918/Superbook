@@ -1,6 +1,6 @@
 var UserPage = React.createClass({
-  stores: [TimelineStore, PostStore, CommentStore, LikeStore, CoverStore],
-  mixins: [ControllerView, InfiniteScroll, Polling],
+  stores: [TimelineStore, PostStore, CommentStore, LikeStore, CoverStore, ProfileStore],
+  mixins: [ControllerView, InfiniteScroll],
   pollingInterval: 10000,
   getStateFromStores: function() {
     var userId = parseInt(this.props.params.id);

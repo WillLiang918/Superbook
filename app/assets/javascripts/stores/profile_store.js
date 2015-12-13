@@ -5,6 +5,8 @@
     _profiles[profile.user_id] = profile;
   };
 
+  var updateProfile = addProfile;
+
   root.ProfileStore = Object.assign({}, root.StoreBase, {
 
     get: function(userId) {
@@ -18,6 +20,11 @@
         case Constants.RECEIVE_OLDER_USER_DATA:
         case Constants.RECEIVE_NEWER_USER_DATA:
           addProfile(payload.profile);
+          break;
+
+        case Constants.PROFILE_UPDATED:
+          updateProfile(payload.profile);
+          root.ProfileStore.emitChange();
           break;
 
       }
