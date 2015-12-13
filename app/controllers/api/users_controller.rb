@@ -2,7 +2,7 @@ class Api::UsersController < ApplicationController
   before_action :ensure_update_permission, only: [:update]
 
   def show
-    @user = User.includes(:avatar, :cover, profile: [:nicknames, :abilities]).find(params[:id])
+    @user = User.includes(:avatar, :cover, :profile, :nicknames).find(params[:id])
     @posts = @user.received_posts
                   .includes(:likes, comments: :likes, author: :avatar)
                   .created_before(params[:created_before])

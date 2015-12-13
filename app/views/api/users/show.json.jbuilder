@@ -27,6 +27,12 @@ json.users do
   end
 end
 
+json.nicknames do
+  json.set! @user.id do
+    json.array! @nicknames
+  end
+end
+
 json.partial! 'api/profiles/profile', profile: @user.profile
 json.cover @user.cover.image.url
 json.partial! 'api/posts/posts', posts: @posts
