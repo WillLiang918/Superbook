@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   has_many :authored_comments, class_name: "Comment", foreign_key: :author_id, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_one  :profile, dependent: :destroy
+  has_many :nicknames, dependent: :destroy
+
 
   attr_accessor :email_confirmation, :birthday_day, :birthday_month, :birthday_year
   attr_reader :password

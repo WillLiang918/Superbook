@@ -1,5 +1,5 @@
 class Nickname < ActiveRecord::Base
-  belongs_to :profile
+  belongs_to :user
 
-  validates :profile, :name, presence: true
+  validates :user, :name, presence: true
 end
