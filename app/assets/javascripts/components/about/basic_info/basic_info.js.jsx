@@ -16,8 +16,7 @@ var BasicInfo = React.createClass({
           </li>
 
           <li>
-            <div>Sex</div>
-            <div>{SEXES[user.sex]}</div>
+            <Sex toggleEdit={this.toggleEdit} {...this.state} {...this.props} />
           </li>
 
           <li>

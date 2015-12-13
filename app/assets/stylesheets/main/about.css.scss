@@ -144,3 +144,15 @@ li:hover .edit-about {
 .black {
   color: #000;
 }
+
+.about-field-form {
+  color: #000;
+}
+
+.about-field-form label {
+  margin: 0 5px 0 10px;
+}
+
+.about-field-form label, .about-field-form input[type="radio"] {
+  cursor: pointer;
+}
