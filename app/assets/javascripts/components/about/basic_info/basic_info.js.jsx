@@ -4,6 +4,7 @@ var BasicInfo = React.createClass({
       <FormContainer className="user-basic-info" title="Basic Information">
         <Birthday {...this.props} />
         <Sex {...this.props} />
+        <Work {...this.props} />
       </FormContainer>
     );
   }
