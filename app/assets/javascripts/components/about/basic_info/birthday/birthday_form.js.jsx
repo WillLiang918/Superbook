@@ -26,7 +26,7 @@ var BirthdayForm = React.createClass({
       <div className="flex-container max-width">
         <div>Birth Date</div>
 
-        <form className="about-field-form">
+        <form className="about-field-form" data-name="birthday" onSubmit={this.save}>
           <select name="birthday_month" value={this.state.birthday_month} onChange={this.onChange}>
             <option value="0" key="0">Month</option>
             {months}

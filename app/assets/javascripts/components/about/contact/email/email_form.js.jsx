@@ -7,7 +7,7 @@ var EmailForm = React.createClass({
       <div className="flex-container max-width">
         <div>Email</div>
 
-        <form className="about-field-form">
+        <form className="about-field-form" data-name="email" onSubmit={this.save}>
           <input type="email" name="email" value={this.state.email} onChange={this.onChange} />
         </form>
 

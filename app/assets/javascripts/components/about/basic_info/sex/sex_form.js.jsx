@@ -7,7 +7,7 @@ var SexForm = React.createClass({
       <div className="flex-container max-width">
         <div>Sex</div>
 
-        <form className="about-field-form">
+        <form className="about-field-form" data-name="sex" onSubmit={this.save}>
           <label htmlFor="male">Male</label>
           <input
             type="radio"
