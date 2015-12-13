@@ -1,5 +1,5 @@
 var AboutSideNav = React.createClass({
-  tabs: ["Basic Info", "Contact", "Details About You"],
+  tabs: ["Basic Info", "Contact", "Details"],
   render: function() {
     var {activeIdx, setActiveIdx, ...other} = this.props;
 

@@ -4,6 +4,7 @@ var Contact = React.createClass({
       <FormContainer className="user-contact" title="Contact Information">
         <Email {...this.props} />
         <ProfileField name="phone" {...this.props} />
+        <ProfileField name="address" {...this.props} />
       </FormContainer>
     );
   }

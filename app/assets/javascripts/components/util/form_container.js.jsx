@@ -13,10 +13,13 @@ var FormContainer = React.createClass({
   },
   render: function() {
     var {className, title, ...other} = this.props;
+    
+    var heading;
+    if (title) { header = <h4>{title}</h4>; }
 
     return (
       <article className={className}>
-        <h4>{title}</h4>
+        {heading}
 
         <ul>
           {
