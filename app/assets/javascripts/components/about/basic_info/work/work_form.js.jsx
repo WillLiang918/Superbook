@@ -7,7 +7,7 @@ var WorkForm = React.createClass({
       <div className="flex-container max-width">
         <div>Work</div>
 
-        <form className="about-field-form">
+        <form className="about-field-form" data-name="work" onSubmit={this.save}>
           <input
             type="text"
             name="work"
