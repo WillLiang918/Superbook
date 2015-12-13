@@ -3,6 +3,7 @@ var Contact = React.createClass({
     return (
       <FormContainer className="user-contact" title="Contact Information">
         <Email {...this.props} />
+        <Phone {...this.props} />
       </FormContainer>
     );
   }
