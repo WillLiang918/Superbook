@@ -24,7 +24,15 @@ var NicknamesForm = React.createClass({
       <form className="about-field-form about-detail-content flex-container max-width" data-name="nicknames" onSubmit={this.handleSubmit}>
         <div>
           {tokenList}
-          <input name="nickname" onChange={this.onChange} value={this.state.nickname} placeholder="Enter alias..." onKeyPress={this.onKeyPress} />
+          <input
+            className="nickname-input"
+            name="nickname"
+            type="text"
+            onChange={this.onChange}
+            value={this.state.nickname}
+            placeholder="Enter alias..."
+            onKeyPress={this.onKeyPress}
+          />
         </div>
 
         <div>

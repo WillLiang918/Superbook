@@ -5,7 +5,7 @@ var BioForm = React.createClass({
   render: function() {
     return (
       <form className="about-field-form about-detail-content flex-container max-width" data-name="bio" onSubmit={this.save}>
-        <textarea name="bio" onChange={this.onChange} value={this.state.bio} placeholder="Enter details..." />
+        <textarea className="bio" name="bio" onChange={this.onChange} value={this.state.bio} placeholder="Enter details..." />
         <div>
           <button className="blue save fb-btn" onClick={this.save} data-name="bio">Save</button>
           <button className="gray cancel fb-btn" onClick={this.props.toggleEdit} data-name="bio">Cancel</button>

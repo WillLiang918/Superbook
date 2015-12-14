@@ -6,7 +6,7 @@ var BioShow = React.createClass({
 
     return (
       <div className="flex-container max-width about-detail-content">
-        <p className="bio">{profile.bio}</p>
+        <p className="bio black">{profile.bio}</p>
         <a className="edit-about" data-name="bio" onClick={toggleEdit}>Edit</a>
       </div>
     );
