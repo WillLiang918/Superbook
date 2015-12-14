@@ -25,6 +25,8 @@ var FormContainer = React.createClass({
         <ul>
           {
             React.Children.map(this.props.children, function(child) {
+              if (child.props.hide) { return null; }
+
               return (
                 <li className="form-container-list-item">
                   {

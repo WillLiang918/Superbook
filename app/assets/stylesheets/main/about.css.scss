@@ -137,6 +137,10 @@
   visibility: visible;
 }
 
+li.form-container-list-item:last-of-type {
+  border-bottom: none;
+}
+
 .edit-about:hover {
   text-decoration: underline;
 }
