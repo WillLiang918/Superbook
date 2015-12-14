@@ -86,7 +86,7 @@ div.profile-thumb {
   background-repeat: no-repeat;
 }
 
-.delete-comment {
+.delete-comment, .delete-token {
   width: 12px;
   height: 12px;
   background: image-url("fb_icons3.png");
@@ -99,7 +99,7 @@ div.profile-thumb {
   display: block;
 }
 
-.delete-comment:hover {
+.delete-comment:hover, .delete-token:hover {
   background-position: -117px -409px;
 }
 

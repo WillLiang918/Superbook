@@ -1,0 +1,21 @@
+.token {
+  display:flex;
+  align-items: center;
+  width: min-content;
+  white-space: nowrap;
+  padding: 5px;
+  padding-right: 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #bdbdbd;
+  border-radius: 2px;
+  margin: 5px 0;
+}
+
+.delete-token {
+  display: block;
+  margin-right: 5px;
+}
+
+.token-content {
+
+}

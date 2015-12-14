@@ -1,11 +1,11 @@
 var Token = React.createClass({
   render: function() {
-    var {name, handleClick, ...other} = this.props;
+    var {content, handleDelete, ...other} = this.props;
 
     return (
       <div className="token">
-        <a onClick={handleClick} className="delete-token" />
-        <span>{name}</span>
+        <a onClick={handleDelete} className="delete-token" />
+        <div className="token-content">{content}</div>
       </div>
     );
   }
