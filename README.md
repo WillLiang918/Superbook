@@ -26,13 +26,16 @@ A social networking website for super-people inspired by Facebook.
 * Upload images through Paperclip and AWS S3
 
 ##Action Shots
-* Search  
+###Search  
 ![search][search]  
-* Friends  
+
+###Friends  
 ![friends][friends]  
-* Images  
+
+###Images  
 ![image_upload][image_upload]  
-* Aliases / Token Inputs  
+
+###Aliases / Token Inputs  
 ![token_input][token_input]  
 
 
