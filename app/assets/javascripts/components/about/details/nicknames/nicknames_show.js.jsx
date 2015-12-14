@@ -6,7 +6,13 @@ var NicknamesShow = React.createClass({
 
     return (
       <div className="flex-container max-width">
-        <p className="nicknames">{nicknames}</p>
+        <ul className="nickname-list">
+          {
+            nicknames.map(function(nickname) {
+              return <li key={nickname.id} className="nickname black">{nickname.name}</li>;
+            })
+          }
+        </ul>
         <a className="edit-about" data-name="nicknames" onClick={toggleEdit}>Edit</a>
       </div>
     );

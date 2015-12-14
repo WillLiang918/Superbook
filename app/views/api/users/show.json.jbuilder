@@ -29,7 +29,7 @@ end
 
 json.nicknames do
   json.set! @user.id do
-    json.array! @nicknames
+    json.array! @user.nicknames
   end
 end
 
