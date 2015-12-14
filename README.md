@@ -17,6 +17,28 @@ A social networking website for super-people inspired by Facebook.
 
 ![timeline][timeline]
 
+##Tradeoffs
+####Friendships
+Friendships are stored as a join table with `user_id` and `friend_id` foreign keys.
+Each friendship is duplicated and has a corresponding reverse friendship.
+#####Gains
+* Reduced code complexity in associations and queries
+#####Losses
+* Larger database
+* Must keep duplicated data in sync
+To handle keeping the data in sync it is necessary to wrap the operations in transactions like so:
+```ruby
+class FriendRequest < ActiveRecord::Base
+  def accept!
+    ActiveRecord::Base.transaction do
+      Friendship.create!(user_id: self.sender_id, friend_id: self.receiver_id)
+      Friendship.create!(user_id: self.receiver_id, friend_id: self.sender_id)
+      self.destroy!
+    end
+  end
+end
+```
+
 ##Features
 * Rails back end, React.js and Flux front end
 * Infinite scroll dynamically fetches data
@@ -27,16 +49,16 @@ A social networking website for super-people inspired by Facebook.
 * Upload images through Paperclip and AWS S3
 
 ##Action Shots
-###Search  
+####Search  
 ![search][search]  
 
-###Friends  
+####Friends  
 ![friends][friends]  
 
-###Images  
+####Images  
 ![image_upload][image_upload]  
 
-###Aliases / Token Inputs  
+####Aliases / Token Inputs  
 ![token_input][token_input]  
 
 
