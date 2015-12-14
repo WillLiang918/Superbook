@@ -17,6 +17,15 @@ A social networking website for super-people inspired by Facebook.
 
 ![timeline][timeline]
 
+##Features
+* Rails back end, React.js and Flux front end
+* Infinite scroll dynamically fetches data
+* Live updates implemented through polling strategy
+* Modular design with [mixins][mixins] that share behavior, including Polling and [Infinite Scroll][infinite_scroll]
+* Search across multiple attributes and through associations
+* Polymorphic associations for Likes and Comments
+* Upload images through Paperclip and AWS S3
+
 ##Tradeoffs
 ####Friendships
 Friendships are stored as a join table with `user_id` and `friend_id` foreign keys.
@@ -41,15 +50,6 @@ class FriendRequest < ActiveRecord::Base
   end
 end
 ```
-
-##Features
-* Rails back end, React.js and Flux front end
-* Infinite scroll dynamically fetches data
-* Live updates implemented through polling strategy
-* Modular design with [mixins][mixins] that share behavior, including Polling and [Infinite Scroll][infinite_scroll]
-* Search across multiple attributes and through associations
-* Polymorphic associations for Likes and Comments
-* Upload images through Paperclip and AWS S3
 
 ##Action Shots
 ####Search  
