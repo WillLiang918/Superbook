@@ -16,7 +16,7 @@ var SearchResults = React.createClass({
 
             return (
               <li key={result.id} onClick={handleClick} data-name={name}>
-                <SearchResult result={result} />
+                <SearchResult result={result} search={search} />
               </li>
             );
           }, this)}
