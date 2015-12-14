@@ -23,6 +23,7 @@ Friendships are stored as a join table with `user_id` and `friend_id` foreign ke
 Each friendship is duplicated and has a corresponding reverse friendship.
 #####Gains
 * Reduced code complexity in associations and queries
+
 #####Losses
 * Larger database
 * Must keep duplicated data in sync
