@@ -7,6 +7,7 @@
 [token_input]: https://github.com/ryandgoldenberg1/Superbook/raw/master/app/assets/images/readme/token_input.png
 [portfolio]: http://www.ryandgoldenberg.com
 [infinite_scroll]: http://blog.ryandgoldenberg.com/post/135027241088/infinite-scroll-in-react
+[mixins]: https://github.com/ryandgoldenberg1/Superbook/tree/master/app/assets/javascripts/utils/mixins
 
 # Superbook
 
@@ -20,7 +21,7 @@ A social networking website for super-people inspired by Facebook.
 * Rails back end, React.js and Flux front end
 * Infinite scroll dynamically fetches data
 * Live updates implemented through polling strategy
-* Modular design with mixins that share behavior, including Polling and [Infinite Scroll][infinite_scroll]
+* Modular design with [mixins][mixins] that share behavior, including Polling and [Infinite Scroll][infinite_scroll]
 * Search across multiple attributes and through associations
 * Polymorphic associations for Likes and Comments
 * Upload images through Paperclip and AWS S3
