@@ -3,6 +3,7 @@ var FormContainer = React.createClass({
     return {editing: new Set()};
   },
   toggleEdit: function(e) {
+    e.preventDefault();
     var name = e.target.dataset.name, editing = this.state.editing;
     if (editing.has(name)) {
       editing.delete(name);
@@ -13,7 +14,7 @@ var FormContainer = React.createClass({
   },
   render: function() {
     var {className, title, ...other} = this.props;
-    
+
     var heading;
     if (title) { header = <h4>{title}</h4>; }
 

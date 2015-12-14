@@ -5,7 +5,7 @@ var NicknamesShow = React.createClass({
     if (!nicknames || nicknames.length === 0) { return <NicknamesAdd {...this.props} />; }
 
     return (
-      <div className="flex-container max-width">
+      <div className="flex-container max-width about-detail-content">
         <ul className="nickname-list">
           {
             nicknames.map(function(nickname) {

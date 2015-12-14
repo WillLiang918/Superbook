@@ -21,9 +21,12 @@ var NicknamesForm = React.createClass({
     }
 
     return (
-      <form className="about-field-form" data-name="nicknames" onSubmit={this.handleSubmit}>
-        {tokenList}
-        <input name="nickname" onChange={this.onChange} value={this.state.nickname} placeholder="Enter alias..." onKeyPress={this.onKeyPress} />
+      <form className="about-field-form about-detail-content flex-container max-width" data-name="nicknames" onSubmit={this.handleSubmit}>
+        <div>
+          {tokenList}
+          <input name="nickname" onChange={this.onChange} value={this.state.nickname} placeholder="Enter alias..." onKeyPress={this.onKeyPress} />
+        </div>
+
         <div>
           <button className="blue save fb-btn" onClick={this.save} data-name="nicknames">Save</button>
           <button className="gray cancel fb-btn" onClick={this.props.toggleEdit} data-name="nicknames">Cancel</button>
