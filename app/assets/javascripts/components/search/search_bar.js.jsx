@@ -59,6 +59,7 @@ var SearchBar = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
     this.history.pushState(null, "search/" + this.state.search);
+    this.setState({hover: false, focus: false});
   },
   handleClick: function(e) {
     var name = e.currentTarget.dataset.name;
