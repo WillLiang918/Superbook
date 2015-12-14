@@ -26,7 +26,7 @@ var FormContainer = React.createClass({
           {
             React.Children.map(this.props.children, function(child) {
               return (
-                <li>
+                <li className="form-container-list-item">
                   {
                     React.cloneElement(
                       child,
