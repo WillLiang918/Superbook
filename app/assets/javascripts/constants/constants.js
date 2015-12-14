@@ -27,5 +27,6 @@ var Constants = keyMirror({
   "RECEIVE_OLDER_USER_DATA": null,
   "RECEIVE_NEWER_USER_DATA": null,
   "USER_UPDATED": null,
-  "PROFILE_UPDATED": null
+  "PROFILE_UPDATED": null,
+  "NICKNAMES_UPDATED": null
 });

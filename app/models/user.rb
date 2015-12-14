@@ -117,4 +117,17 @@ class User < ActiveRecord::Base
       FriendRequest.where(sender_id: other_user.id, receiver_id: self.id).each(&:destroy!)
     end
   end
+
+  def update_nicknames!(names)
+    new_name_set = Set.new(names)
+    old_name_set = Set.new(self.nicknames.map(&:name))
+    names_to_delete = (old_name_set - new_name_set).to_a
+    names_to_create = (new_name_set - old_name_set).to_a
+    ActiveRecord::Base.transaction do
+      Nickname.where(user_id: self.id, name: names_to_delete).destroy_all
+      names_to_create.each do |name|
+        Nickname.create!(user_id: self.id, name: name)
+      end
+    end
+  end
 end

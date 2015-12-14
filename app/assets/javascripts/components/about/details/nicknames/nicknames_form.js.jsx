@@ -8,10 +8,10 @@ var NicknamesForm = React.createClass({
       tokenList = (
         <ul className="nickname-tokens">
           {
-            nicknames.map(function(nickname) {
+            nicknames.map(function(nickname, idx) {
               return (
-                <li key={nickname.id}>
-                  <Token content={nickname.name} handleDelete={this.handleDelete.bind(this, nickname.id)} />
+                <li key={idx}>
+                  <Token content={nickname.name} handleDelete={this.handleDelete.bind(this, idx)} />
                 </li>
               );
             }, this)
@@ -21,9 +21,9 @@ var NicknamesForm = React.createClass({
     }
 
     return (
-      <form className="about-field-form" data-name="nicknames" onSubmit={this.save}>
+      <form className="about-field-form" data-name="nicknames" onSubmit={this.handleSubmit}>
         {tokenList}
-        <input name="nickname" onChange={this.onChange} value={this.state.nickname} placeholder="Enter aliases..." />
+        <input name="nickname" onChange={this.onChange} value={this.state.nickname} placeholder="Enter alias..." onKeyPress={this.onKeyPress} />
         <div>
           <button className="blue save fb-btn" onClick={this.save} data-name="nicknames">Save</button>
           <button className="gray cancel fb-btn" onClick={this.props.toggleEdit} data-name="nicknames">Cancel</button>
@@ -38,17 +38,29 @@ var NicknamesForm = React.createClass({
   },
   save: function(e) {
     e.preventDefault();
-    ApiUtil.updateUser(this.props.user.id, this.state);
+    var names = this.state.nicknames.map(function(nickname) {
+      return nickname.name;
+    });
+    ApiUtil.updateNicknames(this.props.user.id, names);
     this.props.toggleEdit(e);
   },
-  handleDelete: function(nicknameId) {
+  handleDelete: function(idx) {
     var nicknames = this.state.nicknames;
-    var idx = nicknames.findIndex(function(nickname) {
-      return nickname.id === nicknameId;
-    });
     if (idx >= 0) {
       nicknames.splice(idx, 1);
       this.forceUpdate();
     }
+  },
+  onKeyPress: function(e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      var name = this.state.nickname;
+      if (!name) return;
+      this.state.nicknames.push({name: name});
+      this.setState({nickname: ""});
+    }
+  },
+  handleSubmit: function(e) {
+    e.preventDefault();
   }
 });

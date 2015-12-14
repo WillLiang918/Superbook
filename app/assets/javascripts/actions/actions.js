@@ -193,5 +193,12 @@ var Actions = {
     AppDispatcher.dispatch(Object.assign(data, {
       actionType: Constants.PROFILE_UPDATED
     }));
+  },
+
+  nicknamesUpdated: function(nicknames) {
+    AppDispatcher.dispatch({
+      nicknames: nicknames,
+      actionType: Constants.NICKNAMES_UPDATED
+    });
   }
 };

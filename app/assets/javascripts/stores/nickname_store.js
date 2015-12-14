@@ -19,6 +19,11 @@
           addNicknames(payload.nicknames);
           break;
 
+        case Constants.NICKNAMES_UPDATED:
+          addNicknames(payload.nicknames);
+          root.NicknameStore.emitChange();
+          break;
+
       }
     })
   });

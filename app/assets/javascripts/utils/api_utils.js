@@ -297,6 +297,16 @@ var ApiUtil = {
         Actions.profileUpdated(data);
       }
     });
-  }
+  },
 
+  updateNicknames: function(userId, names) {
+    return $.ajax({
+      url: "api/users/" + userId + "/nicknames",
+      type: "PATCH",
+      data: {nicknames: names},
+      success: function(data) {
+        Actions.nicknamesUpdated(data);
+      }
+    });
+  }
 };
