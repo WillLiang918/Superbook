@@ -16,8 +16,9 @@ var SearchResult = React.createClass({
     var subheader;
     if (nicknames.length > 0) {
       subheader = (
-        <div>
-          Nicknames: {nicknames.map(nickname => nickname.name).join(" ")}
+        <div className="search-subheader">
+          <span className="subheader-title">Aliases:</span>
+          <span>{nicknames.map(nickname => nickname.name).join(" ")}</span>
         </div>
       );
     }

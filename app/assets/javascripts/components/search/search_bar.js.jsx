@@ -18,7 +18,7 @@ var SearchBar = React.createClass({
 
         <input type="text"
                className="header-search"
-               placeholder="Search Superbook"
+               placeholder="Search By Name Or Alias..."
                value={this.state.search}
                onChange={this.onChange}
                onFocus={this.onFocus}
