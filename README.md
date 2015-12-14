@@ -26,6 +26,8 @@ Each friendship is duplicated and has a corresponding reverse friendship.
 #####Losses
 * Larger database
 * Must keep duplicated data in sync
+
+
 To handle keeping the data in sync it is necessary to wrap the operations in transactions like so:
 ```ruby
 class FriendRequest < ActiveRecord::Base
