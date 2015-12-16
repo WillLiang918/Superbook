@@ -23,12 +23,12 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar,
     styles: { profile: "160x160#", thumb: "21x21#" },
-    default_url: ActionController::Base.helpers.asset_path("avatars/default_avatar.jpeg")
+    default_url: "default_avatar.jpeg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   has_attached_file :cover,
     styles: { cover: "847x314>" },
-    default_url: ActionController::Base.helpers.asset_path("covers/default_cover.jpg")
+    default_url: "default_cover.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   has_many :authored_posts, class_name: "Post", foreign_key: :author_id, dependent: :destroy
