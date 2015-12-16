@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       delete 'friendships' => 'friendships#destroy'
       resource :profile, only: [:update]
       resource :nicknames, only: [:update]
+      resource :abilities, only: [:update]
     end
 
     resources :friend_requests, only: [:index]
