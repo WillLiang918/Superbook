@@ -1,8 +1,10 @@
 var NicknamesShow = React.createClass({
   render: function() {
-    var {nicknames, toggleEdit, ...other} = this.props;
-
+    var {nicknames, toggleEdit, user, currentUser} = this.props;
     if (!nicknames || nicknames.length === 0) { return <NicknamesAdd {...this.props} />; }
+
+    var editClass = "edit-about";
+    if (currentUser.id !== user.id) { editClass += " hidden"; }
 
     return (
       <div className="flex-container max-width about-detail-content">
@@ -13,7 +15,7 @@ var NicknamesShow = React.createClass({
             })
           }
         </ul>
-        <a className="edit-about" data-name="nicknames" onClick={toggleEdit}>Edit</a>
+        <a className={editClass} data-name="nicknames" onClick={toggleEdit}>Edit</a>
       </div>
     );
   }
