@@ -133,16 +133,24 @@ class User < ActiveRecord::Base
     end
   end
 
-  def update_nicknames!(names)
+  def update_names!(klass, names)
     new_name_set = Set.new(names)
-    old_name_set = Set.new(self.nicknames.map(&:name))
+    old_name_set = Set.new(klass.where(user_id: self.id).map(&:name))
     names_to_delete = (old_name_set - new_name_set).to_a
     names_to_create = (new_name_set - old_name_set).to_a
     ActiveRecord::Base.transaction do
-      Nickname.where(user_id: self.id, name: names_to_delete).destroy_all
+      klass.where(user_id: self.id, name: names_to_delete).destroy_all
       names_to_create.each do |name|
-        Nickname.create!(user_id: self.id, name: name)
+        klass.create!(user_id: self.id, name: name)
       end
     end
+  end
+
+  def update_nicknames!(names)
+    update_names!(Nickname, names)
+  end
+
+  def update_abilities!(names)
+    update_names!(Ability, names)
   end
 end
