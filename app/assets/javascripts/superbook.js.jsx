@@ -12,6 +12,7 @@ $(function() {
           <Route path="friends" component={FriendsIndex} />
           <Route path="about" component={About} />
         </Route>
+        <Route path="messages" component={Messages} />
       </Route>
     </Router>
   );
