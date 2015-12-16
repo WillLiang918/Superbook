@@ -1,6 +1,6 @@
 var SearchResults = React.createClass({
   render: function() {
-    var {active, search, handleSubmit, handleClick, className, onMouseEnter, onMouseLeave, results, ...other} = this.props;
+    var {active, search, handleSubmit, handleClick, className, onMouseEnter, onMouseLeave, results} = this.props;
     if (!active || !search) { return false; }
 
     return (

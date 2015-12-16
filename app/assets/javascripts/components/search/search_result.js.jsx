@@ -6,23 +6,34 @@ var SearchResult = React.createClass({
     var name = user.first_name + " " + user.last_name;
 
     var regex = new RegExp(search, "i");
-    var nicknames = [];
-    if (user && user.nicknames) {
-      nicknames = user.nicknames.filter(function(nickname) {
-        return regex.test(nickname.name);
-      });
+    var testName = function(obj) { return regex.test(obj.name); };
+    var subData = {
+      "nicknames": [],
+      "abilities": []
+    };
+    for (var attr in subData) {
+      if (user && user[attr]) {
+        subData[attr] = user[attr].filter(testName);
+      }
     }
 
-    var subheader;
-    if (nicknames.length > 0) {
-      subheader = (
-        <div className="search-subheader">
-          <span className="subheader-title">Aliases:</span>
-          <span>{nicknames.map(nickname => nickname.name).join(" ")}</span>
-        </div>
-      );
-    }
+    subheader = (
+      <div className="search-subheader flex-column">
+        {
+          Object.keys(subData).map(function(attr, idx) {
+            var data = subData[attr];
+            if (!data.length) return null;
 
+            return (
+              <div key={idx} className="subheader-container">
+                <span className="subheader-title capitalize">{attr}</span>
+                <span>{data.map(obj => obj.name).join(", ")}</span>
+              </div>
+            );
+          })
+        }
+      </div>
+    );
 
     return (
       <Link to={userUrl}>

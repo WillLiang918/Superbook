@@ -7,7 +7,7 @@ var SearchBar = React.createClass({
     return {search: "", focus: false, hover: false};
   },
   render: function() {
-    var {search, focus, hover, ...other} = this.state;
+    var {search, focus, hover} = this.state;
     var active = focus || hover;
 
     return (
