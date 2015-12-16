@@ -33,6 +33,12 @@ json.nicknames do
   end
 end
 
+json.abilities do
+  json.set! @user.id do
+    json.array! @user.abilities
+  end
+end
+
 json.partial! 'api/profiles/profile', profile: @user.profile
 json.partial! 'api/posts/posts', posts: @posts
 json.partial! 'api/posts/post_comments', posts: @posts
