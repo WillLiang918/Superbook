@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   pg_search_scope :search_by_full_name,
     against: [:first_name, :last_name],
     associated_against: {
-      nicknames: :name
+      nicknames: :name,
+      abilities: :name
     },
     using: {tsearch: {prefix: true}}
 
