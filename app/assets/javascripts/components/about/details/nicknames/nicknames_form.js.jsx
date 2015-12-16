@@ -1,6 +1,8 @@
 var NicknamesForm = React.createClass({
   getInitialState: function() {
-    return {nicknames: this.props.nicknames.slice() || [], nickname: ""};
+    var nicknames = this.props.nicknames;
+    if (!nicknames) return {nicknames: [], nickname: ""};
+    else return {nicknames: nicknames.map(nickname => nickname.name), nickname: ""};
   },
   render: function() {
     var tokenList, nicknames = this.state.nicknames;
@@ -11,7 +13,7 @@ var NicknamesForm = React.createClass({
             nicknames.map(function(nickname, idx) {
               return (
                 <li key={idx}>
-                  <Token content={nickname.name} handleDelete={this.handleDelete.bind(this, idx)} />
+                  <Token content={nickname} handleDelete={this.handleDelete.bind(this, idx)} />
                 </li>
               );
             }, this)
@@ -49,10 +51,7 @@ var NicknamesForm = React.createClass({
   },
   save: function(e) {
     e.preventDefault();
-    var names = this.state.nicknames.map(function(nickname) {
-      return nickname.name;
-    });
-    ApiUtil.updateNicknames(this.props.user.id, names);
+    ApiUtil.updateNicknames(this.props.user.id, this.state.nicknames);
     this.props.toggleEdit(e);
   },
   handleDelete: function(idx) {
@@ -67,7 +66,7 @@ var NicknamesForm = React.createClass({
       e.preventDefault();
       var name = this.state.nickname;
       if (!name) return;
-      this.state.nicknames.push({name: name});
+      this.state.nicknames.push(name);
       this.setState({nickname: ""});
     }
   },
