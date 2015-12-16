@@ -19,7 +19,7 @@
           addAbilities(payload.abilities);
           break;
 
-        case Constants.NICKNAMES_UPDATED:
+        case Constants.ABILITIES_UPDATED:
           addAbilities(payload.abilities);
           root.AbilityStore.emitChange();
           break;

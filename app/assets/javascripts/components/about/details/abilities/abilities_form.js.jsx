@@ -5,7 +5,7 @@ var AbilitiesForm = React.createClass({
     return {abilities: abilities.map(ability => ability.name), ability: ""};
   },
   render: function() {
-    var tokenList, nicknames = this.state.abilities;
+    var tokenList, abilities = this.state.abilities;
     if (abilities.length > 0) {
       tokenList = (
         <ul className="nickname-tokens">

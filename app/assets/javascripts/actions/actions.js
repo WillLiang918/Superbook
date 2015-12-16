@@ -186,5 +186,12 @@ var Actions = {
       nicknames: nicknames,
       actionType: Constants.NICKNAMES_UPDATED
     });
+  },
+
+  abilitiesUpdated: function(abilities) {
+    AppDispatcher.dispatch({
+      abilities: abilities,
+      actionType: Constants.ABILITIES_UPDATED
+    });
   }
 };

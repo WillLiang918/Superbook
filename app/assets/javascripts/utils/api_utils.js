@@ -294,7 +294,14 @@ var ApiUtil = {
     });
   },
 
-  updateAbilities: function() {
-    throw "IMplement updateAbilities";
+  updateAbilities: function(userId, names) {
+    return $.ajax({
+      url: "api/users/" + userId + "/abilities",
+      type: "PATCH",
+      data: {abilities: names},
+      success: function(data) {
+        Actions.abilitiesUpdated(data);
+      }
+    });
   }
 };

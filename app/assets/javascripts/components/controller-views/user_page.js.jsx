@@ -1,5 +1,5 @@
 var UserPage = React.createClass({
-  stores: [TimelineStore, PostStore, CommentStore, LikeStore, ProfileStore, NicknameStore],
+  stores: [TimelineStore, PostStore, CommentStore, LikeStore, ProfileStore, NicknameStore, AbilityStore],
   mixins: [ControllerView, InfiniteScroll, Polling],
   pollingInterval: 10000,
   getStateFromStores: function() {
@@ -14,13 +14,15 @@ var UserPage = React.createClass({
     var likes = LikeStore.all();
     var profile = ProfileStore.get(userId);
     var nicknames = NicknameStore.find(userId);
+    var abilities = AbilityStore.find(userId);
 
     return {
       posts: posts,
       comments: comments,
       likes: likes,
       profile: profile,
-      nicknames: nicknames
+      nicknames: nicknames,
+      abilities: abilities
     };
   },
   fetchInitialData: function(id) {
