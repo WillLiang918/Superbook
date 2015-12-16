@@ -44,7 +44,8 @@ class User < ActiveRecord::Base
   has_one  :profile, dependent: :destroy
   has_many :nicknames, dependent: :destroy, inverse_of: :user
   has_many :abilities, dependent: :destroy, inverse_of: :user
-  has_many :sent_messages, class_name: "Message", foreign_key: :sender_id, dependent: :destroy
+  has_many :sent_messages,     class_name: "Message", foreign_key: :sender_id,   dependent: :destroy
+  has_many :received_messages, class_name: "Message", foreign_key: :receiver_id, dependent: :destroy
 
 
   attr_accessor :email_confirmation, :birthday_day, :birthday_month, :birthday_year
