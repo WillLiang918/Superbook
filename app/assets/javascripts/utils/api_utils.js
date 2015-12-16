@@ -261,22 +261,6 @@ var ApiUtil = {
     });
   },
 
-  addDemoUser: function(name) {
-    return $.ajax({
-      url: "api/demo_users/add",
-      type: "POST",
-      data: {name: name}
-    });
-  },
-
-  removeDemoUser: function(name) {
-    return $.ajax({
-      url: "api/demo_users/remove",
-      type: "DELETE",
-      data: {name: name}
-    });
-  },
-
   updateUser: function(userId, userData) {
     return $.ajax({
       url: "api/users/" + userId,
