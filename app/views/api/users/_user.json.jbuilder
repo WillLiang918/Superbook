@@ -6,3 +6,5 @@ json.avatar do
   json.thumb image_path(avatar.url(:thumb))
   json.profile image_path(avatar.url(:profile))
 end
+
+json.cover user.cover.url(:cover)

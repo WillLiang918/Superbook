@@ -132,13 +132,6 @@ var Actions = {
     });
   },
 
-  receiveNewCover: function(cover) {
-    AppDispatcher.dispatch({
-      actionType: Constants.COVER_CREATED,
-      cover: cover
-    });
-  },
-
   receiveNewsFeedData: function(data) {
     AppDispatcher.dispatch(Object.assign(data, {
       actionType: Constants.RECEIVE_NEWS_FEED_DATA,

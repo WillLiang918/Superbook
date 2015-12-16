@@ -80,7 +80,6 @@
             root.PostStore.dispatcherId,
             root.CommentStore.dispatcherId,
             root.LikeStore.dispatcherId,
-            root.CoverStore.dispatcherId,
             root.ProfileStore.dispatcherId,
             root.NicknameStore.dispatcherId
           ]);
@@ -95,7 +94,6 @@
             root.PostStore.dispatcherId,
             root.CommentStore.dispatcherId,
             root.LikeStore.dispatcherId,
-            root.CoverStore.dispatcherId,
             root.ProfileStore.dispatcherId,
             root.NicknameStore.dispatcherId
           ]);
@@ -110,7 +108,6 @@
             root.PostStore.dispatcherId,
             root.CommentStore.dispatcherId,
             root.LikeStore.dispatcherId,
-            root.CoverStore.dispatcherId,
             root.ProfileStore.dispatcherId,
             root.NicknameStore.dispatcherId
           ]);

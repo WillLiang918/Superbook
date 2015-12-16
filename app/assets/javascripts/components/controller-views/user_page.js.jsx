@@ -1,5 +1,5 @@
 var UserPage = React.createClass({
-  stores: [TimelineStore, PostStore, CommentStore, LikeStore, CoverStore, ProfileStore, NicknameStore],
+  stores: [TimelineStore, PostStore, CommentStore, LikeStore, ProfileStore, NicknameStore],
   mixins: [ControllerView, InfiniteScroll, Polling],
   pollingInterval: 10000,
   getStateFromStores: function() {
@@ -12,7 +12,6 @@ var UserPage = React.createClass({
 
     var comments = CommentStore.hashSlice(postIds);
     var likes = LikeStore.all();
-    var cover = CoverStore.get();
     var profile = ProfileStore.get(userId);
     var nicknames = NicknameStore.find(userId);
 
@@ -20,7 +19,6 @@ var UserPage = React.createClass({
       posts: posts,
       comments: comments,
       likes: likes,
-      cover: cover,
       profile: profile,
       nicknames: nicknames
     };
@@ -100,7 +98,7 @@ var UserPage = React.createClass({
           delete={this.deleteFriendRequest}
           unfriend={this.unfriend}
           pathname={this.props.location.pathname}
-          cover={this.state.cover}
+          cover={user.cover}
         />
         {friendRequestStatus}
 

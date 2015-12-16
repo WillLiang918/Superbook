@@ -197,8 +197,8 @@ var ApiUtil = {
       contentType: false,
       dataType: "json",
       data: formData,
-      success: function(data) {
-        Actions.receiveNewCover(data.cover);
+      success: function(user) {
+        Actions.receiveCurrentUser(user);
       }
     });
   },

@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   has_attached_file :cover,
-    styles: { cover: "847x314#" },
+    styles: { cover: "847x314>" },
     default_url: ActionController::Base.helpers.asset_path("covers/default_cover.jpg")
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
