@@ -6,7 +6,15 @@ var CommentsList = React.createClass({
     return (
       <ul className="comments-list">
         {
-          comments.map(function(comment) {
+          comments.sort(function(commentA, commentB) {
+            if (commentA.id < commentB.id) {
+              return -1;
+            } else if (commentA.id > commentB.id) {
+              return 1;
+            } else {
+              return 0;
+            }
+          }).map(function(comment) {
             return (
               <li key={comment.id}>
                 <Comment
