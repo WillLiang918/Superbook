@@ -14,7 +14,7 @@ var SearchSubheader = React.createClass({
 
             return (
               <div key={idx} className="subheader-container">
-                <span className="subheader-title capitalize">{attr}</span>
+                <span className="subheader-title capitalize">{attr}:</span>
                 <span>{data.map(obj => obj.name).join(", ")}</span>
               </div>
             );

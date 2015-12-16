@@ -13,7 +13,7 @@ var Search = React.createClass({
     results = this.props.searchResults.map(function(result) {
       return (
         <li key={result.id}>
-          <UserSearchResult user={result} status={this.friendStatus(result)} />
+          <UserSearchResult user={result} status={this.friendStatus(result)} search={search} />
         </li>
       );
     }, this);

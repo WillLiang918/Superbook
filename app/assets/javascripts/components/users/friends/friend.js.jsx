@@ -8,12 +8,16 @@ var Friend = React.createClass({
       <figure className="friend">
         <Link to={friendPath}><img src={friendImageUrl} /></Link>
 
-        <div className="friend-body flex-container">
-          <Link to={friendPath} className="flex-column">
-            {friend.first_name + " " + friend.last_name}
-          </Link>
+        <div className="flex-column friend-body-container">
+          <div className="friend-body flex-container">
+            <Link to={friendPath}>
+              {friend.first_name + " " + friend.last_name}
+            </Link>
 
-          <FriendStatusButton {...this.props} />
+            <FriendStatusButton {...this.props} />
+          </div>
+
+          {this.props.children}
         </div>
       </figure>
     );

@@ -69,8 +69,6 @@
 .friend-body {
   height: 100%;
   margin: 0 10px;
-  flex-grow: 1;
-  flex-shrink: 1;
   align-items: center;
 }
 
@@ -166,4 +164,9 @@ input.search-friends {
 
 .friends-list, .no-friends-filler {
   min-height: 226px;
+}
+
+.friend-body-container {
+  flex: 1 1 auto;
+  justify-content: center;
 }
