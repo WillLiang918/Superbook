@@ -183,8 +183,8 @@ var ApiUtil = {
       contentType: false,
       dataType: "json",
       data: formData,
-      success: function(avatar) {
-        Actions.receiveNewAvatar(avatar);
+      success: function(user) {
+        Actions.receiveCurrentUser(user);
       }
     });
   },

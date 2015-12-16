@@ -1,9 +1,8 @@
 class Api::AvatarsController < ApplicationController
 
   def create
-    @avatar = current_user.avatar
-    @avatar.update!(image: params[:image]) if params[:image]
-    render :show
+    current_user.update!(avatar: params[:image]) if params[:image]
+    render partial: "api/users/user", locals: {user: current_user}
   end
 
 end

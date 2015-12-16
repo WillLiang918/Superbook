@@ -1,7 +1,7 @@
 class Api::FriendRequestsController < ApplicationController
   def index
     @sent_requests = current_user.sent_friend_requests
-    @requesters = current_user.requesters.includes(:avatar)
+    @requesters = current_user.requesters
   end
 
   def accept

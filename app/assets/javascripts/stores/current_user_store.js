@@ -27,14 +27,6 @@
           root.CurrentUserStore.emitChange();
           break;
 
-        case Constants.AVATAR_CREATED:
-          AppDispatcher.waitFor([
-            root.UserStore.dispatcherId
-          ]);
-          updateAvatar(payload.avatar);
-          root.CurrentUserStore.emitChange();
-          break;
-
       }
     })
 

@@ -2,9 +2,9 @@ class Api::UsersController < ApplicationController
   before_action :ensure_update_permission, only: [:update]
 
   def show
-    @user = User.includes(:avatar, :cover, :profile, :nicknames).find(params[:id])
+    @user = User.includes(:cover, :profile, :nicknames).find(params[:id])
     @posts = @user.received_posts
-                  .includes(:likes, comments: :likes, author: :avatar)
+                  .includes(:author, :likes, comments: :likes)
                   .created_before(params[:created_before])
                   .created_after(params[:created_after])
                   .order(created_at: :desc)
@@ -14,12 +14,12 @@ class Api::UsersController < ApplicationController
     @commenter_ids = Post.commenter_ids(@posts)
 
     @user_ids = (@commenter_ids + @friend_ids) - @posts.map(&:author_id)
-    @users = User.where(id: @user_ids.to_a).includes(:avatar)
+    @users = User.where(id: @user_ids.to_a)
   end
 
   def index
     @friend_ids = current_user.friendships.map(&:friend_id)
-    @posts = Post.includes(:likes, comments: :likes, author: :avatar)
+    @posts = Post.includes(:author, :likes, comments: :likes)
                  .where(author_id: @friend_ids + [current_user.id])
                  .created_before(params[:created_before])
                  .created_after(params[:created_after])
@@ -29,7 +29,7 @@ class Api::UsersController < ApplicationController
     @commenter_ids = Post.commenter_ids(@posts)
     @receiver_ids = Post.receiver_ids(@posts)
     @user_ids = (@commenter_ids + @receiver_ids) - @posts.map(&:author_id)
-    @users = User.where(id: @user_ids.to_a).includes(:avatar)
+    @users = User.where(id: @user_ids.to_a)
   end
 
   def update

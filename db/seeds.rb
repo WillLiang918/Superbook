@@ -45,12 +45,9 @@ seed_image_root = "#{Rails.root}/app/assets/images/seeds/"
       email: email,
       password: "password",
       sex: sex,
-      birthday: birthday
+      birthday: birthday,
+      avatar: File.new(avatar_root + path)
     )
-
-    avatar = user.avatar
-    avatar.image = File.new(avatar_root + path)
-    avatar.save!
 
     cover_path = Dir.glob(cover_root + name_path + ".*").first
     cover = user.cover

@@ -132,13 +132,6 @@ var Actions = {
     });
   },
 
-  receiveNewAvatar: function(avatar) {
-    AppDispatcher.dispatch({
-      actionType: Constants.AVATAR_CREATED,
-      avatar: avatar
-    });
-  },
-
   receiveNewCover: function(cover) {
     AppDispatcher.dispatch({
       actionType: Constants.COVER_CREATED,
