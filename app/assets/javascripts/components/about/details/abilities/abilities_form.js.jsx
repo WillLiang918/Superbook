@@ -1,19 +1,19 @@
-var NicknamesForm = React.createClass({
+var AbilitiesForm = React.createClass({
   getInitialState: function() {
-    var nicknames = this.props.nicknames;
-    if (!nicknames) return {nicknames: [], nickname: ""};
-    return {nicknames: nicknames.map(nickname => nickname.name), nickname: ""};
+    var abilities = this.props.abilities;
+    if (!abilities) return {abilities: [], ability: ""};
+    return {abilities: abilities.map(ability => ability.name), ability: ""};
   },
   render: function() {
-    var tokenList, nicknames = this.state.nicknames;
-    if (nicknames.length > 0) {
+    var tokenList, nicknames = this.state.abilities;
+    if (abilities.length > 0) {
       tokenList = (
         <ul className="nickname-tokens">
           {
-            nicknames.map(function(nickname, idx) {
+            abilities.map(function(ability, idx) {
               return (
                 <li key={idx}>
-                  <Token content={nickname} handleDelete={this.handleDelete.bind(this, idx)} />
+                  <Token content={ability} handleDelete={this.handleDelete.bind(this, idx)} />
                 </li>
               );
             }, this)
@@ -25,25 +25,25 @@ var NicknamesForm = React.createClass({
     return (
       <form
         className="about-field-form about-detail-content flex-container max-width"
-        data-name="nicknames"
+        data-name="abilities"
         onSubmit={this.handleSubmit}
       >
         <div>
           {tokenList}
           <input
-            className="nickname-input"
-            name="nickname"
+            className="ability-input"
+            name="ability"
             type="text"
             onChange={this.onChange}
-            value={this.state.nickname}
-            placeholder="Enter alias..."
+            value={this.state.ability}
+            placeholder="Enter ability..."
             onKeyPress={this.onKeyPress}
           />
         </div>
 
         <div>
-          <button className="blue save fb-btn" onClick={this.save} data-name="nicknames">Save</button>
-          <button className="gray cancel fb-btn" onClick={this.props.toggleEdit} data-name="nicknames">Cancel</button>
+          <button className="blue save fb-btn" onClick={this.save} data-name="abilities">Save</button>
+          <button className="gray cancel fb-btn" onClick={this.props.toggleEdit} data-name="abilities">Cancel</button>
         </div>
       </form>
     );
@@ -55,23 +55,23 @@ var NicknamesForm = React.createClass({
   },
   save: function(e) {
     e.preventDefault();
-    ApiUtil.updateNicknames(this.props.user.id, this.state.nicknames);
+    ApiUtil.updateAbilities(this.props.user.id, this.state.abilities);
     this.props.toggleEdit(e);
   },
   handleDelete: function(idx) {
-    var nicknames = this.state.nicknames;
+    var abilities = this.state.abilities;
     if (idx >= 0) {
-      nicknames.splice(idx, 1);
+      abilities.splice(idx, 1);
       this.forceUpdate();
     }
   },
   onKeyPress: function(e) {
     if (e.key === "Enter") {
       e.preventDefault();
-      var name = this.state.nickname;
+      var name = this.state.ability;
       if (!name) return;
-      this.state.nicknames.push(name);
-      this.setState({nickname: ""});
+      this.state.abilities.push(name);
+      this.setState({ability: ""});
     }
   },
   handleSubmit: function(e) {

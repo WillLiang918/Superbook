@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_one  :profile, dependent: :destroy
   has_many :nicknames, dependent: :destroy, inverse_of: :user
+  has_many :abilities, dependent: :destroy, inverse_of: :user
 
 
   attr_accessor :email_confirmation, :birthday_day, :birthday_month, :birthday_year

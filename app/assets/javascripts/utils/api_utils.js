@@ -292,5 +292,9 @@ var ApiUtil = {
         Actions.nicknamesUpdated(data);
       }
     });
+  },
+
+  updateAbilities: function() {
+    throw "IMplement updateAbilities";
   }
 };

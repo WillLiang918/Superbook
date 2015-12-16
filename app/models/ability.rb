@@ -1,5 +1,5 @@
 class Ability < ActiveRecord::Base
-  belongs_to :profile
+  belongs_to :user
 
-  validates :name, :profile, presence: true
+  validates :name, :user, presence: true
 end
