@@ -75,6 +75,9 @@
         case Constants.RECEIVE_USER_DATA:
         case Constants.RECEIVE_OLDER_USER_DATA:
         case Constants.RECEIVE_NEWER_USER_DATA:
+        case Constants.RECEIVE_NEWS_FEED_DATA:
+        case Constants.RECEIVE_OLDER_NEWS_FEED_DATA:
+        case Constants.RECEIVE_NEWER_NEWS_FEED_DATA:
           addComments(payload.comments);
           break;
 
@@ -99,12 +102,6 @@
         case Constants.COMMENT_UPDATED:
           updateComment(payload.comment);
           root.CommentStore.emitChange();
-          break;
-
-        case Constants.RECEIVE_NEWS_FEED_DATA:
-        case Constants.RECEIVE_OLDER_NEWS_FEED_DATA:
-        case Constants.RECEIVE_NEWER_NEWS_FEED_DATA:
-          addComments(payload.comments);
           break;
 
       }
