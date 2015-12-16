@@ -1,4 +1,9 @@
 var Messages = React.createClass({
+  stores: [],
+  mixins: [ControllerView],
+  getStateFromStores: function() {
+
+  },
   getInitialState: function() {
 
   },
