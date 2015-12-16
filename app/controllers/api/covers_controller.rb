@@ -1,8 +1,7 @@
 class Api::CoversController < ApplicationController
 
   def create
-    @cover = current_user.cover
-    @cover.update!(image: params[:image]) if params[:image]
+    current_user.update!(cover: params[:image]) if params[:image]
     render :show
   end
 

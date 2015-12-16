@@ -38,6 +38,8 @@ seed_image_root = "#{Rails.root}/app/assets/images/seeds/"
     last_name = name_parts.drop(1).join(" ")
     email = name_path.gsub("_", ".") + "@gmail.com"
     birthday = 50.years.ago
+    avatar_path = avatar_root + path
+    cover_path = Dir.glob(cover_root + name_path + ".*").first
 
     user = User.create!(
       first_name: first_name,
@@ -46,13 +48,9 @@ seed_image_root = "#{Rails.root}/app/assets/images/seeds/"
       password: "password",
       sex: sex,
       birthday: birthday,
-      avatar: File.new(avatar_root + path)
+      avatar: File.new(avatar_path),
+      cover: File.new(cover_path)
     )
-
-    cover_path = Dir.glob(cover_root + name_path + ".*").first
-    cover = user.cover
-    cover.image = File.new(cover_path)
-    cover.save!
   end
 end
 

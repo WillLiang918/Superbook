@@ -25,6 +25,11 @@ class User < ActiveRecord::Base
     default_url: ActionController::Base.helpers.asset_path("avatars/default_avatar.jpeg")
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
+  has_attached_file :cover,
+    styles: { cover: "847x314#" },
+    default_url: ActionController::Base.helpers.asset_path("covers/default_cover.jpg")
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   has_many :authored_posts, class_name: "Post", foreign_key: :author_id, dependent: :destroy
   has_many :received_posts, class_name: "Post", foreign_key: :receiver_id, dependent: :destroy
   has_many :sent_friend_requests, class_name: "FriendRequest", foreign_key: :sender_id, dependent: :destroy
@@ -33,7 +38,6 @@ class User < ActiveRecord::Base
   has_many :friendships, dependent: :destroy
   has_many :reverse_friendships, class_name: "Friendship", foreign_key: :friend_id, dependent: :destroy
   has_many :friends, through: :friendships, source: :friend
-  has_one  :cover, dependent: :destroy, inverse_of: :user
   has_many :authored_comments, class_name: "Comment", foreign_key: :author_id, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_one  :profile, dependent: :destroy

@@ -34,7 +34,7 @@ json.nicknames do
 end
 
 json.partial! 'api/profiles/profile', profile: @user.profile
-json.cover @user.cover.image.url
+json.cover @user.cover.url(:cover)
 json.partial! 'api/posts/posts', posts: @posts
 json.partial! 'api/posts/post_comments', posts: @posts
 json.partial! 'api/posts/post_likes', posts: @posts
