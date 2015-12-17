@@ -1,6 +1,6 @@
 var PostsList = React.createClass({
   render: function() {
-    var {posts, currentUser, users, comments, likes, parent, ...other} = this.props;
+    var {posts, currentUser, users, comments, likes, parent} = this.props;
 
     return (
       <ul className="posts-list">
