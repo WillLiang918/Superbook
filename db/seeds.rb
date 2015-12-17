@@ -6,21 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# ["male", "female"].each do |sex|
-#   avatar_root = seed_image_root + "#{sex}/avatars/"
-#   cover_root = seed_image_root + "#{sex}/covers/"
-#
-#   Dir.foreach(avatar_root) do |path|
-#     next if path.starts_with?(".")
-#
-#     name_path, extension = path.split(".")
-#     cover_paths = Dir.glob(cover_root + name_path + ".*")
-#     if (cover_paths.length === 0)
-#       debugger
-#     end
-#   end
-# end
-
 User.destroy_all
 
 seed_image_root = "#{Rails.root}/app/assets/images/seeds/"
@@ -67,21 +52,9 @@ User.all.each do |user|
   end
 end
 
-# friend_pairs = [["Clark Kent", "Bruce Wayne"]]
-# friend_pairs.each do |(user_name, friend_name)|
-#   user = User.find_by_name(user_name)
-#   friend = User.find_by_name(friend_name)
-#   if user && friend
-#     Friendship.create!(user_id: user.id, friend_id: friend.id)
-#   end
-# end
-
 
 timeline_posts = {
-  "Bruce Banner"    => [
-                        "Part of me is getting the urge to SMASH",
-                        "You wouldn't like to see me angry."
-                       ],
+  "Bruce Banner"    => ["You wouldn't like to see me angry."],
   "Bruce Wayne"     => ["It's not who I am underneath... but what I *do*... that defines me."],
   "Cain Marko"      => ["I'm the juggernaut B****!"],
   "Charles Xavier"  => ["I've fallen and I can't get up!"],
@@ -147,7 +120,8 @@ posts = [
   {
     author_name: "Remy Lebeau",
     receiver_name: "Anna Marie",
-    body: "You can drain my energy any time, Chère. Gambit has plenty."},
+    body: "You can drain my energy any time, Chère. Gambit has plenty."
+  },
   {
     author_name: "Selina Kyle",
     receiver_name: "Bruce Wayne",
@@ -166,8 +140,6 @@ posts.each do |post|
 end
 
 comments = {
-  "Part of me is getting the urge to SMASH" => {author_name: "Natasha Romanova", body: "Eww. Keep that to yourself Bruce."},
-  "Part of me is getting the urge to SMASH" => {author_name: "Bruce Banner", body: "Not like that. You know what I meant."},
   "Just got bitten by a radioactive spider." => {author_name: "Maryjane Watson", body: "You should probably get that checked out."},
   "I wish there was someone I could touch without hurting them." => {author_name: "Remy Lebeau", body: "Here I am Chère!"},
   "Sometimes I wish I couldn't read minds." => {author_name: "James Howlett", body: "You can read mine any time."},
@@ -199,4 +171,81 @@ Comment.all.each do |comment|
   users.sample(num_likes).each do |user|
     Like.create!(user: user, likeable: comment)
   end
+end
+
+nicknames = {
+  "Bruce Banner"    => ["Hulk"],
+  "Bruce Wayne"     => ["Batman", "Dark Knight", "Inspector"],
+  "Cain Marko"      => ["Juggernaut"],
+  "Charles Xavier"  => ["Professor X"],
+  "Clark Kent"      => ["Superman", "Man of Steel"],
+  "Curtis Connors"  => ["Lizard"],
+  "En Sabah Nur"    => ["Apocalypse"],
+  "Eric Brooks"     => ["Blade", "Daywalker"],
+  "Erik Lehnsherr"  => ["Magneto"],
+  "Hank Mccoy"      => ["Beast"],
+  "Harvey Dent"     => ["Two Face", "White Knight"],
+  "James Howlett"   => ["Weapon X", "Wolverine"],
+  "James Rhodes"    => ["War Machine"],
+  "Matt Murdock"    => ["Daredevil"],
+  "Nick Fury"       => ["Bad Motherf*****"],
+  "Norman Osborn"   => ["Green Goblin"],
+  "Oswald Cobblepot"=> ["Penguin"],
+  "Peter Parker"    => ["Spider Man", "Spidey"],
+  "Peter Quill"     => ["Star Lord"],
+  "Reed Richards"   => ["Mr Fantastic"],
+  "Remy Lebeau"     => ["Gambit"],
+  "Scott Summers"   => ["Cyclops"],
+  "Steve Rogers"    => ["Captain America"],
+  "Thor Odinson"    => ["God of Thunder"],
+  "Tony Stark"      => ["Iron Man"],
+  "Victor Fries"    => ["Mr Freeze"],
+  "Wilson Fisk"     => ["Kingpin"],
+  "Anna Marie"      => ["Rogue"],
+  "Felicia Hardy"   => ["Black Cat"],
+  "Jean Gray"       => ["Phoenix"],
+  "Kitty Pryde"     => ["Shadowcat"],
+  "Natasha Romanova"=> ["Black Widow"],
+  "Ororo Munroe"    => ["Storm", "Weather Witch"],
+  "Raven Darkholme" => ["Mystique"],
+  "Selina Kyle"     => ["Catwoman"]
+}
+
+nicknames.each do |user_name, names|
+  user = User.find_by_name(user_name)
+  user.update_nicknames!(names) if user
+end
+
+abilities = {
+  "Bruce Banner"    => ["Super Strength"],
+  "Bruce Wayne"     => ["Gadgets", "Stealth", "Kung Fu"],
+  "Cain Marko"      => ["Super Strength", "Invulnerable"],
+  "Charles Xavier"  => ["Psychic"],
+  "Clark Kent"      => ["Super Strength", "Super Speed", "Ice Breath", "Heat Vision"],
+  "En Sabah Nur"    => ["Immortality"],
+  "Eric Brooks"     => ["Kung Fu"],
+  "Erik Lehnsherr"  => ["Magnetism"],
+  "Hank Mccoy"      => ["Agility", "Furriness"],
+  "James Howlett"   => ["Healing", "Adamantium"],
+  "James Rhodes"    => ["Weapons"],
+  "Matt Murdock"    => ["Super Hearing", "Kung Fu"],
+  "Nick Fury"       => ["Negotiation"],
+  "Norman Osborn"   => ["Super Strength"],
+  "Peter Parker"    => ["Spider Sense", "Spider Strength", "Crawling", "Web", "Agility"],
+  "Reed Richards"   => ["Stretch"],
+  "Remy Lebeau"     => ["Explosion"],
+  "Scott Summers"   => ["Energy Beam"],
+  "Thor Odinson"    => ["Magic Hammer", "God Strength"],
+  "Tony Stark"      => ["Charisma"],
+  "Anna Marie"      => ["Power Absorbsion"],
+  "Jean Gray"       => ["Telekenesis", "Psychic"],
+  "Kitty Pryde"     => ["Phasing", "Time Travel"],
+  "Natasha Romanova"=> ["Negotiation"],
+  "Ororo Munroe"    => ["Weather Manipulation"],
+  "Raven Darkholme" => ["Shapeshifting"]
+}
+
+abilities.each do |user_name, names|
+  user = User.find_by_name(user_name)
+  user.update_abilities!(names) if user
 end

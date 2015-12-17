@@ -1,5 +1,5 @@
 var SearchBar = React.createClass({
-  mixins:[History],
+  mixins:[History, Polling],
   componentWillMount: function() {
     this.lastSearch = "";
   },
@@ -67,7 +67,7 @@ var SearchBar = React.createClass({
   },
   MAX_RESULTS: 8,
   results: function() {
-    var {users, searchResultsPreview, ...other} = this.props;
+    var {users, searchResultsPreview} = this.props;
     var results = [], MAX = this.MAX_RESULTS, seenIds = new Set(),
         searchRegex = new RegExp(this.state.search, "i"), user, name,
         search = this.state.search;
@@ -99,10 +99,16 @@ var SearchBar = React.createClass({
 
     return results;
   },
-  throttledFetch: $.throttle(100, ApiUtil.fetchUserSearchPreview),
+  throttledFetch: $.throttle(10, ApiUtil.fetchUserSearchPreview),
   fetchPreview: function(search) {
     if (search === this.lastSearch) { return; }
     this.throttledFetch(search);
     this.lastSearch = search;
-  }
+  },
+  fetchNewerData: function() {
+    var {hover, focus, search} = this.state;
+    if (focus || hover)
+    ApiUtil.fetchUserSearchPreview(search);
+  },
+  pollingInterval: 200
 });
