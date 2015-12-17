@@ -303,5 +303,14 @@ var ApiUtil = {
         Actions.abilitiesUpdated(data);
       }
     });
+  },
+
+  fetchMessages: function() {
+    return $.ajax({
+      url: "api/messages",
+      success: function(data) {
+        Actions.receiveMessages(data);
+      }
+    });
   }
 };

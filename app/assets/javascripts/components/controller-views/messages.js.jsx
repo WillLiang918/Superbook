@@ -1,17 +1,14 @@
 var Messages = React.createClass({
-  stores: [],
+  stores: [MessageStore],
   mixins: [ControllerView],
   getStateFromStores: function() {
-
-  },
-  getInitialState: function() {
-
+    return {messages: MessageStore.all()};
   },
   componentWillMount: function() {
 
   },
   componentDidMount: function() {
-
+    ApiUtil.fetchMessages();
   },
   componentWillUnmount: function() {
 

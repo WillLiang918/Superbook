@@ -193,5 +193,12 @@ var Actions = {
       abilities: abilities,
       actionType: Constants.ABILITIES_UPDATED
     });
+  },
+
+  receiveMessages: function(messages) {
+    AppDispatcher.dispatch({
+      messages: messages,
+      actionType: Constants.RECEIVE_MESSAGES
+    });
   }
 };

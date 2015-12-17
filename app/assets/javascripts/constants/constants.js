@@ -28,5 +28,6 @@ var Constants = keyMirror({
   "USER_UPDATED": null,
   "PROFILE_UPDATED": null,
   "NICKNAMES_UPDATED": null,
-  "ABILITIES_UPDATED": null
+  "ABILITIES_UPDATED": null,
+  "RECEIVE_MESSAGES": null
 });
