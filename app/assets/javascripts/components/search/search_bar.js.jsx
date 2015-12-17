@@ -18,7 +18,7 @@ var SearchBar = React.createClass({
 
         <input type="text"
                className="header-search"
-               placeholder="Search By Name Or Alias..."
+               placeholder="Search By Name, Ability, or Alias..."
                value={this.state.search}
                onChange={this.onChange}
                onFocus={this.onFocus}

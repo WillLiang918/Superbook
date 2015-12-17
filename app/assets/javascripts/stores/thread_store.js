@@ -6,11 +6,12 @@
     _threads = {};
 
     var currentUserId = root.CurrentUserStore.get().id;
+    var sender_id, receiver_id, message, otherId;
     for (var id in messages) {
-      var message = messages[id];
-      var {sender_id, receiver_id} = message;
+      message = messages[id];
+      sender_id = message.sender_id;
+      receiver_id = message.receiver_id;
 
-      var otherId;
       if (sender_id == currentUserId) {
         otherId = receiver_id;
       } else if (receiver_id == currentUserId) {

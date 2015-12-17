@@ -18,7 +18,7 @@ var NewsFeed = React.createClass({
     var user = this.props.currentUser;
 
     return (
-      <HomeLayout>
+      <HomeLayout {...this.props}>
           <PostsIndex
             status={FriendConstants.SELF}
             {...this.state}

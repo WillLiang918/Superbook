@@ -23,3 +23,43 @@ body {
 #content > * {
   margin-top: 42px;
 }
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.side-nav a {
+  color: #333;
+  font-weight: 400;
+  font-size: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  height: 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+.edit-profile-icon, .newsfeed-icon {
+  background: image-url("fb_icons11.png");
+  background-position: 0px -638px;
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.newsfeed-icon {
+  background-position: 0px -332px;
+}
+
+.active-link {
+  font-weight: 700;
+}

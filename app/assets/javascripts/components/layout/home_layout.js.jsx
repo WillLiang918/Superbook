@@ -2,7 +2,7 @@ var HomeLayout = React.createClass({
   render: function() {
     return (
       <div className="main-container flex-container">
-        <nav className="side-nav"></nav>
+        <HomeSideNav {...this.props} />
         <section className="feed">
           {this.props.children}
         </section>
