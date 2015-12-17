@@ -19,7 +19,7 @@ var Search = React.createClass({
     }, this);
 
     return (
-      <HomeLayout>
+      <HomeLayout {...this.props}>
         <ul className="search-result-list">
           {searchResults.length > 0 ? <UserSearchTitle /> : <BlankSearch search={search} />}
           {results}

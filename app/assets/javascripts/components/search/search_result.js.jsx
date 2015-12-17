@@ -6,7 +6,7 @@ var SearchResult = React.createClass({
     var name = user.first_name + " " + user.last_name;
 
     return (
-      <Link to={userUrl}>
+      <Link to={userUrl} className="search-result-preview">
         <img src={avatarUrl} className="search-result-thumb" />
         <div className="flex-column">
           <div>{name}</div>
