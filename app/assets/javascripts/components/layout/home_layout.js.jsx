@@ -6,7 +6,7 @@ var HomeLayout = React.createClass({
         <section className="feed">
           {this.props.children}
         </section>
-        <aside className="aside"></aside>
+        <Ads {...this.props} />
       </div>
     );
   }
