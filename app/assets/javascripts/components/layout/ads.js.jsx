@@ -5,18 +5,27 @@ var Ads = React.createClass({
         <h4 className="upcase">Sponsored</h4>
 
         <article className="ad">
-          <img src="http://www.ryandgoldenberg.com/assets/img/black-white-background.jpg" />
-          <h5><a href="http://www.ryandgoldenberg.com">Ryan Goldenberg</a></h5>
+          <a href="http://www.ryandgoldenberg.com">
+            <img src="https://github.com/ryandgoldenberg1/Superbook/raw/master/public/personal-site.png" />
+            <h5>Ryan Goldenberg</h5>
+            <p>Creator of Superbook</p>
+          </a>
         </article>
 
         <article className="ad">
-          <img src="https://github.com/ryandgoldenberg1/AsteroidsJS/raw/master/images/screenshot.png" />
-          <h5><a href="http://www.ryandgoldenberg.com/AsteroidsJS">Spacewars</a></h5>
+          <a href="http://blog.ryandgoldenberg.com">
+            <img src="https://github.com/ryandgoldenberg1/Superbook/raw/master/public/blog.png" />
+            <h5>Blog</h5>
+            <p>See our blog!</p>
+          </a>
         </article>
 
         <article className="ad">
-          <img src="public/blog.png" />
-          <h5><a href="http://blog.ryandgoldenberg.com">Blog</a></h5>
+          <a href="http://www.ryandgoldenberg.com/AsteroidsJS">
+            <img src="https://github.com/ryandgoldenberg1/Superbook/raw/master/public/spacewars-screenshot.png" />
+            <h5>Spacewars</h5>
+            <p>2D HTML5 Canvas Shooter</p>
+          </a>
         </article>
       </aside>
     );
